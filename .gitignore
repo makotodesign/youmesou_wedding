@@ -1,0 +1,24 @@
+# https://git-scm.com/docs/gitignore
+# https://help.github.com/articles/ignoring-files
+# Example.gitignore files : https://github.com/github/gitignore
+
+### dust
+
+_notes/
+Thumbs.db
+.DS_Store
+
+### task
+
+/node_modules/
+/bower_components/
+
+### src_file
+
+#/__cf/*
+
+### past
+
+/php/**/__*
+_bkup/
+

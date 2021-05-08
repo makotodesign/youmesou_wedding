@@ -1,0 +1,150 @@
+@charset "UTF-8";
+
+/**======================================
+	top
+======================================**/
+
+/*--------------------------------------
+	common
+---------------------------------------*/
+
+.heading_top {
+	font-size: 2.2rem;
+	line-height: 1.3;
+	color: #000;
+}
+
+/*--------------------------------------
+	promo
+---------------------------------------*/
+
+.promo_wrap {
+	position: relative;
+	z-index: 1;
+	width: 100%;
+	overflow: hidden;
+	text-align: center;
+	.promo {
+		width: 100%;
+		text-align: center;
+		.promo_cont {
+			position: relative;
+			.promo_pic {
+				position: relative;
+				display: block;
+				&::before {
+					content: '';
+					display: block;
+					padding-top: 150%;
+					padding-top: 60%;
+					@include mq(tb) {
+						padding-top: 40%;
+					}
+					@include mq(pc_) {
+						padding-top: 800px;
+					}
+				}
+				img {
+					position: absolute;
+					top: 0;
+					right: 0;
+					bottom: 0;
+					left: 0;
+					margin: auto;
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+				}
+			}
+			.promo_info {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				width: 80%;
+				transform: translateY(-50%) translateX(-50%);
+				@include mq(tb) {
+					max-width: 800px;
+				}
+				.promo_catch {
+					position: relative;
+					font-size: 4rem;
+					color: white;
+				}
+				.promo_text {
+					position: relative;
+					text-align: left;
+					line-height: 2;
+					color: white;
+				}
+			}
+		}
+	}
+	.promo:not(:first-child) {
+		display: none;
+	}
+	#promo01 {
+	}
+	#promo02 {
+	}
+	#promo03 {
+	}
+	.promo_progress {
+		position: absolute;
+		bottom: 0;
+		z-index: 999;
+		height: 2px;
+		background-color: #c00;
+	}
+}
+
+/*--------------------------------------
+	top_contents
+---------------------------------------*/
+
+.top_contents {
+	@include mq(all) {
+		/* top_headnews_area */
+		#top_headnews_area {
+			padding: 0;
+			border-bottom: 1px solid color(border, base);
+			.headnews_box {
+				margin-bottom: 0;
+				.headnews_part {
+					.news_wrap {
+						padding-top: 20px;
+						padding-bottom: 20px;
+						@include mq(tb_) {
+							display: flex;
+							flex-wrap: wrap;
+							justify-content: space-between;
+						}
+						.news_date {
+							@include mq(tb_) {
+								width: 100px;
+							}
+							time {
+								line-height: 1.3;
+								@include mq(_sp) {
+									font-size: 1.2rem;
+								}
+							}
+						}
+						.news_summary {
+							@include mq(tb_) {
+								width: calc(100% - 110px);
+							}
+							.news_title {
+								line-height: 1.3;
+								a,
+								a:visited {
+									line-height: 1.3;
+									color: #333;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

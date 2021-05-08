@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+/* admin_user_xx */
+
+/*--------------------------------------
+	post
+---------------------------------------*/
+
+/* hide */
+
+/* プレビュー */
+.preview.button {
+	display: none !important;
+}
+
+/* 一覧タイトル横の｢新規｣ */
+.page-title-action {
+	display: none !important;
+}

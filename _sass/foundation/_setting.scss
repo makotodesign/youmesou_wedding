@@ -1,0 +1,20 @@
+@charset "utf-8";
+
+/**======================================
+	setting
+======================================**/
+
+/* publicdir */
+// 後ろに「/」を入れない * 公開時 ''
+
+$publicdir: '/ct18';
+
+/* breakpoints */
+
+$breakpoint: 600, 960;
+
+/* pc_width */
+
+$max_pc_width: 1200px;
+$narrow_pc_width: 900px;
+$compact_pc_width: 700px;

@@ -1,0 +1,75 @@
+@charset "UTF-8";
+
+/* admin_user_common */
+
+/*--------------------------------------
+	common
+---------------------------------------*/
+
+/* display */
+
+#wp-admin-bar-wp-logo,
+#wp-admin-bar-my-sites,
+#wp-admin-bar-edit-profile,
+#wp-admin-bar-comments,
+#wp-admin-bar-new-content,
+#wp-admin-bar-edit,
+#contextual-help-link-wrap,
+#menu-comments,
+#menu-settings,
+#menu-users,
+#content-html,
+#content-tmce,
+#adv-settings .metabox-prefs,
+#preview-action,
+#wpfooter {
+	display: none !important;
+}
+
+/* display : warning
+	※管理画面サイドメニュー「投稿」非表示
+	ここに関してはMenu Editorは使わない。
+	｢カテゴリ並び替え｣などが動作しなくなるため
+*/
+
+#menu-posts {
+	display: none !important;
+}
+
+/* acf : user_disable
+	ユーザー編集の制御
+*/
+
+.user_disable label:not(.acf-label) {
+	pointer-events: none;
+	color: #999;
+}
+
+.user_disable input[type="radio"],
+.user_disable input[type="checkbox"],
+.user_disable select {
+	pointer-events: none;
+}
+
+.user_disable input[type="text"],
+.user_disable input[type='email'],
+.user_disable input[type^='tel'],
+.user_disable input[type='url'],
+.user_disable input[type='search'],
+.user_disable input[type='search'],
+.user_disable input[type^='num'],
+.user_disable input[type='number'],
+.user_disable input[type='date'],
+.user_disable input[type='datetime'],
+.user_disable input[type='month'],
+.user_disable input[type='week'],
+.user_disable input[type='time'],
+.user_disable input[type='password'] {
+	pointer-events: none;
+	color: #999;
+	background-color: #eee;
+}
+
+/*
+	#adv-settings h5:first
+*/

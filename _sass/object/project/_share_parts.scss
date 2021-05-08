@@ -1,0 +1,339 @@
+@charset "utf-8";
+
+/**======================================
+	share
+======================================**/
+
+/*--------------------------------------
+	parts
+		news_archive
+		step_part
+		youtube
+---------------------------------------*/
+
+/* news_archive */
+
+.news_archive {
+	.news_wrap:first-child {
+		border-top: 1px solid color(border, base);
+	}
+	.news_wrap {
+		margin-bottom: 0;
+		padding-top: 15px;
+		padding-bottom: 15px;
+		border-bottom: 1px solid color(border, base);
+		@include mq(tb_) {
+			display: flex;
+			flex-wrap: wrap;
+		}
+		.news_date {
+			@include mq(tb_) {
+				display: inline-block;
+				width: 120px;
+			}
+			time {
+				font-size: 1.2rem;
+				line-height: 1.3;
+			}
+		}
+		.news_summary {
+			width: calc(100% - 130px);
+			.news_title {
+				@include mq(tb_) {
+					line-height: 1.3;
+				}
+				a {
+					line-height: 1.3;
+				}
+			}
+		}
+	}
+}
+
+/* step_part */
+
+.step_part {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin: 0 auto;
+	max-width: 900px;
+	.step_cont {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		min-width: 50px;
+		text-align: center;
+		@include mq(tb_) {
+			width: 100px;
+		}
+		.step_step {
+			display: block;
+			margin-bottom: 10px;
+			padding: 10px;
+			border-radius: 20px;
+			width: 40px;
+			height: 40px;
+			background-color: black;
+			font-size: 1.8rem;
+			font-weight: bold;
+			line-height: 1;
+			color: white;
+		}
+		.step_text {
+			font-size: 1.2rem;
+		}
+	}
+	.step_cont:not(:last-child) {
+		position: relative;
+		&::before {
+			content: '';
+			position: absolute;
+			top: 18px;
+			left: calc(50% + 20px);
+			display: block;
+			width: calc(100% - 40px);
+			height: 4px;
+			background-color: black;
+		}
+		.step_step {
+		}
+	}
+	.step_cont.current {
+		.step_step {
+			background-color: #5cb1b1;
+			color: white;
+		}
+	}
+}
+
+/* meta_cont */
+
+.meta_cont {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	.meta_date {
+		time {
+			font-size: 1.2rem;
+		}
+	}
+	.meta_tag {
+		li {
+			display: inline-block;
+			a,
+			a:visited {
+				display: block;
+				padding: 5px;
+				border: 1px solid;
+				border-color: color(border, base);
+				border-radius: 3px;
+				background-color: white;
+				text-decoration: none;
+				font-size: 1rem;
+				line-height: 1;
+				transition: all 0.3s;
+			}
+			a:hover {
+				background-color: color(border, base);
+				color: white;
+			}
+		}
+	}
+}
+
+/* youtube */
+
+.youtube_wrap {
+	position: relative;
+	padding-top: 56.25% !important;
+	width: 100%;
+	iframe {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+/* chart_arrow */
+
+.chart_arrow {
+	position: relative;
+	margin-bottom: 0 !important;
+	padding-bottom: 60px;
+	&::before {
+		content: icom(arrow-down);
+		position: absolute;
+		bottom: 10px;
+		left: 50%;
+		display: block;
+		width: 40px;
+		height: 40px;
+		font-size: 40px;
+		font-weight: 300;
+		font-family: font(icomoon);
+		line-height: 40px;
+		color: black;
+		transform: translateX(-50%);
+	}
+}
+
+/* tel mark */
+
+.mark_title {
+	display: flex;
+	align-items: center;
+	&::before {
+		content: attr(title);
+		display: inline-block;
+		margin: 0 8px 0 0;
+		padding: 5px 0;
+		width: 38px;
+		background-color: color(list, base);
+		text-align: center;
+		font-size: 1.2rem;
+		line-height: 1;
+		color: white;
+	}
+}
+.mark_freedial {
+	display: flex;
+	align-items: center;
+	&::before {
+		content: '';
+		display: inline-block;
+		margin: 0 8px 0 0;
+		padding: 0;
+		width: 38px;
+		height: 22px;
+		background: url(#{$publicdir}/images/lib/parts/icon_freedial.svg) no-repeat center center;
+		background-size: cover;
+		color: white;
+	}
+}
+.tel,
+.fax {
+	a,
+	a:visited {
+		text-align: inherit;
+		text-decoration: underline;
+		font-size: inherit;
+		font-weight: inherit;
+		font-family: inherit;
+		line-height: inherit;
+		color: inherit;
+		letter-spacing: inherit;
+		@include mq(pc_) {
+			text-decoration: none;
+			cursor: default;
+		}
+	}
+}
+
+/* tel_wrap */
+
+.tel_part {
+	padding: 20px 15px 15px;
+	border: 1px solid color(border, base);
+	background-color: white;
+	@include mq(tb_) {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin: 0 auto;
+		padding: 15px 30px;
+		max-width: 600px;
+	}
+	@include mq(pc_) {
+		padding: 20px 40px;
+		max-width: 700px;
+	}
+	.tel_item {
+		@include mq(tb_) {
+			margin-right: 20px;
+			margin-bottom: 0;
+			width: 400px;
+		}
+		@include mq(pc_) {
+			width: 520px;
+		}
+		.tel {
+			&::before {
+				width: 40px;
+				height: 30px;
+				@include mq(pc_) {
+					margin-right: 20px;
+					width: 64px;
+					height: 48px;
+				}
+			}
+			a {
+				font-size: 2.8rem;
+				font-weight: bold;
+				line-height: 1;
+				color: black;
+				letter-spacing: 0.06em;
+				text-decoration-color: #ccc;
+				@include mq(tb_) {
+					font-size: 3.2rem;
+				}
+				@include mq(pc_) {
+					font-size: 4rem;
+					font-weight: 500;
+				}
+			}
+		}
+		.tel.mark_tel {
+			@include icomoon('block', icom(phone-alt), 30px, 'left', 0);
+			@include mq(pc_) {
+				@include icomoon('block', icom(phone-alt), 40px, 'left', 0);
+				padding-left: 60px;
+			}
+		}
+		.tel.mark_fax {
+			@include icomoon('block', icom(fax), 30px, 'left', 0);
+			@include mq(pc_) {
+				@include icomoon('block', icom(fax), 40px, 'left', 0);
+				padding-left: 60px;
+			}
+		}
+		.tel_supple {
+			font-size: 1.3rem;
+			a,
+			a:visited {
+				@include mq(pc_) {
+					text-decoration: none;
+					color: color(text, base);
+				}
+			}
+		}
+		> *:not(:last-child) {
+			margin-bottom: 10px;
+		}
+	}
+	.supple_item {
+		dl {
+			margin-bottom: 0;
+			dt {
+				margin-right: 10px;
+				margin-bottom: 0;
+				font-size: 1.3rem;
+				@include mq(pc_) {
+					margin-right: 20px;
+					font-size: 1.5rem;
+				}
+			}
+			dd {
+				margin-bottom: 0;
+				font-size: 1.3rem;
+				@include mq(pc_) {
+					font-size: 1.5rem;
+				}
+			}
+		}
+	}
+}

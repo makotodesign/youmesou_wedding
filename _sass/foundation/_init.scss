@@ -1,0 +1,87 @@
+@charset "utf-8";
+
+/**======================================
+	init
+======================================**/
+
+/*--------------------------------------
+	other
+		hide
+		youtube
+		mrcut mbcut
+		clearfix
+		sns_button
+---------------------------------------*/
+
+/* hide : responsive */
+
+@include mq(_sp) {
+	.hide_sp_tb,
+	.hide_sp {
+		display: none !important;
+	}
+}
+@include mq(tb) {
+	.hide_sp_tb,
+	.hide_tb,
+	.hide_tb_pc {
+		display: none !important;
+	}
+}
+@include mq(pc_) {
+	.hide_tb_pc,
+	.hide_pc {
+		display: none !important;
+	}
+}
+
+/* js */
+
+// mrb_cut
+.mrcut {
+	margin-right: 0 !important;
+}
+.mbcut {
+	margin-bottom: 0 !important;
+}
+// ajax_more_load
+.ajax_more_load {
+	text-align: center;
+}
+// tooltip
+.easy_tooltip {
+	@include mq(pc_) {
+		z-index: 10;
+	}
+}
+
+/* sns */
+
+// facebook
+.fb-like {
+	vertical-align: top !important;
+}
+// twetter
+.tw_tweet {
+	display: inline-block;
+}
+
+/* clearfix */
+
+.clearfix {
+	&::after {
+		@include mq(tb_) {
+			content: '';
+			display: block;
+			clear: both;
+		}
+	}
+}
+
+/*--------------------------------------
+	wpadminbar
+---------------------------------------*/
+
+#wpadminbar {
+	position: fixed !important;
+}

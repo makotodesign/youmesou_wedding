@@ -1,0 +1,28 @@
+{#---------------------------------------------------------------------------
+
+	inc : mypage_navi
+
+	@memo
+
+----------------------------------------------------------------------------#}
+
+{#-	inc #}
+					<nav class="box">
+						<div class="part">
+							<div class="cont mypage_nav">
+								<a href="{{ url( 'mypage' ) }}"{% if PAGECODE == 'index' or PAGECODE == 'history' %} class="current"{% endif %}>ご注文履歴</a>
+								<a href="{{ url( 'mypage_favorite' ) }}"{% if PAGECODE == 'favorite' %} class="current"{% endif %}>お気に入り一覧</a>
+								<a href="{{ url( 'mypage_change' ) }}"{% if PAGECODE == 'change' or PAGECODE == 'change_complete' %} class="current"{% endif %}>会員情報編集</a>
+								<a href="{{ url( 'mypage_delivery' ) }}"{% if PAGECODE == 'delivery' or PAGECODE == 'delivery_edit' %} class="current"{% endif %}>お届け先一覧</a>
+								<a href="{{ url( 'mypage_withdraw' ) }}"{% if PAGECODE == 'withdraw' or PAGECODE == 'withdraw_confirm' or PAGECODE == 'withdraw_complete' %} class="current"{% endif %}>退会手続き</a>
+							</div>
+						</div>
+						<div class="part">
+							<div class="cont texts">
+								<p class="center">ようこそ{{ app.user.name01 }}{{ app.user.name02 }}さん</p>
+{% if BaseInfo.option_point %}
+								<p class="center">現在の所持ポイントは {{ app.user.point|number_format }}pt です。</p>
+{% endif %}
+							</div>
+						</div>
+					</nav>

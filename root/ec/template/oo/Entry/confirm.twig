@@ -1,0 +1,184 @@
+{#---------------------------------------------------------------------------
+
+	ec-entry_confirm
+
+	@memo
+
+----------------------------------------------------------------------------#}
+
+{#-	page_setting -#}
+
+{#-		base -#}
+{%-		set PAGENAME      =  '新規会員登録 確認画面' -%}
+{%-		set DIRNAME       =  '新規会員登録' -%}
+{%-		set DIRCODE       =  'entry' -%}
+{%-		set PAGECODE      =  'confirm' -%}
+
+{#-		extents_twig -#}
+{%-		extends 'default_frame.twig' -%}
+{%		form_theme form 'Includes/form_div_layout.twig' %}
+
+{#-		js -#}
+{%-		block js -%}
+{%-		endblock js -%}
+
+{#-		breadcrumb #}
+{%		block breadcrumb %}
+						<li class="current"><span>{{ PAGENAME }}</span></li>
+{%		endblock breadcrumb %}
+
+{#--------------------------------------------------------------------------#}
+
+{%- block main %}
+		<div class="title_wrap">
+			<div class="title">
+				<h1 class="title_text">{{ PAGENAME }}</h1>
+			</div>
+		</div>
+		<div class="contents_wrap">
+			<div class="ec_{{ DIRCODE }}_{{ PAGECODE }}_contents contents ec_contents">
+				<section class="area">
+					<div class="box">
+						<div class="part">
+							<div class="cont texts">
+								<p>下記の内容で登録してもよろしいでしょうか？</p>
+								<p>よろしければ、一番下の「会員登録をする」ボタンをクリックしてください。</p>
+							</div>
+						</div>
+					</div>
+					<div class="box">
+						<div class="part">
+							<form id="ec_{{ DIRCODE }}_{{ PAGECODE }}_form" method="post" action="{{ url( 'entry' ) }}" class="cont">
+								{{ form_widget( form._token ) }}
+								<div class="form_input_set">
+									<div class="form_fieldset">
+										<div class="form_legend">
+											<p>お名前<span class="must">＊</span></p>
+										</div>
+										<div class="form_input">
+											<p>{{ form.name.name01.vars.data }} {{ form.name.name02.vars.data }}</p>
+											{{ form_widget( form.name.name01, { type : 'hidden' } ) }}
+											{{ form_widget( form.name.name02, { type : 'hidden' } ) }}
+										</div>
+									</div>
+									<div class="form_fieldset">
+										<div class="form_legend">
+											<p>お名前（カナ）<span class="must">＊</span></p>
+										</div>
+										<div class="form_input">
+											<p>{{ form.kana.kana01.vars.data }} {{ form.kana.kana02.vars.data }}</p>
+											{{ form_widget( form.kana.kana01, { type : 'hidden' } ) }}
+											{{ form_widget( form.kana.kana02, { type : 'hidden' } ) }}
+										</div>
+									</div>
+									<div class="form_fieldset">
+										<div class="form_legend">
+											<p>会社名{{ has_errors( form.company_name ) ? '<span class="must">＊</span>' }}</p>
+										</div>
+										<div class="form_input">
+											<p>{{ form.company_name.vars.data }}</p>
+											{{ form_widget( form.company_name, { type : 'hidden' } ) }}
+										</div>
+									</div>
+									<div class="form_fieldset">
+										<div class="form_legend">
+											<p>住所<span class="must">＊</span></p>
+										</div>
+										<div class="form_input">
+											<p>〒 {{ form.postal_code.vars.data }}</p>
+											 {{ form_widget( form.postal_code, { type : 'hidden' } ) }}
+											<p>{{ form.address.pref.vars.data }} {{ form.address.addr01.vars.data }} {{ form.address.addr02.vars.data }}</p>
+											{{ form_widget( form.address.pref, { type : 'hidden' } ) }}
+											{{ form_widget( form.address.addr01, { type : 'hidden' } ) }}
+											{{ form_widget( form.address.addr02, { type : 'hidden' } ) }}
+										</div>
+									</div>
+									<div class="form_fieldset">
+										<div class="form_legend">
+											<p>電話番号<span class="must">＊</span></p>
+										</div>
+										<div class="form_input">
+											<p>{{ form.phone_number.vars.data }}</p>
+											{{ form_widget( form.phone_number, { type : 'hidden' } ) }}
+										</div>
+									</div>
+									<div class="form_fieldset">
+										<div class="form_legend">
+											<p>メールアドレス<span class="must">＊</span></p>
+										</div>
+										<div class="form_input">
+											<p>{{ form.email.vars.data }}</p>
+											{{ form_widget( form.email.first, { type : 'hidden' } ) }}
+											{{ form_widget( form.email.second, { type : 'hidden' } ) }}
+										</div>
+									</div>
+									<div class="form_fieldset">
+										<div class="form_legend">
+											<p>パスワード<span class="must">＊</span></p>
+										</div>
+										<div class="form_input">
+											<p>********</p>
+											{{ form_widget( form.password.first, { type : 'hidden' } ) }}
+											{{ form_widget( form.password.second, { type : 'hidden' } ) }}
+										</div>
+									</div>
+									<div class="form_fieldset">
+										<div class="form_legend">
+											<p>生年月日{{ has_errors( form.birth ) ? '<span class="must">＊</span>' }}</p>
+										</div>
+										<div class="form_input">
+											<p>{{ form.birth.vars.data ? form.birth.vars.data|date_day() }}</p>
+											{{ form_widget( form.birth.year, { type : 'hidden' } ) }}
+											{{ form_widget( form.birth.month, { type : 'hidden' } ) }}
+											{{ form_widget( form.birth.day, { type : 'hidden' } ) }}
+										</div>
+									</div>
+									<div class="form_fieldset">
+										<div class="form_legend">
+											<p>性別{{ has_errors( form.sex ) ? '<span class="must">＊</span>' }}</p>
+										</div>
+										<div class="form_input">
+											<p>{{ form.sex.vars.data }}{{ form_widget( form.sex, { type: 'hidden'} ) }}</p>
+										</div>
+									</div>
+									<div class="form_fieldset">
+										<div class="form_legend">
+											<p>職業{{ has_errors( form.job ) ? '<span class="must">＊</span>' }}</p>
+										</div>
+										<div class="form_input">
+											<p>{{ form.job.vars.data }}</p>
+											{{ form_widget( form.job, { type: 'hidden'} ) }}
+										</div>
+									</div>
+{#		エンティティ拡張の自動出力 #}
+{%		for f in form|filter( f => f.vars.eccube_form_options.auto_render ) %}
+{%			if f.vars.eccube_form_options.form_theme %}
+{%				form_theme f f.vars.eccube_form_options.form_theme %}
+									{{ form_row( f ) }}
+{%			else %}
+									<div class="form_fieldset">
+										<div class="form_legend">
+											<p>{{ form_label( f ) }}</p>
+										</div>
+										<div class="form_input">
+											<p>{{ f.vars.data }}}</p>
+											{{ form_widget( f, { type: 'hidden'} ) }}
+										</div>
+									</div>
+{%			endif %}
+{%		endfor %}
+								</div>
+								<div class="form_submit_set">
+									<div class="form_buttons btn_wrap center">
+										{{ form_widget( form.user_policy_check, { type: 'hidden'} ) }}
+										<button type="submit" name="mode" value="complete" class="button"><span>会員登録</span></button>
+										<button type="submit" name="mode" value="back" class="button bc0"><span>戻る</span></button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+{%	endblock %}

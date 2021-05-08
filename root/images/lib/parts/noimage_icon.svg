@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32px" height="26px" viewBox="0 0 64 52">
+	<style type="text/css">
+		.parts{
+			fill: #fff;
+		}
+	</style>
+	<circle class="parts" cx="32" cy="21" r="6"/>
+	<path class="parts" d="M50,6h-3c0-3.3-2.699-6-6-6H23c-3.3,0-6,2.7-6,6h-3c-3.3,0-6,2.7-6,6v18c0,3.3,2.7,6,6,6h36c3.301,0,6-2.7,6-6V12 C56,8.7,53.301,6,50,6z M32,33c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c6.627,0,12,5.373,12,12C44,27.627,38.627,33,32,33z"/>
+	<polygon class="parts" points="0,42 0,52 2,52 2,44 6,44 6,52 8,52 8,42"/>
+	<path class="parts" d="M38,42h-2v2v2v2v4h2v-4h4v4h2v-4v-2v-2v-2h-2H38z M42,46h-4v-2h4V46z"/>
+	<polygon class="parts" points="64,44 64,42 58,42 56,42 56,44 56,46 56,48 56,50 56,52 58,52 64,52 64,50 58,50 58,48 64,48 64,46 58,46 58,44"/>
+	<path class="parts" d="M12,42h-2v8v2h2h4h2v-2v-6v-2h-2H12z M16,50h-4v-6h4V50z"/>
+	<polygon class="parts" points="30,42 28,42 26,42 24,42 24,44 24,52 26,52 26,44 28,44 28,52 30,52 30,44 32,44 32,52 34,52 34,44 34,42 32,42"/>
+	<rect class="parts" x="20" y="42" width="2" height="10"/>
+	<polygon class="parts" points="46,42 46,44 46,50 46,52 48,52 52,52 54,52 54,50 54,48 54,46 52,46 50,46 50,48 52,48 52,50 48,50 48,44 54,44 54,42 48,42"/>
+</svg>

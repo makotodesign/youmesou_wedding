@@ -1,0 +1,251 @@
+{#---------------------------------------------------------------------------
+
+	ec-shopping_confirm
+
+	@memo
+
+----------------------------------------------------------------------------#}
+
+{#-	page_setting -#}
+
+{#-		base -#}
+{%-		set PAGENAME      =  'ご注文内容のご確認' -%}
+{%-		set DIRNAME       =  'ご注文' -%}
+{%-		set DIRCODE       =  'shopping' -%}
+{%-		set PAGECODE      =  'confirm' -%}
+
+{#-		extents_twig -#}
+{%-		extends 'default_frame.twig' -%}
+{%		form_theme form 'Includes/form_div_layout.twig' %}
+
+{#-		js -#}
+{%-		block js -%}
+{%-		endblock js -%}
+
+{#-		breadcrumb -#}
+{%-		block breadcrumb %}
+						<li><a href="{{ constant( 'PUBLICDIR' ) }}/ec/{{ DIRCODE }}/">{{ DIRNAME }}</a></li>
+						<li class="current"><span>{{ PAGENAME }}</span></li>
+{%		endblock breadcrumb %}
+
+{#--------------------------------------------------------------------------#}
+
+{%- block main %}
+		<div class="title_wrap">
+			<div class="title">
+				<h1 class="title_text">{{ PAGENAME }}</h1>
+			</div>
+		</div>
+		<div class="contents_wrap">
+			<div class="ec_{{ DIRCODE }}_{{ PAGECODE }}_contents contents ec_contents">
+				<section class="area">
+					<div class="box">
+						<div class="part step_part">
+{%		set step = 1 %}
+							<div class="step_cont current">
+								<p class="step_step">{{ step }}{% set step = step + 1 %}</p>
+								<p class="step_text">カート<br class="hide_tb_pc">の商品</p>
+							</div>
+{%-		if is_granted( 'ROLE_USER' ) == false %}
+							<div class="step_cont">
+								<p class="step_step">{{ step }}{% set step = step + 1 %}</p>
+								<p class="step_text">お客様<br class="hide_tb_pc">情報</p>
+							</div>
+{%-		endif %}
+							<div class="step_cont">
+								<p class="step_step">{{ step }}{% set step = step + 1 %}</p>
+								<p class="step_text">ご注文<br class="hide_tb_pc">手続き</p>
+							</div>
+							<div class="step_cont">
+								<p class="step_step">{{ step }}{% set step = step + 1 %}</p>
+								<p class="step_text">ご注文<br class="hide_tb_pc">確認</p>
+							</div>
+							<div class="step_cont">
+								<p class="step_step">{{ step }}{% set step = step + 1 %}</p>
+								<p class="step_text">完了</p>
+							</div>
+						</div>
+					</div>
+					<form id="ec_{{ DIRCODE }}_{{ PAGECODE }}_form" method="post" action="{{ url( 'shopping_checkout' ) }}" class="box ec_shopping_box">
+						{{ form_widget( form._token ) }}
+						<div class="part customer_part">
+							<h4 class="heading_ec_shopping">お客様情報</h4>
+							<div class="cont texts non-customer-display">
+								<p><span>{{ Order.name01 }}</span> <span>{{ Order.name02 }}</span> 様</p>
+								<p><span>{{ Order.kana01 }}</span> <span>{{ Order.kana02 }}</span></p>
+								<p><span>{{ Order.companyName }}</span></p>
+								<p><span>〒{{ Order.postal_code }}</span></p>
+								<p><span>{{ Order.pref }}</span><span>{{ Order.addr01 }}</span><span>{{ Order.addr02 }}</span></p>
+								<p><span>{{ Order.phone_number }}</span></p>
+								<p><span>{{ Order.email }}</span></p>
+							</div>
+						</div>
+						<div class="part shipping_part">
+							<h4 class="heading_ec_shopping">配送情報</h4>
+{%		for shipping in Order.shippings %}
+{%			set idx = loop.index0 %}
+{%			set isShowReducedTaxMess = false %}
+							<div class="cont">
+								<div class="ec_delivery_items">
+{%			for orderItem in shipping.productOrderItems %}
+									<div class="image_texts ec_products_list">
+										<div class="image_item">
+{%					if oo_get_wp_pic_main_path( orderItem.productClass.code ) %}
+											<p class="pic"><img src="{{ oo_get_wp_pic_main_path( orderItem.productClass.code, 'thumbnail' ) }}" alt="{{ orderItem.productName }}"></p>
+{%					else %}
+											<p class="pic"><img src="{{ asset(( orderItem.product is null ? null : orderItem.product.MainListImage )|no_image_product, 'save_image' ) }}" alt="{{ orderItem.productName }}"></p>
+{%					endif %}
+										</div>
+										<div class="texts_item">
+											<p>{{ orderItem.productName }}{% if is_reduced_tax_rate( orderItem ) %}※{% set isShowReducedTaxMess = true %}{% endif %}</p>
+											<p>TEXTTEXTTEXT</p>
+{%				if orderItem.productClass is not null and orderItem.productClass.classCategory1 %}
+											<p>{{ orderItem.productClass.classCategory1.className.name }}：{{ orderItem.productClass.classCategory1 }}</p>
+{%				endif %}
+{%				if orderItem.productClass is not null and orderItem.productClass.classCategory2 %}
+											<p>{{ orderItem.productClass.classCategory2.className.name }}：{{ orderItem.productClass.classCategory2 }}</p>
+{%				endif %}
+											<p>{{ orderItem.priceIncTax|price }} × {{ orderItem.quantity|number_format }}［{{ orderItem.totalPrice|price }}］</p>
+										</div>
+									</div>
+{%			endfor %}
+{%			if isShowReducedTaxMess %}
+									<p class="supple">※ は軽減税率対象商品です。</p>
+{%			endif %}
+								</div>
+								<div class="ec_delivery_address">
+									<p>{{ shipping.name01 }} {{ shipping.name02 }}（{{ shipping.kana01 }} {{ shipping.kana02 }}）様</p>
+									<p>〒{{ shipping.postal_code }} {{ shipping.pref }}{{ shipping.addr01 }}{{ shipping.addr02 }}</p>
+									<p>{{ shipping.phone_number }}</p>
+								</div>
+								<div class="ec_delivery_actions">
+									<div class="v_text">
+										<h6>配送方法</h6>
+{%			set delivery_fee = 0 %}
+{%			for item in shipping.order_items if item.isDeliveryFee %}
+{%				set delivery_fee = item.total_price %}
+{%			endfor %}
+										<p>{{ Order.Shippings[idx].Delivery }}( {{ delivery_fee|price }} )</p>
+									</div>
+									<div class="v_text">
+										<h6>お届け日</h6>
+										<p>{{ Order.Shippings[ idx].shipping_delivery_date ? Order.Shippings[idx].shipping_delivery_date|date_day_with_weekday : '指定なし' }}</p>
+									</div>
+									<div class="v_text">
+										<h6>お届け時間</h6>
+										<p>{{ Order.Shippings[ idx ].shipping_delivery_time ?: '指定なし' }}</p>
+									</div>
+								</div>
+							</div>
+{%		endfor %}
+						</div>
+						<div class="part payment_part">
+							<h4 class="heading_ec_shopping">お支払方法</h4>
+							<div class="cont">
+{%			set charge = 0 %}
+{%			for item in Order.order_items if item.isCharge %}
+{%				set charge = item.total_price %}
+{%			endfor %}
+								<p>{{ Order.Payment }}( {{ charge|price }} )</p>
+							</div>
+							<div{{ has_errors( form.Payment ) ? ' class="error"' }}>{{- form_errors( form.Payment ) }}</div>
+						</div>
+{%		if BaseInfo.isOptionPoint and Order.Customer is not null %}
+						<div class="part point_part">
+							<h4 class="heading_ec_shopping">利用ポイント</h4>
+							<div class="cont {{ has_errors( form.use_point ) ? ' error' }}">
+								<p class="ec_point_text">{{ Order.use_point|number_format }}</p>
+							</div>
+						</div>
+{%		endif %}
+						<div class="part contact_part">
+							<h4 class="heading_ec_shopping">お問い合わせ</h4>
+							<div class="cont">
+								<p>{{ Order.message|nl2br }}</p>
+							</div>
+						</div>
+						<div class="part ec_order_part">
+							<div class="cont ec_order_sticky_wrap">
+								<div class="order_table_wrap">
+									<table class="order_table">
+										<caption>表:ご注文手続き 合計</caption>
+										<tbody>
+											<tr>
+												<th scope="row">小計</th>
+												<td>
+													<p class="ec_price"><span>{{ Order.subtotal|price }}</span></p>
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">手数料</th>
+												<td>
+													<p class="ec_price"><span>{{ Order.charge|price }}</span></p>
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">送料</th>
+												<td>
+													<p class="ec_price"><span>{{ Order.deliveryFeeTotal|price }}</span></p>
+												</td>
+											</tr>
+		{%		if Order.taxable_discount < 0 %}
+											<tr>
+												<th scope="row">値引き</th>
+												<td>
+													<p class="ec_price"><span>{{ Order.taxable_discount|price }}</span></p>
+												</td>
+											</tr>
+		{%		endif %}
+											<tr class="order_table_total_row">
+												<th scope="row">合計</th>
+												<td>
+													<p class="ec_price v_total"><span>{{ Order.taxable_total|price }}</span><span class="ec_tax_word">税込</span></p>
+		{%		for rate, total in Order.taxable_total_by_tax_rate %}
+													<p class="ec_table_supple"><span>税率 {{ rate }} %対象 {{ total|price }}</span></p>
+		{%		endfor %}
+		{%		for item in Order.tax_free_discount_items %}
+													<p class="ec_supple icon_list"><span>{{ item.product_name }}</span> <span>{{ item.total_price|price }}</span></p>
+		{%		endfor %}
+												</td>
+											</tr>
+											<tr class="order_table_total_row">
+												<th scope="row">お支払い</th>
+												<td>
+													<p class="ec_price v_total v_text_strong"><span>{{ Order.payment_total|price }}</span><span class="ec_tax_word">税込</span></p>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+{%		if BaseInfo.isOptionPoint and Order.Customer is not null %}
+								<div class="point_table_wrap">
+									<table class="point_table">
+										<caption>表:ご注文手続き ご利用ポイント</caption>
+										<tbody>
+											<tr>
+												<th scope="row">ご利用ポイント</th>
+												<td>
+													<p>{{ Order.UsePoint|number_format }} pt</p>
+												</td>
+											</tr>
+											<tr class="v_add_point">
+												<th scope="row">加算ポイント</th>
+												<td>
+													<p>{{ Order.AddPoint|number_format }} pt</p>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+{%		endif %}
+								<div class="btn_wrap ">
+									<button type="submit" class="button bc_strong"><span>注文する</span></button>
+									<a href="{{ url( 'shopping' ) }}" class="button"><span>ご注文手続きに戻る</span></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+{%	endblock %}

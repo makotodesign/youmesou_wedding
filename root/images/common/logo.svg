@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="300" height="60" viewBox="0 0 300 60">
+  <defs>
+    <clipPath id="clip-logo">
+      <rect width="300" height="60"/>
+    </clipPath>
+  </defs>
+  <g id="logo" clip-path="url(#clip-logo)">
+    <rect width="300" height="60" fill="#fff"/>
+    <text id="Sample_Logo" data-name="Sample Logo" transform="translate(151 32.282)" fill="#bd0000" font-size="28" font-family="NotoSansJP-Medium, Noto Sans JP" font-weight="500"><tspan x="-86.45" y="0">Sample</tspan><tspan y="0" xml:space="preserve" fill="#000"> Logo</tspan></text>
+    <rect id="長方形_1" data-name="長方形 1" width="42.427" height="42.426" transform="translate(8.787 8.787)"/>
+    <rect id="長方形_2" data-name="長方形 2" width="42.426" height="42.426" transform="matrix(0.707, -0.707, 0.707, 0.707, 0, 30)" fill="#bd0000"/>
+    <text id="www.sample.com" transform="translate(151 50.008)" font-size="12" font-family="NotoSansJP-Medium, Noto Sans JP" font-weight="500"><tspan x="-51.258" y="0">www.sample.com</tspan></text>
+  </g>
+</svg>

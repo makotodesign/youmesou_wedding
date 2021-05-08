@@ -1,0 +1,89 @@
+{#---------------------------------------------------------------------------
+
+	ec-mypage_favorite
+
+	@memo
+
+----------------------------------------------------------------------------#}
+
+{#-	page_setting -#}
+
+{#-		base -#}
+{%-		set PAGENAME      =  'お気に入り一覧' -%}
+{%-		set DIRNAME       =  'MYページ' -%}
+{%-		set DIRCODE       =  'mypage' -%}
+{%-		set PAGECODE      =  'favorite' -%}
+
+{#-		extents_twig -#}
+{%-		extends 'default_frame.twig' -%}
+
+{#-		js -#}
+{%-		block js -%}
+{%-		endblock js -%}
+
+{#-		breadcrumb -#}
+{%-		block breadcrumb %}
+						<li><a href="{{ constant( 'PUBLICDIR' ) }}/ec/{{ DIRCODE }}/">{{ DIRNAME }}</a></li>
+						<li class="current"><span>{{ PAGENAME }}</span></li>
+{%		endblock breadcrumb %}
+
+{#--------------------------------------------------------------------------#}
+
+{%- block main %}
+		<div class="title_wrap">
+			<div class="title">
+				<h1 class="title_text">{{ DIRNAME }}/{{ PAGENAME }}</h1>
+			</div>
+		</div>
+		<div class="contents_wrap">
+			<div class="ec_{{ DIRCODE }}_{{ PAGECODE }}_contents contents ec_contents">
+				<section class="area">
+{%		include 'Includes/mypage_navi.twig' %}
+					<div class="box">
+						<div class="part ec_summary">
+							<div class="cont">
+{%		if pagination.totalItemCount|length > 0 %}
+								<p>{{ pagination.totalItemCount }}件のお気に入りがあります</p>
+{%		else %}
+								<p>お気に入りは登録されていません。</p>
+{%		endif %}
+							</div>
+						</div>
+{%		if pagination.totalItemCount|length > 0 %}
+						<div class="part clm2_sp clm3_tb clm4_pc faorite_part">
+{%			for FavoriteProduct in pagination %}
+{%				set Product = FavoriteProduct.Product %}
+							<div class="cont clm_item">
+{%				if oo_get_wp_permalink( Product.wp_products_code ) %}
+								<a href="{{ oo_get_wp_permalink( Product.wp_products_code ) }}">
+{%				else %}
+								<div>
+{%				endif %}
+											<div class="image_item">
+{%				if( oo_get_wp_pic_main_path( Product.wp_products_code ) ) %}
+									<p class="object_fit"><img src="{{ oo_get_wp_pic_main_path( Product.wp_products_code, 'thumbnail' ) }}"></p>
+									<p class="caption">{{ Product.name }}</p>
+{%				else %}
+									<p class="object_fit"><img src="{{ asset( Product.main_list_image|no_image_product, 'save_image' ) }}"></p>
+									<p class="caption">{{ Product.name }}</p>
+{%				endif %}
+{%				if Product.price02_inc_tax_min == Product.price02_inc_tax_max %}
+									<p class="ec_favorite_price">{{ Product.price02_inc_tax_min|price }}</p>
+{%				else %}
+									<p class="ec_favorite_price">{{ Product.price02_inc_tax_min|price }}～{{ Product.price02_inc_tax_max|price }}</p>
+{%				endif %}
+{%				if oo_get_wp_permalink( Product.wp_products_code ) %}
+								</a>
+{%				else %}
+								</div>
+{%				endif %}
+								<a class="favorite_delete_btn" href="{{ url( 'mypage_favorite_delete', { id : Product.id } ) }}" {{ csrf_token_for_anchor() }} data-method="delete"><span>ｘ</span></a>
+							</div>
+{%			endfor %}
+						</div>
+{%		endif %}
+					</div>
+				</section>
+			</div>
+		</div>
+{%	endblock %}

@@ -1,0 +1,246 @@
+{#---------------------------------------------------------------------------
+
+	ec-index
+
+	@memo
+
+----------------------------------------------------------------------------#}
+
+{#-	page_setting -#}
+
+{#-		base -#}
+{%-		set PAGENAME      =  'ショッピングカート' -%}
+{%-		set DIRNAME       =  'ショッピングカート' -%}
+{%-		set DIRCODE       =  'ec' -%}
+{%-		set PAGECODE      =  'index' -%}
+
+{#-		extents_twig -#}
+{%-		extends 'default_frame.twig' -%}
+
+{#-		js -#}
+{%-		block js -%}
+{%-		endblock js -%}
+
+{#-		breadcrumb -#}
+{%-		block breadcrumb %}
+						<li class="current"><span>{{ PAGENAME }}</span></li>
+{%		endblock breadcrumb %}
+
+{#--------------------------------------------------------------------------#}
+
+{%- block main %}
+		<div class="title_wrap">
+			<div class="title">
+				<h1 class="title_text">{{ PAGENAME }}</h1>
+			</div>
+		</div>
+		<div class="contents_wrap">
+			<div class="ec_{{ PAGECODE }}_contents contents ec_contents">
+				<section class="area">
+					<div class="box">
+						<div class="part step_part">
+{%		set step = 1 %}
+							<div class="step_cont current">
+								<p class="step_step">{{ step }}{% set step = step + 1 %}</p>
+								<p class="step_text">カート<br class="hide_tb_pc">の商品</p>
+							</div>
+{%-		if is_granted( 'ROLE_USER' ) == false %}
+							<div class="step_cont">
+								<p class="step_step">{{ step }}{% set step = step + 1 %}</p>
+								<p class="step_text">お客様<br class="hide_tb_pc">情報</p>
+							</div>
+{%-		endif %}
+							<div class="step_cont">
+								<p class="step_step">{{ step }}{% set step = step + 1 %}</p>
+								<p class="step_text">ご注文<br class="hide_tb_pc">手続き</p>
+							</div>
+							<div class="step_cont">
+								<p class="step_step">{{ step }}{% set step = step + 1 %}</p>
+								<p class="step_text">ご注文<br class="hide_tb_pc">確認</p>
+							</div>
+							<div class="step_cont">
+								<p class="step_step">{{ step }}{% set step = step + 1 %}</p>
+								<p class="step_text">完了</p>
+							</div>
+						</div>
+					</div>
+					<div class="box">
+{%		set productStr = app.session.flashbag.get( 'eccube.front.request.product' ) %}
+{%		for error in app.session.flashbag.get( 'eccube.front.request.error' ) %}
+{%			set idx = loop.index0 %}
+						<div class="part">
+							<div class="cont texts">
+{%			if productStr[idx] is defined %}
+								<p class="ec_alert_text">{{ error|trans( { '%product%' : productStr[ idx ] } )|nl2br }}</p>
+{%			else %}
+								<p class="ec_alert_text">{{ error|trans|nl2br }}</p>
+{%			endif %}
+							</div>
+						</div>
+{%		endfor %}
+{%		for error in app.session.flashbag.get( 'eccube.front.cart.error' ) %}
+						<div class="part">
+							<div class="cont texts">
+								<p class="ec_alert_text">{{ error|trans|nl2br }}</p>
+							</div>
+						</div>
+{%		endfor %}
+					</div>
+					<div class="box">
+{%		if totalQuantity > 0 %}
+						<div class="part">
+							<div class="cont texts">
+								<p>商品の合計金額は「<strong>{{ totalPrice|price }}</strong>」です。</p>
+{%			if Carts|length > 1 %}
+								<p class="ec_alert_text">同時購入できない商品がカートに含まれています。</p>
+{%			endif %}
+							</div>
+						</div>
+						<form id="ec_{{ DIRCODE }}_{{ PAGECODE }}_form" method="post" action="{{ url( 'cart' ) }}" name="form" class="part">
+{%			for CartIndex,Cart in Carts %}
+{%				set cartKey = Cart.cart_key %}
+{%				for error in app.session.flashbag.get( 'eccube.front.cart.' ~ cartKey ~ '.request.error' ) %}
+							<div class="cont texts">
+								<p class="ec_alert_text icon_alert">{{ error|trans|nl2br }}</p>
+							</div>
+{%				endfor %}
+							<div class="cont ec_cart_cont">
+								<div class="row cart_head">
+									<div>
+										<p>削除</p>
+									</div>
+									<div>
+										<p>商品内容</p>
+									</div>
+									<div>
+										<p>数量</p>
+									</div>
+									<div>
+										<p>小計</p>
+									</div>
+								</div>
+{%				for CartItem in Cart.CartItems %}
+{%					set ProductClass = CartItem.ProductClass %}
+{%					set Product = ProductClass.Product %}
+								<div class="row cart_item">
+									<div class="cart_delete">
+										<a href="{{ url( 'cart_handle_item', {'operation': 'remove', 'productClassId': ProductClass.id } ) }}" {{ csrf_token_for_anchor() }} class="ec-icon" data-method="put" data-message="カートから削除してもよろしいですか?"><span>ｘ</span></a>
+									</div>
+									<div class="cart_products">
+										<div class="image_texts ec_products_list">
+											<div class="image_item">
+{%					if( oo_get_wp_pic_main_path( ProductClass.code ) ) %}
+												<p class="pic"><img src="{{ oo_get_wp_pic_main_path( ProductClass.code, 'thumbnail' ) }}" alt="{{ Product.name }}"></p>
+{%					else %}
+												<p class="pic"><img src="{{ asset( Product.MainListImage|no_image_product, 'save_image' ) }}" alt="{{ Product.name }}"></p>
+{%					endif %}
+											</div>
+											<div class="texts_item">
+{%					if( oo_get_wp_permalink( ProductClass.code ) ) %}
+												<p class="products_name"><a href="{{ oo_get_wp_permalink( ProductClass.code ) }}">{{ Product.name }}</a></p>
+{%					else %}
+												<p class="products_name">{{ Product.name }}</p>
+{%					endif %}
+{%					if ProductClass.ClassCategory1 and ProductClass.ClassCategory1.id %}
+												<p>{{ ProductClass.ClassCategory1.ClassName.name }}：{{ ProductClass.ClassCategory1 }}</p>
+{%					endif %}
+{%					if ProductClass.ClassCategory2 and ProductClass.ClassCategory2.id %}
+												<p>{{ ProductClass.ClassCategory2.ClassName.name }}：{{ ProductClass.ClassCategory2 }}</p>
+{%					endif %}
+												<p><span>{{ CartItem.price|price }}</span></p>
+											</div>
+										</div>
+									</div>
+									<div class="cart_quantity">
+										<p class="quantity_num">{{ CartItem.quantity|number_format }}</p>
+{%					if CartItem.quantity > 1 %}
+										<a href="{{ url( 'cart_handle_item', {'operation': 'down', 'productClassId': ProductClass.id} ) }}" {{ csrf_token_for_anchor() }} class="btn_minus load_overlay" data-method="put" data-confirm="false"><span>minus</span></a>
+{%					else %}
+										<div class="btn_minus v_disable"><span>minus</span></div>
+{%					endif %}
+										<a href="{{ url( 'cart_handle_item', {'operation': 'up', 'productClassId': ProductClass.id} ) }}" {{ csrf_token_for_anchor() }} class="btn_plus load_overlay" data-method="put" data-confirm="false"><span>plus</span></a>
+									</div>
+									<div class="cart_total">
+										<p class="ec_price"><span>{{ CartItem.total_price|price }}</span><span class="ec_tax_word">税込</span></p>
+									</div>
+								</div>
+{%				endfor %}
+{#-	//拡張用
+								<div class="row sub_total">
+									<div colspan="4">
+										<p>小計</p>
+									</div>
+									<div>
+										<p>{{ Cart.totalPrice|price }}</p>
+									</div>
+								</div>
+								<div class="row">
+									<div colspan="4">
+										<p>消費税</p>
+									</div>
+									<div>
+										<p>{{ 0|price }}</p>
+									</div>
+								</div>
+#}
+{%				if BaseInfo.delivery_free_amount and BaseInfo.delivery_free_quantity %}
+								<div class="row_shipping">
+									<div colspan="4">
+										<p>送料</p>
+									</div>
+									<div>
+{%					if is_delivery_free[ cartKey ] %}
+										<p>現在送料無料です。</p>
+{%					else %}
+										<p>'あと「<strong>{{ least[ cartKey ]|price }}</strong>」または「<strong>{{ quantity[ cartKey ]|number_format }}個</strong>」のお買い上げで<strong class="ec-color-red">送料無料</strong>になります。</p>
+{%					endif %}
+{%				elseif BaseInfo.delivery_free_amount %}
+{%					if is_delivery_free[ cartKey ] %}
+										<p>現在送料無料です。</p>
+{%					else %}
+										<p>あと「<strong>{{ least[ cartKey ]|price }}</strong>」のお買い上げで<strong class="ec-color-red">送料無料</strong>になります。</p>
+{%					endif %}
+{%				elseif BaseInfo.delivery_free_quantity %}
+{%					if is_delivery_free[ cartKey ] %}
+										<p>現在送料無料です。</p>
+{%					else %}
+										<p>あと「<strong>{{ quantity[ cartKey ]|number_format }}個</strong>」のお買い上げで<strong class="ec-color-red">送料無料</strong>になります。</p>
+{%					endif %}
+									</div>
+								</div>
+{%				endif %}
+								<div class="row_all_total">
+									<div>
+										<p class="cart_h">合計</p>
+									</div>
+									<div>
+										<p class="ec_price v_total v_text_strong"><span>{{ ( Cart.totalPrice )|price }}</span><span class="ec_tax_word">税込</span></p>
+									</div>
+								</div>
+							</div>
+							<div class="cont btn_wrap vertical">
+								<a class="button bc_strong" href="{{ path( 'cart_buystep', {'cart_key':cartKey} ) }}"><span>レジに進む</span></a>
+								<a class="button" href="{{ path( 'homepage' ) }}"><span>お買い物を続ける</span></a>
+							</div>
+{%			endfor %}
+						</form>
+{%		else %}
+						<div class="part">
+{%			for CartIndex,Cart in Carts %}
+{%				set cartKey = Cart.cart_key %}
+{%				for error in app.session.flashbag.get( 'eccube.front.cart.' ~ cartKey ~ '.request.error' ) %}
+							<div class="cont texts">
+								<p class="ec_alert_text icon_alert">{{ error|trans|nl2br }}</p>
+							</div>
+{%				endfor %}
+{%			endfor %}
+							<div class="cont texts">
+								<p class="ec_alert_text icon_alert">現在カート内に商品はございません。</p>
+							</div>
+						</div>
+{%		endif %}
+					</div>
+				</section>
+			</div>
+		</div>
+{%	endblock %}

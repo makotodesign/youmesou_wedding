@@ -1,0 +1,56 @@
+{#---------------------------------------------------------------------------
+
+	ec-forgot_complete
+
+	@memo
+
+----------------------------------------------------------------------------#}
+
+{#-	page_setting -#}
+
+{#-		base -#}
+{%-		set PAGENAME      =  'パスワードの再発行' -%}
+{%-		set DIRNAME       =  'パスワード再発行' -%}
+{%-		set DIRCODE       =  'forgot' -%}
+{%-		set PAGECODE      =  'complete' -%}
+
+{#-		extents_twig -#}
+{%-		extends 'default_frame.twig' -%}
+{%		form_theme form 'Includes/form_div_layout.twig' %}
+
+{#-		js -#}
+{%-		block js -%}
+{%-		endblock js -%}
+
+{#-		breadcrumb -#}
+{%-		block breadcrumb %}
+						<li><a href="{{ constant( 'PUBLICDIR' ) }}/ec/{{ DIRCODE }}/">{{ DIRNAME }}</a></li>
+						<li class="current"><span>{{ PAGENAME }}</span></li>
+{%		endblock breadcrumb %}
+
+{#--------------------------------------------------------------------------#}
+
+{%- block main %}
+		<div class="title_wrap">
+			<div class="title">
+				<h1 class="title_text">{{ PAGENAME }}</h1>
+			</div>
+		</div>
+		<div class="contents_wrap">
+			<div class="ec_{{ DIRCODE }}_{{ PAGECODE }}_contents contents ec_contents">
+				<section class="area">
+					<div class="box narrow_pc">
+						<div class="part">
+							<div class="cont texts">
+								<p class="message">パスワード再発行メールの送信が完了しました。</p>
+								<p>ご登録メールアドレスにパスワードを再発行するためのメールを送信いたしました。 メールの内容をご確認いただきますよう、お願いいたします。</p>
+								<p class="supple icon_kome">メールが届かない場合はメールアドレスをご確認の上、再度お試しください。</p>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+{%	endblock %}
+
+

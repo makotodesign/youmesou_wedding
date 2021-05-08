@@ -1,0 +1,95 @@
+{#---------------------------------------------------------------------------
+
+	ec-shopping_login
+
+	@memo
+
+----------------------------------------------------------------------------#}
+
+{#-	page_setting -#}
+
+{#-		base -#}
+{%-		set PAGENAME      =  'ログイン' -%}
+{%-		set DIRNAME       =  'ご注文' -%}
+{%-		set DIRCODE       =  'shopping' -%}
+{%-		set PAGECODE      =  'login' -%}
+
+{#-		extents_twig -#}
+{%-		extends 'default_frame.twig' -%}
+{%		form_theme form 'Includes/form_div_layout.twig' %}
+
+{#-		js -#}
+{%-		block js -%}
+{%-		endblock js -%}
+
+{#-		breadcrumb -#}
+{%-		block breadcrumb %}
+						<li class="current"><span>{{ PAGENAME }}</span></li>
+{%		endblock breadcrumb %}
+
+{#--------------------------------------------------------------------------#}
+
+{%- block main %}
+		<div class="title_wrap">
+			<div class="title">
+				<h1 class="title_text">{{ PAGENAME }}</h1>
+			</div>
+		</div>
+		<div class="contents_wrap">
+			<div class="ec_{{ DIRCODE }}_{{ PAGECODE }}_contents contents ec_contents">
+				<section class="area">
+					<div class="box">
+						<div class="part members_part">
+							<div class="cont icon_members">
+								<p><span>会員</span></p>
+							</div>
+							<form id="ec_{{ DIRCODE }}_{{ PAGECODE }}_form" method="post" action="{{ url( 'mypage_login' ) }}" name="shopping_login" class="cont">
+								<div class="form_input_set">
+									<input type="hidden" name="_target_path" value="shopping">
+									<input type="hidden" name="_failure_path" value="shopping_login">
+									<input type="hidden" name="_csrf_token" value="{{ csrf_token( 'authenticate' ) }}">
+									<div class="form_fieldset">
+										<div class="form_full">
+											<p>{{ form_widget( form.login_email, { attr: { style : 'ime-mode: disabled;', placeholder : 'メールアドレス', autofocus: true }} ) }}</p>
+											<p>{{ form_widget( form.login_pass, { attr: { placeholder : 'パスワード' } } ) }}</p>
+										</div>
+									</div>
+								</div>
+								<div class="form_submit_set">
+{%		if BaseInfo.option_remember_me %}
+									<div class="login_memory_wrap">
+{%			if is_granted( 'IS_AUTHENTICATED_REMEMBERED' ) %}
+										<input type="hidden" name="login_memory" value="1">
+{%			else %}
+										{{ form_widget( form.login_memory, { 'label': '次回から自動的にログインする' } ) }}
+{%			endif %}
+									</div>
+{%		endif %}
+{%		if error %}
+									<p class="caution text">{{ error.messageKey|trans( error.messageData, 'validators' )|nl2br }}</p>
+{%		endif %}
+									<div class="form_buttons btn_wrap center">
+										<button type="submit" id="submit_confirm" class="submit_send button"><span> ログイン </span></button>
+									</div>
+								</div>
+								<ul class="ec_login_support text ul_arrow">
+									<li><a href="{{ url( 'forgot' ) }}">ログイン情報をお忘れですか？</a></li>
+									<li><a href="{{ url( 'entry' ) }}"><span>新規会員登録</span></a></li>
+								</ul>
+							</form>
+						</div>
+{%		if is_granted( 'IS_AUTHENTICATED_REMEMBERED' ) == false %}
+						<div class="part nomember_part">
+							<div class="cont texts">
+								<p>会員登録をせずに購入手続きをされたい方は、下記よりお進みください。</p>
+							</div>
+							<div class="cont btn_wrap center">
+								<a href="{{ url( 'shopping_nonmember' ) }}" class="button"><span>ゲスト購入</span></a>
+							</div>
+						</div>
+{%		endif %}
+					</div>
+				</section>
+			</div>
+		</div>
+{%	endblock %}

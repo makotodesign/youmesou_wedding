@@ -1,0 +1,18 @@
+/*---------------------------
+javascript OFF時
+2020-11-03 井村
+----------------------------*/
+@charset "UTF-8";
+
+#loading_wrap{
+	opacity : 0;
+}
+
+body::before {
+	content: 'お客様のブラウザはjavacriptの実行がOFFになっているため、コンテンツが正常に表示できません。ページからのリンクも無効になっております。javascriptをONにして閲覧してください。';
+	display: block;
+	background-color: #000;
+	color:#fff;
+	padding: 10px;
+	font-size: 1.8rem;
+}

@@ -1,0 +1,14 @@
+@charset "utf-8";
+// prettier-ignore
+@font-face {
+	font-weight: normal;
+	font-family: 'icomoon_medium';
+	font-style: normal;
+	font-display: swap;
+	src:  url('fonts/icomoon/icomoon_medium.eot?ct6yfu');
+	src:  url('fonts/icomoon/icomoon_medium.eot?ct6yfu#iefix') format('embedded-opentype'),
+	  url('fonts/icomoon/icomoon_medium.ttf?ct6yfu') format('truetype'),
+	  url('fonts/icomoon/icomoon_medium.woff?ct6yfu') format('woff'),
+	  url('fonts/icomoon/icomoon_medium.svg?ct6yfu#icomoon_medium') format('svg');
+	font-display: block;
+  }

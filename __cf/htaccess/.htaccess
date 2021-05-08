@@ -1,0 +1,38 @@
+### wp_mod_rewrite for multi site
+
+	# wp-base
+	
+		RewriteEngine On
+		RewriteBase /coding_template_ver_6/
+	
+	# wp-excluded
+	
+		RewriteRule ^index\.php$ - [L]
+	
+	# wp-case : [wp-admin] + [^/]
+	
+		RewriteRule ^([_0-9a-zA-Z-]+/)?wp-admin$ $1wp-admin/ [R=301,L]
+	
+	# wp-case : file_exist
+	
+		RewriteCond %{REQUEST_FILENAME} -f [OR]
+		RewriteCond %{REQUEST_FILENAME} -d
+		RewriteRule ^ - [L]
+	
+	# old-redirect : with_query
+	
+		RewriteCond %{QUERY_STRING} (^|&)h=777(&|$)
+		RewriteRule ^xxx/aaa001\.php$ yyy/zzz/? [R=301,L]
+	
+	# old-redirect : normal
+	
+		RewriteRule ^item/test142\.php$ item/redirectto/ [R=301,L]
+	
+	# wp-case : [wp-content,wp-admin,wp-includes] + [*]
+	
+		RewriteRule ^([_0-9a-zA-Z-]+/)?(wp-(content|admin|includes).*) $2 [L]
+		RewriteRule ^([_0-9a-zA-Z-]+/)?(.*\.php)$ $2 [L]
+	
+	# wp-redirect : [*] > index.php
+	
+		RewriteRule . index.php [L]

@@ -1,0 +1,46 @@
+{#---------------------------------------------------------------------------
+
+	inc : pager
+
+	@memo
+
+----------------------------------------------------------------------------#}
+
+{#-	inc #}
+{% if pages.pageCount > 1 %}
+							<nav class="cont pager_wrap">
+								<ul>
+{# 前へ #}
+{% if pages.previous is defined %}
+									<li><a href="{{ path( app.request.attributes.get( '_route' ), app.request.query.all|merge( {'pageno': pages.previous} )) }}">&lt;</a></li>
+{% endif %}
+{# 最初へ #}
+{% if pages.firstPageInRange != 1 %}
+									<li><a href="{{ path( app.request.attributes.get( '_route' ), app.request.query.all|merge( {'pageno': pages.first} )) }}">1</a></li>
+{% endif %}
+{# 1ページリンクが表示されない場合、「...」を表示 #}
+{% if pages.firstPageInRange != 1 %}
+									<li><span class="dots">…</span></li>
+{% endif %}
+{% for page in pages.pagesInRange %}
+{% if page == pages.current %}
+									<li><a href="{{ path( app.request.attributes.get( '_route' ), app.request.query.all|merge( {'pageno': page} )) }}" class="current">{{ page }}</a></li>
+{% else %}
+									<li>a href="{{ path( app.request.attributes.get( '_route' ), app.request.query.all|merge( {'pageno': page} )) }}">{{ page }}</a></li>
+{% endif %}
+{% endfor %}
+{# 最終ページリンクが表示されない場合、「...」を表示 #}
+{% if pages.last != pages.lastPageInRange %}
+									<li><span class="dots">…</span></li>
+{% endif %}
+{# 次へ #}
+{% if pages.next is defined %}
+									<li><a href="{{ path( app.request.attributes.get( '_route' ), app.request.query.all|merge( {'pageno': pages.next} )) }}">&gt;</a></li>
+{% endif %}
+{# 最後へ #}
+{% if pages.last != pages.lastPageInRange %}
+									<li><a href="{{ path( app.request.attributes.get( '_route' ), app.request.query.all|merge( {'pageno': pages.last} )) }}">{{ pages.last }}</a></li>
+{% endif %}
+								</ul>
+							</nav>
+{% endif %}

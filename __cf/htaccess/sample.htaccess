@@ -1,0 +1,143 @@
+### wp_mod_rewrite for multi site ( 一部クエリ―付きのリダイレクト含む )
+
+	## mod_rewrite
+	
+	# wp-base
+		RewriteEngine On
+		RewriteBase /coding_template_ver_6/
+	# wp-excluded
+		RewriteRule ^index\.php$ - [L]
+	# wp-case : [wp-admin] + [^/]
+		RewriteRule ^([_0-9a-zA-Z-]+/)?wp-admin$ $1wp-admin/ [R=301,L]
+	# wp-case : file_exist
+		RewriteCond %{REQUEST_FILENAME} -f [OR]
+		RewriteCond %{REQUEST_FILENAME} -d
+		RewriteRule ^ - [L]
+	# old-redirect : with_query
+		RewriteCond %{QUERY_STRING} (^|&)h=777(&|$)
+		RewriteRule ^xxx/aaa001\.php$ yyy/zzz/? [R=301,L]
+	# old-redirect : normal
+		RewriteRule ^item/test142\.php$ item/redirectto/ [R=301,L]
+	# wp-case : [wp-content,wp-admin,wp-includes] + [*]
+		RewriteRule ^([_0-9a-zA-Z-]+/)?(wp-(content|admin|includes).*) $2 [L]
+		RewriteRule ^([_0-9a-zA-Z-]+/)?(.*\.php)$ $2 [L]
+	# wp-redirect : [*] > index.php
+		RewriteRule . index.php [L]
+		
+### under_maintenance（メンテナンス時の表示）
+
+	RewriteCond %{REQUEST_URI} !=/maintenance.jpg
+	RewriteCond %{REMOTE_ADDR} !211\.11\.134\.110
+	RewriteRule ^.*$ maintenance.html [L]
+
+### no_cache ( キャッシュさせない )
+	<Files ~ "\.(html|php|jpe?g|gif|png)$">
+		Header set Pragma no-cache
+		Header set Cache-Control no-cache
+	</Files>
+		
+### check ( モジュールチェック )
+
+	# mod_rewrite check
+		<IfModule mod_rewrite.c>
+			RewriteEngine On
+			RewriteRule ^.*$ - [R=503,L]
+		</IfModule>
+	# mod_headers check
+		<IfModule mod_headers.c>
+			Header set Retry-After "Sun, 14 Jun 20xx 6:00:00 GMT"
+		</IfModule>
+
+### xml_rpc
+
+	# xml_rpc
+		<Files xmlrpc.php>
+			Order Deny,Allow
+			Deny from all
+			Allow from 211.11.134.110
+		</Files>
+		
+### 一時閉鎖 ( 503エラー発動 & 一部IP除外 & 期限設定 )
+
+	# 503error
+		ErrorDocument 503 /index.html
+	# mod_rewrite base
+			RewriteEngine On
+	# mod_rewrite exclude
+		RewriteCond %{REQUEST_URI} !=/index.html
+		RewriteCond %{REMOTE_ADDR} !=192.168.0.4
+		RewriteRule ^.*$ - [R=503,L]
+	# mod_headers
+		Header set Retry-After "Sun, 14 Jun 20xx 6:00:00 GMT"
+			
+### ドメイン変更 ( サイト全体 > 新ドメイントップ )
+
+	# redirect_match
+		RedirectMatch 301 .* http://新ドメイン/
+			
+### 閉鎖 ( 全ページトップへリダイレクト )
+
+	# mod_rewrite base
+		RewriteEngine On
+		RewriteBase / 
+	# mod_rewrite redirect
+		RewriteCond %{REQUEST_URI} !^/maintenance_img.jpg$
+		RewriteCond %{REQUEST_URI} !^/index.html$ 
+		RewriteRule ^(.*)$ /index.html [L,R]
+			
+### 閉鎖 ( 一部閉鎖 )
+
+	# mod_rewrite base
+		RewriteEngine On
+		RewriteBase / 
+	# mod_rewrite redirect
+		RewriteCond %{REQUEST_URI} !^/hoge/maintenance_img.jpg$
+		RewriteCond %{REQUEST_URI} !^/hoge/index.html$ 
+		RewriteRule ^(.*)$ /hoge/index.html [L,R]
+
+### サイト全体SSL
+
+	# mod_rewrite base
+		RewriteEngine On
+		RewriteBase / 
+	# mod_rewrite redirect
+		RewriteCond %{HTTPS} off
+		RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R,L]
+		RewriteCond %{HTTP_HOST} ^(domain\.com) [NC]
+		RewriteRule ^(.*)$ http://www.domain.com/$1 [R=301,L]
+
+### errorページの指定
+
+	# error_document
+		ErrorDocument 401 /common/error/401.php
+		ErrorDocument 403 /common/error/403.php
+		ErrorDocument 404 /common/error/404.php
+		ErrorDocument 500 /common/error/500.php
+
+### www及び index.***とる 統一
+
+	# mod_rewrite base
+		RewriteEngine On
+	# mod_rewrite for : + [www]
+		RewriteCond %{HTTP_HOST} ^(domain\.com) [NC]
+		RewriteRule ^(.*)$ http://www.domain.com/$1 [R=301,L]
+	# mod_rewrite for : remove [ index.* ]
+		RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.(php|html)\ HTTP/
+		RewriteRule ^index\.(php|html)$ http://www.domain.com/ [R=301,L]
+
+### redirect 301（恒久的な変更）
+
+	# redirect_301
+		redirect 301 /旧サイト/パス http://www.新しいサイトのURL/
+
+
+### redirect 302（恒久的な変更）
+
+	# redirect_302
+		redirect 302 /旧サイト/パス http://www.新しいサイトのURL/
+
+### その他
+
+	# 参考        http://coliss.com/articles/build-websites/operation/work/useful-htaccess-snippets.html
+
+	# basic認証   http://www.futomi.com/lecture/htaccess/htpasswd.html

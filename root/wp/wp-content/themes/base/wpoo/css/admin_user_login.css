@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+/* admin_user_login */
+
+/*--------------------------------------
+	common
+---------------------------------------*/
+
+/* display */
+
+body.chengemode_user {
+} /* ログイン画面の背景 */
+body.chengemode_user div#login {} /* ログインフォームの幅、デフォルトでは320pxに指定 */
+body.chengemode_user div#login h1 {} /* ログイン画面のロゴを囲む、指定されているのはtext-align: center;のみ */
+body.chengemode_user div#login h1 a {
+	background-image: none, url("/ct07/images/common/logo.jpg");
+	background-size: 200px;
+	width: 200px;
+	height: 45px;
+} /* ロゴ画像変更、ロゴに関するCSSはこのセレクタを使用 */
+body.chengemode_user div#login form#loginform {
+	display: none;
+} /* ログインフォーム全体のセレクタ */
+body.chengemode_user div#login form#loginform p {} /* フォーム入力欄のlabelとinputを囲むpタグ */
+body.chengemode_user div#login form#loginform p label {} /* フォーム入力欄のラベル */
+body.chengemode_user div#login form#loginform input {} /* フォーム入力欄とログインボタン */
+body.chengemode_user div#login form#loginform input#user_login {}  /* ユーザー名入力欄のみのセレクタ */
+body.chengemode_user div#login form#loginform input#user_pass {} /*　パスワード入力欄のみのセレクタ　*/
+body.chengemode_user div#login form#loginform p.forgetmenot {} /* ログイン状態を保存するチェックボックスとテキストを囲むpタグ */
+body.chengemode_user div#login form#loginform p.forgetmenot input#rememberme {}  /* 「ログイン状態を保存する」テキスト */
+body.chengemode_user div#login form#loginform p.submit {} /* ログインボタンを囲むpタグ */
+body.chengemode_user div#login form#loginform p.submit input#wp-submit {} /* ログインボタン */
+body.chengemode_user div#login p#nav {
+	display: none;
+} /* 「パスワードをお忘れですか」を囲むpタグ */
+body.chengemode_user div#login p#nav a {} /* 「パスワードをお忘れですか」のaタグ */
+body.chengemode_user div#login p#backtoblog {
+	display: none;
+} /* 「～へ戻る」を囲むpタグ */
+body.chengemode_user div#login p#backtoblog a {} /* 「～へ戻る」のaタグ */

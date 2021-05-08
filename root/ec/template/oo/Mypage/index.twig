@@ -1,0 +1,96 @@
+{#---------------------------------------------------------------------------
+
+	ec-mypage_index
+
+	@memo
+
+----------------------------------------------------------------------------#}
+
+{#-	page_setting -#}
+
+{#-		base -#}
+{%-		set PAGENAME      =  'MYページ' -%}
+{%-		set DIRNAME       =  'MYページ' -%}
+{%-		set DIRCODE       =  'mypage' -%}
+{%-		set PAGECODE      =  'index' -%}
+
+{#-		extents_twig -#}
+{%-		extends 'default_frame.twig' -%}
+
+{#-		js -#}
+{%-		block js -%}
+{%-		endblock js -%}
+
+{#-		breadcrumb -#}
+{%-		block breadcrumb %}
+						<li class="current"><span>{{ PAGENAME }}</span></li>
+{%		endblock breadcrumb %}
+
+{#--------------------------------------------------------------------------#}
+
+{%- block main %}
+		<div class="title_wrap">
+			<div class="title">
+				<h1 class="title_text">{{ DIRNAME }}/ご注文履歴</h1>
+			</div>
+		</div>
+		<div class="contents_wrap">
+			<div class="ec_{{ DIRCODE }}_{{ PAGECODE }}_contents contents ec_contents">
+				<section class="area">
+{%		include 'Includes/mypage_navi.twig' %}
+{%		if pagination.totalItemCount > 0 %}
+					<div class="box">
+						<div class="part ec_summary">
+							<div class="cont">
+								<p>{{ pagination.totalItemCount }}件の履歴があります</p>
+							</div>
+						</div>
+{%			for Order in pagination %}
+						<div class="part date_products">
+							<div class="cont date_item">
+								<p class="v_date">{{ Order.order_date|date_sec }}</p>
+								<p class="v_definitions"><span>ご注文番号</span><span>{{ Order.order_no }}</span></p>
+{%				if ( BaseInfo.option_mypage_order_status_display ) %}
+								<p class="v_definitions"><span>ご注文状況</span><span>{{ Order.CustomerOrderStatus }}</span></p>
+{%				endif %}
+								<a href="{{ url( 'mypage_history', {'order_no': Order.order_no} ) }}" class="button btn_small bc0"><span>詳細</span></a>
+							</div>
+							<div class="cont products_item">
+{%				for OrderItem in Order.MergedProductOrderItems %}
+								<div class="image_texts ec_products_list">
+									<div class="image_item">
+{%					if OrderItem.Product is null %}
+										<p class="pic noimage">noimage</p>
+{%					elseif oo_get_wp_pic_main_path( OrderItem.product_code ) %}
+										<p class="pic"><img src="{{ oo_get_wp_pic_main_path( OrderItem.product_code, 'thumbnail' ) }}"></p>
+{%					else %}
+										<p class="pic"><img src="{{ asset( OrderItem.Product.MainListImage|no_image_product, 'save_image' ) }}"></p>
+{%					endif %}
+									</div>
+									<div class="texts_item">
+										<p>{{ OrderItem.product_name }}</p>
+{%					if OrderItem.class_category_name1 is not empty or OrderItem.class_category_name2 is not empty %}
+										<p>{% if OrderItem.class_category_name1 is not empty %}{{ OrderItem.class_category_name1 }}{% endif %}{% if OrderItem.class_category_name2 is not empty %} / {{ OrderItem.class_category_name2 }}{% endif %}</p>
+{%					endif %}
+										<p>{{ OrderItem.price_inc_tax|price }} × {{ OrderItem.quantity }}</p>
+									</div>
+								</div>
+{%				endfor %}
+							</div>
+						</div>
+{%			endfor %}
+					</div>
+{%			include "Includes/pager.twig" with {'pages': pagination.paginationData} %}
+{%		else %}
+					<div class="box">
+						<div class="part">
+							<div class="cont texts">
+								<p>ご注文履歴はありません。</p>
+							</div>
+						</div>
+					</div>
+{%		endif %}
+				</section>
+			</div>
+		</div>
+{%	endblock %}

@@ -1,0 +1,53 @@
+{#---------------------------------------------------------------------------
+
+	ec-entry_complete
+
+	@memo
+
+----------------------------------------------------------------------------#}
+
+{#-	page_setting -#}
+
+{#-		base -#}
+{%-		set PAGENAME      =  '新規会員登録 仮登録完了' -%}
+{%-		set DIRNAME       =  '新規会員登録' -%}
+{%-		set DIRCODE       =  'entry' -%}
+{%-		set PAGECODE      =  'complete' -%}
+
+{#-		extents_twig -#}
+{%-		extends 'default_frame.twig' -%}
+
+{#-		js -#}
+{%-		block js -%}
+{%-		endblock js -%}
+
+{#-		breadcrumb #}
+{%		block breadcrumb %}
+						<li class="current"><span>{{ PAGENAME }}</span></li>
+{%		endblock breadcrumb %}
+
+{#--------------------------------------------------------------------------#}
+
+{%- block main %}
+		<div class="title_wrap">
+			<div class="title">
+				<h1 class="title_text">{{ PAGENAME }}</h1>
+			</div>
+		</div>
+		<div class="contents_wrap">
+			<div class="ec_{{ DIRCODE }}_{{ PAGECODE }}_contents contents ec_contents">
+				<section class="area">
+					<div class="box">
+						<h3 class="heading03">新規会員登録 仮登録完了</h3>
+						<div class="part">
+							<div class="cont texts">
+								<p>会員登録ありがとうございます。</p>
+								<p>現在、仮会員の状態です。ただいま、ご入力いただいたメールアドレス宛に、ご本人様確認用のメールをお送りいたしました。</p>
+								<p>メール本文内のURLをクリックすると、本会員登録が完了となります。</p>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+{%	endblock %}

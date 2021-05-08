@@ -1,0 +1,9 @@
+#====================================================================================
+# 変更
+#====================================================================================
+
+common.name: お名前
+admin.product.product_csv.input_process_col: 入力経緯
+admin.product.product_csv.input_process_description: ECCUBE：管理画面入力 / WPCSV：WordPressからCSV入力
+admin.product.product_csv.wp_products_code_col: WP商品コード
+admin.product.product_csv.wp_products_code_description: WordPress で登録された商品コード（products_code）

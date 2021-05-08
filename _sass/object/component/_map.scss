@@ -1,0 +1,75 @@
+@charset "UTF-8";
+
+/**======================================
+	map
+======================================**/
+
+/* google_map */
+
+// map
+.map_part {
+	// google_map : iframe
+	.map_iframe_wrap {
+		margin-bottom: 20px;
+		border: 1px solid color(border, base);
+		height: 400px;
+		@include mq(tb_) {
+			height: 500px;
+		}
+		@include mq(pc_) {
+			height: 700px;
+		}
+	}
+	.map_cont {
+		margin-bottom: 10px;
+		padding: 4px;
+		border: 1px solid color(border, base);
+		width: 100%;
+		.map {
+			width: 100%;
+			height: 250px;
+			@media screen and (min-width: 600px) {
+				height: 600px;
+			}
+		}
+		.info_window_wrap {
+			h4 {
+				margin-bottom: 8px;
+				font-size: 1.3rem;
+				font-weight: bold;
+			}
+			p {
+				font-size: 1.3rem;
+				line-height: 1.5;
+			}
+		}
+	}
+}
+// info
+.map_info_part {
+	display: flex;
+	justify-content: space-between;
+	.cont {
+		address {
+		}
+		.link_gmap {
+			display: inline-block;
+			padding-right: 10px;
+			padding-left: 25px;
+			@include icomoon('block', icom(map-marker-alt), 22px, 'left', 0);
+		}
+	}
+}
+// accsess
+.map_access_part {
+	.cont {
+		.icon_car {
+			@include icomoon('block', icom(car), 20px, 'left', 0, color(list, base));
+			padding-left: 25px;
+		}
+		.icon_train {
+			@include icomoon('block', icom(subway), 20px, 'left', 0, color(list, base));
+			padding-left: 25px;
+		}
+	}
+}

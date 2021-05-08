@@ -1,0 +1,70 @@
+### wp_mod_rewrite for multi site
+
+	# wp-base
+	
+		RewriteEngine On
+		
+		##(***) MOD_REWRITE 開始
+		
+		RewriteBase /ct07/
+		
+		##(***) 前後の「/」は必要
+		##(ref) RewriteBaseは全てのRewriteRule第2引数の頭に適用
+	
+	# wp-excluded
+	
+		RewriteRule ^index\.php$ - [L]
+		
+		##(***) root直下のindex.phpをMOD_REWRITEから除外
+		##(ref) RewriteRuleはMOD_REWRITEのルール
+		##(ref) [L]はルールの終端
+		##(ref) 「-」は何もしない
+	
+	# wp-case : [wp-admin] + [^/]
+	
+		RewriteRule ^([_0-9a-zA-Z-]+/)?wp-admin$ $1wp-admin/ [R=301,L]
+		
+		##* wp-adminで完了する場合は末尾に「/」を追記
+	
+	# wp-case : file_exist
+	
+		RewriteCond %{REQUEST_FILENAME} -f [OR]
+		RewriteCond %{REQUEST_FILENAME} -d
+		RewriteRule ^ - [L]
+		
+		##(***) ファイル、ディレクトリが実際にあればそちらを優先
+		##(ref) RewriteCondはMOD_REWRITEの条件
+		##(ref) %{REQUEST_FILENAME} はリクエストされたURL内のディレクトリを含めたパス
+		##(ref) ｢-f｣はファイル名、｢-d｣はディレクトリ名
+		##(ref) [OR]は条件のor
+		
+	
+	# old-redirect : with_query
+	
+		RewriteCond %{QUERY_STRING} (^|&)h=777(&|$)
+		RewriteRule ^xxx/aaa001\.php$ yyy/zzz/? [R=301,L]
+		
+		##(***) クエリがあり、クエリが第2引数（正規表現）にマッチする場合
+		##(***) RewriteRule第1引数はアドレス内のパターン（正規表現）　※対象箇所なのでRewriteBaseを除く部分を記載
+		##(***) RewriteRule第2引数（パス）へ
+		##(ref) RewriteRule第2引数終端は「?」を付記　※ パラメーター引き継ぎ
+		##(ref) [R=301]は301リダイレクト　※リダイレクト＝アドレスも変わる
+	
+	# old-redirect : normal
+	
+		RewriteRule ^item/test142\.php$ item/redirectto/ [R=301,L]
+		
+		##(***) クエリがない場合のリダイレクト
+	
+	# wp-case : [wp-content,wp-admin,wp-includes] + [*]
+	
+		RewriteRule ^([_0-9a-zA-Z-]+/)?(wp-(content|admin|includes).*) $2 [L]
+		RewriteRule ^([_0-9a-zA-Z-]+/)?(.*\.php)$ $2 [L]
+	
+	# wp-redirect : [*] > index.php
+	
+		RewriteRule . index.php [L]
+		
+		##(***) 全てをroot直下のindex.phpに遷移　※アドレスは変わらない
+		
+		

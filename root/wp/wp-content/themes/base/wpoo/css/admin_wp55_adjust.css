@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+/* admin_wp55_adjust */
+
+/*--------------------------------------
+	wp55_adjust
+---------------------------------------*/
+
+/*
+	wp5.5 の管理画面調節
+*/
+
+#adminmenuback {
+    bottom: 0;
+}
+
+.php-error #adminmenuback,
+.php-error #adminmenuwrap {
+	margin-top: 0;
+}

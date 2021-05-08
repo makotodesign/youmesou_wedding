@@ -1,0 +1,52 @@
+{#---------------------------------------------------------------------------
+
+	ec-ootest
+
+	@memo
+
+----------------------------------------------------------------------------#}
+
+{#-	page_setting -#}
+
+{#-		base -#}
+{%-		set PAGENAME      =  'テスト' -%}
+{%-		set DIRNAME       =  'ご購入手続き' -%}
+{%-		set DIRCODE       =  'ec' -%}
+{%-		set PAGECODE      =  'ootest' -%}
+
+{#-		extents_twig -#}
+{%-		extends 'default_frame.twig' -%}
+
+{#-		js -#}
+{%-		block js -%}
+{%-		endblock js -%}
+
+{#-		breadcrumb -#}
+{%-		block breadcrumb %}
+						<li><a href="{{ constant( 'PUBLICDIR' ) }}/ec/{{ DIRCODE }}/">{{ DIRNAME }}</a></li>
+						<li class="current"><span>{{ PAGENAME }}</span></li>
+{%		endblock breadcrumb %}
+
+{#--------------------------------------------------------------------------#}
+
+{%- block main %}
+		<div class="title_wrap">
+			<div class="title">
+				<h1 class="title_text">{{ PAGENAME }}</h1>
+			</div>
+		</div>
+		<div class="contents_wrap">
+			<div class="ec_{{ DIRCODE }}_{{ PAGECODE }}_contents contents ec_contents">
+				<section class="area">
+					<div class="box">
+						<div class="part">
+							<div class="cont texts">
+								<p>{{ customer }}</p>
+								<p>{{ favorites }}</p>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+{%	endblock %}

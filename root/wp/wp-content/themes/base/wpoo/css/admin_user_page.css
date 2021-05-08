@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+/* admin_user_page */
+
+/*--------------------------------------
+	page
+---------------------------------------*/
+
+/* display */
+
+.add-new-h2,
+.page-title-action,
+#pageparentdiv,
+#edit-slug-buttons,
+#minor-publishing-actions,
+#misc-publishing-actions,
+#delete-action,
+#titlediv {
+	display: none !important;
+}

@@ -1,0 +1,98 @@
+{#---------------------------------------------------------------------------
+
+	ec-shopping_complete
+
+	@memo
+
+----------------------------------------------------------------------------#}
+
+{#-	page_setting -#}
+
+{#-		base -#}
+{%-		set PAGENAME      =  'ご注文完了' -%}
+{%-		set DIRNAME       =  'ご注文' -%}
+{%-		set DIRCODE       =  'shopping' -%}
+{%-		set PAGECODE      =  'complete' -%}
+
+{#-		extents_twig -#}
+{%-		extends 'default_frame.twig' -%}
+
+{#-		js -#}
+{%-		block js -%}
+{%-		endblock js -%}
+
+{#-		breadcrumb -#}
+{%-		block breadcrumb %}
+						<li><a href="{{ constant( 'PUBLICDIR' ) }}/ec/{{ DIRCODE }}/">{{ DIRNAME }}</a></li>
+						<li class="current"><span>{{ PAGENAME }}</span></li>
+{%		endblock breadcrumb %}
+
+{#--------------------------------------------------------------------------#}
+
+{%- block main %}
+		<div class="title_wrap">
+			<div class="title">
+				<h1 class="title_text">{{ PAGENAME }}</h1>
+			</div>
+		</div>
+		<div class="contents_wrap">
+			<div class="ec_{{ DIRCODE }}_{{ PAGECODE }}_contents contents ec_contents">
+				<section class="area">
+					<div class="box">
+						<div class="part step_part">
+{%		set step = 1 %}
+							<div class="step_cont current">
+								<p class="step_step">{{ step }}{% set step = step + 1 %}</p>
+								<p class="step_text">カート<br class="hide_tb_pc">の商品</p>
+							</div>
+{%-		if is_granted( 'ROLE_USER' ) == false %}
+							<div class="step_cont">
+								<p class="step_step">{{ step }}{% set step = step + 1 %}</p>
+								<p class="step_text">お客様<br class="hide_tb_pc">情報</p>
+							</div>
+{%-		endif %}
+							<div class="step_cont">
+								<p class="step_step">{{ step }}{% set step = step + 1 %}</p>
+								<p class="step_text">ご注文<br class="hide_tb_pc">手続き</p>
+							</div>
+							<div class="step_cont">
+								<p class="step_step">{{ step }}{% set step = step + 1 %}</p>
+								<p class="step_text">ご注文<br class="hide_tb_pc">確認</p>
+							</div>
+							<div class="step_cont">
+								<p class="step_step">{{ step }}{% set step = step + 1 %}</p>
+								<p class="step_text">完了</p>
+							</div>
+						</div>
+					</div>
+					<div class="box">
+						<div class="part">
+							<div class="cont texts">
+								<p class="ec_message">ご注文ありがとうございました</p>
+								<p>ただいま、ご注文の確認メールをお送りさせていただきました。<br>万一、ご確認メールが届かない場合は、トラブルの可能性もありますので大変お手数ではございますがお問い合わせくださいますようお願いいたします。</p>
+							</div>
+							<div class="cont texts">
+								<p>ご注文番号 : {{ Order.orderNo }}</p>
+							</div>
+							<div class="cont texts">
+{%		if Order.complete_message is not empty %}
+							{{ Order.complete_message|raw }}
+{% 		endif %}
+							</div>
+						</div>
+					</div>
+					<div class="box">
+						<div class="part">
+							<div class="cont btn_wrap ">
+{%		if hasNextCart %}
+								<a href="{{ url( 'cart' ) }}" class="button"><span>購入を続ける</span></a>
+{%		else %}
+								<a href="/" class="button"><span>トップページへ</span></a>
+{%		endif %}
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+{%	endblock %}

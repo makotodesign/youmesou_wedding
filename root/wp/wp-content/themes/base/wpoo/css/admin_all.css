@@ -1,0 +1,93 @@
+@charset "UTF-8";
+
+/* admin_all */
+
+/*--------------------------------------
+	admin
+---------------------------------------*/
+
+/* ダッシュボード：一覧メニュー */
+
+ul.oo_dashboard_navi {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 12px 0 0;
+	width: 100%;
+}
+
+ul.oo_dashboard_navi * {
+	box-sizing: border-box;
+}
+
+ul.oo_dashboard_navi li {
+	flex-basis: 100%;
+}
+@media screen and (min-width:600px) {
+	ul.oo_dashboard_navi li {
+		flex-basis: 50%;
+	}
+}
+@media screen and (min-width:960px) {
+	ul.oo_dashboard_navi li {
+		flex-basis: 33.3%;
+	}
+}
+
+ul.oo_dashboard_navi li.separate {
+	flex-basis: 100%;
+	margin: 30px 0 10px;
+	padding: 0 20px 10px;
+	border-bottom: 1px dashed #DDD;
+	font-weight: bold;
+}
+
+ul.oo_dashboard_navi li a {
+	display: block;
+	margin: 2%;
+	padding: 8%;
+	border-radius: 5px;
+	box-sizing: border-box;
+	box-shadow: 1px 1px 1px rgba(0,0,0, 0.2);
+	font-weight: bold;
+	text-align: center;
+	color: #FFF;
+}
+
+ul.oo_dashboard_navi li a:hover {
+	opacity:0.85;
+}
+
+/* ダッシュボード ラップの自動伸縮解除 */
+
+#wpbody #wpbody-content #dashboard-widgets.columns-1 .postbox-container {
+	width: 100% !important;
+}
+
+/* 投稿：acf 画像表示サイズ */
+
+.has-value .image-wrap img {
+	width: 160px;
+	height: 120px;
+	object-fit: contain;
+}
+
+/* 投稿：カテゴリ入力欄 */
+
+/* カテゴリ入力欄の 高さ200解除*/
+.categorydiv div.tabs-panel {
+	max-height: none;
+}
+
+.categorydiv .category-tabs,
+.categorydiv div[id$='-adder'] {
+	display: none !important;
+}
+
+/* サイドメニューの区切り線 */
+
+.wp-menu-separator {
+	border-bottom: 1px solid #555;
+}
+
+
+

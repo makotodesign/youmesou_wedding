@@ -1,0 +1,1353 @@
+@charset "UTF-8";
+
+//======================================
+// ec
+//======================================
+
+/*--------------------------------------
+	common
+---------------------------------------*/
+
+/* form */
+
+.ec_contents {
+	form {
+		.form_full {
+			width: 100%;
+		}
+	}
+	form {
+		.form_input_set {
+			.form_fieldset {
+				.form_legend {
+				}
+				.form_input {
+					p.error {
+						input,
+						select {
+							margin-bottom: 5px;
+							border-color: #cf3f34;
+							background: #fdf1f0;
+						}
+					}
+					.ec_error_message {
+						margin-bottom: 25px;
+						font-size: 1.2rem;
+						font-weight: bold;
+						color: #de5d50;
+					}
+				}
+				.form_input.ec_input_name_wrap {
+					p {
+						input[type='text'] {
+							width: calc(50% - 5px);
+						}
+						> *:first-child {
+							margin-right: 10px;
+						}
+					}
+				}
+				.form_input.ec_input_address_wrap {
+					p.v_zip {
+						input {
+							margin-left: 5px;
+							width: 160px;
+						}
+					}
+					p.v_pref {
+						select {
+							@include mq(tb_) {
+								width: 190px;
+							}
+						}
+					}
+				}
+				.form_input.ec_input_birth_wrap {
+					p {
+						select {
+							width: calc(33% - 15px);
+						}
+						span.sep {
+							display: inline-block;
+							width: 20px;
+							text-align: center;
+							font-size: 1.3rem;
+						}
+					}
+				}
+			}
+		}
+		.form_submit_set {
+			.form_kiyaku {
+				margin-bottom: 20px;
+			}
+		}
+	}
+}
+
+/* ec_alert_text */
+
+.ec_alert_text {
+	margin-bottom: 5px;
+	padding: 10px;
+	width: 100%;
+	background: #f99;
+	text-align: center;
+	font-weight: bold;
+	color: white;
+	@include mq(tb_) {
+		margin-left: 50%;
+		max-width: 600px;
+		transform: translateX(-50%);
+	}
+}
+
+.icon_alert {
+	@include icomoon('inine', icom(exclamation-triangle), 20px, 'left', 0);
+	&::before {
+		margin-right: 10px;
+		color: white;
+	}
+}
+
+/* ec_summery */
+
+.ec_contents {
+	.ec_summary {
+		padding: 8px 12px;
+		border-top: 1px solid color(border, base);
+		border-bottom: 1px solid color(border, base);
+	}
+}
+
+/* ec_message */
+
+.ec_contents {
+	.ec_message {
+		text-align: center;
+		font-size: 2rem;
+		font-weight: bold;
+		@include mq(tb_) {
+			font-size: 2.4rem;
+		}
+	}
+}
+
+/* ec_withdraw_icon */
+
+.ec_contents {
+	.ec_withdraw_icon {
+		margin-bottom: 40px;
+		height: 80px;
+		@include icomoon('self', icom(exclamation-triangle), 80px);
+		&::before {
+			color: #b8bec4;
+		}
+		span {
+			display: none;
+		}
+	}
+}
+
+/*--------------------------------------
+	share
+---------------------------------------*/
+
+/* ec_products_list */
+
+.image_texts.ec_products_list {
+	text-decoration: none;
+	color: color(text, base);
+	> .image_item {
+		width: 80px;
+		@include mq(tb_) {
+			width: 90px;
+		}
+	}
+	> .texts_item {
+		width: calc(100% - 80px - 10px);
+		p {
+			font-size: 1.2rem;
+			@include mq(tb_) {
+				font-size: 1.3rem;
+			}
+		}
+		p > * {
+			font-size: inherit !important;
+		}
+		@include mq(tb_) {
+			width: calc(100% - 100px - 20px);
+		}
+	}
+}
+
+/* step_part < cart,shopping */
+
+.ec_contents {
+	.step_part {
+		.step_cont {
+			.step_step {
+			}
+			.step_text {
+				@include mq(_sp) {
+					font-size: 1rem;
+					line-height: 1.3;
+				}
+				font-size: 1.2rem;
+			}
+		}
+		.step_cont.current {
+			.step_step {
+				background-color: #5cb1b1;
+			}
+		}
+	}
+}
+
+/* ec_price */
+
+.ec_contents {
+	.ec_price {
+		text-align: right;
+		> span {
+			font-weight: inherit !important;
+			color: inherit !important;
+		}
+		> span.ec_tax_word {
+			margin-left: 5px;
+			font-size: 1.1rem !important;
+			@include mq(pc_) {
+				margin-left: 10px;
+				font-size: 1.3rem !important;
+			}
+		}
+	}
+	.ec_price.v_total {
+		font-weight: bold;
+		> span {
+			font-size: 1.4rem;
+			@include mq(tb_) {
+				font-size: 1.6rem;
+			}
+			@include mq(pc_) {
+				font-size: 2.4rem;
+			}
+		}
+	}
+	.ec_price.v_text_strong {
+		color: color(ec, storong_color_ec);
+	}
+}
+
+/* ec_shopping_box */
+
+.ec_shopping_box {
+	@include mq(tb_) {
+		display: grid;
+		grid-template-rows: repeat(7, min-content);
+		grid-template-columns: calc(95% - 270px) 1fr 270px;
+	}
+	@include mq(pc_) {
+		grid-template-columns: calc(95% - 320px) 1fr 320px;
+	}
+	.part {
+		margin-bottom: 25px;
+		.heading_ec_shopping {
+			margin-bottom: 15px;
+			padding: 8px 12px;
+			background-color: color(ec, bg_ec);
+			font-size: 1.8rem;
+			font-weight: bold;
+			color: color(text, heading);
+		}
+	}
+	.customer_part {
+		// shopping_index,shopping_confirm
+		@include mq(tb_) {
+			grid-row: 1;
+		}
+		.cont {
+			padding-right: 6px;
+			padding-left: 6px;
+			@include mq(pc_) {
+				padding-right: 12px;
+				padding-left: 12px;
+			}
+			p {
+				span {
+					font-size: 1.4rem;
+				}
+			}
+		}
+		// shopping_index
+		.cont.customer_disp {
+			position: relative;
+			.customer_btn_disp_edit {
+				position: absolute;
+				top: 0;
+				right: 0;
+			}
+		}
+		.cont.customer_edit {
+			.form_submit_set {
+				.form_buttons {
+					text-align: left;
+					.button.btn_ss {
+						display: inline-block;
+					}
+				}
+			}
+		}
+	}
+	.info_part {
+		// mypage_history
+		@include mq(tb_) {
+			grid-row: 1;
+		}
+		.cont {
+			padding-right: 6px;
+			padding-left: 6px;
+			@include mq(pc_) {
+				padding-right: 12px;
+				padding-left: 12px;
+			}
+			p {
+				span.v_tt {
+					margin-right: 10px;
+					font-weight: bold;
+				}
+				span {
+					font-size: 1.4rem;
+				}
+			}
+		}
+	}
+	.shipping_part {
+		@include mq(tb_) {
+			grid-row: 2;
+		}
+		.cont {
+			@include mq(pc_) {
+				padding-right: 12px;
+				padding-left: 12px;
+			}
+			.heading05 {
+				position: relative;
+				> button {
+					position: absolute;
+					top: 0;
+					right: 0;
+				}
+			}
+			.ec_delivery_items {
+				margin-bottom: 15px;
+				border-top: 1px solid color(border, base);
+				.image_texts.ec_products_list {
+					padding: 6px;
+					border-bottom: 1px solid color(border, base);
+					.image_item {
+						.pic {
+							img {
+							}
+						}
+					}
+					.texts_item {
+						p {
+							.ec_delivery_subtotal {
+								margin-left: 5px;
+							}
+						}
+					}
+				}
+			}
+			.ec_delivery_address {
+				margin-bottom: 15px;
+				p {
+					padding-right: 6px;
+					padding-left: 6px;
+					font-size: 1.3rem;
+				}
+			}
+			.ec_delivery_actions {
+				> div {
+					h6 {
+						font-size: 1.3rem;
+						font-weight: bold;
+					}
+					.input_select_wrap {
+						@include icomoon('block', icom(angle-down), 22px, 'right', 8px);
+						padding-right: 0;
+						&::before {
+							z-index: 5;
+							pointer-events: none;
+						}
+					}
+				}
+				> div.v_shipping {
+					@include mq(pc_) {
+						width: 40%;
+					}
+				}
+				> div.v_date {
+					@include mq(pc_) {
+						width: 29%;
+					}
+				}
+				> div.v_time {
+					@include mq(pc_) {
+						width: 29%;
+					}
+				}
+				> div.v_text {
+					display: flex;
+					flex-wrap: wrap;
+					padding-right: 6px;
+					padding-left: 6px;
+					h6 {
+						margin-right: 10px;
+					}
+					p {
+						font-size: 1.3rem;
+					}
+				}
+			}
+			.ec_delivery_actions.v_input {
+				@include mq(pc_) {
+					display: flex;
+					flex-wrap: wrap;
+					justify-content: space-between;
+				}
+			}
+		}
+	}
+	.payment_part {
+		@include mq(tb_) {
+			grid-row: 3;
+		}
+		.cont {
+			@include mq(pc_) {
+				padding-right: 12px;
+				padding-left: 12px;
+			}
+			p {
+				label {
+					span {
+						font-size: 1.4rem;
+					}
+				}
+			}
+			p:not(:last-child) {
+				margin-bottom: 5px;
+			}
+		}
+	}
+	.point_part {
+		// shopping_index,shopping_confirm
+		@include mq(tb_) {
+			grid-row: 4;
+		}
+		.cont {
+			@include mq(pc_) {
+				padding-right: 12px;
+				padding-left: 12px;
+			}
+			p.ec_point_text {
+				font-size: 1.4rem;
+			}
+		}
+	}
+	.contact_part {
+		// shopping_index,shopping_confirm
+		@include mq(tb_) {
+			grid-row: 5;
+		}
+		.cont {
+			@include mq(pc_) {
+				padding-right: 12px;
+				padding-left: 12px;
+			}
+		}
+	}
+	.mail_part {
+		// mymapge_history
+		@include mq(tb_) {
+			grid-row: 6;
+		}
+		.cont.openclose_wrap {
+			@include mq(pc_) {
+				padding-right: 12px;
+				padding-left: 12px;
+			}
+			.openclose_handle {
+				cursor: pointer;
+			}
+			.openclose_target {
+				padding: 15px;
+				border: 1px solid color(border, base);
+				@include mq(tb_) {
+					padding: 30px;
+				}
+			}
+		}
+	}
+	.ec_order_part {
+		@include mq(tb_) {
+			grid-row: 1 / 8;
+			grid-column: 3;
+		}
+		.cont.ec_order_sticky_wrap {
+			padding: 16px;
+			background-color: color(ec, bg_ec);
+			@include mq(tb_) {
+				position: sticky;
+				top: 140px;
+			}
+			.order_table_wrap {
+				margin-bottom: 15px;
+				table.order_table {
+					tbody {
+						tr {
+							th {
+								font-weight: bold;
+								@include mq(tb_) {
+									padding: 10px;
+									font-size: 1.3rem;
+									font-weight: normal;
+								}
+							}
+							td {
+								@include mq(tb_) {
+									padding: 10px;
+								}
+								p {
+									@include mq(tb_) {
+										font-size: 1.3rem;
+									}
+								}
+								p.ec_table_supple {
+									text-align: right;
+									span {
+										font-size: 1rem;
+										color: #999;
+									}
+								}
+							}
+						}
+						tr.order_table_total_row {
+							border-top: 1px solid color(border, base);
+						}
+					}
+				}
+			}
+			.point_table_wrap {
+				padding: 8px;
+				background-color: white;
+				table.point_table {
+					tbody {
+						tr {
+							th {
+								@include mq(tb_) {
+									font-size: 1.3rem;
+								}
+							}
+							td {
+								p {
+									text-align: right;
+									@include mq(tb_) {
+										font-size: 1.3rem;
+									}
+								}
+							}
+						}
+						tr.v_add_point {
+							th {
+								font-weight: bold;
+							}
+							td {
+								p {
+									font-weight: bold;
+								}
+							}
+						}
+					}
+				}
+			}
+			.btn_wrap {
+				> button.button,
+				> a.button {
+					@include mq(tb_) {
+						margin-top: 15px;
+					}
+				}
+			}
+		}
+	}
+}
+
+/* mypage_nav */
+
+.mypage_nav {
+	display: flex;
+	flex-wrap: wrap;
+	a {
+		margin-right: -1px;
+		margin-bottom: -1px;
+		padding: 15px;
+		border: 1px solid color(border, base);
+		width: 50%;
+		text-align: center;
+		font-size: 1.6rem;
+		font-weight: bold;
+		@include mq(tb_) {
+			width: 33.3%;
+		}
+		@include mq(pc_) {
+			flex-grow: 1;
+			width: auto;
+		}
+	}
+	a.current {
+		color: #de5d50;
+	}
+}
+
+//======================================
+$DIRNAME: 'ec';
+//======================================
+
+//--------------------------------------
+$PAGENAME: 'index';
+//---------------------------------------
+
+.ec_#{$PAGENAME}_contents {
+	.area {
+		.box {
+			.part {
+				.cont.ec_cart_cont {
+					width: 100%;
+					> div.row {
+						border-top: 1px solid color(border, base);
+						@include mq(tb_) {
+							display: flex;
+							flex-wrap: wrap;
+							align-items: center;
+							justify-content: space-between;
+							border-top: none;
+						}
+						> div {
+							@include mq(tb_) {
+								padding: 10px;
+							}
+						}
+						> div:nth-child(1) {
+							@include mq(tb_) {
+								width: 10%;
+							}
+						}
+						> div:nth-child(2) {
+							@include mq(tb_) {
+								width: 65%;
+							}
+						}
+						> div:nth-child(3) {
+							@include mq(tb_) {
+								width: 10%;
+							}
+						}
+						> div:nth-child(4) {
+							@include mq(tb_) {
+								width: 15%;
+							}
+						}
+					}
+					> div.row.cart_head {
+						display: none;
+						@include mq(tb_) {
+							display: flex;
+						}
+						> div {
+							background-color: color(ec, bg_ec);
+							p {
+								text-align: center;
+								font-size: 1.3rem;
+								font-weight: bold;
+								white-space: nowrap;
+							}
+						}
+					}
+					> div.row.cart_item {
+						@include mq(_sp) {
+							display: grid;
+							grid-template-rows: min-content min-content;
+							grid-template-columns: 30px calc(100% - 50px) 20px;
+							padding-top: 10px;
+							padding-bottom: 10px;
+						}
+						border-bottom: 1px solid color(border, base);
+						> div.cart_delete {
+							text-align: center;
+							@include mq(_sp) {
+								grid-row: 1;
+								grid-column: 1;
+								align-self: center;
+							}
+							a {
+								width: 20px;
+								height: 20px;
+								@include mq(tb_) {
+									width: 100%;
+									height: 50px;
+								}
+								transition: all 0.2s;
+								@include icomoon('self', icom(times), 20px);
+								&::before {
+									color: black;
+								}
+								span {
+									display: none;
+								}
+							}
+							a:hover {
+								background-color: #f3f3f3;
+							}
+						}
+						> div.cart_products {
+							@include mq(_sp) {
+								grid-row: 1;
+								grid-column: 2;
+								padding-right: 10px;
+							}
+						}
+						> div.cart_quantity {
+							display: grid;
+							@include mq(_sp) {
+								grid-template-rows: min-content min-content min-content;
+								grid-template-columns: 1fr;
+								grid-row: 1;
+								grid-column: 3;
+								padding-right: 0;
+								padding-left: 0;
+								width: 20px;
+								text-align: center;
+							}
+							@include mq(tb_) {
+								grid-template-rows: min-content min-content;
+								grid-template-columns: min-content 10px min-content;
+								text-align: center;
+							}
+							.quantity_num {
+								@include mq(_sp) {
+									grid-row: 2;
+									grid-column: 1;
+									padding: 3px 0 5px;
+									font-size: 1.2rem;
+								}
+								@include mq(tb_) {
+									grid-row: 1;
+									grid-column: 1 / 4;
+									padding-bottom: 5px;
+								}
+							}
+							.btn_minus,
+							.btn_plus {
+								display: block;
+								border: 2px solid #999;
+								border-radius: 15px;
+								width: 20px;
+								height: 20px;
+								cursor: pointer;
+								transition: all 0.2s;
+								@include mq(tb_) {
+									width: 30px;
+									height: 30px;
+								}
+								span {
+									display: none;
+								}
+							}
+							.btn_minus {
+								@include icomoon('self', icom(minus), 12px);
+								@include mq(_sp) {
+									grid-row: 3;
+									grid-column: 1;
+								}
+								@include mq(tb_) {
+									grid-row: 2;
+									grid-column: 1;
+								}
+							}
+							.btn_minus.v_disable {
+								opacity: 0.5;
+								cursor: default;
+							}
+							.btn_plus {
+								@include icomoon('self', icom(plus), 12px);
+								@include mq(_sp) {
+									grid-row: 1;
+									grid-column: 1;
+								}
+								@include mq(tb_) {
+									grid-row: 2;
+									grid-column: 3;
+								}
+							}
+							a:hover {
+								background-color: color(ec, bg_ec);
+							}
+						}
+						> div.cart_total {
+							@include mq(_sp) {
+								grid-row: 2;
+								grid-column: 1 / 4;
+							}
+							p {
+							}
+						}
+					}
+					> div.row_shipping {
+						border-bottom: 1px solid color(border, base);
+					}
+					> div.row_shipping,
+					> div.row_all_total {
+						display: flex;
+						align-items: center;
+						justify-content: flex-end;
+						width: 100%;
+						@include mq(_sp) {
+							padding: 10px 0;
+						}
+						> div {
+							@include mq(tb_) {
+								padding: 10px;
+							}
+							p.cart_h {
+								margin-right: 5px;
+								font-size: 1.2rem;
+								font-weight: bold;
+							}
+						}
+					}
+				}
+				.cont.btn_wrap {
+					@include mq(tb_) {
+						padding-left: calc(100% - 300px);
+					}
+				}
+			}
+		}
+	}
+}
+
+//======================================
+$DIRNAME: 'shopping';
+//======================================
+
+//--------------------------------------
+$PAGENAME: 'index';
+//---------------------------------------
+
+.ec_#{$DIRNAME}_#{$PAGENAME}_contents {
+	.area {
+		.box {
+			.part {
+			}
+		}
+	}
+}
+
+//--------------------------------------
+$PAGENAME: 'login';
+//---------------------------------------
+
+.ec_#{$DIRNAME}_#{$PAGENAME}_contents {
+	.area {
+		.box {
+			@include mq(tb_) {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-between;
+			}
+			.part.members_part {
+				padding: 20px;
+				background-color: color(ec, bg_ec);
+				@include mq(tb_) {
+					margin-bottom: 0;
+					padding: 30px;
+					width: calc(50% - 20px);
+				}
+				@include mq(pc_) {
+					padding: 30px 90px 60px;
+					width: calc(65% - 20px);
+				}
+				.cont.icon_members {
+					display: flex;
+					justify-content: center;
+					margin-bottom: 10px;
+					p {
+						border: 1px solid color(border, base);
+						border-radius: 45px;
+						width: 80px;
+						height: 80px;
+						overflow: hidden;
+						background-color: #b8bec4;
+						@include icomoon('self', icom(user), 60px);
+						&::before {
+							top: auto;
+							color: white;
+						}
+						span {
+							display: none;
+						}
+					}
+				}
+				.cont {
+					.form_submit_set {
+						.login_memory_wrap {
+							margin-bottom: 20px;
+							input {
+							}
+							label {
+								cursor: pointer;
+								span {
+									font-size: 1.3rem;
+								}
+							}
+						}
+						.form_buttons {
+							button {
+								@include mq(tb) {
+									width: 100%;
+								}
+								@include mq(pc_) {
+									width: 300px;
+								}
+							}
+						}
+					}
+					.ec_login_support {
+						margin-top: 20px;
+						@include mq(pc_) {
+							margin-right: auto;
+							margin-left: auto;
+							width: 300px;
+						}
+						li {
+							a {
+							}
+						}
+					}
+				}
+			}
+			.part.nomember_part {
+				padding: 20px;
+				background-color: color(ec, bg_ec);
+				@include mq(tb_) {
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					padding: 35px;
+					width: calc(50% - 20px);
+				}
+				@include mq(pc_) {
+					padding: 45px;
+					width: calc(35% - 20px);
+				}
+				.cont.btn_wrap {
+					.button {
+						@include mq(tb) {
+							width: 100%;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+//--------------------------------------
+$PAGENAME: 'shipping_multiple';
+//---------------------------------------
+
+.ec_#{$DIRNAME}_#{$PAGENAME}_contents {
+	.area {
+		.box {
+			.part {
+				.cont.ec_products_list {
+					margin-bottom: 15px;
+					padding: 10px;
+					background-color: color(ec, bg_ec);
+					@include mq(tb_) {
+						padding: 15px;
+					}
+					.image_item {
+						@include mq(tb_) {
+							width: 160px;
+						}
+						.pic {
+							img {
+							}
+						}
+					}
+					.texts_item {
+						@include mq(tb_) {
+							width: calc(100% - 160px - 20px);
+						}
+						p {
+							font-size: 1.5rem;
+						}
+						p.v_quantity {
+							font-weight: bold;
+						}
+					}
+				}
+				.cont.shipping_list {
+					margin-bottom: 0;
+					padding: 10px;
+					border-bottom: 1px solid color(border, base);
+					@include mq(tb_) {
+						display: flex;
+					}
+					.shipping_address,
+					.shipping_quantity {
+						margin-right: 10px;
+						@include mq(tb_) {
+							display: flex;
+							align-items: center;
+						}
+						@include mq(pc_) {
+							margin-right: 20px;
+						}
+						h6 {
+							margin-right: 10px;
+						}
+						.shipping_address_select {
+							@include mq(tb_) {
+								max-width: 350px;
+							}
+							@include mq(pc_) {
+								max-width: 900px;
+							}
+							p.input_select_wrap {
+								select {
+								}
+							}
+						}
+						.shipping_quantity_input {
+							p {
+								width: 100px;
+								input {
+								}
+							}
+						}
+					}
+					.button {
+					}
+				}
+				.cont.shipping_list:first-child {
+					border-top: 1px solid color(border, base);
+				}
+				.add_btn_wrap {
+					margin-top: 20px;
+				}
+			}
+		}
+	}
+}
+
+//======================================
+$DIRNAME: 'mypage';
+//======================================
+
+//--------------------------------------
+$PAGENAME: 'login';
+//---------------------------------------
+
+.ec_#{$DIRNAME}_#{$PAGENAME}_contents {
+	.area {
+		.box {
+			@include mq(tb_) {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+			}
+			.part.members_part {
+				padding: 20px;
+				background-color: color(ec, bg_ec);
+				@include mq(tb_) {
+					margin-bottom: 0;
+					padding: 30px;
+					width: calc(50% - 20px);
+				}
+				@include mq(pc_) {
+					padding: 30px 90px 60px;
+					width: calc(65% - 20px);
+				}
+				.cont.icon_members {
+					display: flex;
+					justify-content: center;
+					margin-bottom: 10px;
+					p {
+						border: 1px solid color(border, base);
+						border-radius: 45px;
+						width: 80px;
+						height: 80px;
+						overflow: hidden;
+						background-color: #b8bec4;
+						@include icomoon('self', icom(user), 60px);
+						&::before {
+							top: auto;
+							color: white;
+						}
+						span {
+							display: none;
+						}
+					}
+				}
+				.cont {
+					.form_submit_set {
+						.login_memory_wrap {
+							margin-bottom: 20px;
+							input {
+							}
+							label {
+								cursor: pointer;
+								span {
+									font-size: 1.3rem;
+								}
+							}
+						}
+						.form_buttons {
+							button {
+								@include mq(tb) {
+									width: 100%;
+								}
+								@include mq(pc_) {
+									width: 300px;
+								}
+							}
+						}
+					}
+					.ec_login_support {
+						margin-top: 20px;
+						@include mq(pc_) {
+							margin-right: auto;
+							margin-left: auto;
+							width: 300px;
+						}
+						li {
+							a {
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+//--------------------------------------
+$PAGENAME: 'index';
+//---------------------------------------
+
+.ec_#{$DIRNAME}_#{$PAGENAME}_contents {
+	.area {
+		.box {
+			.part {
+			}
+			.date_products {
+				padding: 0 10px 10px;
+				border-bottom: 1px solid color(border, base);
+				@include mq(tb_) {
+					display: flex;
+					flex-wrap: wrap;
+					justify-content: space-between;
+					padding-bottom: 20px;
+				}
+				@include mq(pc_) {
+					padding-bottom: 30px;
+				}
+				.date_item {
+					@include mq(tb_) {
+						width: 240px;
+					}
+					.v_date {
+						margin-bottom: 10px;
+						font-size: 1.6rem;
+						font-weight: bold;
+					}
+					.v_definitions {
+						span {
+							font-size: 1.3rem;
+						}
+						span:first-child {
+							margin-right: 10px;
+							margin-bottom: 5px;
+							font-weight: bold;
+						}
+					}
+					a.button {
+						margin-top: 15px;
+						text-align: left;
+					}
+				}
+				.products_item {
+					@include mq(tb_) {
+						width: calc(100% - 240px - 40px);
+					}
+					.ec_products_list {
+						padding-top: 10px;
+						padding-bottom: 10px;
+						.image_item {
+							.pic {
+								img {
+								}
+							}
+						}
+						.texts_item {
+							p {
+							}
+						}
+					}
+					.ec_products_list {
+						border-top: 1px dashed color(border, base);
+					}
+					.ec_products_list:first-child {
+						@include mq(tb_) {
+							padding-top: 0;
+							border-top: none;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+//--------------------------------------
+$PAGENAME: 'favorite';
+//---------------------------------------
+
+.ec_#{$DIRNAME}_#{$PAGENAME}_contents {
+	.area {
+		.box {
+			.faorite_part {
+				.clm_item {
+					position: relative;
+					a {
+						.object_fit {
+							&::before {
+								padding-top: 80%;
+							}
+							img {
+							}
+						}
+						.caption {
+							text-decoration: underline;
+						}
+						.ec_favorite_price {
+							padding: 0 5px;
+							font-size: 1.3rem;
+							font-weight: bold;
+						}
+					}
+					a.favorite_delete_btn {
+						position: absolute !important;
+						top: -5px;
+						right: -5px;
+						display: block;
+						border-radius: 20px;
+						width: 40px;
+						height: 40px;
+						background-color: #aaa;
+						@include icomoon('self', icom(times), 14px);
+						&::before {
+							color: white;
+						}
+						span {
+							display: none;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+//--------------------------------------
+$PAGENAME: 'delivery';
+//---------------------------------------
+
+.ec_#{$DIRNAME}_#{$PAGENAME}_contents {
+	.area {
+		.box {
+			.part {
+				.cont.delivery_list_cont {
+					display: flex;
+					flex-wrap: wrap;
+					align-items: center;
+					justify-content: space-between;
+					padding: 0 5px 15px;
+					border-bottom: 1px solid color(border, base);
+					.list_delete {
+						width: 20px;
+						@include icomoon('self', icom(times), 20px);
+						span {
+							display: none;
+						}
+					}
+					.list_address {
+						width: calc(100% - 140px);
+						@include mq(tb_) {
+							width: calc(100% - 160px);
+						}
+					}
+					.list_change_btn {
+						width: 60px;
+						@include mq(tb_) {
+							width: 80px;
+						}
+						a.button {
+							span {
+								font-size: 1.3rem;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+//======================================
+$DIRNAME: 'entry';
+//======================================
+
+//--------------------------------------
+$PAGENAME: 'index';
+//---------------------------------------
+
+.ec_#{$DIRNAME}_#{$PAGENAME}_contents {
+	.area {
+		.box {
+			.part {
+			}
+		}
+	}
+}
+
+//======================================
+$DIRNAME: 'forgot';
+//======================================
+
+//--------------------------------------
+$PAGENAME: 'index';
+//---------------------------------------
+
+.ec_#{$DIRNAME}_#{$PAGENAME}_contents {
+	.area {
+		.box {
+			.part {
+			}
+		}
+	}
+}

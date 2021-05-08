@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+/**======================================
+	print
+======================================**/
+
+/*--------------------------------------
+	body
+---------------------------------------*/
+
+@page {
+	margin: 20mm 10mm 10mm;
+}
+
+/*--------------------------------------
+	body
+---------------------------------------*/
+
+body {
+	/* chrome safari opera */
+	@media print and (-webkit-min-device-pixel-ratio: 0) {
+		width: 1200px;
+		-webkit-print-color-adjust: exact;
+		overflow-x: visible !important;
+		overflow-y: visible !important;
+	}
+}
+
+.container {
+	@media print {
+		display: block !important;
+		min-height: auto;
+		opacity: 1;
+	}
+}
+
+/*--------------------------------------
+	header
+---------------------------------------*/
+
+.header_wrap {
+	@media print {
+		position: absolute !important;
+		margin-top: 0 !important;
+	}
+}
+
+/*--------------------------------------
+	display: none
+---------------------------------------*/
+
+@media print {
+	.pagetop {
+		display: none;
+	}
+}

@@ -1,0 +1,175 @@
+@charset "utf-8";
+
+/**======================================
+	reset
+======================================**
+
+	ver 15.1.1
+		2018-02-21	再整備 N（for_ct10）[10.1.1]
+		ファイル名変更：defalt > reset
+*/
+
+/*--------------------------------------
+	elements
+---------------------------------------*/
+
+// prettier-ignore
+html, body, iframe,
+section, article, aside, header, footer, nav,
+div, p, h1, h2, h3, h4, h5, h6,
+span, img,
+ul, ol, li, dl, dt, dd,
+table, colgroup, tbody, tfoot, thead, tr, th, td, caption,
+form, fieldset, legend, label,
+blockquote, pre, abbr, address, cite, code,
+em, i, dfn, b, strong, small, sub, sup, del,
+ins, kbd, q, samp, var,
+canvas, details, figcaption, figure,
+menu, summary, time, mark,
+object, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: transparent;
+	outline: 0;
+	font-weight: normal;
+	vertical-align: baseline; 
+}
+
+sub,
+sup {
+	font-size: 9px;
+}
+
+sub {
+	vertical-align: baseline;
+}
+
+sup {
+	vertical-align: top;
+}
+
+body {
+	overflow-y: scroll;
+	line-height: 1;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+// prettier-ignore
+section, article, aside, header, footer, nav,
+details, figcaption, figure, menu {
+	display: block;
+}
+
+ul,
+ol {
+	list-style: none;
+}
+
+blockquote,
+q {
+	quotes: none;
+}
+
+blockquote::before,
+blockquote::after,
+q::before,
+q::after {
+	content: '';
+	content: none;
+}
+
+a {
+	margin: 0;
+	padding: 0;
+	background: transparent;
+	font-weight: normal;
+	vertical-align: baseline;
+	&:focus,
+	&:hover,
+	&:active {
+		outline: none !important;
+	}
+}
+
+img {
+	border: none;
+	height: auto;
+	vertical-align: top;
+}
+
+table {
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+
+caption,
+th {
+	text-align: left;
+}
+
+hr {
+	display: block;
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	border-top: 1px solid;
+	height: 1px;
+}
+
+input,
+select {
+	vertical-align: middle;
+}
+
+button,
+input,
+select,
+textarea {
+	font-family: inherit;
+}
+button {
+	-webkit-appearance: none;
+	border: none;
+	padding-inline-start: 0;
+	padding-block-start: 0;
+	padding-inline-end: 0;
+}
+
+/* font-size, line-height */
+
+html {
+	font-size: 62.5%;
+}
+
+* {
+	font-size: 1.5rem;
+	font-weight: normal;
+	font-style: normal;
+	line-height: 1.6;
+}
+
+a,
+span,
+strong,
+em,
+time,
+br {
+	font-size: inherit;
+	font-weight: inherit;
+	font-style: inherit;
+	line-height: inherit;
+}
+
+strong {
+	font-weight: bold;
+}
+
+body {
+	font-size: 1.5rem;
+}

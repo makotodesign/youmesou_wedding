@@ -1,0 +1,185 @@
+@charset "UTF-8";
+
+//======================================
+$DIRNAME: 'autoestimate';
+//======================================
+
+/*--------------------------------------
+	common
+---------------------------------------*/
+
+//--------------------------------------
+$PAGENAME: 'index';
+//---------------------------------------
+
+##{$DIRNAME}_#{$PAGENAME}_container {
+	.texts {
+		p {
+			line-height: 1.6;
+		}
+	}
+	.contents_wrap {
+		padding-top: 30px;
+		@media print {
+			padding-top: 0;
+		}
+		.print_contents {
+			margin: 0 auto;
+			padding: 30px;
+			border: 1px solid #ddd;
+			width: 800px;
+			@media print {
+				border: none;
+			}
+			.estimate_heading {
+				margin-bottom: 10px;
+				padding-bottom: 30px;
+				border-bottom: 2px solid #333;
+				h1 {
+					margin: 0;
+					text-align: center;
+					font-size: 3.2rem;
+					font-family: font(mincho);
+					letter-spacing: 0.5em;
+				}
+			}
+			.estimate_info_box {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-between;
+				margin-bottom: 20px;
+				.left_part {
+					.date_cont {
+						margin-bottom: 15px;
+						border-bottom: 1px solid #ccc;
+					}
+					.client_cont {
+						margin-bottom: 15px;
+						padding-bottom: 5px;
+						border-bottom: 1px solid #ccc;
+						p {
+							font-weight: bold;
+						}
+					}
+					.message_cont {
+					}
+				}
+				.right_part {
+					position: relative;
+					.number_cont {
+						margin-bottom: 15px;
+						border-bottom: 1px solid #ccc;
+						p {
+						}
+					}
+					.company_cont {
+						.company_name {
+						}
+						address {
+							margin-bottom: 10px;
+							p {
+								margin-bottom: 0;
+								font-size: 1.3rem;
+							}
+						}
+					}
+					.seel_cont {
+						position: absolute;
+						top: 60px;
+						right: 0;
+						z-index: -1;
+						width: 120px;
+						p {
+							img {
+								width: 100%;
+							}
+						}
+					}
+				}
+			}
+			.estimate_total_box {
+				margin-bottom: 30px;
+				.part {
+					.cont {
+						margin: 10px 0;
+						padding: 15px 0 5px;
+						border-top: 1px solid #333;
+						border-bottom: 1px solid #333;
+						.estimate_total_price {
+							text-align: center;
+							font-size: 1.6rem;
+							.price {
+								font-size: 2rem;
+								font-weight: bold;
+							}
+						}
+					}
+				}
+			}
+			.estimate_detail_box {
+				margin-bottom: 20px;
+				.part {
+					table {
+						margin: 0x 0 20px;
+						padding: 10px;
+						border: 1px solid #bbb;
+						width: 100%;
+						tr {
+							th {
+								padding: 10px;
+								background: #eee;
+								text-align: center;
+							}
+							th:not(:first-child) {
+								border-left: 1px solid #ccc;
+							}
+							td {
+								padding: 10px;
+								text-align: right;
+							}
+							td:first-child {
+								padding: 10px 20px;
+								text-align: left;
+							}
+							td:not(:first-child) {
+								border-left: 1px solid #ccc;
+							}
+						}
+						tr:first-child {
+							border-bottom: 1px solid #bbb;
+						}
+						tr:nth-child(2n) {
+							background-color: #dfecf5;
+						}
+						tr.shokei {
+							border-top: 3px double #bbb;
+							background-color: #fff;
+						}
+						tr.tax {
+							border-top: 1px solid #ccc;
+							background-color: #fff;
+						}
+						tr.total {
+							border-top: 3px double #bbb;
+							background-color: #fff;
+						}
+					}
+				}
+			}
+			.estimate_supple_box {
+				.part {
+					.cont {
+						h3 {
+							margin-bottom: 10px;
+							padding-bottom: 5px;
+							border-bottom: 1px dashed #bbb;
+						}
+						p {
+							font-size: 1.3rem;
+						}
+					}
+				}
+			}
+		}
+	}
+}

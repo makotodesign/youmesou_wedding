@@ -1,0 +1,56 @@
+{#---------------------------------------------------------------------------
+
+	ec-entry_activate
+
+	@memo
+
+----------------------------------------------------------------------------#}
+
+{#-	page_setting -#}
+
+{#-		base -#}
+{%-		set PAGENAME      =  '会員登録 完了' -%}
+{%-		set DIRNAME       =  '新規会員登録' -%}
+{%-		set DIRCODE       =  'entry' -%}
+{%-		set PAGECODE      =  'activate' -%}
+
+{#-		extents_twig -#}
+{%-		extends 'default_frame.twig' -%}
+
+{#-		js -#}
+{%-		block js -%}
+{%-		endblock js -%}
+
+{#-		breadcrumb -#}
+{%-		block breadcrumb %}
+						<li class="current"><span>{{ PAGENAME }}</span></li>
+{%		endblock breadcrumb %}
+
+{#--------------------------------------------------------------------------#}
+
+{%- block main %}
+		<div class="title_wrap">
+			<div class="title">
+				<h1 class="title_text">{{ PAGENAME }}</h1>
+			</div>
+		</div>
+		<div class="contents_wrap">
+			<div class="ec_{{ DIRCODE }}_{{ PAGECODE }}_contents contents ec_contents">
+				<section class="area">
+					<div class="box">
+						<div class="part">
+							<div class="cont texts">
+								<p>会員登録が完了しました。</p>
+								<p>それでは、ショッピングをお楽しみください。</p>
+							</div>
+							<div class="cont btn_wrap ">
+{%		if qtyInCart %}
+								<a href="{{ url( 'cart' ) }}" class="button">カートへ進む</a>
+{%	endif %}
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+{%	endblock %}

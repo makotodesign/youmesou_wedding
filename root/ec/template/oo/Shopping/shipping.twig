@@ -1,0 +1,89 @@
+{#---------------------------------------------------------------------------
+
+	ec-shopping_shipping
+
+	@memo
+
+----------------------------------------------------------------------------#}
+
+{#-	page_setting -#}
+
+{#-		base -#}
+{%-		set PAGENAME      =  'お届け先の指定' -%}
+{%-		set DIRNAME       =  'ご注文' -%}
+{%-		set DIRCODE       =  'shopping' -%}
+{%-		set PAGECODE      =  'shipping' -%}
+
+{#-		extents_twig -#}
+{%-		extends 'default_frame.twig' -%}
+
+{#-		js -#}
+{%-		block js -%}
+{%-		endblock js -%}
+
+{#-		breadcrumb -#}
+{%-		block breadcrumb %}
+						<li><a href="{{ constant( 'PUBLICDIR' ) }}/ec/{{ DIRCODE }}/">{{ DIRNAME }}</a></li>
+						<li class="current"><span>{{ PAGENAME }}</span></li>
+{%		endblock breadcrumb %}
+
+{#--------------------------------------------------------------------------#}
+
+{%- block main %}
+		<div class="title_wrap">
+			<div class="title">
+				<h1 class="title_text">{{ PAGENAME }}</h1>
+			</div>
+		</div>
+		<div class="contents_wrap">
+			<div class="ec_{{ DIRCODE }}_{{ PAGECODE }}_contents contents ec_contents">
+				<section class="area">
+					<div class="box">
+						<div class="part">
+{% if Customer.CustomerAddresses|length < eccube_config.eccube_deliv_addr_max %}
+							<div class="cont btn_wrap">
+								<a href="{{ url( 'shopping_shipping_edit', {'id': shippingId} ) }}" class="button btn_ss bc0"><span>新規お届け先を追加する</span></a>
+							</div>
+{% else %}
+							<div class="cont texts">
+								<p class="ec_alert_text">お届け先登録の上限の{{ eccube_config.eccube_deliv_addr_max }}件に達しています。お届け先を入力したい場合は、削除か変更を行ってください。</p>
+							</div>
+{% endif %}
+{% if has_errors( form.addresses ) %}
+							<div class="cont texts">
+								<p class="ec_alert_text">お届け先を指定してください</p>
+							</div>
+{% endif %}
+						</div>
+					</div>
+					<div class="box">
+						<div class="part">
+							<form name="ec_{{ DIRCODE }}_{{ PAGECODE }}_form" method="post" action="{{ url( 'shopping_shipping', {'id': shippingId} ) }}" class="cont">
+								{{ form_widget( form._token ) }}
+								<div class="form_input_set">
+{% for choice in form.addresses.vars.choices %}
+{% set Address = choice.data %}
+{% set checked = choice is selectedchoice( form.addresses.vars.value ) ? 'checked="checked"' : '' %}
+									<label class="form_radioset">
+										<p><input type="radio" id="address{{ choice.value }}" name="{{ form.addresses.vars.full_name }}" value="{{ choice.value }}" {{ checked }} /></p>
+										<div>
+											<p>{{ Address.name01 }}&nbsp;{{ Address.name02 }}</p>
+											<p>〒{{ Address.postal_code }} {{ Address.Pref }}{{ Address.addr01 }}{{ Address.addr02 }}</p>
+											<p>{{ Address.phone_number }}</p>
+										</div>
+									</label>
+{% endfor %}
+								</div>
+								<div class="form_submit_set">
+									<div class="form_buttons btn_wrap center">
+										<button type="submit" class="submit_send button"><span>選択したお届け先に送る</span></button>
+										<a href="{{ url( 'shopping' ) }}" class="button">戻る</a>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+{%	endblock %}

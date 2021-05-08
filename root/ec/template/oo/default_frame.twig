@@ -1,0 +1,79 @@
+{#- --------------------------------------------------------------------------
+
+	default_frame
+
+	@memo
+
+--------------------------------------------------------------------------- -#}
+
+{#-	page_setting -#}
+{# --------------------------------------------------------------------------- #}
+<!DOCTYPE HTML>
+<html lang="{{ eccube_config.locale }}">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="eccube-csrf-token" content="{{ csrf_token( constant( 'Eccube\\Common\\Constant::TOKEN_NAME' )) }}">
+	<meta name="format-detection" content="telephone=no">
+	<title>{{ PAGENAME|default( '---' ) }}｜{{ constant( 'SITENAME' ) }}</title>
+	<meta name="robots" content="noindex">
+	<link rel="apple-touch-icon" href="{{ oo_fpath_add_date_query( '/apple-touch-icon.png' ) }}">
+	<link rel="icon" href="{{ oo_fpath_add_date_query( '/favicon.ico' ) }}">
+{{ oo_google_fonts_preload()|raw }}
+	<link rel="stylesheet" type="text/css" href="{{ oo_fpath_add_date_query( '/css/styles.css' ) }}" media="all">
+{# css for eccube plugin #}
+{%	if plugin_assets is defined %}{{ include( '@admin/snippet.twig', { snippets: plugin_assets } ) }}{%	endif %}
+</head>
+<body id="page_{{ app.request.get( '_route' ) }}" class="{{ body_class|default( 'other_page' ) }} ec_body">
+	<div class="container {% if DIRCODE is not null and PAGECODE is not null %}ec_{{ DIRCODE }}_{{ PAGECODE }}_container {% endif %}base">
+		<header class="header_wrap">
+{{ oo_get_wp_parts_header()|raw }}
+			<div class="breadcrumb_wrap">
+				<nav class="breadcrumb">
+					<ul>
+						<li><a href="/ct17_ec/">HOME</a></li>
+{%	block breadcrumb %}
+{% endblock breadcrumb %}
+					</ul>
+				</nav>
+			</div>
+		</header>
+{%	block main %}{%	endblock main %}
+{{ oo_get_wp_parts_footer()|raw }}
+	<script async src="https://www.googletagmanager.com/gtag/js?id={{ constant( 'GOOGLE_ANALYTICS_ID' ) }}"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments );}
+		gtag("js", new Date());
+		gtag("config", "{{ constant( 'GOOGLE_ANALYTICS_ID' ) }}" );
+	</script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script>
+		$(function() {
+			$.ajaxSetup({
+				'headers': {
+					'ECCUBE-CSRF-TOKEN': $('meta[name="eccube-csrf-token"]' ).attr( 'content' )
+				}
+			} );
+		} );
+	</script>
+	<script>const PUBLICDIR = "{{ constant( 'PUBLICDIR' ) }}";</script>
+	<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/desvg@1.0.2/desvg.min.js"></script>
+	<script src="{{ oo_fpath_add_date_query( '/js/common/oo_lib.js' ) }}"></script>
+{#
+	<script src="{{ asset( 'assets/js/function.js' ) }}"></script>
+	<script src="{{ asset( 'assets/js/eccube.js' ) }}"></script>
+#}
+	<script src="{{ oo_fpath_add_date_query( '/js/ec/eccube_functions.js' ) }}"></script>
+	<script src="{{ oo_fpath_add_date_query( '/js/ec/eccube_base.js' ) }}"></script>
+	<script src="{{ oo_fpath_add_date_query( '/js/common/ec_init.js' ) }}"></script>
+	<script src="{{ oo_fpath_add_date_query( '/js/common/base.js' ) }}"></script>
+{%	block js %}
+{%	endblock %}
+{#- プラグイン用Snippet -#}
+{%-	if plugin_snippets is defined -%}
+	{{- include( 'snippet.twig', { snippets: plugin_snippets } ) -}}
+{%	endif %}
+</body>
+</html>

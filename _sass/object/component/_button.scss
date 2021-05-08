@@ -1,0 +1,559 @@
+@charset "utf-8";
+
+/**======================================
+	button
+======================================**/
+
+/*--------------------------------------
+	setting
+---------------------------------------*/
+
+$button_active_shadow_color_sp: black;
+
+// must ( bc_strong,bc0 ) > ボタン背景カラー class 生成 aタグ
+$button_colors: (
+	bc_strong: (
+		bg: #900,
+		border: #a00,
+		text: white,
+		bg_hover: white,
+		text_hover: #a00
+	),
+	bc0: (
+		bg: #ebf1f5,
+		border: color(border, base),
+		text: darken(color(text, base), 15%),
+		bg_hover: darken(white, 15%),
+		text_hover: darken(color(text, base), 15%)
+	)
+);
+
+$button_width: (
+	tb_: 300px,
+	pc_: 300px
+);
+
+/*--------------------------------------
+	setting - option
+---------------------------------------*/
+@mixin button_style {
+	& {
+		position: relative;
+		display: block;
+		padding: 0;
+		text-align: center;
+		text-decoration: none;
+		font-size: 1.6rem;
+		font-weight: bold;
+		color: color(button, text);
+		@include mq(tb_) {
+			display: inline-block;
+			text-decoration: none !important;
+			font-weight: normal;
+		}
+		&::before,
+		&::after {
+			color: color(button, text);
+			@include mq(tb_) {
+				transition: all 0.5s;
+			}
+		}
+		> * {
+			position: relative;
+			display: block;
+			padding: 10px 15px;
+			border: 1px solid color(button, border);
+			border-radius: radius(base);
+			background-color: color(button, base);
+			box-shadow: 0 1px 2px rgba($button_active_shadow_color_sp, 0.2);
+			font-size: 1.6rem;
+			font-weight: bold;
+			color: color(button, text);
+			@include mq(tb_) {
+				padding: 15px 50px;
+				box-shadow: none;
+				font-weight: normal;
+				transition: all 0.5s;
+			}
+			&::before,
+			&::after {
+				color: color(button, text);
+			}
+		}
+	}
+	&:active {
+		box-shadow: 0 1px 2px rgba($button_active_shadow_color_sp, 0.6);
+	}
+	&:hover:not([disabled]) {
+		&::before,
+		&::after {
+			color: color(button, text_hover);
+			transition: all 0.5s;
+			@if color(button, text_hover) != '' {
+				color: color(button, text_hover);
+			} @else {
+				color: color(button, text);
+			}
+		}
+		> * {
+			@if color(button, bg_hover) != '' {
+				background-color: color(button, bg_hover);
+			} @else {
+				background-color: rgba(color(button, base), 0.6);
+			}
+			@if color(button, text_hover) != '' {
+				color: color(button, text_hover);
+			} @else {
+				color: color(button, text);
+			}
+			&::before,
+			&::after {
+				transition: all 0.5s;
+				@if color(button, text_hover) != '' {
+					color: color(button, text_hover);
+				} @else {
+					color: color(button, text);
+				}
+			}
+		}
+	}
+}
+
+/*--------------------------------------
+	button
+---------------------------------------*/
+
+/* button : wrap container */
+
+a.button,
+a.button:visited,
+button.button {
+	cursor: pointer;
+	transition: all 0.5s;
+	@include button_style();
+}
+a.button_sp,
+a.button_sp:visited,
+button.button_sp {
+	@include mq(_sp) {
+		@include button_style();
+	}
+}
+a.button.btn_small,
+button.button.btn_small {
+	> * {
+		display: inline-block;
+		padding: 5px 15px;
+		@include mq(tb_) {
+			padding: 5px 20px;
+		}
+	}
+}
+a.button.btn_more,
+button.button.btn_more {
+	> * {
+		display: inline-block;
+		padding: 5px 15px;
+		@include mq(tb_) {
+			padding: 5px 20px;
+		}
+	}
+}
+a.button.btn_ss,
+button.button.btn_ss {
+	> * {
+		display: inline-block;
+		padding: 5px 10px;
+		font-size: 1.2rem;
+		@include mq(tb_) {
+			padding: 5px 20px;
+			font-size: 1.3rem;
+		}
+	}
+}
+a.button.off,
+button.button.off {
+	opacity: 0.3;
+}
+a.button[disabled],
+button.button[disabled] {
+	opacity: 0.2;
+	cursor: default;
+}
+
+/* button : color */
+
+@each $k, $v in $button_colors {
+	a.button.#{$k},
+	a.button.#{$k}:visited,
+	button.button.#{$k},
+	button.button.#{$k}:visited {
+		color: map-get($v, text);
+		@include mq(_sp) {
+			color: map-get($v, text);
+		}
+		> * {
+			border: 1px solid map-get($v, border);
+			background-color: map-get($v, bg);
+			color: map-get($v, text);
+			@include mq(_sp) {
+				border: 1px solid map-get($v, border);
+				background-color: map-get($v, bg);
+				color: map-get($v, text);
+			}
+			&::before {
+				color: map-get($v, text);
+				@include mq(_sp) {
+					color: map-get($v, text);
+				}
+			}
+		}
+	}
+	a.button.#{$k}:hover,
+	button.button.#{$k}:hover {
+		> * {
+			@if map-get($v, bg_hover) != '' {
+				background-color: map-get($v, bg_hover);
+			}
+			@if map-get($v, text_hover) != '' {
+				color: map-get($v, text_hover);
+			}
+			&:before {
+				@if map-get($v, text_hover) != '' {
+					color: map-get($v, text_hover);
+				}
+			}
+		}
+	}
+}
+
+/* btn_wrap */
+
+.btn_wrap {
+	@include mq(tb_) {
+		display: flex;
+		flex-wrap: wrap;
+	}
+	> *.button:not(.btn_small) {
+		@include mq(_sp) {
+			margin-top: 10px;
+		}
+		@include mq(tb_) {
+			width: button_width(tb_);
+		}
+		@include mq(pc_) {
+			width: button_width(pc_);
+		}
+	}
+	> *.button_sp {
+		@include mq(_sp) {
+			margin-top: 10px;
+		}
+	}
+	> *.button.full {
+		@include mq(tb_) {
+			width: 100%;
+		}
+	}
+	> *.button.auto {
+		@include mq(tb_) {
+			width: auto;
+		}
+	}
+}
+.btn_wrap.center {
+	@include mq(tb_) {
+		justify-content: center;
+	}
+	> *.button + *.button:not(.full) {
+		@include mq(tb_) {
+			margin-left: 8px;
+		}
+	}
+}
+.btn_wrap.grow {
+	> *.button {
+		@include mq(tb_) {
+			flex-grow: 1;
+			width: auto;
+		}
+	}
+	> *.button + *.button:not(.full) {
+		@include mq(tb_) {
+			margin-left: 8px;
+		}
+	}
+}
+.btn_wrap.vertical {
+	@include mq(tb_) {
+		flex-direction: column;
+	}
+	> *.button {
+		@include mq(tb_) {
+			width: auto;
+			width: button_width(tb_);
+		}
+	}
+	> *.button.full {
+		@include mq(tb_) {
+			align-self: auto;
+		}
+	}
+	> *.button.auto {
+		@include mq(tb_) {
+			align-self: flex-start;
+		}
+	}
+	> *.button + *.button {
+		@include mq(tb_) {
+			margin-top: 10px;
+		}
+	}
+}
+
+/* button : icon : wrap container */
+
+.button {
+	// icon
+	%icon_span {
+		&:before {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 8px;
+			display: block;
+			margin: auto;
+			width: 22px;
+			height: 22px;
+			text-align: center;
+			font-size: 22px;
+			font-family: font(icomoon);
+			line-height: 1;
+			transition: all 0.5s;
+		}
+	}
+	&.icon_arrow {
+		> * {
+			@extend %icon_span;
+			&:before {
+				content: icom(angle-right);
+				font-weight: normal;
+			}
+		}
+	}
+	&.icon_tel {
+		> * {
+			@extend %icon_span;
+			&:before {
+				content: icom(phone-alt);
+			}
+		}
+	}
+	&.icon_facebook {
+		> * {
+			@extend %icon_span;
+			&:before {
+				content: icom(facebook-square);
+			}
+		}
+	}
+	&.icon_twitter {
+		> * {
+			@extend %icon_span;
+			&:before {
+				content: icom(twitter-square);
+			}
+		}
+	}
+	&.icon_instagram {
+		> * {
+			@extend %icon_span;
+			&:before {
+				content: icom(instagram);
+			}
+		}
+	}
+}
+
+/* pager */
+
+.pager_wrap {
+	margin: 10px 0;
+	ul {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		li:not(:first-child) {
+			margin-left: 1px;
+			@include mq(tb_) {
+				margin-left: 5px;
+			}
+		}
+		li {
+			> *,
+			> a:visited {
+				@include button_style();
+				> * {
+					padding: 8px 15px;
+					font-size: 1.2rem;
+				}
+			}
+			> *.current {
+				opacity: 0.3;
+				> * {
+				}
+			}
+			> *.dots {
+				padding: 5px;
+				border: none;
+				background-color: inherit;
+				box-shadow: none;
+				font-size: 1.2rem;
+				color: black;
+			}
+		}
+	}
+}
+
+/* btn_group_sp */
+
+@include mq(_sp) {
+	.btn_group_sp {
+		border: 1px solid color(button, border);
+		border-radius: radius(base);
+		a.button,
+		a.button_sp {
+			> * {
+				border-right: none;
+				border-bottom: none;
+				border-left: none;
+			}
+		}
+		a.button:first-child,
+		a.button_sp:first-child {
+			> * {
+				border-top: none;
+			}
+		}
+		a.button:not(:first-child),
+		a.button_sp:not(:first-child) {
+			> * {
+				border-top: 1px solid white;
+				border-top-left-radius: 0;
+				border-top-right-radius: 0;
+			}
+		}
+		a.button:not(:last-child),
+		a.button_sp:not(:last-child) {
+			> * {
+				border-bottom-right-radius: 0;
+				border-bottom-left-radius: 0;
+			}
+		}
+	}
+}
+@include mq(tb_) {
+	.btn_group_sp {
+		a:not(.button) {
+			> * {
+				@include icomoon('block', icom(angle-right), 10px, 'left', 0);
+				padding-left: 20px;
+			}
+		}
+	}
+}
+
+/*--------------------------------------
+	button in tag_wrap, openclose_wrap
+---------------------------------------*/
+
+/* openclose_wrap */
+
+@include mq(_sp) {
+	.openclose_wrap {
+		a.openclose_handle.button_sp {
+		}
+		a.openclose_handle.button_sp.minus {
+			> * {
+				border-bottom-right-radius: 0;
+				border-bottom-left-radius: 0;
+				@include icomoon('block', icom(minus), 22px, 'right', 8px);
+				&::before {
+					left: auto;
+				}
+			}
+		}
+		a.openclose_handle.button_sp.plus {
+			> * {
+				@include icomoon('block', icom(plus), 22px, 'right', 8px);
+				&::before {
+					left: auto;
+				}
+			}
+		}
+		.openclose_target.target_wrap_sp {
+			padding: 15px;
+			border-right: 1px solid color(button, border);
+			border-bottom: 1px solid color(button, border);
+			border-left: 1px solid color(button, border);
+			border-bottom-right-radius: radius(base);
+			border-bottom-left-radius: radius(base);
+			background-color: white;
+			> *:last-child {
+				margin-bottom: 0;
+			}
+		}
+		a.button_sp + .openclose_target.btn_group_sp {
+			padding: 0;
+			border-top: none;
+			border-top-left-radius: 0;
+			border-top-right-radius: 0;
+			a.button_sp:first-child {
+				> * {
+					border-top-left-radius: 0;
+					border-top-right-radius: 0;
+				}
+			}
+			a.button.bc0:not(:first-child),
+			a.button_sp.bc0:not(:first-child) {
+				> * {
+					border-top: 1px solid color(button, border);
+				}
+			}
+		}
+	}
+}
+
+/* tag_wrap */
+
+@include mq(_sp) {
+	.tag_wrap {
+	}
+}
+
+/*--------------------------------------
+	pagetop
+---------------------------------------*/
+
+.pagetop {
+	position: fixed;
+	right: 10px;
+	bottom: 10px;
+	z-index: 10;
+	width: 40px;
+	height: 40px;
+	a {
+		padding: 0 !important;
+		width: 100%;
+		height: 100%;
+		text-decoration: none;
+		@include button_style();
+		> * {
+			@include icomoon('self', icom(arrow-to-top), 16px, '', '', color(button, text));
+			display: block;
+			padding: 0 !important;
+			width: 100%;
+			height: 100%;
+		}
+	}
+}

@@ -1,0 +1,130 @@
+{#---------------------------------------------------------------------------
+
+	ec-shopping_shipping_multiple
+
+	@memo
+
+----------------------------------------------------------------------------#}
+
+{#-	page_setting -#}
+
+{#-		base -#}
+{%-		set PAGENAME      =  'お届け先の複数指定' -%}
+{%-		set DIRNAME       =  'ご注文' -%}
+{%-		set DIRCODE       =  'shopping' -%}
+{%-		set PAGECODE      =  'shipping_multiple' -%}
+
+{#-		extents_twig -#}
+{%-		extends 'default_frame.twig' -%}
+
+{#-		js -#}
+{%-		block js %}
+	<script src="{{ oo_fpath_add_date_query( '/js/ec/shopping_shipping_multiple.js' ) }}"></script>
+{%-		endblock js -%}
+
+{#-		breadcrumb -#}
+{%-		block breadcrumb %}
+						<li><a href="{{ constant( 'PUBLICDIR' ) }}/ec/{{ DIRCODE }}/">{{ DIRNAME }}</a></li>
+						<li class="current"><span>{{ PAGENAME }}</span></li>
+{%		endblock breadcrumb %}
+
+{#--------------------------------------------------------------------------#}
+
+{%- block main %}
+		<div class="title_wrap">
+			<div class="title">
+				<h1 class="title_text">{{ PAGENAME }}</h1>
+			</div>
+		</div>
+		<div class="contents_wrap">
+			<div class="ec_{{ DIRCODE }}_{{ PAGECODE }}_contents contents ec_contents">
+				<section class="area">
+					<div class="box">
+						<div class="part">
+							<div class="cont texts">
+								<p>各商品のお届け先を選択してください。</p>
+{%		for error in errors %}
+								<div class="caution">{{ error.message }}</div>
+{%		endfor %}
+							</div>
+						</div>
+						<div class="cont btn_wrap ">
+							<a href="{{ url('shopping_shipping_multiple_edit') }}" class="button btn_small bc0"><span>新規のお届け先を追加する</span></a>
+						</div>
+					</div>
+					<form id="ec_{{ DIRCODE }}_{{ PAGECODE }}_form" method="post" action="{{ url( 'shopping_shipping_multiple' ) }}" class="box">
+						{{ form_widget( form._token ) }}
+{%		for orderItem in OrderItems %}
+{%			set i = loop.index0 %}
+{%			set itemvalue = 0 %}
+						<div id="multiple_list_{{ i }}" class="part">
+							<div class="cont image_texts ec_products_list">
+								<div class="image_item">
+{%					if( oo_get_wp_pic_main_path( orderItem.product_code ) ) %}
+									<p class="pic"><img src="{{ oo_get_wp_pic_main_path( orderItem.product_code, 'thumbnail' ) }}"></p>
+{%					else %}
+									<p class="pic"><img src="{{ asset( orderItem.product.MainListImage|no_image_product, 'save_image' ) }}"></p>
+{%					endif %}
+								</div>
+								<div class="texts_item">
+									<p>{{ orderItem.productName }}</p>
+{%			if orderItem.productClass.classCategory1 %}
+									<p>{{ orderItem.productClass.classCategory1 }}</p>
+{%			endif %}
+{%			if orderItem.productClass.classCategory2 %}
+									<p>{{ orderItem.productClass.classCategory2 }}</p>
+{%			endif %}
+									<p>小計：{{ orderItem.totalPrice|price }}</span></p>
+{%			for key, value in compItemQuantities %}
+{%				if orderItem.productClass.id == key %}
+									<p id="multiple_list_quantity_{{ i }}_{{ key }}" class="v_quantity">数量：{{ value }}</span></p>
+{%					set itemvalue = value %}
+{%				endif %}
+{%			endfor %}
+								</div>
+							</div>
+						</div>
+						<div id="multiple_{{ i }}_shipping_list_set" class="part">
+{%			for shipping in form.shipping_multiple[i].shipping %}
+							<div id="multiple_{{ i }}_shipping_list_{{ loop.index0 }}" data-listindex="{{ loop.index0 }}" class="cont shipping_list">
+								<div id="multiple_{{ i }}_shipping_address_{{ loop.index0 }}" class="shipping_address">
+									<h6>お届け先</h6>
+									<div class="shipping_address_select">
+										<p class="input_select_wrap">{{ form_widget( shipping.customer_address, {'attr': {'class': 'shipping'}} ) }}</p>
+										{{- form_errors( shipping.customer_address ) }}
+									</div>
+								</div>
+								<div id="multiple_{{ i }}_shipping_quantity_{{ loop.index0 }}" class="shipping_quantity">
+									<h6>数量</h6>
+									<div class="shipping_quantity_input">
+{%				for key, value in compItemQuantities %}
+{%					if orderItem.productClass.id == key %}
+{%						set quantity = shipping.quantity.vars.value ?: value %}
+										<p>{{ form_widget( shipping.quantity, {'attr': {'class': 'quantity'}, 'value': quantity} ) }}</p>
+										{{- form_errors( shipping.quantity ) }}
+{%					endif %}
+{%				endfor %}
+									</div>
+								</div>
+								<button id="multiple_{{ i }}_button_delete_{{ loop.index0 }}" type="button" class="button btn_ss bc0" data-role="delete" data-index="{{ i }}" data-listindex="{{ loop.index0 }}"{% if loop.index0 == 0 %} style="display:none;"{% endif %}><span>削除</span></button>
+							</div>
+{%			endfor %}
+							<div class="cont add_btn_wrap">
+								<button id="multiple_{{ i }}_button_add" type="button" class="button btn_small bc0" data-role="add" data-index="{{ i }}"><span>お届け先の追加</span></button>
+							</div>
+						</div>
+{%		endfor %}
+						<div class="part">
+								<div class="form_submit_set">
+									<div class="form_buttons btn_wrap center">
+										<button type="submit" class="submit_send button bc_strong"><span>選択したお届け先に送る</span></button>
+										<a href="{{ url( 'shopping' ) }}" class="button"><span>戻る</span></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</section>
+			</div>
+		</div>
+{%	endblock %}

@@ -1,0 +1,64 @@
+@charset "utf-8";
+
+/**======================================
+	base_xxx
+	multisite c_xxx
+======================================**/
+
+/*--------------------------------------
+	body, container
+---------------------------------------*/
+
+body {
+	position: relative;
+	background: color(bg, base);
+	font-family: font(base);
+	color: color(text, base);
+	@include mq(tb_) {
+		color: color(text, base);
+	}
+}
+
+.container.xxx {
+}
+
+/*--------------------------------------
+	header
+---------------------------------------*/
+
+.container.xxx .header_wrap {
+	background-color: color(bg, base);
+	@include mq(tb_) {
+	}
+	@include mq(pc_) {
+	}
+}
+
+/*--------------------------------------
+	gnav
+---------------------------------------*/
+
+.container.xxx .gnav_wrap,
+.container.xxx .header {
+}
+
+/*--------------------------------------
+	contents
+---------------------------------------*/
+
+.container.xxx .contents_wrap {
+}
+
+/*--------------------------------------
+	footer
+---------------------------------------*/
+
+.container.xxx .footer_wrap {
+}
+
+/*--------------------------------------
+	pagetop
+---------------------------------------*/
+
+.container.xxx .pagetop {
+}

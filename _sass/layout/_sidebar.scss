@@ -1,0 +1,117 @@
+@charset "utf-8";
+
+/**======================================
+	sidebar
+
+		// edit-- 編集箇所
+======================================**/
+
+/*--------------------------------------
+	side_area
+---------------------------------------*/
+
+.side_area {
+	.side_box:not(:last-child) {
+		// edit--
+		margin-bottom: 30px;
+		// --edit
+	}
+	.side_box {
+		@include mq(_tb) {
+			// edit--
+			padding: 20px;
+			border: 5px solid color(border, base);
+			// --edit
+		}
+		.heading_side {
+			margin-bottom: 10px;
+			padding: 0 15px;
+			font-size: 1.3rem;
+			font-weight: bold;
+		}
+		.heading_side:not(:first-child) {
+			// edit--
+			margin-top: 25px;
+			@include mq(pc_) {
+				margin-top: 60px;
+				// --edit
+			}
+		}
+		.sidenav {
+			li:first-child {
+				border-top: 1px solid color(border, base);
+			}
+			> li {
+				border-bottom: 1px solid color(border, base);
+				* {
+					transition: color 0.3s;
+				}
+				> a,
+				> a:visited {
+					@include icomoon('block', icom(angle-right-regular), 12px, 'left', 15px, color(text, base));
+					display: block;
+					padding: 15px 15px 15px (15px + 30px);
+					text-decoration: none !important;
+					> span {
+						font-size: 1.3rem;
+						line-height: 1.3;
+						color: color(text, base);
+					}
+				}
+				> a:hover {
+				}
+				> a.current {
+					> span {
+						color: lighten(color(text, base), 50%);
+					}
+				}
+				> a.sidenav_openclose_handle.plus {
+					cursor: pointer;
+					&::before {
+						content: icom(plus);
+					}
+				}
+				> a.sidenav_openclose_handle.minus {
+					cursor: pointer;
+					&::before {
+						content: icom(minus);
+					}
+				}
+				> ul.child {
+					margin-bottom: 6px;
+					border-top: none;
+					> li {
+						border-top: none;
+						border-bottom: none;
+						> a,
+						> a:visited {
+							@include icomoon('block', icom(angle-right-regular), 8px, 'left', 45px);
+							padding: 6px 15px 10px 75px;
+							text-decoration: none !important;
+							&::before {
+								left: 45px;
+							}
+							span {
+								font-size: 1.3rem;
+								line-height: 1.3;
+								color: color(text, base);
+							}
+						}
+						> a:not(.current):hover {
+							> span {
+								color: lighten(color(text, base), 50%);
+							}
+						}
+						> a.current,
+						> a.current:hover {
+							> span {
+								color: color(text, base);
+							}
+						}
+						// .grand_child 略
+					}
+				}
+			}
+		}
+	}
+}

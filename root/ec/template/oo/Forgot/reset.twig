@@ -1,0 +1,91 @@
+{#---------------------------------------------------------------------------
+
+	ec-forgot_reset
+
+	@memo
+
+----------------------------------------------------------------------------#}
+
+{#-	page_setting -#}
+
+{#-		base -#}
+{%-		set PAGENAME      =  'パスワードの再発行' -%}
+{%-		set DIRNAME       =  'パスワード再発行' -%}
+{%-		set DIRCODE       =  'forgot' -%}
+{%-		set PAGECODE      =  'reset' -%}
+
+{#-		extents_twig -#}
+{%-		extends 'default_frame.twig' -%}
+{%		form_theme form 'Includes/form_div_layout.twig' %}
+
+{#-		js -#}
+{%-		block js -%}
+{%-		endblock js -%}
+
+{#-		breadcrumb -#}
+{%-		block breadcrumb %}
+						<li><a href="{{ constant( 'PUBLICDIR' ) }}/ec/{{ DIRCODE }}/">{{ DIRNAME }}</a></li>
+						<li class="current"><span>{{ PAGENAME }}</span></li>
+{%		endblock breadcrumb %}
+
+{#--------------------------------------------------------------------------#}
+
+{%- block main %}
+		<div class="title_wrap">
+			<div class="title">
+				<h1 class="title_text">{{ PAGENAME }}</h1>
+			</div>
+		</div>
+		<div class="contents_wrap">
+			<div class="ec_{{ DIRCODE }}_{{ PAGECODE }}_contents contents ec_contents">
+				<section class="area">
+					<div class="box narrow_pc">
+						<div class="part">
+							<div class="cont texts">
+								<p>ご登録時のメールアドレスを入力して「次へ」ボタンをクリックしてください。</p>
+								<p>※パスワード再発行メールを送信します。メールの内容をご確認の上、新しいパスワードを登録してください。</p>
+							</div>
+						</div>
+					</div>
+					<div class="box">
+						<div class="part">
+							<form id="ec_{{ DIRCODE }}_{{ PAGECODE }}_form" method="post" novalidate class="cont">
+								{{ form_widget( form._token ) }}
+								<div class="form_input_set">
+									<div class="form_fieldset">
+										<div class="form_legend">
+											<p>メールアドレス<span class="must">＊</span></p>
+										</div>
+										<div class="form_input">
+											<p{{ has_errors( form.login_email ) ? ' class="error"' }}>{{ form_widget( form.login_email ) }}</p>
+											{{- form_errors( form.login_email ) }}
+{%		if error %}
+											<p class="ec_alert">{{ error }}</p>
+{%		endif %}
+										</div>
+									</div>
+									<div class="form_fieldset">
+										<div class="form_legend">
+											<p>パスワード<span class="must">＊</span></p>
+										</div>
+										<div class="form_input">
+											<p{{ has_errors( form.password.first ) ? ' class="error"' }}>{{ form_widget( form.password.first, { 'attr': { 'placeholder': '半角英数記号%min%〜%max%文字'|replace( { '%min%': eccube_config.eccube_password_min_len, '%max%': eccube_config.eccube_password_max_len } ) }, 'type': 'password' } ) }}</p>
+											{{- form_errors( form.password.first ) }}
+											<p{{ has_errors( form.password.second ) ? ' class="error"' }}>{{ form_widget( form.password.second, { 'attr': { 'placeholder': '確認のためもう一度入力してください' }, 'type': 'password' } ) }}</p>
+											{{- form_errors( form.password.second ) }}
+										</div>
+									</div>
+								</div>
+								<div class="form_submit_set">
+									<div class="form_buttons btn_wrap center">
+										<button type="submit" class="submit_send button bc_strong"><span>登録する</span></button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+{%	endblock %}
+

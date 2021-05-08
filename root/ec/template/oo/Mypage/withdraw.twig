@@ -1,0 +1,64 @@
+{#---------------------------------------------------------------------------
+
+	ec-mypage_withdraw
+
+	@memo
+
+----------------------------------------------------------------------------#}
+
+{#-	page_setting -#}
+
+{#-		base -#}
+{%-		set PAGENAME      =  '退会手続き' -%}
+{%-		set DIRNAME       =  'MYページ' -%}
+{%-		set DIRCODE       =  'mypage' -%}
+{%-		set PAGECODE      =  'withdraw' -%}
+
+{#-		extents_twig -#}
+{%-		extends 'default_frame.twig' -%}
+
+{#-		js -#}
+{%-		block js -%}
+{%-		endblock js -%}
+
+{#-		breadcrumb -#}
+{%-		block breadcrumb %}
+						<li><a href="{{ constant( 'PUBLICDIR' ) }}/ec/{{ DIRCODE }}/">{{ DIRNAME }}</a></li>
+						<li class="current"><span>{{ PAGENAME }}</span></li>
+{%		endblock breadcrumb %}
+
+{#--------------------------------------------------------------------------#}
+
+{%- block main %}
+		<div class="title_wrap">
+			<div class="title">
+				<h1 class="title_text">{{ PAGENAME }}</h1>
+			</div>
+		</div>
+		<div class="contents_wrap">
+			<div class="ec_{{ DIRCODE }}_{{ PAGECODE }}_contents contents ec_contents">
+				<section class="area">
+{%		include 'Includes/mypage_navi.twig' %}
+					<div class="box narrow_pc">
+						<div class="part">
+							<div class="cont texts">
+								<p class="ec_withdraw_icon"><span>!</span></p>
+								<p class="ec_message">退会手続きの前にご確認ください </p>
+								<p>退会手続きが完了した時点で、現在保存されている購入履歴やお届け先等の情報は、すべて削除されますのでご注意ください。</p>
+							</div>
+						</div>
+						<div class="part">
+							<form id="ec_{{ DIRCODE }}_{{ PAGECODE }}_form" method="post" action="{{ url( 'mypage_withdraw' ) }}" class="cont">
+								{{ form_widget( form._token ) }}
+								<div class="form_submit_set">
+									<div class="form_buttons btn_wrap center">
+										<button type="submit" class="submit_send button" name="mode" value="confirm"><span>退会手続きへ</span></button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+{%	endblock %}

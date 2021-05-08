@@ -1,0 +1,40 @@
+@charset "UTF-8";
+/*--------------------------------------
+	tooltip // oo_lib
+---------------------------------------*/
+
+.tooltip {
+	position: relative;
+	border-bottom: 1px dashed #666;
+	cursor: pointer;
+}
+
+.tooltip_target {
+	position: absolute;
+	z-index: 9999;
+	display: inline-block;
+	padding: 10px;
+	border-radius: 3px;
+	max-width: 200px;
+	background: #222;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+	> span {
+		display: block;
+		min-width: 160px;
+		font-size: 1.1rem;
+		line-height: 1.2;
+		color: white;
+		&::after {
+			content: '';
+			position: absolute;
+			top: 10px;
+			left: -10px;
+			display: block;
+			border-color: transparent #222 transparent transparent;
+			border-style: solid;
+			border-width: 5px;
+			width: 0;
+			height: 0;
+		}
+	}
+}

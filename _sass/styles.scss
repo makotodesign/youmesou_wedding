@@ -1,0 +1,66 @@
+@charset "utf-8";
+
+/**======================================
+	styles *floccss
+======================================**/
+
+/* font */
+/*
+	google fonts は	head.class : 260 に移行 210123 西
+	setting.php で設定
+*/
+@import 'utility/fonts/icomoon';
+//@import 'utility/fonts/icomoon_medium';
+//@import 'utility/fonts/icomoon_full';
+
+/* reset */
+
+@import 'utility/reset';
+
+/* setting */
+
+@import 'foundation/setting';
+@import 'layout/decoration';
+@import 'utility/fonts/icomoon_full_values';
+@import 'utility/mixins';
+@import 'utility/functions';
+
+/* init */
+
+@import 'foundation/elements'; // a, form
+@import 'foundation/init'; // tel_mark, hide_sp_tb_pc, mrbcut, sns_btn, clearfix, wpadminbar
+
+/* lib */
+
+@import 'utility/lib/slick';
+@import 'utility/lib/slick-theme';
+// @import 'utility/lib/swiper_oo';
+
+/* layout */
+
+@import 'layout/base';
+@import 'layout/sidebar';
+@import 'layout/contents';
+
+/* component */
+
+@import 'object/component/button';
+@import 'object/component/form';
+@import 'object/component/map';
+@import 'object/component/modal';
+@import 'object/component/tooltip';
+@import 'object/component/calendar';
+
+/* project */
+
+@import 'object/project/share_parts'; // youtube_wrap, news_archive
+@import 'object/project/top';
+@import 'object/project/news';
+@import 'object/project/contact';
+@import 'object/project/ec';
+//@import "object/project/xx";
+@import 'object/project/404';
+
+/* print */
+
+@import 'utility/print';

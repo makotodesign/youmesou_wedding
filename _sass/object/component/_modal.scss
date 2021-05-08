@@ -1,0 +1,83 @@
+@charset "UTF-8";
+
+/**======================================
+	option_modal
+
+		// edit--
+======================================**/
+
+/*--------------------------------------
+	modal
+---------------------------------------*/
+
+.modal_handle {
+	cursor: pointer;
+}
+
+.contents .modal_target {
+	display: none;
+}
+
+.modal_overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	display: none;
+	width: 100vw;
+	height: 100vh;
+	.modal_bg {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		// edit--
+		background-color: rgba(black, 0.7);
+		// --edit
+	}
+	.modal_wrap {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		padding: 0;
+		// edit--
+		background-color: white;
+		// --edit
+		box-shadow: 0px 1px 10px black;
+		transform: translate(-50%, -50%);
+		.modal {
+			max-width: 90vw;
+			max-height: 90vh;
+			overflow-y: auto;
+			> .modal_target {
+				padding: 15px;
+				@include mq(tb_) {
+					padding: 30px;
+				}
+			}
+		}
+		.modal_close {
+			@include icomoon('self', icom(times), 20px, '', '', white);
+			position: absolute;
+			top: 0;
+			right: 0;
+			border-radius: 15px;
+			width: 30px;
+			height: 30px;
+			background-color: black;
+			cursor: pointer;
+			transform: translate(50%, -50%);
+		}
+	}
+	.modal_wrap.add_prop {
+		width: calc(100vw - 30px);
+		height: calc(100vh - 30px);
+		@include mq(tb_) {
+			width: calc(100vw - 30px);
+			max-width: 800px;
+			height: calc(100vh - 30px);
+			max-height: 800px;
+		}
+	}
+}

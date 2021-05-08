@@ -1,0 +1,96 @@
+{#---------------------------------------------------------------------------
+
+	ec-mypage_login
+
+	@memo
+
+----------------------------------------------------------------------------#}
+
+{#-	page_setting -#}
+
+{#-		base -#}
+{%-		set PAGENAME      =  'ログイン' -%}
+{%-		set DIRNAME       =  'MYページ' -%}
+{%-		set DIRCODE       =  'mypage' -%}
+{%-		set PAGECODE      =  'login' -%}
+
+{#-		extents_twig -#}
+{%-		extends 'default_frame.twig' -%}
+
+{#-		js -#}
+{%-		block js -%}
+{%-		endblock js -%}
+
+{#-		breadcrumb -#}
+{%-		block breadcrumb %}
+						<li class="current"><span>{{ DIRNAME ~ PAGENAME }}</span></li>
+{%		endblock breadcrumb %}
+
+{#--------------------------------------------------------------------------#}
+
+{%- block main %}
+		<div class="title_wrap">
+			<div class="title">
+				<h1 class="title_text">{{ PAGENAME }}</h1>
+			</div>
+		</div>
+		<div class="contents_wrap">
+			<div class="ec_{{ DIRCODE }}_{{ PAGECODE }}_contents contents ec_contents">
+				<section class="area">
+					<div class="box">
+						<div class="part members_part">
+							<div class="cont icon_members">
+								<p><span>会員</span></p>
+							</div>
+							<form id="ec_{{ DIRCODE }}_{{ PAGECODE }}_form" method="post" action="{{ url( 'mypage_login' ) }}" name="mypage_login" class="cont">
+								<div class="form_input_set">
+									<input type="hidden" name="_csrf_token" value="{{ csrf_token( 'authenticate' ) }}">
+{% if app.session.flashBag.has( 'eccube.login.target.path' ) %}
+{% for targetPath in app.session.flashBag.peek( 'eccube.login.target.path' ) %}
+									<input type="hidden" name="_target_path" value="{{ targetPath }}" />
+{% endfor %}
+{% endif %}
+									<div class="form_fieldset">
+										<div class="form_full">
+											<p>{{ form_widget( form.login_email, { attr: { style : 'ime-mode: disabled;', placeholder : 'メールアドレス', autofocus: true }} ) }}</p>
+										</div>
+									</div>
+									<div class="form_fieldset">
+										<div class="form_full">
+											<p>{{ form_widget( form.login_pass, { attr: { placeholder : 'パスワード' } } ) }}</p>
+										</div>
+									</div>
+{%		if BaseInfo.option_remember_me %}
+									<div class="ec_checkbox">
+										<label>
+{%			if is_granted( 'IS_AUTHENTICATED_REMEMBERED' ) %}
+											<input type="hidden" name="login_memory" value="1">
+{%			else %}
+											{{ form_widget( form.login_memory, { 'label': '次回から自動的にログインする' } ) }}
+{%			endif %}
+										</label>
+									</div>
+{%		endif %}
+{%		for reset_complete in app.session.flashbag.get( 'password_reset_complete' ) %}
+									<p>パスワードを更新しました。</p>
+{%		endfor %}
+{%		if error %}
+									<p class="caution">{{ error.messageKey|trans( error.messageData, 'validators' )|nl2br }}</p>
+{%		endif %}
+								</div>
+								<div class="form_submit_set">
+									<div class="form_buttons btn_wrap center">
+										<button type="submit" class="submit_send button"><span>ログイン</span></button>
+									</div>
+								</div>
+								<ul class="ec_login_support text ul_arrow">
+									<li><a href="{{ url( 'forgot' ) }}">ログイン情報をお忘れですか？</a></li>
+									<li><a href="{{ url( 'entry' ) }}"><span>新規会員登録</span></a></li>
+								</ul>
+							</form>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+{%	endblock %}

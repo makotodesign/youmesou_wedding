@@ -1,0 +1,160 @@
+{#---------------------------------------------------------------------------
+
+	ec-shopping_nonmember
+
+	@memo
+
+----------------------------------------------------------------------------#}
+
+{#-	page_setting -#}
+
+{#-		base -#}
+{%-		set PAGENAME      =  'お客様情報の入力' -%}
+{%-		set DIRNAME       =  'ご注文' -%}
+{%-		set DIRCODE       =  'shopping' -%}
+{%-		set PAGECODE      =  'nonmember
+' -%}
+
+{#-		extents_twig -#}
+{%-		extends 'default_frame.twig' -%}
+{%		form_theme form 'Includes/form_div_layout.twig' %}
+
+{#-		js -#}
+{%-		block js -%}
+	<script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
+	<script>
+		jQuery(function ($) {
+			$('[data-handle="zip"]').keyup(function () {
+				AjaxZip3.zip2addr(this, '', 'nonmember[address][pref]', 'nonmember[address][addr01]');
+			});
+		});
+	</script>
+{%-		endblock js -%}
+
+{#-		breadcrumb -#}
+{%-		block breadcrumb %}
+						<li><a href="{{ constant( 'PUBLICDIR' ) }}/ec/{{ DIRCODE }}/">{{ DIRNAME }}</a></li>
+						<li class="current"><span>{{ PAGENAME }}</span></li>
+{%		endblock breadcrumb %}
+
+{#--------------------------------------------------------------------------#}
+
+{%- block main %}
+		<div class="title_wrap">
+			<div class="title">
+				<h1 class="title_text">{{ PAGENAME }}</h1>
+			</div>
+		</div>
+		<div class="contents_wrap">
+			<div class="ec_{{ DIRCODE }}_{{ PAGECODE }}_contents contents ec_contents">
+				<section class="area">
+					<div class="box">
+						<div class="part step_part">
+{%		set step = 1 %}
+							<div class="step_cont current">
+								<p class="step_step">{{ step }}{% set step = step + 1 %}</p>
+								<p class="step_text">カート<br class="hide_tb_pc">の商品</p>
+							</div>
+{%-		if is_granted( 'ROLE_USER' ) == false %}
+							<div class="step_cont">
+								<p class="step_step">{{ step }}{% set step = step + 1 %}</p>
+								<p class="step_text">お客様<br class="hide_tb_pc">情報</p>
+							</div>
+{%-		endif %}
+							<div class="step_cont">
+								<p class="step_step">{{ step }}{% set step = step + 1 %}</p>
+								<p class="step_text">ご注文<br class="hide_tb_pc">手続き</p>
+							</div>
+							<div class="step_cont">
+								<p class="step_step">{{ step }}{% set step = step + 1 %}</p>
+								<p class="step_text">ご注文<br class="hide_tb_pc">確認</p>
+							</div>
+							<div class="step_cont">
+								<p class="step_step">{{ step }}{% set step = step + 1 %}</p>
+								<p class="step_text">完了</p>
+							</div>
+						</div>
+					</div>
+					<div class="box">
+						<div class="part">
+							<form id="ec_{{ DIRCODE }}_{{ PAGECODE }}_form" method="post" action="{{ url( 'shopping_nonmember' ) }}" class="cont">
+								{{ form_widget( form._token ) }}
+								<div class="form_input_set">
+									<div class="form_fieldset">
+										<div class="form_legend">
+											<p>お名前<span class="must">＊</span></p>
+										</div>
+										<div class="form_input ec_input_name_wrap">
+											<p{{ has_errors( form.name.name01, form.name.name02 ) ? ' class="error"'}}>{{ form_widget( form.name.name01, { 'attr': { 'placeholder': '姓' }} ) }}{{ form_widget( form.name.name02, { 'attr': { 'placeholder': '名' }} ) }}</p>
+											{{- form_errors( form.name.name01 ) }}
+											{{- form_errors( form.name.name02 ) }}
+										</div>
+									</div>
+									<div class="form_fieldset">
+										<div class="form_legend">
+											<p>お名前（カナ）<span class="must">＊</span></p>
+										</div>
+										<div class="form_input ec_input_name_wrap">
+											<p{{ has_errors( form.kana.kana01, form.kana.kana02 ) ? ' class="error"'}}>{{ form_widget( form.kana.kana01, { 'attr': { 'placeholder': 'セイ' }} ) }}{{ form_widget( form.kana.kana02, { 'attr': { 'placeholder': 'メイ' }} ) }}</p>
+											{{- form_errors( form.kana.kana01 ) }}
+											{{- form_errors( form.kana.kana02 ) }}
+										</div>
+									</div>
+									<div class="form_fieldset">
+										<div class="form_legend">
+											<p>会社名<span class="must">＊</span></p>
+										</div>
+										<div class="form_input">
+											<p{{ has_errors( form.company_name ) ? ' class="error"'}}>{{ form_widget( form.company_name ) }}</p>
+											{{- form_errors( form.company_name ) }}
+										</div>
+									</div>
+									<div class="form_fieldset">
+										<div class="form_legend">
+											<p>住所<span class="must">＊</span></p>
+										</div>
+										<div class="form_input ec_input_address_wrap">
+											<p class="v_zip{{ has_errors( form.postal_code ) ? 'error'}}">〒{{ form_widget( form.postal_code, { 'attr': { 'data-handle': 'zip' }} ) }}</p>
+											{{- form_errors( form.postal_code ) }}
+											<p class="v_pref{{ has_errors( form.address.pref ) ? 'error'}}">{{ form_widget( form.address.pref, { 'attr': { 'data-target': 'pref' }} ) }}</p>
+											{{- form_errors( form.address.pref ) }}
+											<p{{ has_errors( form.address.addr01 ) ? ' class="error"'}}>{{ form_widget( form.address.addr01, { 'attr': { 'placeholder': '市区町村名', 'data-target': 'address01' }} ) }}</p>
+											{{- form_errors( form.address.addr01 ) }}
+											<p{{ has_errors( form.address.addr02 ) ? ' class="error"'}}>{{ form_widget( form.address.addr02,  { 'attr': { 'placeholder': '番地・ビル名' }} ) }}</p>
+											{{- form_errors( form.address.addr02 ) }}
+										</div>
+									</div>
+									<div class="form_fieldset">
+										<div class="form_legend">
+											<p>電話番号<span class="must">＊</span></p>
+										</div>
+										<div class="form_input">
+											<p{{ has_errors( form.phone_number ) ? ' class="error"'}}>{{ form_widget( form.phone_number ) }}</p>
+											{{- form_errors( form.phone_number ) }}
+										</div>
+									</div>
+									<div class="form_fieldset">
+										<div class="form_legend">
+											<p>メールアドレス<span class="must">＊</span></p>
+										</div>
+										<div class="form_input">
+											<p{{ has_errors( form.email.first ) ? ' class="error"' }}>{{ form_widget( form.email.first, { 'attr': { 'placeholder': '例：xxx@example.com' }} ) }}</p>
+											{{- form_errors( form.email.first ) }}
+											<p class="{{ has_errors( form.email.second ) ? 'error' }}">{{ form_widget( form.email.second, { 'attr': { 'placeholder': '確認のためもう一度入力してください' }} ) }}</p>
+											{{- form_errors( form.email.second ) }}
+										</div>
+									</div>
+								</div>
+								<div class="form_submit_set">
+									<div class="form_buttons btn_wrap center">
+										<button type="submit" class="submit_send button bc_strong"><span>次へ</span></button>
+										<a href="{{ url( 'cart' ) }}" class="button"><span>戻る</span></a>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+{%	endblock %}

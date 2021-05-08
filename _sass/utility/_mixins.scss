@@ -1,0 +1,188 @@
+@charset "utf-8";
+
+/**======================================
+	mixins
+======================================**/
+
+/* cont_in_wrap */
+
+@mixin cont_in_wrap {
+	@include mq(all) {
+		position: relative;
+		margin-right: auto;
+		margin-left: auto;
+		width: 90%;
+		max-width: $max_pc_width;
+	}
+}
+
+/* icomoon */
+
+@mixin icomoon($type, $content, $size, $left_right: '', $left_right_position: 0, $color: '', $before_after: '&::before') {
+	@if $left_right_position == '' {
+		$left_right_position: 0;
+	}
+	position: relative;
+	$padding: $left_right_position + $size + 10px;
+	@if $left_right == left and $type == 'block' {
+		padding-left: $padding;
+	} @else if $left_right == right and $type == 'block' {
+		padding-right: $padding;
+	}
+	#{ $before_after } {
+		content: $content;
+		width: $size;
+		height: $size;
+		font-size: $size;
+		font-family: font(icomoon);
+		line-height: 1;
+		@if $color != '' {
+			color: $color;
+		}
+		@if $type== 'inlineblock' {
+			display: inline-block;
+		} @else if $type== 'inline' {
+			display: inline;
+		} @else if $type== 'block' or $type== 'self' {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			display: block;
+			margin: auto;
+			text-align: center;
+			@if $type== 'self' {
+				right: 0;
+				left: 0;
+			} @else if $type == 'block' and $left_right == left {
+				left: $left_right_position;
+			} @else if $type == 'block' and $left_right == right {
+				right: $left_right_position;
+			}
+		}
+	}
+}
+
+/* fontawesome */
+
+@mixin fontawesome($content: '\f105', $size: 22px, $left_right: '', $left_right_position: '', $type: 'block', $brand: 'pro', $before_after: '&::before') {
+	position: relative;
+	@if $left_right == left and $type == 'block' {
+		padding-left: $size + 10px;
+	} @else if $left_right == right and $type == 'block' {
+		padding-right: $size + 10px;
+	}
+	#{ $before_after } {
+		content: $content;
+		width: $size;
+		height: $size;
+		font-size: $size;
+		@if $brand== 'brand' {
+			font-family: 'Font Awesome 5 Brands';
+		} @else {
+			font-family: 'Font Awesome 5 Pro';
+		}
+		line-height: $size;
+		@if $type== 'inlineblock' {
+			display: inline-block;
+		} @else if $type== 'inline' {
+			display: inline;
+		} @else if $type== 'self' {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			display: block;
+			text-align: center;
+			transform: translate($size / 2 * -1, $size / 2 * -1);
+		} @else {
+			position: absolute;
+			top: 50%;
+			display: block;
+			text-align: center;
+			transform: translateY($size / 2 * -1);
+		}
+		@if $left_right== 'left' {
+			left: $left_right_position;
+		} @else if $left_right== 'right' {
+			right: $left_right_position;
+		}
+	}
+}
+
+/* fuchidori_text */
+
+@mixin fuchidori_text($fuchidori_color: '#000', $border_width: 2px) {
+	// 1px || 2px
+	@if $border_width== '1px' {
+		text-shadow: $fuchidori_color 1px 1px 0, $fuchidori_color -1px -1px 0, $fuchidori_color -1px 1px 0, $fuchidori_color 1px -1px 0, $fuchidori_color 0px 1px 0, $fuchidori_color 0-1px 0, $fuchidori_color -1px 0 0, $fuchidori_color 1px 0 0;
+	} @else {
+		text-shadow: $fuchidori_color 2px 0px, $fuchidori_color -2px 0px, $fuchidori_color 0px -2px, $fuchidori_color 0px 2px, $fuchidori_color 2px 2px, $fuchidori_color -2px 2px, $fuchidori_color 2px -2px, $fuchidori_color -2px -2px, $fuchidori_color 1px 2px, $fuchidori_color -1px 2px, $fuchidori_color 1px -2px, $fuchidori_color -1px -2px, $fuchidori_color 2px 1px, $fuchidori_color -2px 1px, $fuchidori_color 2px -1px, $fuchidori_color -2px -1px;
+	}
+}
+
+/* mq */
+
+// prettier-ignore
+$media_query: (
+	_sp: 'screen and (max-width: ' + (nth($breakpoint, 1) - 1) + 'px)',
+	tb_: 'print, screen and (min-width: ' + nth($breakpoint, 1) + 'px)',
+	tb: 'screen and (min-width: ' + nth($breakpoint, 1) + 'px) and (max-width: ' + ( nth($breakpoint, 2) - 1 ) + 'px)',
+	_tb: 'screen and (max-width: ' + ( nth($breakpoint, 2) - 1 ) + 'px)',
+	pc_: 'print, screen and (min-width: ' + nth($breakpoint, 2) + 'px)',
+	lg_: 'screen and (min-width: ' + $max_pc_width + 'px)',
+	ie: 'screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none), print and (-ms-high-contrast: active), print and (-ms-high-contrast: none)'
+) !default;
+
+@mixin mq($media: all) {
+	@if $media == 'all' {
+		& {
+			@content;
+		}
+	} @else {
+		@media #{ map-get($media_query, $media) } {
+			@content;
+		}
+	}
+}
+
+// メディアクエリpx指定（XXpx以上,XXpx以下）
+@mixin mq_min_max($minwidth: 0, $maxwidth: 0) {
+	$print: '';
+	//第一引数を0以外の指定され方をした場合に0扱いにする
+	@if $minwidth == null or $minwidth == '' or not $minwidth {
+		$minwidth: 0;
+	}
+	//minがブレークポイントより大きければprintを付与する
+	@if $minwidth and $minwidth >= nth($breakpoint, 1) {
+		$print: 'print , ';
+	}
+	//minよりmaxの方が小さければ、maxを0扱いにする
+	@if $minwidth >= $maxwidth {
+		$maxwidth: 0;
+	}
+	//minとmax両方1以上の場合
+	@if $minwidth > 0 and $maxwidth > 0 {
+		@media #{$print}screen and (min-width: #{$minwidth}px) and (max-width: #{$maxwidth}px) {
+			@content;
+		}
+		//minのみ0の場合
+	} @else if $minwidth == 0 and $maxwidth > 0 {
+		@media screen and (max-width: #{$maxwidth}px) {
+			@content;
+		}
+		//manのみ0の場合
+	} @else if $minwidth > 0 and $maxwidth == 0 {
+		@media #{$print}screen and (min-width: #{$minwidth}px) {
+			@content;
+		}
+		//どれにも該当しない場合
+	} @else {
+		@content;
+	}
+}
+
+// IE10/11のみに効かせるメディアクエリ
+@mixin forie {
+	@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+		@content;
+	}
+}

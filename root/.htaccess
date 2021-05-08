@@ -1,0 +1,47 @@
+# wp-base
+
+	RewriteEngine On
+	RewriteBase /ct18/
+
+# ssl
+
+	RewriteCond %{HTTPS} !on
+	RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# wp-replace : /index.php > /
+
+	RewriteRule ^index\.php$ - [L]
+
+# wepp
+
+	RewriteCond %{HTTP_ACCEPT} image/webp
+	RewriteCond %{SCRIPT_FILENAME}.webp -f
+	RewriteRule \.(jpe?g|png|gif)$ %{SCRIPT_FILENAME}.webp [T=image/webp]
+
+# wp-case : [wp-admin] + [^/]
+
+	RewriteRule ^([_0-9a-zA-Z-]+/)?wp-admin$ $1wp-admin/ [R=301,L]
+	RewriteRule ^wp-admin/$ wp/wp-admin/ [R=301,L]
+
+# wp-case : file_exist
+
+	RewriteCond %{REQUEST_FILENAME} -f [OR]
+	RewriteCond %{REQUEST_FILENAME} -d
+	RewriteRule ^ - [L]
+
+# oo-redirect
+
+	# with_query
+	RewriteCond %{QUERY_STRING} (^|&)h=777(&|$)
+	RewriteRule ^xxx/aaa001\.php$ yyy/zzz/? [R=301,L]
+	# normal
+	RewriteRule ^item/test142\.php$ item/redirectto/ [R=301,L]
+
+# wp-case : for multisite
+
+	RewriteRule ^([_0-9a-zA-Z-]+/)?(wp-(content|admin|includes).*) wp/$2 [L]
+	RewriteRule ^([_0-9a-zA-Z-]+/)?(.*\.php)$ wp/$2 [L]
+
+# wp-redirect : [*] > index.php
+
+	RewriteRule . index.php [L]

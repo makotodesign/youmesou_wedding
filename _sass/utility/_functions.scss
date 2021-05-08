@@ -1,0 +1,72 @@
+@charset "utf-8";
+
+/**======================================
+	functions
+======================================**/
+
+/*
+	js でメディアクエリを完全検知できたときに
+	height_header 撤廃する
+*/
+
+/*--------------------------------------
+	functions : map-get
+---------------------------------------*/
+
+@function headings($from: 2, $to: 5) {
+	@if $from == $to {
+		@return 'h#{$from}';
+	} @else {
+		@return 'h#{$from},' + headings($from + 1, $to);
+	}
+}
+
+/*--------------------------------------
+	functions : map-get
+---------------------------------------*/
+
+/* map-get - global */
+
+@function color($k, $kk) {
+	@return map-get(map-get($color, $k), $kk);
+}
+
+@function radius($k) {
+	@return map-get($radius, $k);
+}
+
+@function font($k) {
+	@return unquote(map-get($font, $k));
+}
+
+@function icom($k) {
+	@return map-get($icomoon, $k);
+}
+
+/* map-get - for base */
+
+@function height_header($k, $kk) {
+	@return map-get(map-get($height_header, $k), $kk);
+}
+
+@function clm_margin($k) {
+	@return map-get($clm_margin, $k);
+}
+
+@function image_texts($k, $kk) {
+	@return map-get(map-get($image_texts, $k), $kk);
+}
+
+@function snap_prop($k, $kk) {
+	@return map-get(map-get($snap_prop, $k), $kk);
+}
+
+@function button_width($k) {
+	@return map-get($button_width, $k);
+}
+
+/* map-get - for ec */
+
+@function color_ec($k) {
+	@return map-get($color_ec, $k);
+}

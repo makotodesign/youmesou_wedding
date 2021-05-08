@@ -10,7 +10,6 @@
 ##	header_mod
 
 	/* ec */
-	// ec が不要な場合は削除
 	$ec_login_class = 'ec_not_loggedin';
 	if( function_exists( 'ec_oo_is_loggedin' ) && ec_oo_is_loggedin() ) {
 		$ec_login_class = 'ec_loggedin';
@@ -42,7 +41,7 @@
 			<div class="header_topnav_wrap hide_sp_tb">
 				<div class="header_topnav">
 <?php
-	// ec が不要な場合は削除
+	/* ec */
 ?>
 					<ul class="ecnav_list">
 						<li><a href="/ec/mypage/login" id="topnav_ec_login" class="v_ec_login <?= $ec_login_class ?>"><span>ログイン</span></a></li>

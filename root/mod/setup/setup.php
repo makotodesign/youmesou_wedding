@@ -53,7 +53,7 @@
 ##	setting
 
 	// page_setting
-	$HEAD->pagename               = $PAGENAME;
+	$HEAD->pagename               = $PAGENAME ?? '';
 	/* jquery */
 	$HEAD->jquery                .= "\t" . '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>' . "\n";
 	/* preset_js */

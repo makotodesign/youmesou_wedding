@@ -119,9 +119,14 @@ body {
 							@include icomoon('block', icom(user), 20px, 'left', 0);
 						}
 					}
-					> a.v_ec_cart {
+					> a.v_ec_favorite {
 						> span {
-							@include icomoon('block', icom(shopping-cart), 20px, 'left', 0);
+							@include icomoon('block', icom(heart), 20px, 'left', 0);
+						}
+					}
+					> a.v_ec_mypage {
+						> span {
+							@include icomoon('block', icom(user), 20px, 'left', 0);
 						}
 					}
 					> a.v_ec_cart {
@@ -143,6 +148,7 @@ body {
 					> a.v_ec_login.ec_loggedin,
 					> a.v_ec_logout.ec_not_loggedin,
 					> a.v_ec_register.ec_loggedin,
+					> a.v_ec_favorite.ec_not_loggedin,
 					> a.v_ec_mypage.ec_not_loggedin {
 						display: none;
 					}

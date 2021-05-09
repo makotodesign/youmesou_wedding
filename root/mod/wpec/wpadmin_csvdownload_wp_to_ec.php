@@ -71,7 +71,7 @@
 			$arr[ '販売価格' ]                               = get_field( 'productsec_price', $this_post_id );
 			$temp_productsec_code                            = get_field( 'productsec_code', $this_post_id );
 			$arr[ '商品ID' ]                                 = ec_oo_get_product_data( 'id', $temp_productsec_code ); // eccube 上書き用 新規の場合は空白
-			if( $arr[ '商品ID' ] === 'ec_error' ) {
+			if( $arr[ '商品ID' ] === 'error' ) {
 				$arr[ '商品ID' ]                             = '';
 			}
 			$arr[ '入力経緯' ]                                = 'WordPress CSV' . date_i18n( 'Y-m-d H:i:s' ); // eccube 上書き用 新規の場合は空白

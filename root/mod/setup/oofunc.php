@@ -54,8 +54,8 @@
 	 * date, date_i18n 自動選定
 	 * date_oo から ct18で名称変更
 	 */
-	function oo_date( $format, $timestamp = 'no_arg' ) {
-		if( $timestamp === 'no_arg' ) {
+	function oo_date( $format, $timestamp = true ) {
+		if( $timestamp ) {
 			if( function_exists( 'date_i18n' ) ) {
 				return date_i18n( $format );
 			} else {

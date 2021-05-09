@@ -372,5 +372,17 @@ class calendar {
 		}
 		return $tag;
 	}
+
+	private static function oo_date( $format, $timestamp = true ) {
+		if( $timestamp ) {
+			if( function_exists( 'date_i18n' ) ) {
+				return date_i18n( $format );
+			} else {
+				return date( $format );
+			}
+		} else {
+			return date( $format, $timestamp );
+		}
+	}
 }
 

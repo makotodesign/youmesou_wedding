@@ -193,7 +193,11 @@ class OOHEAD {
 				$temp_prefix = home_url();
 			}
 			$output = $temp_prefix . $fpath_no_prefix;
-			$date_query = date( 'ymds', filemtime( ROOTREALPATH . $fpath_no_prefix ) );
+			if( function_exists( 'date_i18n' ) ) {
+				$date_query = date_i18n( 'ymds', filemtime( ROOTREALPATH . $fpath_no_prefix ) );
+			} else {
+				$date_query = date( 'ymds', filemtime( ROOTREALPATH . $fpath_no_prefix ) );
+			}
 			$output .= '?' . $date_query;
 		}
 		return $output;

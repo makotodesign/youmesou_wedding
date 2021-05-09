@@ -27,7 +27,7 @@ class OOBASE {
 	 */
 	public static function sanitize_server_request( $sanitized ) {
 		if( is_array( $sanitized) ) {
-			return array_map( [ 'base', 'sanitize_server_request' ], $sanitized);
+			return array_map( [ 'oobase', 'sanitize_server_request' ], $sanitized );
 		}
 		// nullバイト除去
 		$sanitized = str_replace( "\0", '', $sanitized );

@@ -41,7 +41,7 @@
 		$tag .= $tb . "\t\t\t\t" . '</tr>' . "\n";
 		$tag .= $tb . "\t\t\t\t" . '<tr>' . "\n";
 		$tag .= $tb . "\t\t\t\t\t" . '<td>' . "\n";
-		$tag .= $tb . "\t\t\t\t\t\t" . '<p><a href="' . home_url() . '/ec/ec-admin/product/product_csv_upload' . '" target="_blank">ECCUBE商品一括登録画面はこちら</a></p>' . "\n";
+		$tag .= $tb . "\t\t\t\t\t\t" . '<p><a href="' . home_url() . '/ec/ec_admin/product/product_csv_upload' . '" target="_blank">ECCUBE商品一括登録画面はこちら</a></p>' . "\n";
 		$tag .= $tb . "\t\t\t\t\t" . '</td>' . "\n";
 		$tag .= $tb . "\t\t\t\t" . '</tr>' . "\n";
 		$tag .= $tb . "\t\t\t" . '</tbody>' . "\n";

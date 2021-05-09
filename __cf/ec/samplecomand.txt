@@ -1,0 +1,99 @@
+eccube
+
+ssh oldoffice@oldoffice.sakura.ne.jp
+
+	yn988rhwww
+
+■ install
+
+## ディレクトリ表示
+ls -al
+	ls
+
+## 現在地確認
+pwd
+
+cd www/official01
+
+## コンポーザーインストール
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php -r "if (hash_file('sha384', 'composer-setup.php') === '756890a4488ce9024fc62c56153228907f1545c228516cbf63f885e036d37e9a59d27d63f46af1d4d07ee0f76181c7d3') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+
+## composer バージョン
+php composer.phar selfupdate --1
+
+## eccube インストール
+php composer.phar create-project --no-scripts ec-cube/ec-cube ec "4.0.x-dev" --keep-vcs
+
+cd ec
+
+bin/console eccube:install
+
+## Database Url
+mysql://oldoffice:letsgo3biki@mysql57.oldoffice.sakura.ne.jp/oldoffice_ct18
+
+## Maler Url
+encryption=tls&username=ec_admin@oldoffice.sakura.ne.jp&password=Old2000old
+
+## Auth Magic
+XXXXXXXXXXXXXXXXXXXXX
+XYZ123XYZ123XYZ123XYZ
+
+[ memo ] eccube インストール後のid password
+admin
+password
+
+## 通信切断
+exit
+
+■ Entity 拡張
+
+	* Trait
+
+ssh
+
+pwd
+ls
+cd www/official01/ec
+
+	cd www/org01/ct18/ec
+
+## trait の実装ができたら、 bin/console eccube:generate:proxies コマンドで Proxy クラスを生成します。
+
+bin/console eccube:generate:proxies
+
+## 作成した Proxy クラスを確実に認識できるようキャッシュを削除
+bin/console cache:clear --no-warmup
+
+## 実行する SQL を確認
+bin/console doctrine:schema:update --dump-sql
+
+## SQL を実行
+bin/console doctrine:schema:update --dump-sql --force
+
+
+---------------
+
+
+// db
+
+oldoffice_ct17_n_eccube
+mysql57.oldoffice.sakura.ne.jp
+oldoffice
+letsgo3biki
+
+// ssh
+
+host	oldoffice.sakura.ne.jp
+id	oldoffice
+pass	yn988rhwww
+dir	www
+
+
+---------------
+
+tar.gz
+
+tar -zcvf eccube_template_oo.tar.gz app html

@@ -10,6 +10,7 @@
 
 		ssh [loginid]@[sshhost.sakura.ne.jp]
 		cd www/[official01]/ec
+		bin/console eccube:generate:proxies
 		bin/console cache:clear --no-warmup
 		bin/console doctrine:schema:update --dump-sql
 		bin/console doctrine:schema:update --dump-sql --force

@@ -47,6 +47,7 @@
 						<li><a href="/ec/mypage/login" id="topnav_ec_login" class="v_ec_login <?= $ec_login_class ?>"><span>ログイン</span></a></li>
 						<li><a href="/ec/entry" id="topnav_ec_register" class="v_ec_register <?= $ec_login_class ?>"><span>会員登録</span></a></li>
 						<li><a href="/ec/logout" id="topnav_ec_logout" class="v_ec_logout <?= $ec_login_class ?>"><span>ログアウト</span></a></li>
+						<li><a href="/ec/favorite" id="topnav_ec_favorite" class="v_ec_favorite <?= $ec_login_class ?>"><span>お気に入り</span></a></li>
 						<li><a href="/ec/mypage/" id="topnav_ec_mypage" class="v_ec_mypage <?= $ec_login_class ?>"><span>MYページ</span></a></li>
 						<li class="ecnav_cart_wrap">
 							<a href="/ec/" id="topnav_ec_cart" class="v_ec_cart <?= $ec_cart_class ?>"><span>カート（<em id="carts_total_quantity" class="carts_total_quantity"><?= $ec_cart_quantity ?></em>）</span></a>

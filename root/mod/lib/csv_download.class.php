@@ -43,7 +43,7 @@ class csv_download {
 		if( $field_line_from_key && is_array( $arr[ 0 ] ) ) {
 			$field_names = array_keys( $arr[ 0 ] );
 			$data = self::make_csv_line( $field_names );
-			$converted_field_names = mb_convert_encoding( $data, self::convert_encoding_to, 'UTF-8' );
+			$converted_field_names = mb_convert_encoding( $data, $this->convert_encoding_to, 'UTF-8' );
 			echo $converted_field_names;
 		}
 		foreach ( $arr as $v ) {

@@ -4,6 +4,7 @@ module.exports = {
 		"stylelint-config-recess-order"
 	],
 	rules: {
+		'color-hex-length': 'short',
 		'prettier/prettier': [
 			true,
 			{

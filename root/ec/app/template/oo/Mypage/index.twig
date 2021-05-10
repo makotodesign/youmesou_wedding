@@ -57,12 +57,16 @@
 							</div>
 							<div class="cont products_item">
 {%				for OrderItem in Order.MergedProductOrderItems %}
+{% dump OrderItem.Product %}
+{% dump OrderItem.Product.id %}
+{% dump oo_get_wp_pic_main_path_by_id( OrderItem.Product.id, 'thumbnail' ) %}
+{% dump oo_get_wp_permalink_by_id( OrderItem.Product.id ) %}
 								<div class="image_texts ec_products_list">
 									<div class="image_item">
 {%					if OrderItem.Product is null %}
 										<p class="pic noimage">noimage</p>
-{%					elseif oo_get_wp_pic_main_path( OrderItem.product_code ) %}
-										<p class="pic"><img src="{{ oo_get_wp_pic_main_path( OrderItem.product_code, 'thumbnail' ) }}"></p>
+{%					elseif oo_get_wp_pic_main_path_by_id( OrderItem.Product.id, 'thumbnail' ) %}
+										<p class="pic"><img src="{{ oo_get_wp_pic_main_path_by_id( OrderItem.Product.id, 'thumbnail' ) }}"></p>
 {%					else %}
 										<p class="pic"><img src="{{ asset( OrderItem.Product.MainListImage|no_image_product, 'save_image' ) }}"></p>
 {%					endif %}

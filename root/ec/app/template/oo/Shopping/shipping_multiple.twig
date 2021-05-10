@@ -55,13 +55,12 @@
 					<form id="ec_{{ DIRCODE }}_{{ PAGECODE }}_form" method="post" action="{{ url( 'shopping_shipping_multiple' ) }}" class="box">
 						{{ form_widget( form._token ) }}
 {%		for orderItem in OrderItems %}
-{% dump orderItem %}
 {%			set i = loop.index0 %}
 {%			set itemvalue = 0 %}
 						<div id="multiple_list_{{ i }}" class="part">
 							<div class="cont image_texts ec_products_list">
 								<div class="image_item">
-{%					if( oo_get_wp_pic_main_path( orderItem.product_code ) ) %}
+{%					if( oo_get_wp_pic_main_path_by_id( orderItem.Product.id, 'thumbnail' ) ) %}
 									<p class="pic"><img src="{{ oo_get_wp_pic_main_path( orderItem.product_code, 'thumbnail' ) }}"></p>
 {%					else %}
 									<p class="pic"><img src="{{ asset( orderItem.product.MainListImage|no_image_product, 'save_image' ) }}"></p>

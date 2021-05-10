@@ -69,6 +69,9 @@ class EccubeExtension extends AbstractExtension
 	/**
 	 * Wpからpermalinkを取得（product_id使用）
 	 *
+	 * wp_products_code が取得できない場合に使用
+	 * mypage, mypage/history, shopping/shipping_multiple
+	 *
 	 * @return string
 	 */
 	public function ooGetWpPermalinkById( $productId ) {
@@ -78,9 +81,6 @@ class EccubeExtension extends AbstractExtension
 
 	/**
 	 * head.class fpath_add_date_query( ファイル更新日パラメータ付与 )
-	 *
-	 * wp_products_code が取得できない場合に使用
-	 * mypage, mypage/history, shopping/shipping_multiple
 	 *
 	 * @return string
 	 */

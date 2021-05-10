@@ -49,10 +49,13 @@
 	@include mq(pc_) {
 		margin-bottom: 20px;
 	}
+}
+.cont {
 	> *:last-child {
 		margin-bottom: 0;
 	}
 }
+
 // --edit
 .area {
 	> .box {
@@ -258,7 +261,6 @@
 		color: color(text, heading);
 		@include mq(tb_) {
 			font-size: 2.8rem;
-			line-height: 1.4;
 		}
 		// --edit
 	}
@@ -280,9 +282,7 @@
 			// must--
 			padding-bottom: 10px;
 			font-size: 2.2rem;
-			font-weight: bold;
 			// --must
-			line-height: 1.4;
 		}
 	}
 	&04 {
@@ -293,7 +293,6 @@
 		@include mq(tb_) {
 			margin-bottom: 20px;
 			font-size: 2rem;
-			line-height: 1.4;
 		}
 	}
 	&05 {
@@ -304,7 +303,6 @@
 		@include mq(tb_) {
 			margin-bottom: 15px;
 			font-size: 1.5rem;
-			line-height: 1.4;
 		}
 	}
 }
@@ -352,6 +350,11 @@ p.text {
 		word-wrap: break-word;
 	}
 }
+.texts p:last-child,
+p.text:last-child {
+	margin-bottom: 0;
+}
+
 // list
 .texts ul,
 .texts ol,
@@ -440,8 +443,8 @@ ul.ul_line,
 	}
 }
 
-ul.ul_title_col,
-.texts ul.ul_title_col {
+ul.ul_title,
+.texts ul.ul_title {
 	> li:not(:last-child) {
 		margin-bottom: 10px;
 	}
@@ -482,7 +485,7 @@ $ul_title_breaks: 'all', 'tb', 'pc';
 		$class: '_#{$v}';
 	}
 	%ul_title#{$class} {
-		@extend ul.ul_title_col;
+		@extend ul.ul_title;
 		> li:not(:last-child) {
 			@include mq($mq) {
 				margin-bottom: 4px;
@@ -835,6 +838,9 @@ strong,
 			transform: translateY(-14px / 2 - 5px / 2);
 		}
 	}
+	> *:last-child {
+		margin-bottom: 0;
+	}
 }
 
 /* search_wrap */
@@ -1128,56 +1134,20 @@ $snap_prop: (
 			}
 		}
 	}
-	.clm2,
-	.clm2_sp_tb,
-	.clm2_sp {
-		> .clm_item {
-			width: calc(50% - #{clm_margin(_sp) / 2});
-		}
-		> .clm_item:nth-of-type(2n) {
-			margin-right: 0 !important;
-		}
-		> .clm_item:not(:nth-of-type(n + 3)) {
-			margin-top: 0;
-		}
-	}
-	.clm3,
-	.clm3_sp_tb,
-	.clm3_sp {
-		> .clm_item {
-			width: calc(33.3% - #{clm_margin(_sp) * 2 / 3});
-		}
-		> .clm_item:nth-of-type(3n) {
-			margin-right: 0 !important;
-		}
-		> .clm_item:not(:nth-of-type(n + 4)) {
-			margin-top: 0;
-		}
-	}
-	.clm4,
-	.clm4_sp_tb,
-	.clm4_sp {
-		> .clm_item {
-			width: calc(25% - #{clm_margin(_sp) * 3 / 4});
-		}
-		> .clm_item:nth-of-type(4n) {
-			margin-right: 0 !important;
-		}
-		> .clm_item:not(:nth-of-type(n + 5)) {
-			margin-top: 0;
-		}
-	}
-	.clm5,
-	.clm5_sp_tb,
-	.clm5_sp {
-		> .clm_item {
-			width: calc(20% - #{clm_margin(_sp) * 4 / 5});
-		}
-		> .clm_item:nth-of-type(5n) {
-			margin-right: 0 !important;
-		}
-		> .clm_item:not(:nth-of-type(n + 6)) {
-			margin-top: 0;
+	$i: '';
+	@for $i from 2 through 5 {
+		.clm#{$i},
+		.clm#{$i}_sp_tb,
+		.clm#{$i}_sp {
+			> .clm_item {
+				width: calc(#{100% / $i} - #{clm_margin(_sp) * ($i - 1) / $i});
+			}
+			> .clm_item:nth-of-type(#{$i}n) {
+				margin-right: 0 !important;
+			}
+			> .clm_item:not(:nth-of-type(n + #{$i + 1})) {
+				margin-top: 0;
+			}
 		}
 	}
 	/* heading in flex */
@@ -1409,60 +1379,21 @@ $snap_prop: (
 			}
 		}
 	}
-	.clm2,
-	.clm2_sp_tb,
-	.clm2_tb_pc,
-	.clm2_tb {
-		> .clm_item {
-			width: calc(50% - #{clm_margin(tb) / 2});
-		}
-		> .clm_item:nth-of-type(2n) {
-			margin-right: 0 !important;
-		}
-		> .clm_item:not(:nth-of-type(n + 3)) {
-			margin-top: 0;
-		}
-	}
-	.clm3,
-	.clm3_sp_tb,
-	.clm3_tb_pc,
-	.clm3_tb {
-		> .clm_item {
-			width: calc(33.3% - #{clm_margin(tb) * 2 / 3});
-		}
-		> .clm_item:nth-of-type(3n) {
-			margin-right: 0 !important;
-		}
-		> .clm_item:not(:nth-of-type(n + 4)) {
-			margin-top: 0;
-		}
-	}
-	.clm4,
-	.clm4_sp_tb,
-	.clm4_tb_pc,
-	.clm4_tb {
-		> .clm_item {
-			width: calc(25% - #{clm_margin(tb) * 3 / 4});
-		}
-		> .clm_item:nth-of-type(4n) {
-			margin-right: 0 !important;
-		}
-		> .clm_item:not(:nth-of-type(n + 5)) {
-			margin-top: 0;
-		}
-	}
-	.clm5,
-	.clm5_sp_tb,
-	.clm5_tb_pc,
-	.clm5_tb {
-		> .clm_item {
-			width: calc(20% - #{clm_margin(tb) * 4 / 5});
-		}
-		> .clm_item:nth-of-type(5n) {
-			margin-right: 0 !important;
-		}
-		> .clm_item:not(:nth-of-type(n + 6)) {
-			margin-top: 0;
+	$i: '';
+	@for $i from 2 through 5 {
+		.clm#{$i},
+		.clm#{$i}_sp_tb,
+		.clm#{$i}_tb_pc,
+		.clm#{$i}_tb {
+			> .clm_item {
+				width: calc(#{100% / $i} - #{clm_margin(tb) * ($i - 1) / $i});
+			}
+			> .clm_item:nth-of-type(#{$i}n) {
+				margin-right: 0 !important;
+			}
+			> .clm_item:not(:nth-of-type(n + #{$i + 1})) {
+				margin-top: 0;
+			}
 		}
 	}
 	// heading in flex
@@ -1641,58 +1572,23 @@ $snap_prop: (
 			}
 		}
 	}
-	.clm2,
-	.clm2_tb_pc,
-	.clm2_pc {
-		> .clm_item {
-			width: calc(50% - #{clm_margin(pc_)} / 2);
-		}
-		> .clm_item:nth-of-type(2n) {
-			margin-right: 0 !important;
-		}
-		> .clm_item:not(:nth-of-type(n + 3)) {
-			margin-top: 0;
-		}
-	}
-	.clm3,
-	.clm3_tb_pc,
-	.clm3_pc {
-		> .clm_item {
-			width: calc(33.3% - #{clm_margin(pc_) * 2 / 3});
-		}
-		> .clm_item:nth-of-type(3n) {
-			margin-right: 0 !important;
-		}
-		> .clm_item:not(:nth-of-type(n + 4)) {
-			margin-top: 0;
+	$i: '';
+	@for $i from 2 through 5 {
+		.clm#{$i},
+		.clm#{$i}_tb_pc,
+		.clm#{$i}_pc {
+			> .clm_item {
+				width: calc(#{100% / $i} - #{clm_margin(pc_) * ($i - 1) / $i});
+			}
+			> .clm_item:nth-of-type(#{$i}n) {
+				margin-right: 0 !important;
+			}
+			> .clm_item:not(:nth-of-type(n + #{$i + 1})) {
+				margin-top: 0;
+			}
 		}
 	}
-	.clm4,
-	.clm4_tb_pc,
-	.clm4_pc {
-		> .clm_item {
-			width: calc(25% - #{clm_margin(pc_) * 3 / 4});
-		}
-		> .clm_item:nth-of-type(4n) {
-			margin-right: 0 !important;
-		}
-		> .clm_item:not(:nth-of-type(n + 5)) {
-			margin-top: 0;
-		}
-	}
-	.clm5,
-	.clm5_tb_pc,
-	.clm5_pc {
-		> .clm_item {
-			width: calc(20% - #{clm_margin(pc_) * 4 / 5});
-		}
-		> .clm_item:nth-of-type(5n) {
-			margin-right: 0 !important;
-		}
-		> .clm_item:not(:nth-of-type(n + 6)) {
-			margin-top: 0;
-		}
-	}
+
 	// heading in flex
 	.image_texts,
 	.image_texts_tb_pc,

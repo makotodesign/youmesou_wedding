@@ -320,16 +320,25 @@ button.button[disabled] {
 			position: absolute;
 			top: 0;
 			bottom: 0;
-			left: 8px;
+			left: 10px;
 			display: block;
 			margin: auto;
-			width: 22px;
 			height: 22px;
 			text-align: center;
 			font-size: 22px;
 			font-family: font(icomoon);
 			line-height: 1;
-			transition: all 0.5s;
+			transition: inherit;
+		}
+	}
+	%icon_inline_span {
+		&:before {
+			display: inline-block;
+			margin-right: 10px;
+			font-size: inherit;
+			font-family: font(icomoon);
+			line-height: 1;
+			transition: inherit;
 		}
 	}
 	&.icon_arrow {
@@ -337,7 +346,24 @@ button.button[disabled] {
 			@extend %icon_span;
 			&:before {
 				content: icom(angle-right);
-				font-weight: normal;
+			}
+		}
+	}
+	&.icon_arrow_right {
+		> * {
+			@extend %icon_span;
+			&:before {
+				content: icom(angle-right);
+				right: 8px;
+				left: auto;
+			}
+		}
+	}
+	&.icon_tel_inline {
+		> * {
+			@extend %icon_inline_span;
+			&:before {
+				content: icom(phone-alt);
 			}
 		}
 	}

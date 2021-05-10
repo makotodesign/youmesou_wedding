@@ -19,13 +19,15 @@ class EccubeExtension extends AbstractExtension
 {
 	public function getFunctions() {
 		return [
-			new TwigFunction( 'oo_get_wp_pic_main_path', [ $this, 'ooGetWpPicMainPath' ] ),
-			new TwigFunction( 'oo_get_wp_permalink',     [ $this, 'ooGetWpPermalink' ] ),
-			new TwigFunction( 'oo_fpath_add_date_query', [ $this, 'ooFpathAddDateQuery' ] ),
-			new TwigFunction( 'oo_google_fonts_preload', [ $this, 'ooGoogleFontsPreload' ] ),
-			new TwigFunction( 'oo_get_wp_parts_header',  [ $this, 'ooGetWpPartsHeader' ] ),
-			new TwigFunction( 'oo_get_wp_parts_footer',  [ $this, 'ooGetWpPartsFooter' ] ),
-			new TwigFunction( 'oo_get_wp_parts_footer',  [ $this, 'ooGetWpPartsFooter' ] ),
+			new TwigFunction( 'oo_get_wp_pic_main_path',       [ $this, 'ooGetWpPicMainPath' ] ),
+			new TwigFunction( 'oo_get_wp_permalink',           [ $this, 'ooGetWpPermalink' ] ),
+			new TwigFunction( 'oo_get_wp_pic_main_path_by_id', [ $this, 'ooGetWpPicMainPathById' ] ),
+			new TwigFunction( 'oo_get_wp_permalink_by_id',     [ $this, 'ooGetWpPermalinkById' ] ),
+			new TwigFunction( 'oo_fpath_add_date_query',       [ $this, 'ooFpathAddDateQuery' ] ),
+			new TwigFunction( 'oo_google_fonts_preload',       [ $this, 'ooGoogleFontsPreload' ] ),
+			new TwigFunction( 'oo_get_wp_parts_header',        [ $this, 'ooGetWpPartsHeader' ] ),
+			new TwigFunction( 'oo_get_wp_parts_footer',        [ $this, 'ooGetWpPartsFooter' ] ),
+			new TwigFunction( 'oo_get_wp_parts_footer',        [ $this, 'ooGetWpPartsFooter' ] ),
 			new TwigFunction( 'wp_site_url', 'site_url' ),
 			new TwigFunction( 'wp_home_url', 'home_url' )
 		];
@@ -49,6 +51,32 @@ class EccubeExtension extends AbstractExtension
 	public function ooGetWpPermalink( $wpProductCode ) {
 
 		return GetWpdb::productsPermalink( $wpProductCode );
+	}
+
+	/**
+	 * Wpから画像パスを取得（product_id使用）
+	 *
+	 * wp_products_code が取得できない場合に使用
+	 * mypage, mypage/history, shopping/shipping_multiple
+	 *
+	 * @return string
+	 */
+	public function ooGetWpPicMainPathById( $productId, $type = 'medium' ) {
+
+		return GetWpdb::productsPicMainByEccubeProductId( $productId, $type );
+	}
+
+	/**
+	 * Wpからpermalinkを取得（product_id使用）
+	 *
+	 * wp_products_code が取得できない場合に使用
+	 * mypage, mypage/history, shopping/shipping_multiple
+	 *
+	 * @return string
+	 */
+	public function ooGetWpPermalinkById( $productId ) {
+
+		return GetWpdb::productsPermalinkByEccubeProductId( $productId );
 	}
 
 	/**

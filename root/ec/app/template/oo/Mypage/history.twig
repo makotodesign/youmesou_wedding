@@ -63,20 +63,21 @@
 								<h5 class="heading05">お届け先 {% if Order.multiple %}( {{ loop.index }} ){% endif %}</h5>
 								<div class="ec_delivery_items">
 {%			for orderItem in shipping.productOrderItems %}
+{% dump orderItem %}
 									<div class="image_texts ec_products_list">
 										<div class="image_item">
 {%				if orderItem.product is null %}
 											<p class="pic noimage"><img src="{{ asset( ''|no_image_product, 'save_image' ) }}"></p>
-{%				elseif  oo_get_wp_pic_main_path( orderItem.product_code ) %}
-											<p class="pic"><img src="{{ oo_get_wp_pic_main_path( orderItem.product_code, 'thumbnail' ) }}"></p>
+{%				elseif  oo_get_wp_pic_main_path_by_id( orderItem.Product.id, 'thumbnail' ) %}
+											<p class="pic"><img src="{{ oo_get_wp_pic_main_path_by_id( orderItem.Product.id, 'thumbnail' ) }}"></p>
 {%				else %}
 											<p class="pic"><img src="{{ asset( orderItem.Product.MainListImage|no_image_product, 'save_image' ) }}"></p>
 {%				endif %}
 										</div>
 										<div class="texts_item">
 											<p>
-{%-				if orderItem.Product is not null and orderItem.Product.Status.id == constant( 'Eccube\\Entity\\Master\\ProductStatus::DISPLAY_SHOW' ) and oo_get_wp_permalink( orderItem.product_code ) -%}
-												<a href="{{ oo_get_wp_permalink( orderItem.product_code ) }}">{{ orderItem.productName }}</a>
+{%-				if orderItem.Product is not null and orderItem.Product.Status.id == constant( 'Eccube\\Entity\\Master\\ProductStatus::DISPLAY_SHOW' ) and oo_get_wp_permalink_by_id( orderItem.Product.id ) -%}
+												<a href="{{ oo_get_wp_permalink_by_id( orderItem.Product.id ) }}">{{ orderItem.productName }}</a>
 {%-				else -%}
 												{{ orderItem.productName }}
 {%- 			endif -%}

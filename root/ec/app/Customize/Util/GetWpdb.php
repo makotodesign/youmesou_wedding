@@ -34,9 +34,9 @@ class GetWpdb{
 		$sql = "SELECT
 				posts1.ID
 			FROM
-				$wpdb->posts AS posts1
-				LEFT JOIN $wpdb->postmeta AS postmeta1 ON ( posts1.ID = postmeta1.post_id AND postmeta1.meta_key = %s )
-				LEFT JOIN $wpdb->postmeta AS postmeta2 ON ( posts1.ID = postmeta2.post_id AND postmeta2.meta_key = %s )
+				{$wpdb->posts} AS posts1
+				LEFT JOIN {$wpdb->postmeta} AS postmeta1 ON ( posts1.ID = postmeta1.post_id AND postmeta1.meta_key = %s )
+				LEFT JOIN {$wpdb->postmeta} AS postmeta2 ON ( posts1.ID = postmeta2.post_id AND postmeta2.meta_key = %s )
 			WHERE
 				postmeta1.meta_value = %s
 		";
@@ -66,8 +66,8 @@ class GetWpdb{
 		$sql = "SELECT
 				posts1.ID
 			FROM
-				$wpdb->posts AS posts1
-				LEFT JOIN $wpdb->postmeta AS postmeta1 ON ( posts1.ID = postmeta1.post_id AND postmeta1.meta_key = %s )
+				{$wpdb->posts} AS posts1
+				LEFT JOIN {$wpdb->postmeta} AS postmeta1 ON ( posts1.ID = postmeta1.post_id AND postmeta1.meta_key = %s )
 			WHERE
 				postmeta1.meta_value = %s
 		";
@@ -79,6 +79,63 @@ class GetWpdb{
 
 		if( $wpPostId ) {
 			$res = get_permalink( $wpPostId );
+		}
+		return $res;
+	}
+
+	/**
+	 * oldoffice
+	 *
+	 * eccube product_id から wordpress products > pic_main を取得
+	 *
+	 */
+	public static function productsPicMainByEccubeProductId( $eccubeProductId, $type = 'medium' ){
+
+		global $wpdb;
+
+		$res = false;
+		$sql = "SELECT
+				wp_products_code
+			FROM
+				dtb_product
+			WHERE
+				id = %s
+		";
+		$sqlVal = [
+			$eccubeProductId
+		];
+		$wpProductCode = $wpdb->get_var( $wpdb->prepare( $sql, $sqlVal ) );
+
+		if( $wpProductCode ) {
+			$res = self::productsPicMain( $wpProductCode, $type );
+		}
+		return $res;
+	}
+
+	/**
+	 * oldoffice
+	 *
+	 * product_code から wordpress products > permalink を取得
+	 */
+	public static function productsPermalinkByEccubeProductId( $eccubeProductId ){
+
+		global $wpdb;
+
+		$res = false;
+		$sql = "SELECT
+				wp_products_code
+			FROM
+				dtb_product
+			WHERE
+				id = %s
+		";
+		$sqlVal = [
+			$eccubeProductId
+		];
+		$wpProductCode = $wpdb->get_var( $wpdb->prepare( $sql, $sqlVal ) );
+
+		if( $wpProductCode ) {
+			$res = self::productsPermalink( $wpProductCode );
 		}
 		return $res;
 	}

@@ -55,6 +55,7 @@
 					<form id="ec_{{ DIRCODE }}_{{ PAGECODE }}_form" method="post" action="{{ url( 'shopping_shipping_multiple' ) }}" class="box">
 						{{ form_widget( form._token ) }}
 {%		for orderItem in OrderItems %}
+{% dump orderItem %}
 {%			set i = loop.index0 %}
 {%			set itemvalue = 0 %}
 						<div id="multiple_list_{{ i }}" class="part">

@@ -33,7 +33,7 @@
 		$temp_productsec_code                                = get_field( 'productsec_code', $this_post_id );
 		$arr[ 'productsec_ec_id' ]                           = ec_oo_get_product_data( 'id', $temp_productsec_code );
 		$arr[ 'productsec_ec_class_id' ]                     = ec_oo_get_product_data( 'class_id', $temp_productsec_code );
-		$arr[ 'productsec_ec_flag' ]                         = $arr[ 'productsec_ec_id' ] === 'ec_error' || $arr[ 'productsec_ec_class_id' ] === 'ec_error' ? false : true;
+		$arr[ 'productsec_ec_flag' ]                         = $arr[ 'productsec_ec_id' ] === 'error' || $arr[ 'productsec_ec_class_id' ] === 'error' ? false : true;
 	}
 	$wp_single_array = $arr;
 

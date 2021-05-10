@@ -27,6 +27,7 @@ jQuery(function ($) {
 			$modalBtn = $(this);
 			if ($(this).hasClass('off')) return;
 			$(this)
+				.parent()
 				.siblings('form[data-ec_form_role=add_cart]')
 				.each(function () {
 					$.post(
@@ -97,9 +98,11 @@ jQuery(function ($) {
 					$('#topnav_ec_register').hide();
 					$('#topnav_ec_logout').fadeIn();
 					$('#topnav_ec_mypage').fadeIn();
+					$('#topnav_ec_favorite').fadeIn();
 				} else {
 					$('#topnav_ec_logout').hide();
 					$('#topnav_ec_mypage').hide();
+					$('#topnav_ec_favorite').hide();
 					$('#topnav_ec_login').fadeIn();
 					$('#topnav_ec_register').fadeIn();
 				}

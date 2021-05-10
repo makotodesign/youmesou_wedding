@@ -90,8 +90,8 @@
 {%			for orderItem in shipping.productOrderItems %}
 									<div class="image_texts ec_products_list">
 										<div class="image_item">
-{%					if oo_get_wp_pic_main_path( orderItem.productClass.code ) %}
-											<p class="pic"><img src="{{ oo_get_wp_pic_main_path( orderItem.productClass.code, 'thumbnail' ) }}" alt="{{ orderItem.productName }}"></p>
+{%					if oo_get_wp_pic_main_path( orderItem.Product.wp_products_code ) %}
+											<p class="pic"><img src="{{ oo_get_wp_pic_main_path( orderItem.Product.wp_products_code, 'thumbnail' ) }}" alt="{{ orderItem.productName }}"></p>
 {%					else %}
 											<p class="pic"><img src="{{ asset(( orderItem.product is null ? null : orderItem.product.MainListImage )|no_image_product, 'save_image' ) }}" alt="{{ orderItem.productName }}"></p>
 {%					endif %}

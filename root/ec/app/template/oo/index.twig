@@ -129,15 +129,15 @@
 									<div class="cart_products">
 										<div class="image_texts ec_products_list">
 											<div class="image_item">
-{%					if( oo_get_wp_pic_main_path( ProductClass.code ) ) %}
-												<p class="pic"><img src="{{ oo_get_wp_pic_main_path( ProductClass.code, 'thumbnail' ) }}" alt="{{ Product.name }}"></p>
+{%					if( oo_get_wp_pic_main_path( Product.wp_products_code ) ) %}
+												<p class="pic"><img src="{{ oo_get_wp_pic_main_path( Product.wp_products_code, 'thumbnail' ) }}" alt="{{ Product.name }}"></p>
 {%					else %}
 												<p class="pic"><img src="{{ asset( Product.MainListImage|no_image_product, 'save_image' ) }}" alt="{{ Product.name }}"></p>
 {%					endif %}
 											</div>
 											<div class="texts_item">
-{%					if( oo_get_wp_permalink( ProductClass.code ) ) %}
-												<p class="products_name"><a href="{{ oo_get_wp_permalink( ProductClass.code ) }}">{{ Product.name }}</a></p>
+{%					if( oo_get_wp_permalink( Product.wp_products_code ) ) %}
+												<p class="products_name"><a href="{{ oo_get_wp_permalink( Product.wp_products_code ) }}">{{ Product.name }}</a></p>
 {%					else %}
 												<p class="products_name">{{ Product.name }}</p>
 {%					endif %}

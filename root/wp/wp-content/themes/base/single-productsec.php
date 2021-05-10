@@ -82,7 +82,9 @@
 										<input type="hidden" name="bundlekey" value="<?= $bundlekey ?>">
 										<input type="hidden" name="_token" value="">
 									</form>
-									<button id="ec_cart_2_btn" type="submit" data-ec_submit_role="add_cart" data-target="modal_target_<?= $v[ 'productsec_ec_id' ] ?>" class="cart_in button bc_strong icon_cart off"><span>カートに追加</span></button>
+									<div class="btn_wrap">
+										<button id="ec_cart_2_btn" type="submit" data-ec_submit_role="add_cart" data-target="modal_target_<?= $v[ 'productsec_ec_id' ] ?>" class="cart_in button bc_strong icon_cart off"><span>カートに追加</span></button>
+									</div>
 									<p class="to_cart_message_after_cart_in" style="display: none;"><a href="/ec/">カートへはこちら</a></p>
 									<div id="modal_target_<?= $v[ 'productsec_ec_id' ] ?>" class="modal_target">
 										<div class="cont texts">
@@ -94,7 +96,7 @@
 										</div>
 									</div>
 									<form action="/ec/products/add_favorite/<?= $v[ 'productsec_ec_id' ] ?>" method="post">
-										<div class="ec-productRole__btn">
+										<div class="btn_wrap">
 <?php		if( ec_oo_is_favorite( $v[ 'productsec_code' ] ) ) :  ?>
 												<button type="submit" class="button" disabled="disabled"><span>お気に入りに追加済です</span></button> 
 <?php		else : ?>
@@ -102,10 +104,10 @@
 <?php		endif; ?>
 										</div>
 									</form>
-<?php	else : ?>
-									<p class="caution">現在販売しておりません。</p>
-<?php	endif;?>
 								</div>
+<?php	else : ?>
+								<p class="text caution icon_kome">現在販売しておりません。</p>
+<?php	endif;?>
 							</div>
 						</div>
 					</div>

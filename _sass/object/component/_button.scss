@@ -373,6 +373,14 @@ button.button[disabled] {
 			}
 		}
 	}
+	&.icon_cart {
+		> * {
+			@extend %icon_span;
+			&:before {
+				content: icom(shopping-cart);
+			}
+		}
+	}
 }
 
 /* pager */

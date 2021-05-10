@@ -1782,7 +1782,8 @@ $snap_prop: (
 
 /* table common */
 
-table {
+table,
+.table_type {
 	width: 100%;
 	caption {
 		display: none;
@@ -1836,9 +1837,27 @@ table {
 	}
 }
 
+.table_type {
+	display: table;
+	.thead {
+		display: table-header-group;
+	}
+	.tbody {
+		display: table-row-group;
+	}
+	.tr {
+		display: table-row;
+	}
+	.th,
+	.td {
+		display: table-cell;
+	}
+}
+
 /* center right */
 
-table {
+table,
+.table_type {
 	caption.left,
 	caption.right,
 	caption.center {
@@ -1924,12 +1943,13 @@ table {
 
 /* table style */
 
-table {
+table,
+.table_type {
 	// table_style_def
-	&.table,
-	.entry_wrap & {
+	&.table {
 		thead,
-		tbody {
+		tbody,
+		& {
 			// edit--
 			background: white;
 			// --edit
@@ -1953,7 +1973,8 @@ table {
 		background: white;
 		// --edit
 		thead,
-		tbody {
+		tbody,
+		& {
 			tr {
 				th {
 					border-top: 1px solid color(border, base);
@@ -1975,7 +1996,8 @@ table {
 			thead {
 				display: none;
 			}
-			tbody {
+			tbody,
+			& {
 				border: 1px solid color(border, base);
 				tr {
 					display: block;
@@ -2089,7 +2111,6 @@ form {
 ---------------------------------------*/
 
 .entry_wrap {
-	// edit--
 	h2 {
 		@extend .heading02;
 	}
@@ -2121,7 +2142,9 @@ form {
 	p {
 		@extend .text;
 	}
-	// --edit
+	table {
+		@extend .table;
+	}
 	img {
 		float: none !important;
 		margin-bottom: 6px;

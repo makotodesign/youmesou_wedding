@@ -17,7 +17,7 @@
 							<li><a href="/news/"><span>お知らせ一覧</span></a></li>
 <?php		foreach( wp_oo_sidebar_backnumber( 'posttype_xxx', 'yearly' ) as $v ) : ?>
 							<li><a href="<?= $v[ 'link' ][ 'link' ] . $v[ 'link' ][ 'link' ] ?>"><span><?= $v[ 'name' ] ?>（<?= $v[ 'count' ] ?>）</span></a></li>
-<?php		endforeach;?>
+<?php		endforeach; ?>
 						</ul>
 					</div>
 <?php	elseif( DIRCODE === 'contact' || DIRCODE === 'privacy' ) : ?>
@@ -40,22 +40,22 @@
 						<ul class="sidenav">
 <?php		foreach( wp_oo_sidebar_taxonomy( 'cat_xxx' ) as $v ) : ?>
 							<li><a href="<?= $v[ 'link' ] ?>"><span><?= $v[ 'name' ] ?>（<?= $v[ 'count' ] ?>）</span></a></li>
-<?php		endforeach;?>
+<?php		endforeach; ?>
 						</ul>
 					</div>
 					<div class="side_box">
 						<h3 class="heading_side">category</h3>
 						<ul class="sidenav">
 <?php		foreach( wp_oo_sidebar_taxonomy( 'cat_xxx' ) as $v ) : ?>
-<?php		endforeach;?>
 							<li class="sidenav_openclose_wrap">
 								<a class="sidenav_openclose_handle plus"><span><?= $v[ 'name' ] ?></span></a>
 								<ul class="child sidenav_openclose_target">
 <?php			foreach( $v[ 'child' ] as $vv ) : ?>
 									<li><a href="<?= $vv[ 'link' ] ?>"><span><?= $vv[ 'name' ] ?></span></a></li>
-<?php			endforeach;?>
+<?php			endforeach; ?>
 								</ul>
 							</li>
+<?php		endforeach; ?>
 						</ul>
 					</div>
 					<div class="side_box">
@@ -63,7 +63,7 @@
 						<ul class="sidenav">
 <?php		foreach( wp_oo_sidebar_backnumber( 'posttype_xxx', 'yearly' ) as $v ) : ?>
 							<li><a href="<?= $v[ 'link' ] ?>"><span><?= $v[ 'name' ] ?>（<?= $v[ 'count' ] ?>）</span></a></li>
-<?php		endforeach;?>
+<?php		endforeach; ?>
 						</ul>
 					</div>
 					<div class="side_box">
@@ -71,7 +71,7 @@
 						<ul class="sidenav">
 <?php		foreach( wp_oo_sidebar_backnumber( 'posttype_xxx', 'monthly' ) as $v ) : ?>
 							<li><a href="<?= $v[ 'link' ] ?>"><span><?= $v[ 'name' ] ?>（<?= $v[ 'count' ] ?>）</span></a></li>
-<?php		endforeach;?>
+<?php		endforeach; ?>
 						</ul>
 					</div>
 					<div class="side_box">
@@ -83,10 +83,10 @@
 								<ul class="child sidenav_openclose_target">
 <?php		foreach( $v[ 'child' ] as $v ) : ?>
 									<li><a href="<?= $vv[ 'link' ] ?>"><span><?= $vv[ 'name' ] ?></span></a></li>
-<?php		endforeach;?>
+<?php		endforeach; ?>
 								</ul>
 							</li>
-<?php		endforeach;?>
+<?php		endforeach; ?>
 						</ul>
 					</div>
 					<div class="side_box">
@@ -94,7 +94,7 @@
 						<ul class="sidenav">
 <?php		foreach( wp_oo_sidebar_recent( 'posttype_xxx' ) as $v ) : ?>
 							<li><a href="<?= $v[ 'link' ] ?>"><span><?= $v[ 'name' ] ?></span></a></li>
-<?php		endforeach;?>
+<?php		endforeach; ?>
 						</ul>
 					</div>
 <?php	else : ?>
@@ -118,5 +118,5 @@
 							</li>
 						</ul>
 					</div>
-<?php	endif;?>
+<?php	endif; ?>
 				</nav>

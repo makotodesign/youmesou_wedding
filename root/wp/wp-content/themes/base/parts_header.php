@@ -161,5 +161,5 @@
 					</ul>
 				</nav>
 			</div>
-<?php	include_once ROOTREALPATH . '/wp/wp-content/themes/base/parts_breadcrumb.php';?>
+<?php	include_once ROOTREALPATH . '/wp/wp-content/themes/base/parts_breadcrumb.php'; ?>
 		</header>

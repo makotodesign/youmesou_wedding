@@ -67,14 +67,14 @@
 								<ul>
 <?php		foreach( $wp_pager_array as  $v ) : ?>
 									<li><?= $v ?></li>
-<?php		endforeach;?>
+<?php		endforeach; ?>
 								</ul>
 							</div>
 						</div>
 					</div>
-<?php	endif;?>
+<?php	endif; ?>
 				</section>
-<?php	include_once TEMPLATEPATH . '/parts_sidebar.php';?>
+<?php	include_once TEMPLATEPATH . '/parts_sidebar.php'; ?>
 			</div>
 		</div>
-<?php	include_once TEMPLATEPATH . '/parts_footer.php';?>
+<?php	include_once TEMPLATEPATH . '/parts_footer.php'; ?>

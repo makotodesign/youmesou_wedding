@@ -97,11 +97,11 @@
 						</div>
 						<div class="part">
 							<div class="cont texts">
-								<p><?php $SENDMAIL->disp_message();?></p>
+								<p><?php $SENDMAIL->disp_message(); ?></p>
 							</div>
 						</div>
 					</div>
 				</section>
 			</div>
 		</div>
-<?php	include_once TEMPLATEPATH . '/parts_footer.php';?>
+<?php	include_once TEMPLATEPATH . '/parts_footer.php'; ?>

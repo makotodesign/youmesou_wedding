@@ -91,7 +91,7 @@
 		</div>
 <!--contents_wrap-->
 		<div class="contents_wrap">
-			<div class="<?= DIRCODE;?>_<?= PAGECODE ?>_contents contents<?= $areaflag === 'main_side' ? ' main_side' : '';  ?>">
+			<div class="<?= DIRCODE; ?>_<?= PAGECODE ?>_contents contents<?= $areaflag === 'main_side' ? ' main_side' : '';  ?>">
 				<section class="area<?= $areaflag === 'main_side' ? ' main_area' : '' ?>">
 					<div class="hgroup">
 						<h2 class="heading02">見出し2</h2>
@@ -820,7 +820,7 @@ if( isset( $_GET[ 'swiper' ] ) && $_GET[ 'swiper' ] == 'on' ) {
 								<div class="form_input_set">
 									<div class="form_fieldset">
 										<div class="form_legend">
-											<p>テキスト<?= $FS->must( 'textid' );?></p>
+											<p>テキスト<?= $FS->must( 'textid' ); ?></p>
 										</div>
 										<div class="form_input">
 											<p><?= $FS->res( 'text', 'textid', '', [
@@ -830,7 +830,7 @@ if( isset( $_GET[ 'swiper' ] ) && $_GET[ 'swiper' ] == 'on' ) {
 											] ) ?></p>
 <?php	if( $FS->is_form() ) : ?>
 												<p class="form_caption caption">*注釈記載</p>
-<?php	endif;?>
+<?php	endif; ?>
 										</div>
 									</div>
 									<div class="form_fieldset">
@@ -872,7 +872,7 @@ if( isset( $_GET[ 'swiper' ] ) && $_GET[ 'swiper' ] == 'on' ) {
 									</div>
 									<div class="form_fieldset">
 										<div class="form_legend">
-											<p>ご住所 sep<?= $FS->must( 'address01' );?></p>
+											<p>ご住所 sep<?= $FS->must( 'address01' ); ?></p>
 										</div>
 										<div class="form_input">
 											<p>〒 <?= $FS->res( 'text', 'zip01', 'must', [
@@ -964,7 +964,7 @@ if( isset( $_GET[ 'swiper' ] ) && $_GET[ 'swiper' ] == 'on' ) {
 									</div>
 									<div class="form_fieldset">
 										<div class="form_legend">
-											<p>ご利用規約<?= $FS->must( 'kiyaku' );?></p>
+											<p>ご利用規約<?= $FS->must( 'kiyaku' ); ?></p>
 										</div>
 										<div class="form_input">
 											<div class="kiyaku_wrap">
@@ -975,12 +975,12 @@ if( isset( $_GET[ 'swiper' ] ) && $_GET[ 'swiper' ] == 'on' ) {
 											] ) ?></p>
 <?php if( $FS->is_form() ) : ?>
 											<p class="form_caption caption"><a href="/xx/kiyaku/">規約詳細</a></p>
-<?php endif;?>
+<?php endif; ?>
 										</div>
 									</div>
 								</div>
 								<div class="form_submit_set">
-									<div class="form_buttons"><?php $FS->submit();?></div>
+									<div class="form_buttons"><?php $FS->submit(); ?></div>
 								</div>
 							</form>
 						</div>
@@ -1081,7 +1081,7 @@ if( isset( $_GET[ 'swiper' ] ) && $_GET[ 'swiper' ] == 'on' ) {
 */
 ?>
 				</section>
-<?php	include_once ROOTREALPATH . '/wp/wp-content/themes/base/parts_sidebar.php';?>
+<?php	include_once ROOTREALPATH . '/wp/wp-content/themes/base/parts_sidebar.php'; ?>
 			</div>
 		</div>
-<?php	include_once ROOTREALPATH . '/wp/wp-content/themes/base/parts_footer.php';?>
+<?php	include_once ROOTREALPATH . '/wp/wp-content/themes/base/parts_footer.php'; ?>

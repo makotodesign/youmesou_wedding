@@ -117,7 +117,7 @@
 							</div>
 						</div>
 					</div>
-<?php	endif;?>
+<?php	endif; ?>
 					<div class="box">
 						<div class="part form_set01">
 							<form id="<?= $FS->form_id ?>" method="post" action="<?= $FS->form_action ?>"<?= $FS->res_enctype() ?> class="cont">
@@ -143,7 +143,7 @@
 									</div>
 									<div class="form_fieldset">
 										<div class="form_legend">
-											<p>セレクト<?= $FS->must( 'selectid' );?></p>
+											<p>セレクト<?= $FS->must( 'selectid' ); ?></p>
 										</div>
 										<div class="form_input">
 											<p class="input_select_wrap"><?= $FS->res( 'select', 'selectid', '要素01,要素02',[
@@ -152,9 +152,9 @@
 											] ) ?></p>
 										</div>
 									</div>
-									<div class="form_fieldset"<?= $FS->res_switch_code( 'handle_user', '1', 'show' );?>>
+									<div class="form_fieldset"<?= $FS->res_switch_code( 'handle_user', '1', 'show' ); ?>>
 										<div class="form_legend">
-											<p>会社名<?= $FS->must( 'company' );?></p>
+											<p>会社名<?= $FS->must( 'company' ); ?></p>
 										</div>
 										<div class="form_input">
 											<p><?= $FS->res( 'text', 'company', 'must', [
@@ -163,7 +163,7 @@
 									</div>
 									<div class="form_fieldset">
 										<div class="form_legend">
-											<p>お名前<?= $FS->must( 'name' );?></p>
+											<p>お名前<?= $FS->must( 'name' ); ?></p>
 										</div>
 										<div class="form_input">
 											<p><?= $FS->res( 'text', 'name', 'must', [
@@ -172,7 +172,7 @@
 									</div>
 									<div class="form_fieldset">
 										<div class="form_legend">
-											<p>メールアドレス<?= $FS->must( 'email' );?></p>
+											<p>メールアドレス<?= $FS->must( 'email' ); ?></p>
 										</div>
 										<div class="form_input">
 											<p><?= $FS->res( 'email', 'email', 'must', [
@@ -199,7 +199,7 @@
 									</div>
 									<div class="form_fieldset">
 										<div class="form_legend">
-											<p>規約<?= $FS->must( 'kiyaku' );?></p>
+											<p>規約<?= $FS->must( 'kiyaku' ); ?></p>
 										</div>
 										<div class="form_input">
 											<p class="input_checkbox_wrap"><?= $FS->res( 'checkbox', 'kiyaku', '規約に同意する', [
@@ -212,7 +212,7 @@
 <?php	if( RECAPTCHA_V3_SITEKEY && $FS->is_confirm() ) : ?>
 									<input type="hidden" name="recaptcha_response" id="my_token">
 									<input type="hidden" name="action" value="contact">
-<?php	endif;?>
+<?php	endif; ?>
 									<div class="form_buttons"><?= $FS->submit() ?></div>
 								</div>
 							</form>
@@ -221,4 +221,4 @@
 				</section>
 			</div>
 		</div>
-<?php	include_once TEMPLATEPATH . '/parts_footer.php';?>
+<?php	include_once TEMPLATEPATH . '/parts_footer.php'; ?>

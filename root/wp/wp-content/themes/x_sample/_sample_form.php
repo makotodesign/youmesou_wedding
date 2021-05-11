@@ -79,7 +79,7 @@
 							<p>送信画面テキスト</p>
 <?php	elseif( $FS->is_confirm() ) : ?>
 							<p>確認画面テキスト</p>
-<?php	endif;?>
+<?php	endif; ?>
 						</div>
 						<div class="part">
 <?php
@@ -94,7 +94,7 @@
 
 ******************************************************************************************************/
 ?>
-							<form id="<?= $FS->form_id;?>" method="post" action="<?= $FS->form_action ?>"<?= $FS->res_enctype() ?> class="cont">
+							<form id="<?= $FS->form_id; ?>" method="post" action="<?= $FS->form_action ?>"<?= $FS->res_enctype() ?> class="cont">
 								<div class="form_input_set">
 <?php
 /******* reference *********************************************************************************
@@ -169,7 +169,7 @@
 											] ) ?></p>
 <?php if( $FS->is_form() ) : // 送信画面 ?>?>
 											<p class="form_caption caption">*注釈記載</p>
-<?php endif;?>
+<?php endif; ?>
 										</div>
 									</div>
 									<div class="form_fieldset">
@@ -303,7 +303,7 @@
 ?>
 									<div class="form_fieldset">
 										<div class="form_legend">
-											<p>必須テキスト<?= $FS->must( 'textmustid' );?></p>
+											<p>必須テキスト<?= $FS->must( 'textmustid' ); ?></p>
 										</div>
 										<div class="form_input">
 											<p><?= $FS->res( 'text', 'textmustid', 'must', [
@@ -312,7 +312,7 @@
 									</div>
 									<div class="form_fieldset">
 										<div class="form_legend">
-											<p>必須テキスト変更<?= $FS->must( 'textmustid02', '必須テキスト' );?></p>
+											<p>必須テキスト変更<?= $FS->must( 'textmustid02', '必須テキスト' ); ?></p>
 										</div>
 										<div class="form_input">
 											<p><?= $FS->res( 'text', 'textmustid02', 'must', [
@@ -360,7 +360,7 @@
 											] ) ?></p>
 										</div>
 									</div>
-									<div class="form_fieldset"<?= $FS->res_switch_code( 'handle_xxx', '2', 'hide' );?>>
+									<div class="form_fieldset"<?= $FS->res_switch_code( 'handle_xxx', '2', 'hide' ); ?>>
 										<div class="form_legend">
 											<p>要素01の時表示（初期非表示）</p>
 										</div>
@@ -369,7 +369,7 @@
 											] ) ?></p>
 										</div>
 									</div>
-									<div class="form_fieldset"<?= $FS->res_switch_code( 'handle_xxx', '1', 'show' );?>>
+									<div class="form_fieldset"<?= $FS->res_switch_code( 'handle_xxx', '1', 'show' ); ?>>
 										<div class="form_legend">
 											<p>要素02の時表示（初期表示）</p>
 										</div>
@@ -409,18 +409,18 @@
 											] ) ?></p>
 										</div>
 									</div>
-									<div class="form_fieldset"<?= $FS->res_switch_code( 'handle_user', '2', 'hide' );?>>
+									<div class="form_fieldset"<?= $FS->res_switch_code( 'handle_user', '2', 'hide' ); ?>>
 										<div class="form_legend">
-											<p>会社名<?= $FS->must( 'company' );?></p>
+											<p>会社名<?= $FS->must( 'company' ); ?></p>
 										</div>
 										<div class="form_input">
 											<p><?= $FS->res( 'text', 'company', 'must', [
 											] ) ?></p>
 										</div>
 									</div>
-									<div class="form_fieldset"<?= $FS->res_switch_code( 'handle_user', '1', 'show' );?>>
+									<div class="form_fieldset"<?= $FS->res_switch_code( 'handle_user', '1', 'show' ); ?>>
 										<div class="form_legend">
-											<p>お名前<?= $FS->must( 'name' );?></p>
+											<p>お名前<?= $FS->must( 'name' ); ?></p>
 										</div>
 										<div class="form_input">
 											<p><?= $FS->res( 'text', 'name', 'must', [
@@ -429,7 +429,7 @@
 									</div>
 									<div class="form_fieldset">
 										<div class="form_legend">
-											<p>お名前 sep2<?= $FS->must( 'name01' );?></p>
+											<p>お名前 sep2<?= $FS->must( 'name01' ); ?></p>
 										</div>
 										<div class="form_input">
 											<p><?= $FS->res( 'text', 'name01', 'must', [
@@ -444,7 +444,7 @@
 									</div>
 									<div class="form_fieldset">
 										<div class="form_legend">
-											<p>メールアドレス<?= $FS->must( 'email' );?></p>
+											<p>メールアドレス<?= $FS->must( 'email' ); ?></p>
 										</div>
 										<div class="form_input">
 											<p><?= $FS->res( 'email', 'email', 'must', [
@@ -453,7 +453,7 @@
 									</div>
 									<div class="form_fieldset">
 										<div class="form_legend">
-											<p>メールアドレス(確認用)<?= $FS->must( 'email_again' );?></p>
+											<p>メールアドレス(確認用)<?= $FS->must( 'email_again' ); ?></p>
 										</div>
 										<div class="form_input">
 											<p><?= $FS->res( 'text', 'email_again', 'must', [
@@ -485,7 +485,7 @@
 									</div>
 									<div class="form_fieldset">
 										<div class="form_legend">
-											<p>ご住所<?= $FS->must( 'address' );?></p>
+											<p>ご住所<?= $FS->must( 'address' ); ?></p>
 										</div>
 										<div class="form_input">
 											<p>〒 <?= $FS->res( 'text', 'zip', 'must', [
@@ -497,7 +497,7 @@
 									</div>
 									<div class="form_fieldset">
 										<div class="form_legend">
-											<p>ご住所 sep<?= $FS->must( 'address01' );?></p>
+											<p>ご住所 sep<?= $FS->must( 'address01' ); ?></p>
 										</div>
 										<div class="form_input">
 											<p>〒 <?= $FS->res( 'text', 'zip01', 'must', [
@@ -505,7 +505,7 @@
 											] ) ?> <?= $FS->res( 'text', 'zip02', 'must', [
 												'add_class'         => 'size_s'
 											] ) ?></p>
-											<p class="input_select_wrap"><?= $FS->res( 'pref', 'pref' );?></p>
+											<p class="input_select_wrap"><?= $FS->res( 'pref', 'pref' ); ?></p>
 											<p><?= $FS->res( 'text', 'address01', 'must', [
 													'placeholder'       => '住所01 市区町村'
 											] ) ?></p>
@@ -561,7 +561,7 @@
 									</div>
 									<div class="form_fieldset">
 										<div class="form_legend">
-											<p>規約<?= $FS->must( 'kiyaku' );?></p>
+											<p>規約<?= $FS->must( 'kiyaku' ); ?></p>
 										</div>
 										<div class="form_input">
 											<p class="input_checkbox_wrap"><?= $FS->res( 'checkbox', 'kiyaku', '規約に同意する', '', [
@@ -581,7 +581,7 @@
 ?>
 								</div>
 								<div class="form_submit_set">
-									<div class="form_buttons"><?= $FS->submit();?></div>
+									<div class="form_buttons"><?= $FS->submit(); ?></div>
 								</div>
 							</form>
 						</div>
@@ -589,4 +589,4 @@
 				</div>
 			</div>
 		</div>
-<?php	include_once TEMPLATEPATH . '/parts_footer.php';?>
+<?php	include_once TEMPLATEPATH . '/parts_footer.php'; ?>

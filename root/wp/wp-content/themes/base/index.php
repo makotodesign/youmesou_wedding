@@ -60,18 +60,18 @@
 									<p class="news_title"><?= $v[ 'title' ] ?></p>
 								</div>
 							</div>
-<?php		endforeach;?>
+<?php		endforeach; ?>
 						</div>
 <?php		foreach( $wp_top_headnews_array as $v ) : ?>
 <?php			if( $v[ 'news_link_type' ] === 'type_detail_modal' ) : ?>
 						<div id="headnews_<?= $v[ 'post_id' ] ?>" class="part modal_target">
 							<?= $v[ 'detail' ] ?>
 						</div>
-<?php			endif;?>
-<?php		endforeach;?>
+<?php			endif; ?>
+<?php		endforeach; ?>
 					</div>
 				</section>
-<?php	endif;?>
+<?php	endif; ?>
 				<section class="top_xx_area area">
 					<div class="hgroup">
 						<h2 class="heading_top">みだし</h2>
@@ -98,15 +98,15 @@
 									<p class="news_title"><?= $v[ 'title' ] ?></p>
 								</div>
 							</div>
-<?php		endforeach;?>
+<?php		endforeach; ?>
 <?php	else : ?>
 							<div class="cont texts">
 								<p>現在、お知らせございません</p>
 							</div>
-<?php	endif;?>
+<?php	endif; ?>
 						</div>
 					</div>
 				</section>
 			</div>
 		</div>
-<?php	include_once TEMPLATEPATH . '/parts_footer.php';?>
+<?php	include_once TEMPLATEPATH . '/parts_footer.php'; ?>

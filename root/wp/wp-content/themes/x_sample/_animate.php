@@ -179,4 +179,4 @@
 				</section>
 			</div>
 		</div>
-<?php	include_once ROOTREALPATH . '/wp/wp-content/themes/base/parts_footer.php';?>
+<?php	include_once ROOTREALPATH . '/wp/wp-content/themes/base/parts_footer.php'; ?>

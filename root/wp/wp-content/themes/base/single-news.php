@@ -50,7 +50,7 @@
 		<div class="contents_wrap">
 			<div class="<?= DIRCODE ?>_<?= PAGECODE ?>_contents contents main_side">
 				<article class="area main_area">
-<?php	$v = $wp_single_array;?>
+<?php	$v = $wp_single_array; ?>
 					<div class="hgroup">
 						<h2 class="heading02"><?= $v[ 'post_title' ] ?></h2>
 						<p class="news_date"><time datetime="<?= $v[ 'post_date_code' ] ?>"><?= $v[ 'post_date' ] ?></time></p>
@@ -63,7 +63,7 @@
 						</div>
 					</div>
 				</article>
-<?php	include_once TEMPLATEPATH . '/parts_sidebar.php';?>
+<?php	include_once TEMPLATEPATH . '/parts_sidebar.php'; ?>
 			</div>
 		</div>
-<?php	include_once TEMPLATEPATH . '/parts_footer.php';?>
+<?php	include_once TEMPLATEPATH . '/parts_footer.php'; ?>

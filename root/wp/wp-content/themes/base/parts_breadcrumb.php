@@ -33,10 +33,10 @@
 						<li class="current"><span><?= $v ?></span></li>
 <?php				else : ?>
 						<li><span><?= $v ?></span></li>
-<?php				endif;?>
-<?php			endforeach;?>
+<?php				endif; ?>
+<?php			endforeach; ?>
 					</ul>
 				</nav>
 			</div>
-<?php		endif;?>
-<?php	endif;?>
+<?php		endif; ?>
+<?php	endif; ?>

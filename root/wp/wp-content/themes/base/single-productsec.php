@@ -63,7 +63,7 @@
 		<div class="contents_wrap">
 			<div class="<?= DIRCODE ?>_<?= PAGECODE ?>_contents contents">
 				<section class="area">
-<?php	$v = $wp_single_array;?>
+<?php	$v = $wp_single_array; ?>
 					<div class="box">
 						<h3 class="heading03"><?= $v[ 'post_title' ] ?></h3>
 						<div class="part image_texts_tb_pc">
@@ -72,7 +72,7 @@
 							</div>
 							<div class="cont texts_item texts">
 								<p>productsec_code：<?= $v[ 'productsec_code' ] ?></p>
-								<p>price：<?= tax_adjust( $v[ 'productsec_price' ] );?>yen</p>
+								<p>price：<?= tax_adjust( $v[ 'productsec_price' ] ); ?>yen</p>
 <?php	if( $arr[ 'productsec_ec_flag' ] ) : ?>
 								<div class="cart_btn">
 									<form method="post" action="/ec/products/add_cart/<?= $v[ 'productsec_ec_id' ] ?>" data-ec_form_group="<?= $v[ 'productsec_ec_id' ] ?>" data-ec_form_role="add_cart">
@@ -107,11 +107,11 @@
 								</div>
 <?php	else : ?>
 								<p class="text caution icon_kome">現在販売しておりません。</p>
-<?php	endif;?>
+<?php	endif; ?>
 							</div>
 						</div>
 					</div>
 				</section>
 			</div>
 		</div>
-<?php	include_once TEMPLATEPATH . '/parts_footer.php';?>
+<?php	include_once TEMPLATEPATH . '/parts_footer.php'; ?>

@@ -50,6 +50,8 @@ form {
 				}
 				* {
 					// input_text, textarea
+					outline-color: transparent;
+					transition: 0.3s;
 					input.size_m {
 						display: inline-block;
 						width: 40%;
@@ -95,6 +97,9 @@ form {
 						padding: 10px;
 					}
 				}
+				*:focus {
+					outline-color: #000;
+				}
 				.error {
 					font-size: 1.3rem;
 					color: #c00;
@@ -130,6 +135,12 @@ form {
 								border-radius: inherit;
 								background-color: white;
 								font-weight: bold;
+							}
+						}
+						input[type='radio']:checked + *,
+						input[type='checkbox']:checked + * {
+							&::after {
+								background: color(list, base); //チェック時のマークの色
 							}
 						}
 						&:first-child span {
@@ -177,6 +188,21 @@ form {
 						z-index: 5;
 						pointer-events: none;
 					}
+					select {
+						padding: 6px 30px 6px 15px;
+					}
+				}
+				.input_select_wrap.size_m {
+					display: inline-block;
+					width: 40%;
+				}
+				.input_select_wrap.size_s {
+					display: inline-block;
+					width: 25%;
+				}
+				.input_select_wrap.size_ss {
+					display: inline-block;
+					width: 15%;
 				}
 				.input_hidden_wrap {
 					// hidden

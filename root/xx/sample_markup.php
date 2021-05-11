@@ -230,8 +230,8 @@
 								</dl>
 							</div>
 							<div class="cont texts">
-								<ul class="ul_title_col">
-									<li title="３文字">ul_title_col</li>
+								<ul class="ul_title">
+									<li title="３文字">ul_title</li>
 									<li title="３文字">リストリストリスト</li>
 									<li title="３文字">回り込まないリスト回り込まないリスト</li>
 								</ul>
@@ -383,10 +383,12 @@
 							</div>
 							<div class="cont btn_wrap vertical">
 								<a href="/" class="button icon_arrow"><span>icon_arrow</span></a>
+								<a href="/" class="button icon_arrow_right"><span>icon_arrow_right</span></a>
 								<a href="/" class="button icon_tel"><span>icon_tel</span></a>
-								<a href="/" class="button icon_facebook bc_strong"><span>ボタンアイコン</span></a>
+								<a href="/" class="button icon_tel_inline"><span>icon_tel_inline</span></a>
+								<a href="/" class="button icon_facebook bc_strong"><span>icon_facebook</span></a>
 								<a href="tel:000-000-0000" class="button icon_tel"><span>000-000-0000</span></a>
-								<a href="/" class="button bc_strong"><span>ボタンカラーbc02</span></a>
+								<a href="/" class="button bc_strong"><span>ボタンカラー bc_strong</span></a>
 								<a href="/" class="button bc0"><span>ボタンカラーbc0</span></a>
 							</div>
 						</div>
@@ -895,7 +897,7 @@ if( isset( $_GET[ 'swiper' ] ) && $_GET[ 'swiper' ] == 'on' ) {
 											<p>ラジオボタン pc横並び</p>
 										</div>
 										<div class="form_input">
-											<p class="input_radio_wrap"><?= $FS->res( 'radio', 'radiohid', '要素01,要素02', [
+											<p class="input_radio_wrap horizon_tb_pc"><?= $FS->res( 'radio', 'radiohid', '要素01,要素02', [
 											] ) ?></p>
 										</div>
 									</div>
@@ -913,7 +915,7 @@ if( isset( $_GET[ 'swiper' ] ) && $_GET[ 'swiper' ] == 'on' ) {
 											<p>チェックボックス pc横並び</p>
 										</div>
 										<div class="form_input">
-											<p class="input_checkbox_wrap"><?= $FS->res( 'checkbox', 'checkboxhid', '要素01,要素02', [
+											<p class="input_checkbox_wrap horizon_tb_pc"><?= $FS->res( 'checkbox', 'checkboxhid', '要素01,要素02', [
 											] ) ?></p>
 										</div>
 									</div>
@@ -932,6 +934,17 @@ if( isset( $_GET[ 'swiper' ] ) && $_GET[ 'swiper' ] == 'on' ) {
 										</div>
 										<div class="form_input">
 											<p class="input_select_wrap"><?= $FS->res( 'select', 'selectid', '要素01,要素02', [
+											] ) ?></p>
+										</div>
+									</div>
+									<div class="form_fieldset">
+										<div class="form_legend">
+											<p>セレクト（インライン）</p>
+										</div>
+										<div class="form_input">
+											<p class="input_select_wrap size_s"><?= $FS->res( 'select', 'selectids', '要素01,要素02', [
+											] ) ?></p>
+											<p class="input_select_wrap size_ss"><?= $FS->res( 'select', 'selectidss', '要素01,要素02', [
 											] ) ?></p>
 										</div>
 									</div>

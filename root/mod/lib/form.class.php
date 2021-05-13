@@ -712,7 +712,7 @@ class formset {
 		$id            = ( $type == 'email' ) ? 'email' : $id ;
 		$add_class     = ( $add_class ) ? self::add_space( $add_class ) : '';
 		$placeholder   = ( $placeholder ) ? ' placeholder="' . $placeholder . '"' : '' ;
-		$default_value = ( ( $default_value ) && ! self::add_space( 'form_' . $id ) ) ? $default_value : self::add_space( 'form_' . $id ) ;
+		$default_value = ( ( $default_value ) && ! self::session_val( 'form_' . $id ) ) ? $default_value : self::session_val( 'form_' . $id ) ;
 
 		if( $this->step == 'step_form' ) {
 			$tag = '<input type="' . $res_type . '" id="' . $this->form_id . '_' . $id . '" name="form_' . $id . '" class="input_text' . $add_class . $add_datepicker_class . '" value="' . $default_value . '"' . $placeholder . $add_attr_min . $add_attr_max . '>';
@@ -737,7 +737,7 @@ class formset {
 		$placeholder = ( $placeholder ) ? ' placeholder="' . $placeholder . '"' : '' ;
 
 		if( $this->step == 'step_form' ) {
-			$tag = '<textarea id="' . $this->form_id . '_' . $id . '" name="form_' . $id . '" class="textarea' . $add_class . '"' . $placeholder . '>' . self::add_space( 'form_' . $id ) . '</textarea>';
+			$tag = '<textarea id="' . $this->form_id . '_' . $id . '" name="form_' . $id . '" class="textarea' . $add_class . '"' . $placeholder . '>' . self::add_session_valspace( 'form_' . $id ) . '</textarea>';
 		} elseif( $this->step == 'step_confirm' ) {
 			$temp_post = isset( $this->POST[ 'form_' . $id ] ) ? $this->POST[ 'form_' . $id ] : '';
 			$tag = '<span>' . nl2br( $temp_post, false ) . '</span>' . $this->confirm_tag( $id, $temp_post, $must, 'hidden' );

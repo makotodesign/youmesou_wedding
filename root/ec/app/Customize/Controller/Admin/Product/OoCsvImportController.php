@@ -10,7 +10,7 @@
 		CsvImportController
 
 	@memo
-		oocutomize 記述箇所を編集
+		oo_customize 記述箇所を編集
 
 ---------------------------------------------------------------*/
 

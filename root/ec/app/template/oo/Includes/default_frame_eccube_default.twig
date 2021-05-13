@@ -156,7 +156,7 @@ file that was distributed with this source code.
     {{ include('snippet.twig', { snippets: plugin_snippets } ) }}
 {% endif %}
     <script src="{{ asset('assets/js/customize.js', 'user_data' ) }}"></script>
-	<script>const PUBLICDIR = '/ct17_ec';</script>
+	<script>const PUBLICDIR = '{{ constant( 'PUBLICDIR' ) }}';</script>
 	<script src="{{ oo_fpath_add_date_query( '/js/common/ec_get_all_info.js' ) }}"></script>
 </body>
 </html>

@@ -31,12 +31,12 @@
 <?php			foreach( $breadcrumb_arr as  $k => $v ) : ?>
 <?php				if( $k === 'current' ) : ?>
 						<li class="current"><span><?= $v ?></span></li>
-<?php				else : ?>
-						<li><span><?= $v ?></span></li>
-<?php				endif; ?>
-<?php			endforeach; ?>
+<?php				elseif( $v ) : ?>
+						<li><a href="<?= $k ?>"><?= $v ?></a></li>
+<?php				endif;?>
+<?php			endforeach;?>
 					</ul>
 				</nav>
 			</div>
-<?php		endif; ?>
-<?php	endif; ?>
+<?php		endif;?>
+<?php	endif;?>

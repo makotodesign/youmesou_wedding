@@ -80,7 +80,7 @@
 		if( ! is_array( $acf ) ) {
 			// acf返り値がboth出ない時の判定
 			$res = ( $acf ) ? $acf : $noimage;
-		} elseif( ! in_array( $res_type, [ 'url', 'thumbnail', 'medium', 'medium_large', 'large' ] ) ) {
+		} elseif( ! in_array( $res_type, array( 'url', 'thumbnail', 'medium', 'medium_large', 'large', 'filename' ) ) ) {
 			$res = 'error_oo_arg_res_type_text';
 		} else {
 			if( $res_type === 'url' ) {
@@ -93,6 +93,8 @@
 				$res = ( $acf[ 'sizes' ][ 'medium_large' ] ) ? $acf[ 'sizes' ][ 'medium_large' ] : $noimage;
 			} elseif( $res_type === 'large' ) {
 				$res = ( $acf[ 'sizes' ][ 'large' ] )        ? $acf[ 'sizes' ][ 'large' ]        : $noimage;
+			} elseif( $res_type === 'filename' ) {
+				$res = ( $acf[ 'filename' ] )                ? $acf[ 'filename' ]                : false;
 			} else {
 				$res = $noimage;
 			}

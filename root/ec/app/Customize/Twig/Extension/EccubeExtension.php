@@ -152,7 +152,10 @@ class EccubeExtension extends AbstractExtension
 			include_once( TEMPLATEPATH . '/parts_footer.php' );
 			$tag = ob_get_clean();
 		}
-		$tag = str_replace( "\r\n</body>\r\n</html>", '', $tag );
+		$tag = str_replace( [
+			"\r\n</body>\r\n</html>",
+			"\n</body>\n</html>"
+		], '', $tag );
 		return $tag;
 	}
 

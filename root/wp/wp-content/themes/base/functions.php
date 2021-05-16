@@ -387,8 +387,9 @@
 	const ECCUBE_INSTALLED = true;
 
 	const WPEC_POST_TYPE     = 'productsec';
-	const WPEC_ACF_KEY_PIC   = 'productsec_pic_main';
-	const WPEC_ACF_KEY_CODE  = 'productsec_code';
+	const WPEC_ACF_KEY_PIC   = WPEC_POST_TYPE . '_pic_main';
+	const WPEC_ACF_KEY_CODE  = WPEC_POST_TYPE . '_code';
+	const WPEC_USER_IDS      = [ 1, 2 ];
 	if( ECCUBE_INSTALLED ) include_once 'wpoo/wp_functions_ec.php';
 
 /*== options ===========================================================================*/

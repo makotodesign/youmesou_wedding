@@ -383,13 +383,15 @@ jQuery(function ($) {
 	/*------------------------------------
 		[ modal ]
 		モーダル
-		@ver		16.1.1
+		@ver		18.1.1
 		@history	2020-04-25		: 新規作成 [ 16.1.1 ]
+		@history	2021-05-16		: 特設モーダルのdetachをパラメータ化 [ 18.1.1 ]
 
 		> 設定詳細
 		target        : クローンしてオーバーレイに入れるdom（data('target')）上書き
 		overlay       : modalオーバーレイid
-		closeBtn      : オーバーレイ内のcloseボタンclass
+		closeBtn      : オーバーレイ内のcloseボタンclass,
+		detach        : モーダルの中をCloseで消去
 
 		> 設定方法
 		<a data-target="xxx" class="modal_handole">モダールオープン</a>
@@ -401,7 +403,8 @@ jQuery(function ($) {
 			{
 				overlay: '#modal_overlay',
 				modal: '.modal',
-				closeBtn: '.modal_close, .modal_bg,[data-role=modal_close]'
+				closeBtn: '.modal_close, .modal_bg,[data-role=modal_close]',
+				detach: true
 			},
 			config
 		);
@@ -412,14 +415,18 @@ jQuery(function ($) {
 		$(this).each(function () {
 			$(this).on('click', function () {
 				winScrollTop = $(window).scrollTop();
-				$target = $('#' + $(this).data('target'));
-				$target.clone().appendTo($modal);
+				if (opt.detach) {
+					$target = $('#' + $(this).data('target'));
+					$target.clone().appendTo($modal);
+				}
 				$overlay.fadeIn();
 				return false;
 			});
 		});
 		$(document).on('click', opt.closeBtn, function () {
-			$modal.children().detach();
+			if (opt.detach) {
+				$modal.children().detach();
+			}
 			$overlay.fadeOut();
 			$('body,html').stop().animate({ scrollTop: winScrollTop }, 100);
 			return false;

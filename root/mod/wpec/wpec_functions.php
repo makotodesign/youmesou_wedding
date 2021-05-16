@@ -80,6 +80,34 @@
 		return mt_rand();
 	}
 
+	function ec_oo_get_product_data( $ec_key, $wp_products_code_for_ec ) {
+		global $wpdb;
+		$ec_db_field = false;
+		$res         = '';
+		if( $ec_key === 'id' ) {
+			$ec_db_field = 'dtb_product.id';
+		} elseif( $ec_key === 'class_id' ) {
+			$ec_db_field = 'dtb_product_class.id';
+		} elseif( $ec_key === 'price' ) {
+			$ec_db_field = 'dtb_product_class.price02';
+		}
+		if( $ec_db_field ) {
+			$sql = "SELECT
+					{$ec_db_field}
+				FROM
+					dtb_product
+					LEFT JOIN dtb_product_class ON dtb_product.id = dtb_product_class.product_id
+				WHERE
+					wp_products_code = %s
+			";
+			$sql_val = [
+				$wp_products_code_for_ec
+			];
+			$res = $wpdb->get_var( $wpdb->prepare( $sql, $sql_val ) ) ?? '';
+		}
+		return $res;
+	}
+
 	function ec_oo_code_to_wp_post_id( $ec_product_code ) {
 		global $wpdb;
 		$res = [];
@@ -97,33 +125,6 @@
 				$ec_product_code
 			];
 			$res = $wpdb->get_var( $wpdb->prepare( $sql, $sql_val ) );
-		}
-		return $res;
-	}
-
-	function ec_oo_get_product_data( $res_ec_key_name, $wp_posttype_for_ec_code ) {
-		global $wpdb;
-		$ec_db_field = false;
-		$res         = '';
-		if( $res_ec_key_name === 'id' ) {
-			$ec_db_field = 'product_id';
-		} elseif( $res_ec_key_name === 'class_id' ) {
-			$ec_db_field = 'id';
-		} elseif( $res_ec_key_name === 'price' ) {
-			$ec_db_field = 'price02';
-		}
-		if( $ec_db_field ) {
-			$sql = "SELECT
-					{$ec_db_field}
-				FROM
-					dtb_product_class
-				WHERE
-					product_code = %s
-			";
-			$sql_val = [
-				$wp_posttype_for_ec_code
-			];
-			$res = $wpdb->get_var( $wpdb->prepare( $sql, $sql_val ) ) ?? 'error';
 		}
 		return $res;
 	}

@@ -737,7 +737,7 @@ class formset {
 		$placeholder = ( $placeholder ) ? ' placeholder="' . $placeholder . '"' : '' ;
 
 		if( $this->step == 'step_form' ) {
-			$tag = '<textarea id="' . $this->form_id . '_' . $id . '" name="form_' . $id . '" class="textarea' . $add_class . '"' . $placeholder . '>' . self::add_session_valspace( 'form_' . $id ) . '</textarea>';
+			$tag = '<textarea id="' . $this->form_id . '_' . $id . '" name="form_' . $id . '" class="textarea' . $add_class . '"' . $placeholder . '>' . self::session_val( 'form_' . $id ) . '</textarea>';
 		} elseif( $this->step == 'step_confirm' ) {
 			$temp_post = isset( $this->POST[ 'form_' . $id ] ) ? $this->POST[ 'form_' . $id ] : '';
 			$tag = '<span>' . nl2br( $temp_post, false ) . '</span>' . $this->confirm_tag( $id, $temp_post, $must, 'hidden' );

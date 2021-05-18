@@ -34,16 +34,6 @@
 	include_once ROOTREALPATH . '/mod/lib/form.class.php';
 	$FS = new formset( '/xx/thanks/', 'xx_form' );
 
-	/* css */
-	$HEAD->css = '';
-	// *基本使用不可
-	//$HEAD->css .= "\t" . '<link rel="stylesheet" type="text/css" href="' . $HEAD->fpath_add_date_query( '/css/utility/calendar.css' ) . '" media="all">' . "\n";
-	//$HEAD->css .= "\t" . '<link rel="stylesheet" type="text/css" href="' . $HEAD->fpath_add_date_query( '/css/' . DIRCODE . '/style.css' ) . '" media="all">' . "\n";
-	// for_sample_markup *サンプルマークアップ用 本使用方法不可
-	$HEAD->css .= "\t" . '<style type="text/css">' . "\n";
-	$HEAD->css .= "\t\t" . '.sample_size .pic{width:80px;height:80px;}.sample_size .object_fit{width:240px;}.sample_area:not(.main_area){background-color:#eee}' . "\n";
-	$HEAD->css .= "\t" . '</style>' . "\n";
-
 	/* js */
 	$HEAD->js = '';
 	$HEAD->js .= "\t" . '<script src="' . $HEAD->fpath_add_date_query( '/js/' . DIRCODE . '/script.js' ) . '"></script>' . "\n";
@@ -82,6 +72,8 @@
 
 /*---------------------------------------------------------------------------*/
 ?>
+<!--css サンプルマークアップ用 使用不可-->
+		<style type="text/css">.sample_size .pic{width:80px;height:80px;}.sample_size .object_fit{width:240px;}.sample_area:not(.main_area){background-color:#eee}</style>
 <!--title-->
 		<div class="title_wrap">
 			<div class="title">

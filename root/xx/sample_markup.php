@@ -363,7 +363,6 @@
 								<a href="/" class="button"><span>ボタンセンター</span></a>
 							</div>
 							<div class="cont texts">
-								<p>だみーぶんしょうですだみーぶんしょうですだみーぶんしょうですだみーぶんしょうですだみーぶんしょうですだみーぶんしょうですだみーぶんしょうですだみーぶんしょうですだみーぶんしょうですだみーぶんしょうですだみーぶんしょうですだみーぶんしょうです</p>
 								<div class="btn_wrap center">
 									<a href="/" class="button"><span>ボタンセンター</span></a>
 									<a href="/" class="button"><span>ボタンセンター<br>ボタンセンター</span></a>
@@ -372,7 +371,6 @@
 									<a href="/" class="button"><span>ボタンセンター</span></a>
 									<a href="/" class="button"><span>高さが揃うボタン<br>.btn_wrap.stretch</span></a>
 								</div>
-								<p>だみーぶんしょうですだみーぶんしょうですだみーぶんしょうですだみーぶんしょうですだみーぶんしょうですだみーぶんしょうですだみーぶんしょうですだみーぶんしょうですだみーぶんしょうですだみーぶんしょうですだみーぶんしょうですだみーぶんしょうです</p>
 							</div>
 							<div class="cont btn_wrap">
 								<a href="/" class="button btn_small"><span>ボタンスモール</span></a>

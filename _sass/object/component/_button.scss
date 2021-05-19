@@ -209,8 +209,8 @@ button.button[disabled] {
 			}
 		}
 	}
-	a.button.#{$k}:hover,
-	button.button.#{$k}:hover {
+	a.button.#{$k}:hover:not([disabled]),
+	button.button.#{$k}:hover:not([disabled]) {
 		> * {
 			@if map-get($v, bg_hover) != '' {
 				background-color: map-get($v, bg_hover);
@@ -235,14 +235,17 @@ button.button[disabled] {
 		flex-wrap: wrap;
 	}
 	> *.button:not(.btn_small) {
-		@include mq(_sp) {
-			margin-top: 10px;
-		}
+		width: 100%;
 		@include mq(tb_) {
+			display: flex;
+			align-items: center;
 			width: button_width(tb_);
 		}
 		@include mq(pc_) {
 			width: button_width(pc_);
+		}
+		> * {
+			flex-grow: 1;
 		}
 	}
 	> *.button_sp {
@@ -260,9 +263,29 @@ button.button[disabled] {
 			width: auto;
 		}
 	}
+	> *.button + *.button {
+		margin-top: 10px;
+		@include mq(tb_) {
+			margin-top: 0;
+		}
+	}
+}
+.btn_wrap:not(:last-child):not(.cont) {
+	margin-bottom: 10px;
+}
+.btn_wrap.stretch {
+	> *.button:not(.btn_small) {
+		align-items: stretch;
+		> * {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+	}
 }
 .btn_wrap.center {
 	@include mq(tb_) {
+		flex-wrap: nowrap;
 		justify-content: center;
 	}
 	> *.button + *.button:not(.full) {
@@ -272,6 +295,9 @@ button.button[disabled] {
 	}
 }
 .btn_wrap.grow {
+	@include mq(tb_) {
+		flex-wrap: nowrap;
+	}
 	> *.button {
 		@include mq(tb_) {
 			flex-grow: 1;
@@ -305,9 +331,7 @@ button.button[disabled] {
 		}
 	}
 	> *.button + *.button {
-		@include mq(tb_) {
-			margin-top: 10px;
-		}
+		margin-top: 10px;
 	}
 }
 

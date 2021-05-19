@@ -362,6 +362,18 @@
 								<a href="/" class="button"><span>ボタンセンター</span></a>
 								<a href="/" class="button"><span>ボタンセンター</span></a>
 							</div>
+							<div class="cont texts">
+								<p>だみーぶんしょうですだみーぶんしょうですだみーぶんしょうですだみーぶんしょうですだみーぶんしょうですだみーぶんしょうですだみーぶんしょうですだみーぶんしょうですだみーぶんしょうですだみーぶんしょうですだみーぶんしょうですだみーぶんしょうです</p>
+								<div class="btn_wrap center">
+									<a href="/" class="button"><span>ボタンセンター</span></a>
+									<a href="/" class="button"><span>ボタンセンター<br>ボタンセンター</span></a>
+								</div>
+								<div class="btn_wrap center stretch">
+									<a href="/" class="button"><span>ボタンセンター</span></a>
+									<a href="/" class="button"><span>高さが揃うボタン<br>.btn_wrap.stretch</span></a>
+								</div>
+								<p>だみーぶんしょうですだみーぶんしょうですだみーぶんしょうですだみーぶんしょうですだみーぶんしょうですだみーぶんしょうですだみーぶんしょうですだみーぶんしょうですだみーぶんしょうですだみーぶんしょうですだみーぶんしょうですだみーぶんしょうです</p>
+							</div>
 							<div class="cont btn_wrap">
 								<a href="/" class="button btn_small"><span>ボタンスモール</span></a>
 							</div>
@@ -382,6 +394,7 @@
 								<a href="tel:000-000-0000" class="button icon_tel"><span>000-000-0000</span></a>
 								<a href="/" class="button bc_strong"><span>ボタンカラー bc_strong</span></a>
 								<a href="/" class="button bc0"><span>ボタンカラーbc0</span></a>
+								<a href="/" class="button btn_ss"><span>btn_ss</span></a>
 							</div>
 						</div>
 					</div>

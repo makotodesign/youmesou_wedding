@@ -22,7 +22,9 @@
 				.form_legend {
 				}
 				.form_input {
-					p.error {
+					p.error,
+					p.v_preferror,
+					p.v_ziperror {
 						input,
 						select {
 							margin-bottom: 5px;
@@ -80,6 +82,23 @@
 		.form_submit_set {
 			.form_kiyaku {
 				margin-bottom: 20px;
+				.error {
+					margin-bottom: 5px;
+					padding: 5px;
+					border-color: #cf3f34;
+					background: #fdf1f0;
+					input[type='checkbox'] + * {
+						&:after {
+							border-color: #cf3f34;
+						}
+					}
+				}
+				.ec_error_message {
+					margin-bottom: 25px;
+					font-size: 1.2rem;
+					font-weight: bold;
+					color: #de5d50;
+				}
 			}
 		}
 	}

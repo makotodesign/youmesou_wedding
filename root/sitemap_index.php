@@ -40,6 +40,7 @@
 	foreach( $file_list as  $v ) {
 		$tag .= $tb . "\t" . '<sitemap>' . "\n";
 		$tag .= $tb . "\t\t" . '<loc>' . $base_url . $dir . $v . '</loc>' . "\n";
+		if( true ) {//仮
 			$tag .= $tb . "\t\t" . '<lastmod>' . date( 'Y-m-d\TH:i:s+09:00', filemtime( './' . $dir . $v ) ) . '</lastmod>' . "\n";
 		}
 		$tag .= $tb . "\t" . '</sitemap>' . "\n";

@@ -333,8 +333,7 @@ button.button[disabled] {
 	}
 	> *.button {
 		@include mq(tb_) {
-			width: auto;
-			width: button_width(tb_);
+			//width: button_width(tb_);
 		}
 	}
 	> *.button.full {
@@ -345,6 +344,7 @@ button.button[disabled] {
 	> *.button.auto {
 		@include mq(tb_) {
 			align-self: flex-start;
+			width: auto;
 		}
 	}
 	> *.button + *.button {

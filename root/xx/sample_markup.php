@@ -358,10 +358,48 @@
 							<div class="cont btn_wrap">
 								<a href="/" class="button full"><span>ボタン横いっぱい</span></a>
 							</div>
-							<div class="cont btn_wrap center">
-								<a href="/" class="button"><span>ボタンセンター</span></a>
-								<a href="/" class="button"><span>ボタンセンター</span></a>
+							<div class="cont btn_wrap">
+								<a href="/" class="button btn_small"><span>ボタンスモール</span></a>
 							</div>
+							<div class="cont btn_wrap">
+								<a href="/" class="button_sp"><span>ボタンスマホだけ</span></a>
+							</div>
+						</div>
+						<div class="part">
+							<div class="cont btn_wrap">
+								<a href="/" class="button"><span>ボタン横並び</span></a>
+								<a href="/" class="button"><span>横並び</span></a>
+								<a href="/" class="button"><span>横並び</span></a>
+							</div>
+						</div>
+						<div class="part">
+							<div class="cont btn_wrap grow">
+								<a href="/" class="button"><span>ボタン横並び</span></a>
+								<a href="/" class="button"><span>横並び</span></a>
+								<a href="/" class="button"><span>横並び</span></a>
+							</div>
+						</div>
+						<div class="part">
+							<div class="cont texts">
+								<div class="btn_wrap row_wrap">
+									<a href="/" class="button"><span>回り込むボタン</span></a>
+									<a href="/" class="button"><span>回り込むボタン</span></a>
+									<a href="/" class="button"><span>回り込む</span></a>
+									<a href="/" class="button"><span>ボタン</span></a>
+									<a href="/" class="button"><span>.btn_wrap.row_wrap</a>
+								</div>
+							</div>
+						</div>
+						<div class="part">
+							<div class="cont texts">
+								<div class="btn_wrap row_wrap grow">
+									<a href="/" class="button"><span>回り込むボタン</span></a>
+									<a href="/" class="button"><span>回り込むボタン</span></a>
+									<a href="/" class="button"><span>.btn_wrap.row_wrap.grow</a>
+								</div>
+							</div>
+						</div>
+						<div class="part">
 							<div class="cont texts">
 								<div class="btn_wrap center">
 									<a href="/" class="button"><span>ボタンセンター</span></a>
@@ -372,17 +410,8 @@
 									<a href="/" class="button"><span>高さが揃うボタン<br>.btn_wrap.stretch</span></a>
 								</div>
 							</div>
-							<div class="cont btn_wrap">
-								<a href="/" class="button btn_small"><span>ボタンスモール</span></a>
-							</div>
-							<div class="cont btn_wrap">
-								<a href="/" class="button_sp"><span>ボタンスマホだけ</span></a>
-							</div>
-							<div class="cont btn_wrap grow">
-								<a href="/" class="button"><span>ボタン横並び</span></a>
-								<a href="/" class="button"><span>横並び</span></a>
-								<a href="/" class="button"><span>横並び</span></a>
-							</div>
+						</div>
+						<div class="part">
 							<div class="cont btn_wrap vertical">
 								<a href="/" class="button icon_arrow"><span>icon_arrow</span></a>
 								<a href="/" class="button icon_arrow_right"><span>icon_arrow_right</span></a>

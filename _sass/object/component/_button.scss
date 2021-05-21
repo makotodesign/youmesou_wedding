@@ -240,7 +240,7 @@ button.button[disabled] {
 		display: flex;
 		//flex-wrap: wrap;
 	}
-	> *.button:not(.btn_small) {
+	> *.button:not(.btn_small):not(.btn_ss) {
 		width: 100%;
 		@include mq(tb_) {
 			width: button_width(tb_);
@@ -252,6 +252,7 @@ button.button[disabled] {
 			flex-grow: 1;
 		}
 	}
+
 	> *.button_sp {
 		@include mq(_sp) {
 			margin-top: button_margin(top);
@@ -341,6 +342,8 @@ button.button[disabled] {
 			align-self: auto;
 		}
 	}
+	> *.button.btn_small,
+	> *.button.btn_ss,
 	> *.button.auto {
 		@include mq(tb_) {
 			align-self: flex-start;

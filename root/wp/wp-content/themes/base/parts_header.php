@@ -76,9 +76,9 @@
 								<div class="message_no_cart<?= $add_class_message_no_cart_hide ?>">
 									<p>現在カートの中身はございません。</p>
 								</div>
-								<div class="btn_wrap vartical">
-									<a href="/ec/" class="button v_cart bc_strong<?= $add_cart_btn_in_ecnav_cart_set_hide ?>"><span>カートへ進む</span></a>
-									<a data-role="close" class="button v_close bc0"><span>キャンセル</span></a>
+								<div class="btn_wrap vertical">
+									<a href="/ec/" class="button full v_cart bc_strong<?= $add_cart_btn_in_ecnav_cart_set_hide ?>"><span>カートへ進む</span></a>
+									<a data-role="close" class="button full v_close bc0"><span>キャンセル</span></a>
 								</div>
 							</div>
 						</li>

@@ -204,7 +204,7 @@
 								</div>
 {%		if stockOrder %}
 								<div class="btn_wrap ">
-									<a href="{{ url( 'mypage_order', {'order_no': Order.order_no } ) }}" {{ csrf_token_for_anchor() }} data-method="put" data-confirm="false" class="button bc_strong"><span>再注文する</span></a>
+									<a href="{{ url( 'mypage_order', {'order_no': Order.order_no } ) }}" {{ csrf_token_for_anchor() }} data-method="put" data-confirm="false" class="button full bc_strong"><span>再注文する</span></a>
 								</div>
 {%		endif %}
 {%		if remessage %}

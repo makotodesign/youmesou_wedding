@@ -33,6 +33,11 @@ $button_width: (
 	pc_: 300px
 );
 
+$button_margin: (
+	top: 10px,
+	left: 8px
+);
+
 /*--------------------------------------
 	setting - option
 ---------------------------------------*/
@@ -46,6 +51,7 @@ $button_width: (
 		font-size: 1.6rem;
 		font-weight: bold;
 		color: color(button, text);
+		cursor: pointer;
 		@include mq(tb_) {
 			display: inline-block;
 			text-decoration: none !important;
@@ -232,13 +238,11 @@ button.button[disabled] {
 .btn_wrap {
 	@include mq(tb_) {
 		display: flex;
-		flex-wrap: wrap;
+		//flex-wrap: wrap;
 	}
 	> *.button:not(.btn_small) {
 		width: 100%;
 		@include mq(tb_) {
-			display: flex;
-			align-items: center;
 			width: button_width(tb_);
 		}
 		@include mq(pc_) {
@@ -250,7 +254,7 @@ button.button[disabled] {
 	}
 	> *.button_sp {
 		@include mq(_sp) {
-			margin-top: 10px;
+			margin-top: button_margin(top);
 		}
 	}
 	> *.button.full {
@@ -264,9 +268,14 @@ button.button[disabled] {
 		}
 	}
 	> *.button + *.button {
-		margin-top: 10px;
+		margin-top: button_margin(top);
 		@include mq(tb_) {
 			margin-top: 0;
+		}
+	}
+	> *.button + *.button:not(.full) {
+		@include mq(tb_) {
+			margin-left: 8px;
 		}
 	}
 }
@@ -275,9 +284,11 @@ button.button[disabled] {
 }
 .btn_wrap.stretch {
 	> *.button:not(.btn_small) {
+		display: flex;
 		align-items: stretch;
 		> * {
 			display: flex;
+			flex-wrap: wrap;
 			align-items: center;
 			justify-content: center;
 		}
@@ -285,31 +296,37 @@ button.button[disabled] {
 }
 .btn_wrap.center {
 	@include mq(tb_) {
-		flex-wrap: nowrap;
 		justify-content: center;
 	}
+}
+.btn_wrap.row_wrap {
+	@include mq(tb_) {
+		flex-wrap: wrap;
+		margin-top: button_margin(top) * -1;
+	}
+	> *.button {
+		margin-top: button_margin(top);
+		margin-right: button_margin(left);
+	}
 	> *.button + *.button:not(.full) {
-		@include mq(tb_) {
-			margin-left: 8px;
-		}
+		margin-left: 0;
 	}
 }
+
 .btn_wrap.grow {
-	@include mq(tb_) {
-		flex-wrap: nowrap;
-	}
 	> *.button {
 		@include mq(tb_) {
 			flex-grow: 1;
 			width: auto;
 		}
 	}
-	> *.button + *.button:not(.full) {
-		@include mq(tb_) {
-			margin-left: 8px;
-		}
+}
+.btn_wrap.row_wrap.grow {
+	@include mq(tb_) {
+		margin-right: button_margin(left) * -1;
 	}
 }
+
 .btn_wrap.vertical {
 	@include mq(tb_) {
 		flex-direction: column;
@@ -331,7 +348,12 @@ button.button[disabled] {
 		}
 	}
 	> *.button + *.button {
-		margin-top: 10px;
+		margin-top: button_margin(top);
+	}
+	> *.button + *.button:not(.full) {
+		@include mq(tb_) {
+			margin-left: 0;
+		}
 	}
 }
 

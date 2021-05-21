@@ -65,6 +65,10 @@
 	@return map-get($button_width, $k);
 }
 
+@function button_margin($k) {
+	@return map-get($button_margin, $k);
+}
+
 /* map-get - for ec */
 
 @function color_ec($k) {

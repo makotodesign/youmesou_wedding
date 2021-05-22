@@ -7,6 +7,11 @@
 
 ---------------------------------------------------------------------------*/
 
+##	error_reporting
+
+	ini_set( 'display_errors', 1 );
+	error_reporting(E_ALL);
+
 ##	page_setting
 
 	/* base */
@@ -51,6 +56,7 @@
 	//include_once ROOTREALPATH . '/wp/wp-content/themes/base/parts_header.php';
 
 /*---------------------------------------------------------------------------*/
+
 ?>
 		<div class="title_wrap">
 			<div class="title">

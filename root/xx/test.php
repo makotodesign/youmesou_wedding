@@ -21,7 +21,7 @@
 	define( 'PAGECODE', 'test' );
 
 	/* no_wp */
-	if( ! defined( 'ROOTREALPATH' ) ) define( 'ROOTREALPATH', '/home/oldoffice/www/org01/ct18' );
+	if( ! defined( 'ROOTREALPATH' ) ) define( 'ROOTREALPATH', '/home/c9220330/public_html/oldoffice-dev.com/ct18' );
 	include_once ROOTREALPATH . '/wp/wp-load.php';
 
 	/* includes */

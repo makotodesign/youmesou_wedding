@@ -25,7 +25,7 @@
 
 ##	base
 
-	define( 'ROOTREALPATH', '/home/oldoffice/www/org01/ct18' );
+	define( 'ROOTREALPATH', '/home/c9220330/public_html/oldoffice-dev.com/ct18' );
 	include_once ROOTREALPATH . '/wp/wp-blog-header.php';
 	//include_once ROOTREALPATH . '/php/contents/wp_functions_mod.php';
 

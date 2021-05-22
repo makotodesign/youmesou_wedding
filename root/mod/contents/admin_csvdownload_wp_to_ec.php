@@ -18,7 +18,7 @@
 ##	setting
 
 	/* setting */
-	if( ! defined( 'ROOTREALPATH' ) ) define( 'ROOTREALPATH', '/home/oldoffice/www/org01/ct18' );
+	if( ! defined( 'ROOTREALPATH' ) ) define( 'ROOTREALPATH', '/home/c9220330/public_html/oldoffice-dev.com/ct18' );
 	$csv_filename_prefix = 'productsec_to_ec';
 
 ##	base

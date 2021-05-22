@@ -25,7 +25,7 @@
 		$tag .= $tb . "\t" . '<h1>ECCUBE登録用CSVダウンロード</h1>' . "\n";
 		$tag .= $tb . "\t" . '<p>下記に期間を入力した上でCSVをダウンロードしてください。</p>' . "\n";
 		$tag .= $tb . "\t" . '<hr>' . "\n";
-		$tag .= $tb . "\t" . '<form method="post" action="' . esc_url( home_url( '/mod/wpec/wpadmin_csvdownload_wp_to_ec.php' ) ) . '">' . "\n";
+		$tag .= $tb . "\t" . '<form method="post" action="' . esc_url( home_url( '/mod/contents/admin_csvdownload_wp_to_ec.php' ) ) . '">' . "\n";
 		$tag .= $tb . "\t\t" . '<table class="form-table tools-privacy-policy-page" role="presentation">' . "\n";
 		$tag .= $tb . "\t\t\t" . '<tbody>' . "\n";
 		$tag .= $tb . "\t\t\t\t" . '<tr>' . "\n";

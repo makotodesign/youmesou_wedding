@@ -1,7 +1,7 @@
 <?php
 /*--------------------------------------------------------------
 
-	wpadmin_csvdownload_wp_to_ec
+	admin_csvdownload_wp_to_ec
 
 	@memo
 

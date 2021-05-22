@@ -1,7 +1,7 @@
 <?php
 /*--------------------------------------------------------------
 
-	ec_data_to_session_ajax_mod
+	wp_ec_session_ajax_mod
 
 	@version
 		18.1.1

@@ -64,7 +64,7 @@
 ##	ec
 
 	if( defined( 'ECCUBE_INSTALLED' ) && ECCUBE_INSTALLED ) {
-		include_once ROOTREALPATH . '/mod/wpec/wpec_functions.php';
+		include_once ROOTREALPATH . '/mod/setup/oofuncec.php';
 	}
 
 ##	language

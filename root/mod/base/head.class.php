@@ -355,7 +355,7 @@ class OOHEAD {
 		$tag .= $this->preset_js;
 		// ec
 		if( defined( 'ECCUBE_INSTALLED' ) && ECCUBE_INSTALLED ) {
-			$tag .= self::tb . "" . '<script src="' . $this->fpath_add_date_query( '/js/common/ec_init.js' ) . '"></script>' . "\n";
+			$tag .= self::tb . "" . '<script src="' . $this->fpath_add_date_query( '/js/common/baseec.js' ) . '"></script>' . "\n";
 		}
 		// base
 		$tag .= self::tb . "" . '<script src="' . $this->fpath_add_date_query( '/js/common/base.js' ) . '"></script>' . "\n";

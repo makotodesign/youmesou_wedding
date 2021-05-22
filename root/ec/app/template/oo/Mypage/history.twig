@@ -56,11 +56,10 @@
 							</div>
 						</div>
 						<div class="part shipping_part">
-							<h4 class="heading_ec_shopping">配送情報</h4>
+							<h4 class="heading_ec_shopping">ご注文商品</h4>
 {%		for shipping in Order.shippings %}
 {%			set isShowReducedTaxMess = false %}
 							<div class="cont">
-								<h5 class="heading05">お届け先 {% if Order.multiple %}( {{ loop.index }} ){% endif %}</h5>
 								<div class="ec_delivery_items">
 {%			for orderItem in shipping.productOrderItems %}
 {% dump orderItem %}

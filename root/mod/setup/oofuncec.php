@@ -1,7 +1,7 @@
 <?php
 /*--------------------------------------------------------------
 
-	wpec_functions
+	oofuncec
 
 	@version
 		18.1.1
@@ -80,7 +80,7 @@
 		return mt_rand();
 	}
 
-	function ec_oo_get_product_data( $ec_key, $wp_products_code_for_ec ) {
+	function ec_oo_get_product_data( $ec_key, $ec_id ) {
 		global $wpdb;
 		$ec_db_field = false;
 		$res         = '';
@@ -98,10 +98,10 @@
 					dtb_product
 					LEFT JOIN dtb_product_class ON dtb_product.id = dtb_product_class.product_id
 				WHERE
-					wp_products_code = %s
+					product_code = %s
 			";
 			$sql_val = [
-				$wp_products_code_for_ec
+				$ec_id
 			];
 			$res = $wpdb->get_var( $wpdb->prepare( $sql, $sql_val ) ) ?? '';
 		}

@@ -9,13 +9,14 @@
  * @php
  * 		7.4
  * @version
- * 		18.1.1
+ * 		18.1.2
  *
  * @history
  * 		2015-05-25 新規作成N(1.1.1)
  * 		2015-05-27 文字化け対策
  * 		2021-03-29 エンコード先文字コード設定 [17.1.1]
  * 		2021-05-08	調整 [18.1.1]
+ * 		2021-05-22	CSVの値に配列が指定された場合 var_export 処理 [18.1.2]
  *
  * @readme
  * 		使用する場合はcontentsに移動
@@ -59,16 +60,19 @@ class csv_download {
 	/* CSV行の生成 */
 	private static function make_csv_line( $values ) {
 
-		foreach( $values as $i =>$value ){
+		foreach( $values as $i => $v ){
+			if( is_array( $v ) ) {
+				$v = var_export( $v, true );
+			}
 			if (
-				( strpos( $value, ',' )  !== false ) ||
-				( strpos( $value, '"' )  !== false ) ||
-				( strpos( $value, ' ' )  !== false ) ||
-				( strpos( $value, "\t" ) !== false ) ||
-				( strpos( $value, "\n" ) !== false ) ||
-				( strpos( $value, "\r" ) !== false )
+				( strpos( $v, ',' )  !== false ) ||
+				( strpos( $v, '"' )  !== false ) ||
+				( strpos( $v, ' ' )  !== false ) ||
+				( strpos( $v, "\t" ) !== false ) ||
+				( strpos( $v, "\n" ) !== false ) ||
+				( strpos( $v, "\r" ) !== false )
 			){
-				$values[ $i ] = '"' . str_replace( '"', '""', $value ) . '"';
+				$values[ $i ] = '"' . str_replace( '"', '""', $v ) . '"';
 			}
 		}
 		return implode(',',$values )."\n";

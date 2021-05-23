@@ -3,10 +3,10 @@
 ## setting * 必記述
 
 	// db
-	define( 'DB_HOST',              'mysql622.db.sakura.ne.jp' );
-	define( 'DB_USER',              'oldoffice' );
-	define( 'DB_PASSWORD',          'letsgo3biki' );
-	define( 'DB_NAME',              'oldoffice_ct18' );
+	define( 'DB_HOST',              'mysql2.conoha.ne.jp' );
+	define( 'DB_USER',              '55iz8_oldoffice' );
+	define( 'DB_PASSWORD',          'Old2000_old' );
+	define( 'DB_NAME',              '55iz8_ct18' );
 
 ## debug_mode
 

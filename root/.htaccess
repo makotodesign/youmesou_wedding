@@ -3,10 +3,14 @@
 	RewriteEngine On
 	RewriteBase /ct18/
 
-# ssl
+# ssl sakura
 
 	# RewriteCond %{HTTPS} !on
 	# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# ssl conoha
+
+	SetEnvIf X-Forwarded-Proto ^https$ HTTPS=on
 
 # wp-replace : /index.php > /
 

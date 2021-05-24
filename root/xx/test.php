@@ -57,6 +57,8 @@
 
 /*---------------------------------------------------------------------------*/
 
+// print '<pre>'.'$_SERVER' . '：';var_dump($_SERVER);print '</pre>' . "\n";
+
 ?>
 		<div class="title_wrap">
 			<div class="title">

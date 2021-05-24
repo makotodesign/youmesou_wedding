@@ -59,7 +59,7 @@
 	$HEAD->jquery                .= "\t" . '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>' . "\n";
 	/* preset_js */
 	$HEAD->preset_js             .= ( OOBASE::ua_browser() == 'ie' ) ? "\t" . '<script src="' . PUBLICDIR . '/js/lib/fitie.js"></script>' . "\n" : '';
-	$HEAD->preset_js             .= "\t" . '<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>' . "\n";
+	//$HEAD->preset_js             .= "\t" . '<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>' . "\n";
 
 ##	ec
 

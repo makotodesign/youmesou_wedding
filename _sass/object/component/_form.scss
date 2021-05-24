@@ -255,6 +255,36 @@ form {
 				}
 			}
 		}
+		.form_radioset {
+			display: block;
+			> div {
+				display: block;
+				margin: 8px 0;
+				padding: 6px 15px 6px 40px;
+				border: 1px solid color(border, base);
+				border-radius: radius(base);
+				cursor: pointer;
+				transition: 0.3s;
+				&:before {
+					top: 6px;
+					left: 6px;
+				}
+				&:after {
+					top: 17.5px;
+					left: 18px;
+				}
+			}
+			> div:hover,
+			input[type='radio']:checked + div {
+				background-color: #f2f2f2;
+			}
+			input[type='radio']:checked + div {
+				&:after {
+					//top: 10.5px;
+					//left: 11px;
+				}
+			}
+		}
 	}
 	.form_submit_set {
 		@include mq(tb_) {

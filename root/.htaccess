@@ -5,8 +5,8 @@
 
 # ssl
 
-	RewriteCond %{HTTPS} !on
-	RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+	# RewriteCond %{HTTPS} !on
+	# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
 # wp-replace : /index.php > /
 
@@ -40,7 +40,7 @@
 # wp-case : for multisite
 
 	RewriteRule ^([_0-9a-zA-Z-]+/)?(wp-(content|admin|includes).*) wp/$2 [L]
-	RewriteRule ^([_0-9a-zA-Z-]+/)?(.*\.php)$ wp/$2 [L]
+	#RewriteRule ^([_0-9a-zA-Z-]+/)?(.*\.php)$ wp/$2 [L]
 
 # wp-redirect : [*] > index.php
 

@@ -17,7 +17,13 @@ Thumbs.db
 
 #/__cf/*
 
-### past
+#/__cf/*
+
+### private
+
+.vscode/_*
+
+### bkup
 
 /php/**/__*
 _bkup/

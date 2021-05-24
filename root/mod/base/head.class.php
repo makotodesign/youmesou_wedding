@@ -299,11 +299,11 @@ class OOHEAD {
 				if( isset( FONTS_PRELOAD[ 'googlefonts_def' ] ) ) {
 					$tag .= self::tb . '<link rel="preconnect" href="https://fonts.gstatic.com"> ' . "\n";
 				}
-				if( OOBASE::ua_device() === 'sp' && isset( FONTS_PRELOAD[ 'googlefonts_sp' ] ) ) {
+				if( OOBASE::ua_device() === 'sp' && FONTS_PRELOAD[ 'googlefonts_sp' ] ) {
 					foreach( FONTS_PRELOAD[ 'googlefonts_sp' ] as  $v ) {
 						$tag .= self::tb . '<link rel="stylesheet" href="' . $v . '"> ' . "\n";
 					}
-				} elseif( OOBASE::ua_device() === 'pc' && isset( FONTS_PRELOAD[ 'googlefonts_pc' ] ) ) {
+				} elseif( OOBASE::ua_device() === 'pc' && FONTS_PRELOAD[ 'googlefonts_pc' ] ) {
 						foreach( FONTS_PRELOAD[ 'googlefonts_pc' ] as  $v ) {
 							$tag .= self::tb . '<link rel="stylesheet" href="' . $v . '"> ' . "\n";
 						}

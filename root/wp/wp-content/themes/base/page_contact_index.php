@@ -71,7 +71,7 @@
 		</div>
 		<div class="contents_wrap">
 			<div class="<?= DIRCODE ?>_<?= PAGECODE ?>_contents contents">
-				<section class="area">
+				<div class="area">
 <?php	if( $FS->is_form() ) : ?>
 					<div class="box">
 						<div class="part step_part">
@@ -120,7 +120,7 @@
 <?php	endif; ?>
 					<div class="box">
 						<div class="part form_set01">
-							<form id="<?= $FS->form_id ?>" method="post" action="<?= $FS->form_action ?>"<?= $FS->res_enctype() ?> class="cont">
+							<form id="<?= $FS->form_id ?>" method="post"<?= $FS->form_action ?><?= $FS->res_enctype() ?> class="cont">
 								<div class="form_input_set">
 									<div class="form_fieldset">
 										<div class="form_legend">
@@ -218,7 +218,7 @@
 							</form>
 						</div>
 					</div>
-				</section>
+				</div>
 			</div>
 		</div>
 <?php	include_once TEMPLATEPATH . '/parts_footer.php'; ?>

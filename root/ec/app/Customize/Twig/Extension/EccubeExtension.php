@@ -135,8 +135,14 @@ class EccubeExtension extends AbstractExtension
 			include_once( TEMPLATEPATH . '/parts_header.php' );
 			$tag = ob_get_clean();
 		}
-		$tag = str_replace( "\t\t<header class=\"header_wrap\">\r\n", '', $tag );
-		$tag = str_replace( "\r\n\t\t</header>", '', $tag );
+		$tag = str_replace( [
+			"\t\t<header class=\"header_wrap\">\r\n",
+			"\t\t<header class=\"header_wrap\">\n"
+		], '', $tag );
+		$tag = str_replace( [
+			"\r\n\t\t</header>",
+			"\n\t\t</header>"
+		], '', $tag );
 		return $tag;
 	}
 

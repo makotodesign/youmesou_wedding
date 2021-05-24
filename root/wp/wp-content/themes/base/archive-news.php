@@ -48,7 +48,7 @@
 		</div>
 		<div class="contents_wrap">
 			<div class="<?= DIRCODE ?>_<?= PAGECODE ?>_contents contents main_side">
-				<section class="area main_area">
+				<div class="area main_area">
 					<div class="box">
 						<div class="part news_archive">
 <?php	foreach( $wp_posts_array as  $v ) : ?>
@@ -74,7 +74,7 @@
 						</div>
 					</div>
 <?php	endif; ?>
-				</section>
+				</div>
 <?php	include_once TEMPLATEPATH . '/parts_sidebar.php'; ?>
 			</div>
 		</div>

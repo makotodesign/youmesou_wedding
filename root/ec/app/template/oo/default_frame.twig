@@ -18,7 +18,9 @@
 	<title>{{ PAGENAME|default( '---' ) }}｜{{ constant( 'SITENAME' ) }}</title>
 	<meta name="robots" content="noindex">
 	<link rel="apple-touch-icon" href="{{ oo_fpath_add_date_query( '/apple-touch-icon.png' ) }}">
+{%	if oo_fpath_add_date_query( '/favicon.ico' ) %}
 	<link rel="icon" href="{{ oo_fpath_add_date_query( '/favicon.ico' ) }}">
+{%	endif %}
 {{ oo_google_fonts_preload()|raw }}
 	<link rel="stylesheet" type="text/css" href="{{ oo_fpath_add_date_query( '/css/styles.css' ) }}" media="all">
 {# css for eccube plugin #}

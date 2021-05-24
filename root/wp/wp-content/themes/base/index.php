@@ -50,12 +50,12 @@
 		<div class="contents_wrap">
 			<div class="top_contents contents">
 <?php	if( $wp_top_headnews_array ) : ?>
-				<section class="top_headnews_area area">
+				<div class="top_headnews_area area">
 					<div class="headnews_box box">
 						<div class="headnews_part">
 <?php		foreach( $wp_top_headnews_array as $v ) : ?>
 							<div class="news_wrap">
-								<p class="news_date"><time datetime="' . $v[ 'post_date_code' ]. '"><?= $v[ 'post_date' ] ?></time></p>
+								<p class="news_date"><time datetime="<?= $v[ 'post_date_code' ] ?>"><?= $v[ 'post_date' ] ?></time></p>
 								<div class="news_summary">
 									<p class="news_title"><?= $v[ 'title' ] ?></p>
 								</div>
@@ -70,7 +70,7 @@
 <?php			endif; ?>
 <?php		endforeach; ?>
 					</div>
-				</section>
+				</div>
 <?php	endif; ?>
 				<section class="top_xx_area area">
 					<div class="hgroup">

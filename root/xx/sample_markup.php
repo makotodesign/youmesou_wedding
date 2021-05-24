@@ -34,6 +34,11 @@
 	include_once ROOTREALPATH . '/mod/lib/form.class.php';
 	$FS = new formset( '/xx/thanks/', 'xx_form' );
 
+	/* css */
+	// css サンプルマークアップ用 $HEAD->css 使用不可
+	$HEAD->css = '';
+	$HEAD->css .= "\t" . '<style>.sample_size .pic{width:80px;height:80px;}.sample_size .object_fit{width:240px;}.sample_area:not(.main_area){background-color:#eee}</style>' . "\n";
+
 	/* js */
 	$HEAD->js = '';
 	$HEAD->js .= "\t" . '<script src="' . $HEAD->fpath_add_date_query( '/js/' . DIRCODE . '/script.js' ) . '"></script>' . "\n";
@@ -72,8 +77,6 @@
 
 /*---------------------------------------------------------------------------*/
 ?>
-<!--css サンプルマークアップ用 使用不可-->
-		<style type="text/css">.sample_size .pic{width:80px;height:80px;}.sample_size .object_fit{width:240px;}.sample_area:not(.main_area){background-color:#eee}</style>
 <!--title-->
 		<div class="title_wrap">
 			<div class="title">
@@ -389,7 +392,7 @@
 									<a href="/" class="button"><span>回り込むボタン</span></a>
 									<a href="/" class="button"><span>回り込む</span></a>
 									<a href="/" class="button"><span>ボタン</span></a>
-									<a href="/" class="button"><span>.btn_wrap.row_wrap</a>
+									<a href="/" class="button"><span>.btn_wrap.row_wrap</span></a>
 								</div>
 							</div>
 						</div>
@@ -398,7 +401,7 @@
 								<div class="btn_wrap row_wrap grow">
 									<a href="/" class="button"><span>回り込むボタン</span></a>
 									<a href="/" class="button"><span>回り込むボタン</span></a>
-									<a href="/" class="button"><span>.btn_wrap.row_wrap.grow</a>
+									<a href="/" class="button"><span>.btn_wrap.row_wrap.grow</span></a>
 								</div>
 							</div>
 						</div>
@@ -488,7 +491,7 @@
 					<div class="box">
 						<h3 class="heading03">検索</h3>
 						<div class="part">
-							<form class="cont search_wrap" method="get" action="">
+							<form class="cont search_wrap" method="get"<?= $FS->form_action ?>>
 								<p class="input_wrap"><input type="text" name="coursename" placeholder="Search･･･"></p>
 								<button class="button" type="submit"><span>検索</span></button>
 							</form>
@@ -681,16 +684,11 @@ if( isset( $_GET[ 'swiper' ] ) && $_GET[ 'swiper' ] == 'on' ) {
 						<h2 class="heading02">テーブル</h2>
 					</div>
 					<div class="box">
-						<h3 class="heading03">一般テーブル　SP横スクロール</h3>
+						<h3 class="heading03">一般テーブル SP横スクロール</h3>
 						<div class="part">
 							<div class="cont scroll_wrap">
 								<table class="table">
-									<caption>表:名称</caption>
-									<tfoot>
-										<tr>
-											<td colspan="2">表の名前</td>
-										</tr>
-									</tfoot>
+									<caption>表:必ず記載</caption>
 									<tbody>
 										<tr>
 											<th scope="row">TH</th>
@@ -854,7 +852,7 @@ if( isset( $_GET[ 'swiper' ] ) && $_GET[ 'swiper' ] == 'on' ) {
 					</div>
 					<div class="box">
 						<div class="part form_set01">
-							<form id="<?= $FS->form_id ?>" method="post" action="<?= $FS->form_action;  ?>">
+							<form id="<?= $FS->form_id ?>" method="post"<?= $FS->form_action ?>>
 								<div class="form_input_set">
 									<div class="form_fieldset">
 										<div class="form_legend">

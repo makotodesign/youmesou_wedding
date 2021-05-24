@@ -94,7 +94,7 @@
 
 ******************************************************************************************************/
 ?>
-							<form id="<?= $FS->form_id; ?>" method="post" action="<?= $FS->form_action ?>"<?= $FS->res_enctype() ?> class="cont">
+							<form id="<?= $FS->form_id; ?>" method="post"<?= $FS->form_action ?><?= $FS->res_enctype() ?> class="cont">
 								<div class="form_input_set">
 <?php
 /******* reference *********************************************************************************

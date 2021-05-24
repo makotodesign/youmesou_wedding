@@ -452,7 +452,7 @@ class formset {
 		if( isset( $this->POST[ 'step' ] ) && $this->POST[ 'step' ] == 'step_confirm' ) {
 			$this->step        = 'step_confirm';
 			$this->form_id     = 'confirm_form';
-			$this->form_action = $this->fpath_thanks;
+			$this->form_action = ' action="' . $this->fpath_thanks . '"';
 		}
 		// def tb
 		$this->tb = $tb;
@@ -464,7 +464,7 @@ class formset {
 
 	public function res_action() {
 		if( $this->no_confirm ) {
-			$this->form_action = $this->fpath_thanks;
+			$this->form_action = ' action="' . $this->fpath_thanks . '"';
 		}
 		return $this->form_action;
 	}

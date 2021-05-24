@@ -65,7 +65,7 @@
 {% set Address = choice.data %}
 {% set checked = choice is selectedchoice( form.addresses.vars.value ) ? 'checked="checked"' : '' %}
 									<label class="form_radioset">
-										<p><input type="radio" id="address{{ choice.value }}" name="{{ form.addresses.vars.full_name }}" value="{{ choice.value }}" {{ checked }} /></p>
+										<input type="radio" id="address{{ choice.value }}" name="{{ form.addresses.vars.full_name }}" value="{{ choice.value }}" {{ checked }} />
 										<div>
 											<p>{{ Address.name01 }}&nbsp;{{ Address.name02 }}</p>
 											<p>〒{{ Address.postal_code }} {{ Address.Pref }}{{ Address.addr01 }}{{ Address.addr02 }}</p>
@@ -76,8 +76,8 @@
 								</div>
 								<div class="form_submit_set">
 									<div class="form_buttons btn_wrap center">
-										<button type="submit" class="submit_send button"><span>選択したお届け先に送る</span></button>
-										<a href="{{ url( 'shopping' ) }}" class="button">戻る</a>
+										<button type="submit" class="submit_send button bc_strong"><span>選択したお届け先に送る</span></button>
+										<a href="{{ url( 'shopping' ) }}" class="button bc0"><span>戻る</span></a>
 									</div>
 								</div>
 							</form>

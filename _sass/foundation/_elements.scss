@@ -165,31 +165,32 @@ form {
 		&::after {
 			content: '';
 			position: absolute;
-			top: 11.5px;
-			left: 13px;
+			top: 10px;
+			left: 12px;
 			display: block;
 			border-radius: 50%;
-			width: 0;
-			height: 0;
+			width: 1px;
+			height: 1px;
 			background: black;
 			opacity: 0;
 			transition: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
 			@include mq(_sp) {
 				top: 50%;
-				left: 22.5px;
+				left: 22px;
 			}
 		}
 	}
 	input[type='radio']:checked + * {
 		&::after {
-			top: 3.5px;
-			left: 5px;
-			width: 15px;
-			height: 15px;
+			//top: 3.5px;
+			//left: 5px;
+			//width: 15px;
+			//height: 15px;
 			opacity: 1;
+			transform: scale(15);
 			@include mq(_sp) {
-				top: calc(50% - 7.5px);
-				left: 15px;
+				//top: calc(50% - 7.5px);
+				//left: 15px;
 			}
 		}
 	}
@@ -285,10 +286,6 @@ form {
 			}
 			input[type='radio']:checked + span {
 				&::after {
-					@include mq(_sp) {
-						top: calc(50% - 7.5px);
-						left: 15px;
-					}
 				}
 			}
 			input[type='checkbox'] + span {

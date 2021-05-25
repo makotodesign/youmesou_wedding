@@ -920,7 +920,7 @@ if( isset( $_GET[ 'swiper' ] ) && $_GET[ 'swiper' ] == 'on' ) {
 											] ) ?> - <?= $FS->res( 'text', 'zip02', 'must', [
 													'add_class'         => 'size_s'
 											] ) ?></p>
-											<p class="input_select_wrap"><?= $FS->res( 'pref', 'pref' ) ?></p>
+											<p class="input_select_wrap size_s"><?= $FS->res( 'pref', 'pref' ) ?></p>
 											<p><?= $FS->res( 'text', 'address01', 'must', [
 													'placeholder'       => '住所01 市区町村'
 											] ) ?></p>
@@ -991,7 +991,7 @@ if( isset( $_GET[ 'swiper' ] ) && $_GET[ 'swiper' ] == 'on' ) {
 											<p>県名</p>
 										</div>
 										<div class="form_input">
-											<p class="input_select_wrap"><?= $FS->res( 'pref', 'prefid', '', [
+											<p class="input_select_wrap size_m"><?= $FS->res( 'pref', 'prefid', '', [
 											] ) ?></p>
 										</div>
 									</div>

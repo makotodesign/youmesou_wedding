@@ -195,14 +195,22 @@ form {
 				.input_select_wrap.size_m {
 					display: inline-block;
 					width: 40%;
+					min-width: calc(50px + 10em); //全角10文字程度
 				}
 				.input_select_wrap.size_s {
 					display: inline-block;
 					width: 25%;
+					min-width: calc(50px + 5em); //全角5文字程度
 				}
 				.input_select_wrap.size_ss {
 					display: inline-block;
 					width: 15%;
+					min-width: calc(50px + 2em); //全角2文字程度
+				}
+				.input_select_wrap.sp_full {
+					@include mq(_sp) {
+						width: 100%;
+					}
 				}
 				.input_hidden_wrap {
 					// hidden

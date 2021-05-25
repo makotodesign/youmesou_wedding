@@ -56,11 +56,9 @@
 							width: 160px;
 						}
 					}
-					p.v_pref {
-						select {
-							@include mq(tb_) {
-								width: 190px;
-							}
+					p.v_pref.input_select_wrap {
+						@include mq(tb_) {
+							width: 190px;
 						}
 					}
 				}

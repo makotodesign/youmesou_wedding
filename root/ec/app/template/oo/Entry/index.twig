@@ -87,7 +87,7 @@
 										<div class="form_input ec_input_address_wrap">
 											<p class="v_zip{{ has_errors( form.postal_code ) ? 'error'}}">〒{{ form_widget( form.postal_code, { 'attr': { 'data-handle': 'zip' }} ) }}</p>
 											{{- form_errors( form.postal_code ) }}
-											<p class="v_pref input_select_wrap size_s {{ has_errors( form.address.pref ) ? 'error'}}">{{ form_widget( form.address.pref, { 'attr': { 'data-target': 'pref' }} ) }}</p>
+											<p class="v_pref input_select_wrap {{ has_errors( form.address.pref ) ? 'error'}}">{{ form_widget( form.address.pref, { 'attr': { 'data-target': 'pref' }} ) }}</p>
 											{{- form_errors( form.address.pref ) }}
 											<p{{ has_errors( form.address.addr01 ) ? ' class="error"'}}>{{ form_widget( form.address.addr01, { 'attr': { 'placeholder': '市区町村名', 'data-target': 'address01' }} ) }}</p>
 											{{- form_errors( form.address.addr01 ) }}
@@ -149,7 +149,7 @@
 											<p>職業</p>
 										</div>
 										<div class="form_input">
-											<p{{ has_errors( form.job ) ? ' class="error"' }}><span class="input_select_wrap size_s">{{ form_widget( form.job ) }}</span></p>
+											<p{{ has_errors( form.job ) ? ' class="error"' }}><span class="input_select_wrap size_m">{{ form_widget( form.job ) }}</span></p>
 											{{- form_errors( form.job ) }}
 										</div>
 									</div>

@@ -34,13 +34,10 @@
 
 	/* fonts preload */
 	const FONTS_PRELOAD = [
-		// 必須
-		'googlefonts_def' => [
-			'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap'
-			//'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;700&display=swap'
-		],
 		// pc def:overwrite
 		'googlefonts_pc' => [
+			'noto_sans' => 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap'
+			//'noto_sans' => 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;700&display=swap'
 		],
 		// sp def:overwrite
 		'googlefonts_sp' => [

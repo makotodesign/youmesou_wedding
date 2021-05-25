@@ -39,6 +39,9 @@
 		'current'       => $PAGENAME
 	);
 
+	$HEAD->google_fonts_text = [
+	];
+
 	/* head & header */
 	$HEAD->disp_tag_head();
 	include_once ROOTREALPATH . '/wp/wp-content/themes/base/parts_header.php';

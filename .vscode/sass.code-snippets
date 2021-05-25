@@ -46,7 +46,7 @@
 	"oo_font": {
 		"prefix": "oo_font",
 		"body": [
-			"font(${1|mincho,base,icomoon,fontawesome,fontawesome_brand|})"
+			"font(${1|noto_sans,mincho,base,icomoon,fontawesome,fontawesome_brand|})"
 		],
 		"description": "font()"
 	},

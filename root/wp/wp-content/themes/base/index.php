@@ -28,6 +28,10 @@
 	$HEAD->meta_description     = 'auto';
 	$HEAD->modal_flag           = false;
 
+	$HEAD->google_fonts_text = [
+		'noto_sans' => $PAGENAME
+	];
+
 	/* head & header */
 	$HEAD->disp_tag_head();
 	include_once ROOTREALPATH . '/wp/wp-content/themes/base/parts_header.php';

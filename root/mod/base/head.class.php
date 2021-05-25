@@ -44,6 +44,7 @@ class OOHEAD {
 	public $sitename                  = '';
 	public $google_analytics_ID       = '';
 	public $viewport_width            = false; // レスポンシブの場合は使用しない
+	public $google_fonts_text         = [];
 
 	// sns_setting
 	public $facebook_app_id           = '';
@@ -294,26 +295,31 @@ class OOHEAD {
 	private function res_tag_css() {
 
 		$tag = '';
+		$preconect = self::tb . '<link rel="preconnect" href="https://fonts.gstatic.com"> ' . "\n";
 		if( ! $this->css_default_off ) {
 			if( defined( 'FONTS_PRELOAD' ) ) {
-				if( isset( FONTS_PRELOAD[ 'googlefonts_def' ] ) ) {
-					$tag .= self::tb . '<link rel="preconnect" href="https://fonts.gstatic.com"> ' . "\n";
-				}
-				if( OOBASE::ua_device() === 'sp' && FONTS_PRELOAD[ 'googlefonts_sp' ] ) {
-					foreach( FONTS_PRELOAD[ 'googlefonts_sp' ] as  $v ) {
+				if( OOBASE::ua_device() === 'pc' && isset( FONTS_PRELOAD[ 'googlefonts_pc' ] ) ) {
+					$tag .= $preconect;
+					foreach( FONTS_PRELOAD[ 'googlefonts_pc' ] as $k => $v ) {
+						if( isset( $this->google_fonts_text[ $k ] ) && $this->google_fonts_text[ $k ] ) {
+							$v .= '&text=' . $this->google_fonts_text[ $k ];
+						}
 						$tag .= self::tb . '<link rel="stylesheet" href="' . $v . '"> ' . "\n";
 					}
-				} elseif( OOBASE::ua_device() === 'pc' && FONTS_PRELOAD[ 'googlefonts_pc' ] ) {
-						foreach( FONTS_PRELOAD[ 'googlefonts_pc' ] as  $v ) {
-							$tag .= self::tb . '<link rel="stylesheet" href="' . $v . '"> ' . "\n";
+				} elseif( isset( FONTS_PRELOAD[ 'googlefonts_def' ] ) ) {
+					$tag .= $preconect;
+					foreach( FONTS_PRELOAD[ 'googlefonts_def' ] as $k => $v ) {
+						if( isset( $this->google_fonts_text[ $k ] ) && $this->google_fonts_text[ $k ] ) {
+							$v .= '&text=' . $this->google_fonts_text[ $k ];
 						}
-				} else {
-					foreach( FONTS_PRELOAD[ 'googlefonts_def' ] as  $v ) {
 						$tag .= self::tb . '<link rel="stylesheet" href="' . $v . '"> ' . "\n";
 					}
 				}
 				if( isset( FONTS_PRELOAD[ 'otherfonts' ] ) ) {
-					foreach( FONTS_PRELOAD[ 'otherfonts' ] as  $v ) {
+					if( ! FONTS_PRELOAD[ 'googlefonts_sp' ] && ! FONTS_PRELOAD[ 'googlefonts_pc' ] && ! FONTS_PRELOAD[ 'googlefonts_def' ] ) {
+						$tag .= $preconect;
+					}
+					foreach( FONTS_PRELOAD[ 'otherfonts' ] as $k => $v ) {
 						$tag .= self::tb . '<link rel="preload" as="style" href="' . $v . '" onload="this.rel=' . "'" . 'stylesheet' . "'" . '">' . "\n";
 					}
 				}

@@ -64,9 +64,13 @@
 
 	// breadcrumb
 	$breadcrumb_arr = array(
-		DIRCODE .'/' => $DIRNAME,
+		DIRCODE .'/'    => $DIRNAME,
 		'current'       => $PAGENAME
 	);
+
+	$HEAD->google_fonts_text = [
+		//'noto_sans' => $PAGENAME . $DIRNAME . 'この文章はダミーです。完成までお読みにならないようお願い申し上げます。この文章はダミーです。完成までお読みにならないようお願い申し上げます。万一、お読みになってしまわれた方は､記載内容をお忘'
+	];
 
 	/* head & header */
 	$HEAD->disp_tag_head();

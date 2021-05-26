@@ -1,6 +1,6 @@
 # basic_auth
 
-	AuthUserFile /home/oldoffice/www/org01/ct17/__cf/htaccess/basic_auth/.htpasswd
+	AuthUserFile /home/oldoffice/www/org01/ct18/__cf/htaccess/basic_auth/.htpasswd
 	AuthName "Please enter your ID and password"
 	AuthType Basic
 	require valid-user

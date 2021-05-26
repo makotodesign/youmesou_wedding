@@ -79,7 +79,7 @@ bin/console doctrine:schema:update --dump-sql --force
 
 // db
 
-oldoffice_ct17_n_eccube
+oldoffice_ct18_n_eccube
 mysql57.oldoffice.sakura.ne.jp
 oldoffice
 letsgo3biki

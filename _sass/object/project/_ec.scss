@@ -56,18 +56,16 @@
 							width: 160px;
 						}
 					}
-					p.v_pref {
-						select {
-							@include mq(tb_) {
-								width: 190px;
-							}
+					p.v_pref.input_select_wrap {
+						@include mq(tb_) {
+							width: 190px;
 						}
 					}
 				}
 				.form_input.ec_input_birth_wrap {
 					p {
 						select {
-							width: calc(33% - 15px);
+							//width: calc(33% - 15px);
 						}
 						span.sep {
 							display: inline-block;

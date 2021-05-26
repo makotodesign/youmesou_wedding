@@ -52,17 +52,33 @@ form {
 					// input_text, textarea
 					outline-color: transparent;
 					transition: 0.3s;
-					input.size_m {
-						display: inline-block;
-						width: 40%;
-					}
-					input.size_s {
-						display: inline-block;
-						width: 25%;
-					}
-					input.size_ss {
-						display: inline-block;
-						width: 15%;
+					$arr: (
+						'all': '',
+						'tb_': '_tb_pc',
+						'pc_': '_pc'
+					);
+					@each $k, $v in $arr {
+						input.size_ss#{$v} {
+							@include mq($k) {
+								display: inline-block;
+								width: 15%;
+								min-width: calc(30px + 2em); //全角2文字程度
+							}
+						}
+						input.size_s#{$v} {
+							@include mq($k) {
+								display: inline-block;
+								width: 25%;
+								min-width: calc(30px + 5em); //全角5文字程度
+							}
+						}
+						input.size_m#{$v} {
+							@include mq($k) {
+								display: inline-block;
+								width: 40%;
+								min-width: calc(30px + 10em); //全角10文字程度
+							}
+						}
 					}
 					// prefix : input_text
 					.input_cover_prefix {
@@ -192,24 +208,32 @@ form {
 						padding: 6px 30px 6px 15px;
 					}
 				}
-				.input_select_wrap.size_m {
-					display: inline-block;
-					width: 40%;
-					min-width: calc(50px + 10em); //全角10文字程度
-				}
-				.input_select_wrap.size_s {
-					display: inline-block;
-					width: 25%;
-					min-width: calc(50px + 5em); //全角5文字程度
-				}
-				.input_select_wrap.size_ss {
-					display: inline-block;
-					width: 15%;
-					min-width: calc(50px + 2em); //全角2文字程度
-				}
-				.input_select_wrap.sp_full {
-					@include mq(_sp) {
-						width: 100%;
+				$arr: (
+					'all': '',
+					'tb_': '_tb_pc',
+					'pc_': '_pc'
+				);
+				@each $k, $v in $arr {
+					.input_select_wrap.size_ss#{$v} {
+						@include mq($k) {
+							display: inline-block;
+							width: 15%;
+							min-width: calc(50px + 2em); //全角2文字程度
+						}
+					}
+					.input_select_wrap.size_s#{$v} {
+						@include mq($k) {
+							display: inline-block;
+							width: 25%;
+							min-width: calc(50px + 5em); //全角5文字程度
+						}
+					}
+					.input_select_wrap.size_m#{$v} {
+						@include mq($k) {
+							display: inline-block;
+							width: 40%;
+							min-width: calc(50px + 10em); //全角10文字程度
+						}
 					}
 				}
 				.input_hidden_wrap {

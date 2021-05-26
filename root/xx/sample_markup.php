@@ -873,6 +873,45 @@ if( isset( $_GET[ 'swiper' ] ) && $_GET[ 'swiper' ] == 'on' ) {
 <?php	endif; ?>
 										</div>
 									</div>
+
+									<div class="form_fieldset">
+										<div class="form_legend">
+											<p>テキスト（インライン）</p>
+										</div>
+										<div class="form_input">
+											<p><?= $FS->res( 'text', 'input_size_ss', '', [
+													'add_class'         => 'size_ss',
+													'placeholder'     => '１２３４５６７８９０'
+											] ) ?>
+											<?= $FS->res( 'text', 'input_size_s', '', [
+													'add_class'         => 'size_s',
+													'placeholder'     => '１２３４５６７８９０'
+											] ) ?>
+											<?= $FS->res( 'text', 'input_size_m', '', [
+													'add_class'         => 'size_m',
+													'placeholder'     => '１２３４５６７８９０'
+											] ) ?></p>
+										</div>
+									</div>
+									<div class="form_fieldset">
+										<div class="form_legend">
+											<p>テキスト<span class="nobr">（PC・TBのみインライン）</span></p>
+										</div>
+										<div class="form_input">
+											<p><?= $FS->res( 'text', 'input_size_ss_tb_pc', '', [
+													'add_class'         => 'size_ss_tb_pc',
+													'placeholder'     => '１２３４５６７８９０'
+											] ) ?>
+											<?= $FS->res( 'text', 'input_size_s_tb_pc', '', [
+													'add_class'         => 'size_s_tb_pc',
+													'placeholder'     => '１２３４５６７８９０'
+											] ) ?>
+											<?= $FS->res( 'text', 'input_size_m_tb_pc', '', [
+													'add_class'         => 'size_m_tb_pc',
+													'placeholder'     => '１２３４５６７８９０'
+											] ) ?></p>
+										</div>
+									</div>
 									<div class="form_fieldset">
 										<div class="form_legend">
 											<p>HIDDEN</p>
@@ -902,11 +941,11 @@ if( isset( $_GET[ 'swiper' ] ) && $_GET[ 'swiper' ] == 'on' ) {
 										</div>
 										<div class="form_input">
 											<p><?= $FS->res( 'tel', 'tel01', 'must', [
-													'add_class'         => 'size_s'
+													'add_class'         => 'size_ss'
 											] ) ?> - <?= $FS->res( 'tel', 'tel02', 'must', [
-													'add_class'         => 'size_s'
+													'add_class'         => 'size_ss'
 											] ) ?> - <?= $FS->res( 'tel', 'tel03', 'must', [
-													'add_class'         => 'size_s'
+													'add_class'         => 'size_ss'
 											] ) ?></p>
 										</div>
 									</div>
@@ -916,9 +955,9 @@ if( isset( $_GET[ 'swiper' ] ) && $_GET[ 'swiper' ] == 'on' ) {
 										</div>
 										<div class="form_input">
 											<p>〒 <?= $FS->res( 'text', 'zip01', 'must', [
-													'add_class'         => 'size_s'
+													'add_class'         => 'size_ss'
 											] ) ?> - <?= $FS->res( 'text', 'zip02', 'must', [
-													'add_class'         => 'size_s'
+													'add_class'         => 'size_ss'
 											] ) ?></p>
 											<p class="input_select_wrap size_s"><?= $FS->res( 'pref', 'pref' ) ?></p>
 											<p><?= $FS->res( 'text', 'address01', 'must', [
@@ -980,9 +1019,30 @@ if( isset( $_GET[ 'swiper' ] ) && $_GET[ 'swiper' ] == 'on' ) {
 											<p>セレクト（インライン）</p>
 										</div>
 										<div class="form_input">
-											<p class="input_select_wrap size_s"><?= $FS->res( 'select', 'selectids', '要素01,要素02', [
+											<p class="input_select_wrap size_ss"><?= $FS->res( 'select', 'selectid_size_ss', '要素01,要素02', [
+												'element_first'     => '選択してください',
 											] ) ?></p>
-											<p class="input_select_wrap size_ss"><?= $FS->res( 'select', 'selectidss', '要素01,要素02', [
+											<p class="input_select_wrap size_s"><?= $FS->res( 'select', 'selectid_size_s', '要素01,要素02', [
+												'element_first'     => '選択してください',
+											] ) ?></p>
+											<p class="input_select_wrap size_m"><?= $FS->res( 'select', 'selectid_size_m', '要素01,要素02', [
+												'element_first'     => '選択してください',
+											] ) ?></p>
+										</div>
+									</div>
+									<div class="form_fieldset">
+										<div class="form_legend">
+											<p>セレクト<span class="nobr">（PC・TBのみインライン）</span></p>
+										</div>
+										<div class="form_input">
+											<p class="input_select_wrap size_ss_tb_pc"><?= $FS->res( 'select', 'selectid_size_ss_tb_pc', '要素01,要素02', [
+												'element_first'     => '選択してください',
+											] ) ?></p>
+											<p class="input_select_wrap size_s_tb_pc"><?= $FS->res( 'select', 'selectid_size_s_tb_pc', '要素01,要素02', [
+												'element_first'     => '選択してください',
+											] ) ?></p>
+											<p class="input_select_wrap size_m_tb_pc"><?= $FS->res( 'select', 'selectid_size_m_tb_pc', '要素01,要素02', [
+												'element_first'     => '選択してください',
 											] ) ?></p>
 										</div>
 									</div>

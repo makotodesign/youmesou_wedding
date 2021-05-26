@@ -103,21 +103,21 @@ class db {
 
 	public function get_results( $sql, $sql_val = [] ) {
 
-		$this->query( $sql, $sql_val, 'array' );
+		return $this->query( $sql, $sql_val, 'array' );
 	}
 
 	public function get_row( $sql, $sql_val = [] ) {
 
-		$this->query( $sql, $sql_val, 'record' );
+		return $this->query( $sql, $sql_val, 'record' );
 	}
 
 	public function get_var( $sql, $sql_val = [] ) {
 
-		$this->query( $sql, $sql_val, 'var' );
+		return $this->query( $sql, $sql_val, 'var' );
 	}
 
 	public function close() {
 
-		$this->pdo = null;
+		return $this->pdo = null;
 	}
 }

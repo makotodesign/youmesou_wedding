@@ -93,6 +93,7 @@ $button_margin: (
 	&:hover:not([disabled]) {
 		&::before,
 		&::after {
+			color: color(button, text_hover);
 			@if color(button, text_hover) != '' {
 				color: color(button, text_hover);
 			} @else {

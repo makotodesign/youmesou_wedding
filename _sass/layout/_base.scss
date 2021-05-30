@@ -707,6 +707,12 @@ $gnav_wrapper: '.header';
 						}
 					}
 				}
+				> li.submenu_wrap:last-child {
+					> .submenu {
+						right: 0;
+						left: auto;
+					}
+				}
 			}
 		}
 	}

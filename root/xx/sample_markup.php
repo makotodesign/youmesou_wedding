@@ -427,6 +427,7 @@
 								<a href="/" class="button icon_arrow_right"><span>icon_arrow_right</span></a>
 								<a href="/" class="button icon_tel"><span>icon_tel</span></a>
 								<a href="/" class="button icon_tel_inline"><span>icon_tel_inline</span></a>
+								<a href="/" class="button icon_tel_inline bc_strong"><span>icon_tel_inline</span></a>
 								<a href="/" class="button icon_facebook bc_strong"><span>icon_facebook</span></a>
 								<a href="tel:000-000-0000" class="button icon_tel"><span>000-000-0000</span></a>
 								<a href="/" class="button bc_strong"><span>ボタンカラー bc_strong</span></a>

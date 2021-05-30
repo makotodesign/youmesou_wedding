@@ -52,16 +52,16 @@ $button_margin: (
 		font-weight: bold;
 		color: color(button, text);
 		cursor: pointer;
+		transition: none;
 		@include mq(tb_) {
 			display: inline-block;
-			text-decoration: none !important;
 			font-weight: normal;
 		}
 		&::before,
 		&::after {
 			color: color(button, text);
+			transition: none;
 			@include mq(tb_) {
-				transition: all 0.5s;
 			}
 		}
 		> * {
@@ -73,17 +73,17 @@ $button_margin: (
 			background-color: color(button, base);
 			box-shadow: 0 1px 2px rgba($button_active_shadow_color_sp, 0.2);
 			font-size: 1.6rem;
-			font-weight: bold;
+			font-weight: inherit;
 			color: color(button, text);
+			transition: 0.5s;
 			@include mq(tb_) {
 				padding: 15px 50px;
 				box-shadow: none;
-				font-weight: normal;
-				transition: all 0.5s;
 			}
 			&::before,
 			&::after {
 				color: color(button, text);
+				transition: 0.5s;
 			}
 		}
 	}
@@ -94,7 +94,6 @@ $button_margin: (
 		&::before,
 		&::after {
 			color: color(button, text_hover);
-			transition: all 0.5s;
 			@if color(button, text_hover) != '' {
 				color: color(button, text_hover);
 			} @else {
@@ -114,7 +113,6 @@ $button_margin: (
 			}
 			&::before,
 			&::after {
-				transition: all 0.5s;
 				@if color(button, text_hover) != '' {
 					color: color(button, text_hover);
 				} @else {
@@ -135,7 +133,6 @@ a.button,
 a.button:visited,
 button.button {
 	cursor: pointer;
-	transition: all 0.5s;
 	@include button_style();
 }
 a.button_sp,
@@ -195,23 +192,12 @@ button.button[disabled] {
 	button.button.#{$k},
 	button.button.#{$k}:visited {
 		color: map-get($v, text);
-		@include mq(_sp) {
-			color: map-get($v, text);
-		}
 		> * {
 			border: 1px solid map-get($v, border);
 			background-color: map-get($v, bg);
 			color: map-get($v, text);
-			@include mq(_sp) {
-				border: 1px solid map-get($v, border);
-				background-color: map-get($v, bg);
-				color: map-get($v, text);
-			}
 			&::before {
 				color: map-get($v, text);
-				@include mq(_sp) {
-					color: map-get($v, text);
-				}
 			}
 		}
 	}
@@ -380,7 +366,6 @@ button.button[disabled] {
 			font-size: 22px;
 			font-family: font(icomoon);
 			line-height: 1;
-			transition: inherit;
 		}
 	}
 	%icon_inline_span {
@@ -390,7 +375,6 @@ button.button[disabled] {
 			font-size: inherit;
 			font-family: font(icomoon);
 			line-height: 1;
-			transition: inherit;
 		}
 	}
 	&.icon_arrow {

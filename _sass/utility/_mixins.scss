@@ -128,7 +128,7 @@ $media_query: (
 	tb: 'screen and (min-width: ' + nth($breakpoint, 1) + 'px) and (max-width: ' + ( nth($breakpoint, 2) - 1 ) + 'px)',
 	_tb: 'screen and (max-width: ' + ( nth($breakpoint, 2) - 1 ) + 'px)',
 	pc_: 'print, screen and (min-width: ' + nth($breakpoint, 2) + 'px)',
-	lg_: 'screen and (min-width: ' + $max_pc_width + 'px)',
+	lg_: 'screen and (min-width: ' + $max_pc_width + ')',
 	ie: 'screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none), print and (-ms-high-contrast: active), print and (-ms-high-contrast: none)'
 ) !default;
 
@@ -169,7 +169,7 @@ $media_query: (
 		@media screen and (max-width: #{$maxwidth}px) {
 			@content;
 		}
-		//manのみ0の場合
+		//maxのみ0の場合
 	} @else if $minwidth > 0 and $maxwidth == 0 {
 		@media #{$print}screen and (min-width: #{$minwidth}px) {
 			@content;

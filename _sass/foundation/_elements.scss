@@ -75,6 +75,9 @@ form {
 		@include mq(tb_) {
 			margin: 0;
 		}
+		&::placeholder {
+			color: #ccc;
+		}
 	}
 	// input_text
 	input[type='text'],

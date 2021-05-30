@@ -4,7 +4,7 @@
 
 	// db
 	define( 'DB_HOST',              'mysql2.conoha.ne.jp' );
-	define( 'DB_USER',              '55iz8_oldoffice' );
+	define( 'DB_USER',              '55iz8_ct' );
 	define( 'DB_PASSWORD',          'Old2000_old' );
 	define( 'DB_NAME',              '55iz8_ct18' );
 

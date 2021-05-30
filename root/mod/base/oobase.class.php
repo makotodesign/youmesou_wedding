@@ -96,6 +96,7 @@ class OOBASE {
 		if(  self::ua_check( 'Edge' ) ) {
 			$ua_browser = 'edge';
 		}
+		return $ua_browser;
 	}
 
 	/**

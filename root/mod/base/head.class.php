@@ -356,15 +356,9 @@ class OOHEAD {
 		// const
 		$tag .= self::tb . "" . '<script>const PUBLICDIR = "' . PUBLICDIR . '",TAXRATE="' . TAXRATE . '";</script>' . "\n";
 		// oo_lib
-		$tag .= self::tb . "" . '<script src="' . $this->fpath_add_date_query( '/js/common/oo_lib.js' ) . '"></script>' . "\n";
+		$tag .= self::tb . "" . '<script src="' . $this->fpath_add_date_query( '/js/common/base.min.js' ) . '"></script>' . "\n";
 		// preset_js < setup
 		$tag .= $this->preset_js;
-		// ec
-		if( defined( 'ECCUBE_INSTALLED' ) && ECCUBE_INSTALLED ) {
-			$tag .= self::tb . "" . '<script src="' . $this->fpath_add_date_query( '/js/common/baseec.js' ) . '"></script>' . "\n";
-		}
-		// base
-		$tag .= self::tb . "" . '<script src="' . $this->fpath_add_date_query( '/js/common/base.js' ) . '"></script>' . "\n";
 		// page js
 		$tag .= $this->js;
 		return $tag;

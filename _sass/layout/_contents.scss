@@ -200,7 +200,7 @@
 		}
 		.title_text {
 			font-size: 2.2rem;
-			font-family: font(noto_sans);
+			font-family: font(base);
 			line-height: 1.3;
 			color: white;
 			@include mq(tb_) {

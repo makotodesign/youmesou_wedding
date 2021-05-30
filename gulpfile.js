@@ -22,7 +22,8 @@ const pngquant = require('imagemin-pngquant');
 const svgo = require('imagemin-svgo');
 const gifsicle = require('imagemin-gifsicle');
 const changed = require('gulp-changed');
-const minify = require('gulp-minify');
+const concat = require('gulp-concat');
+const uglify = require('gulp-uglify');
 const browserSync = require('browser-sync').create();
 const Webp = require('gulp-webp');
 const rename = require('gulp-rename');
@@ -37,6 +38,10 @@ const paths = {
 	// scss > css
 	scssPath: './_sass/**/*.scss',
 	cssDir: './' + project + '/css/',
+	// js > minify
+	jsSrcPaths: ['./_js_src/common/oo_lib.js', './_js_src/common/baseec.js', './_js_src/common/base.js'],
+	//jsSrcPaths: ['./_js_src/common/oo_lib.js', './_js_src/common/base.js'],
+	jsDir: './' + project + '/js/common/',
 	// images > minify
 	imgSrcPath: './_images_src/**/*',
 	imgDir: './' + project + '/images',
@@ -70,6 +75,11 @@ gulp.task('sass', function () {
 		.pipe(sass())
 		.pipe(postcss(postcssOption))
 		.pipe(gulp.dest(paths.cssDir, { sourcemaps: './sourcemaps/' }));
+});
+
+// js : minify
+gulp.task('jsminify', function () {
+	return gulp.src(paths.jsSrcPaths).pipe(concat('base.min.js')).pipe(uglify()).pipe(gulp.dest(paths.jsDir));
 });
 
 // images : minify
@@ -115,6 +125,7 @@ gulp.task('reload', (done) => {
 ------------------------------------------------*/
 
 gulp.watch(paths.scssPath, gulp.series('sass'));
+gulp.watch(paths.jsSrcPaths, gulp.series('jsminify'));
 gulp.watch(paths.imgSrcPath, gulp.series('imagemin'));
 gulp.watch(paths.imgSrcPath, gulp.series('imagewepp'));
 if (server.proxy) {

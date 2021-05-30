@@ -87,7 +87,7 @@
 			</div>
 			<div class="header">
 				<a class="logo_set" href="/">
-					<p class="logo"><span><img src="/images/common/logo.svg" alt="必ず記述"></span></p>
+					<p class="logo"><span><img src="/images/common/logo.svg" width="300" height="60" alt="必ず記述"></span></p>
 				</a>
 <?php
 	/* memo */

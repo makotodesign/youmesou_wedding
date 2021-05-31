@@ -6,9 +6,9 @@
 
 ---------------------------------------------------------------*/
 
-jQuery(function($) {
-	var cw = window.innerWidth, // current_window_width
-		breakpoint = [600, 960],
+jQuery(function ($) {
+	const breakpoint = [600, 960];
+	let cw = window.innerWidth, // current_window_width
 		fromMode = 'none',
 		currentMode;
 
@@ -43,7 +43,7 @@ jQuery(function($) {
 		} else if (mode === 'sp_tb') {
 			// sp_tb で切り替えしない場合
 			/* dom_move */
-			$('.heading_xxx').each(function() {
+			$('.heading_xxx').each(function () {
 				$(this).prependTo($(this).parents('.box'));
 			});
 			// dom移動
@@ -73,18 +73,11 @@ jQuery(function($) {
 			// tb_pc で切り替えしない場合
 		} else if (mode === 'pc') {
 			/* dom_move */
-			$('.heading_xxx').each(function() {
-				$(this).prependTo(
-					$(this)
-						.parents('.box')
-						.find('.texts_cont')
-				);
+			$('.heading_xxx').each(function () {
+				$(this).prependTo($(this).parents('.box').find('.texts_cont'));
 			});
 			// dom移動
-			$('.topnav_list')
-				.prependTo('.header_wrap')
-				.wrap($('<div class="header_topnav_wrap"/>'))
-				.wrap($('<nav class="header_topnav"/>'));
+			$('.topnav_list').prependTo('.header_wrap').wrap($('<div class="header_topnav_wrap"/>')).wrap($('<nav class="header_topnav"/>'));
 			/* slickxxx */
 			$('.slick_xxx').slick('unslick');
 			// clm
@@ -112,10 +105,8 @@ jQuery(function($) {
 		$('.bt:has( a )').bigTarget({ hoverClass: 'bt_hover' });
 
 		// gallery
-		$('#selector a').on('click', function() {
-			var imgSrc = $(this)
-				.children('img')
-				.attr('src');
+		$('#selector a').on('click', function () {
+			var imgSrc = $(this).children('img').attr('src');
 			$('#selector a.current').removeClass('current');
 			$(this).addClass('current');
 			$('#target img').attr('src', imgSrc);
@@ -159,9 +150,9 @@ jQuery(function($) {
 
 	/***** run *****/
 
-	$(function() {
+	$(function () {
 		eventify();
-		$(window).on('resize orientationchange', function() {
+		$(window).on('resize orientationchange', function () {
 			if (cw === window.innerWidth) return;
 			resized();
 			cw = window.innerWidth;
@@ -176,7 +167,7 @@ jQuery(function($) {
 	load
 ------------------------------------------------*/
 
-$(window).on('load', function() {
+$(window).on('load', function () {
 	/* aos */
 	AOS.init({
 		easing: 'ease-in-out-sine'

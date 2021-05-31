@@ -2,12 +2,10 @@
 
 	xx
 
-	@memo
-
 ---------------------------------------------------------------*/
 
 jQuery(function ($) {
-	let breakpoint = [600, 960];
+	const breakpoint = [600, 960];
 
 	function eventify() {}
 

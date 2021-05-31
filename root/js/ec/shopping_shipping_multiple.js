@@ -2,8 +2,6 @@
 
 	shopping_shipping_multiple
 
-	@memo
-
 ---------------------------------------------------------------*/
 
 jQuery(function ($) {

@@ -2,15 +2,12 @@
 
 	top
 
-	@memo
-
 ---------------------------------------------------------------*/
 
-jQuery(function($) {
+jQuery(function ($) {
 	const breakpoint = [600, 960];
 	/* promo */
 	const $promoWrap = $('.promo_wrap');
-	/***** func : main *****/
 
 	function eventify() {}
 
@@ -26,16 +23,9 @@ jQuery(function($) {
 
 	function setup() {
 		/* promo */
-		/* ie */
-		// object_fit
-		//if (typeof objectFitImages == 'function') objectFitImages('.promo_pic img');
 	}
 
-	/***** util *****/
-
-	/***** run *****/
-
-	$(function() {
+	$(function () {
 		eventify();
 		$.oo.changed_run(changed, breakpoint);
 		setup();

@@ -39,7 +39,13 @@ const paths = {
 	scssPath: './_sass/**/*.scss',
 	cssDir: './' + project + '/css/',
 	// js > minify
-	jsSrcPaths: ['./_js_src/common/oo_lib.js', './_js_src/common/baseec.js', './_js_src/common/base.js'],
+	// prettier-ignore
+	jsSrcPaths: [
+		//'./_js_src/common/slick.js',
+		'./_js_src/common/oo_lib.js',
+		'./_js_src/common/baseec.js',
+		'./_js_src/common/base.js'
+	],
 	//jsSrcPaths: ['./_js_src/common/oo_lib.js', './_js_src/common/base.js'],
 	jsDir: './' + project + '/js/common/',
 	// images > minify

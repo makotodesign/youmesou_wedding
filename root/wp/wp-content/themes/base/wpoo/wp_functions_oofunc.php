@@ -77,7 +77,7 @@
 
 	// wp_oo_acf_image : 画像がない場合は「noimage_path」
 	function wp_oo_acf_image( $acf, $res_type = 'medium', $noimage = '/images/lib/parts/noimage_icon.svg' ){
-		if( ! is_array( $acf ) ) {
+		if( ! is_array( $acf ) || ! $acf ) {
 			// acf返り値がboth出ない時の判定
 			$res = ( $acf ) ? $acf : $noimage;
 		} elseif( ! in_array( $res_type, array( 'url', 'thumbnail', 'medium', 'medium_large', 'large', 'filename' ) ) ) {

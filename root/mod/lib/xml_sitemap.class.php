@@ -9,78 +9,64 @@
  * @php
  * 		7.4
  * @version
- * 		18.1.1
+ * 		18.1.2
  *
  * @history
  * 		2018-01-30	新規作成 N [1.1.1]
  * 		2021-05-08	調整 [18.1.1]
+ * 		2021-06-03	priority,changefreq を除去 [18.1.2]
  *
  * *************************************************************************/
 
 class xml_sitemap {
 
-	### constructor
-
-	function __construct() {
-	}
-
-	### func : public
+	const tb = "";
 
 	/* 全体サイトマップ */
 	public function res_sitemaps_code( $arr, $images_in_page = false ) {
 		$code = '';
-		$tb  = "";
-
-		$code .= $tb . "" . '<?xml version="1.0" encoding="utf-8"?>' . "\n";
+		$code .= self::tb . "" . '<?xml version="1.0" encoding="utf-8"?>' . "\n";
 		$add_param = ( $images_in_page ) ? ' xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"' : '';
-		$code .= $tb . "" . '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"';
-		$code .= $add_param;
-		$code .= '>' . "\n";
+		$code .= self::tb . "" . '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"' . $add_param . '>' . "\n";
 		$code .= self::res_sitemaps_parts( $arr, $images_in_page );
-		$code .= $tb . "" . '</urlset>' . "\n";
+		$code .= self::tb . "" . '</urlset>' . "\n";
+		return $code;
 	}
-
-	### private
 
 	/* 各ページ */
 	private static function res_sitemaps_parts( $arr, $images_in_page ) {
-		$temp_code = '';
-		$tb  = "";
-		for( $i = 0; $i < count( $arr ); $i++ ) {
-//			$temp_code .= var_export($arr[ $i ],true)."\n";
-			$temp_code .= $tb . "\t" . '<url>' . "\n";
-			$temp_code .= $tb . "\t\t" . '<loc>' . self::escape_xml( $arr[ $i ][ 'url' ] ) . '</loc>' . "\n";
-			if( isset( $arr[ $i ][ 'date' ] ) && $arr[ $i ][ 'date' ] ) {
-				$temp_code .= $tb . "\t\t" . '<lastmod>' . $arr[ $i ][ 'date' ] . '</lastmod>' . "\n";
+		$code = '';
+		foreach( $arr as  $v ) {
+			if( isset( $v[ 'url' ] ) && $v[ 'url' ] ) {
+				$code .= self::tb . "\t" . '<url>' . "\n";
+				$code .= self::tb . "\t\t" . '<loc>' . self::escape_xml( $v[ 'url' ] ) . '</loc>' . "\n";
+				if( isset( $v[ 'date' ] ) && $v[ 'date' ] ) {
+					$code .= self::tb . "\t\t" . '<lastmod>' . $v[ 'date' ] . '</lastmod>' . "\n";
+				}
+				if( isset( $v[ 'priority' ] ) && $v[ 'priority' ] ) {
+					$code .= self::tb . "\t\t" . '<priority>' . $v[ 'priority' ] . '</priority>' . "\n";
+				}
+				if( $images_in_page && isset( $v[ 'images' ] ) && is_array( $v[ 'images' ] ) ) {
+					$code .= self::res_sitemaps_images( $v[ 'images' ] );
+				}
+				$code .= self::tb . "\t" . '</url>' . "\n";
 			}
-			if( isset( $arr[ $i ][ 'changefreq' ] ) && $arr[ $i ][ 'changefreq' ] ) {
-				$temp_code .= $tb . "\t\t" . '<changefreq>' . $arr[ $i ][ 'changefreq' ] . '</changefreq>' . "\n";
-			}
-			if( isset( $arr[ $i ][ 'priority' ] ) && $arr[ $i ][ 'priority' ] ) {
-				$temp_code .= $tb . "\t\t" . '<priority>' . $arr[ $i ][ 'priority' ] . '</priority>' . "\n";
-			}
-			if( $images_in_page && isset( $arr[ $i ][ 'images' ] ) && is_array( $arr[ $i ][ 'images' ] ) ) {
-				$temp_arr = $arr[ $i ][ 'images' ];
-				$temp_code .= self::res_sitemaps_images( $temp_arr );
-			}
-		$temp_code .= $tb . "\t" . '</url>' . "\n";
 		}
-		return $temp_code;
+		return $code;
 	}
 
 	/* ページ内画像 */
 	private static function res_sitemaps_images( $arr ) {
-		$temp_code = '';
-		$tb  = "";
-		for( $i = 0; $i < count( $arr ); $i++ ) {
-			if( isset( $arr[ $i ][ 'url' ] ) && isset( $arr[ $i ][ 'alt' ] ) && $arr[ $i ][ 'url' ] && $arr[ $i ][ 'alt' ] ) {
-				$temp_code .= $tb . "\t\t" . '<image:image>' . "\n";
-				$temp_code .= $tb . "\t\t\t" . '<image:loc>' . self::escape_xml( $arr[ $i ][ 'url' ] ) . '</image:loc>' . "\n";
-				$temp_code .= $tb . "\t\t\t" . '<image:caption>' . $arr[ $i ][ 'alt' ] . '</image:caption>' . "\n";
-				$temp_code .= $tb . "\t\t" . '</image:image>' . "\n";
+		$code = '';
+		foreach( $arr as  $v ) {
+			if( isset( $v[ 'url' ] ) && isset( $v[ 'alt' ] ) && $v[ 'url' ] && $v[ 'alt' ] ) {
+				$code .= self::tb . "\t\t" . '<image:image>' . "\n";
+				$code .= self::tb . "\t\t\t" . '<image:loc>' . self::escape_xml( $v[ 'url' ] ) . '</image:loc>' . "\n";
+				$code .= self::tb . "\t\t\t" . '<image:caption>' . $v[ 'alt' ] . '</image:caption>' . "\n";
+				$code .= self::tb . "\t\t" . '</image:image>' . "\n";
 			}
 		}
-		return $temp_code;
+		return $code;
 	}
 
 	/* func : escape */

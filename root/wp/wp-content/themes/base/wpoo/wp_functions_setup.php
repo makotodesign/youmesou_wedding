@@ -4,7 +4,7 @@
  * wp_functions_setup
  *
  * @version
- * 		18.1.1
+ * 		18.1.2
  *
  * @history
  * 		2020-03-26	WordPressの個別設定関数 [ 16.1.1 ]
@@ -13,6 +13,7 @@
  * 					グローバル変数変換（$post, $post_type など）
  * 					functions にあわせて順序並び替え
  * 					注釈の記述を変更
+ * 		2021-06-04	サイトマップXML機能をcronに移行 [ 18.1.2 ]
  *
  --------------------------------------------------------------*/
 
@@ -480,61 +481,6 @@
 		}
 	}
 	add_action( 'init', 'custom_rewrite_basic' );
-
-	## sitemaps.xml
-
-	function wp_google_sitemaps_create( $this_post_id, $this_post, $update ) {
-		$arr = ( defined( 'CUSTOM_POSTTYPE_CHILD' ) ) ? CUSTOM_POSTTYPE_CHILD : CUSTOM_POSTTYPE; // multisite_adjust
-		foreach( $arr as $k => $v ) {
-			if( $this_post->post_type === $k ) {
-				$fname_xml = $this_post->post_type . '.xml';
-				include_once ROOTREALPATH . '/mod/lib/xml_sitemap.class.php';
-				$XS = new xml_sitemap();
-				$blog_url = get_bloginfo( 'url' ) . '/' . $this_post->post_type . '/';
-				$today = date_i18n( 'Y-m-d\TH:i:s+09:00' );
-				// xml_data
-				$xml_arr = [];
-				// archive
-				if( $v[ 'sitemap' ][ 'archive' ] ) {
-					$xml_arr[] = array(
-						'url'              => $blog_url,
-						'date'             => $today,
-						'priority'         => $v[ 'sitemap' ][ 'archive' ]
-					);
-				}
-				// single
-				if( $v[ 'sitemap' ][ 'single' ] ) {
-					$args = array(
-						'posts_per_page' => -1,
-						'post_type'      => $this_post->post_type
-					);
-					$args = array_merge( $args, $v[ 'sitemap' ][ 'add_arg' ] );
-					$this_posts_array = get_posts( $args );
-					if( is_array( $this_posts_array ) && $this_posts_array ) {
-						$temp_arr = [];
-						foreach( $this_posts_array as $vv ) {
-							setup_postdata( $vv );
-							$this_post_id             = $vv->ID;
-							$temp_arr[ 'url' ]        = get_permalink( $this_post_id );
-							$temp_arr[ 'date' ]       = get_the_modified_date( 'Y-m-d\TH:i:s+09:00', $this_post_id );
-							$temp_arr[ 'priority' ]   = $v[ 'sitemap' ][ 'single' ];
-							$xml_arr[] = $temp_arr;
-						}
-					}
-				}
-				// sitemap_code
-				$XS->res_sitemaps_code( $xml_arr );
-				$code = '';
-				$code .= $XS->code;
-				$code .= $XS->debug_report;
-				// create_xml_file
-				$fpath_sitemaps = ROOTREALPATH . '/sitemaps/' . $fname_xml;
-				file_put_contents( $fpath_sitemaps, $code );
-				break;
-			}
-		}
-	}
-	add_action( 'save_post', 'wp_google_sitemaps_create', 10, 3 );
 
 	## アーカイブ管理画面 一覧表示
 

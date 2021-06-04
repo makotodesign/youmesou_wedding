@@ -24,10 +24,10 @@
 
 ##	setting
 
-	// if( ! is_null( $_SERVER[ 'REMOTE_ADDR' ] ) ) {
-	// 	echo 'access error!';
-	// 	return;
-	// }
+	if( ! is_null( $_SERVER[ 'REMOTE_ADDR' ] ) ) {
+		echo 'access error!';
+		return;
+	}
 
 ##	setting
 

@@ -2023,19 +2023,38 @@ form {
 	ul {
 		//@extend %ul;
 	}
+	// edit--
 	h2:not(:first-child) {
 		margin-top: 20px;
 		margin-bottom: 20px;
+		@include mq(tb_) {
+			margin-top: 40px;
+			margin-bottom: 40px;
+		}
+		@include mq(pc_) {
+			margin-top: 60px;
+			margin-bottom: 60px;
+		}
 	}
 	h3:not(:first-child) {
 		margin-top: 15px;
+		@include mq(tb_) {
+			margin-top: 25px;
+		}
 	}
 	h4:not(:first-child) {
 		margin-top: 10px;
+		@include mq(tb_) {
+			margin-top: 10px;
+		}
 	}
 	h5:not(:first-child) {
 		margin-top: 10px;
+		@include mq(tb_) {
+			margin-top: 10px;
+		}
 	}
+	// --edit
 	p {
 		@extend .text;
 	}
@@ -2051,34 +2070,6 @@ form {
 		word-break: break-all;
 		word-wrap: break-word;
 	}
-
-	// edit--
-	h2:not(:first-child) {
-		@include mq(tb_) {
-			margin-top: 40px;
-			margin-bottom: 40px;
-		}
-		@include mq(pc_) {
-			margin-top: 60px;
-			margin-bottom: 60px;
-		}
-	}
-	h3:not(:first-child) {
-		@include mq(tb_) {
-			margin-top: 25px;
-		}
-	}
-	h4:not(:first-child) {
-		@include mq(tb_) {
-			margin-top: 10px;
-		}
-	}
-	h5:not(:first-child) {
-		@include mq(tb_) {
-			margin-top: 10px;
-		}
-	}
-	// --edit
 }
 .main_area {
 	.title,

@@ -16,9 +16,9 @@
  *
  * @memo
  * 		さくらの場合：cronコマンド
- * 			cd /home/c9220330/public_html/oldoffice-dev.com/ct18/contents; /usr/local/bin/php wp_sitemaps_auto_create_cron.php
+ * 			cd /home/c9220330/public_html/oldoffice-dev.com/ct18/mod/contents; /usr/local/bin/php wp_sitemaps_auto_create_cron.php
  * 		Conohaの場合：cronコマンド
- * 			cd /home/c9220330/public_html/oldoffice-dev.com/ct18/contents; /usr/local/bin/php wp_sitemaps_auto_create_cron.php
+ * 			cd /home/c9220330/public_html/oldoffice-dev.com/ct18/mod/contents; /usr/bin/php wp_sitemaps_auto_create_cron.php
  *
  * *************************************************************************/
 

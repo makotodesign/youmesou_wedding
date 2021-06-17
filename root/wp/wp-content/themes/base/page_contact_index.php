@@ -54,7 +54,7 @@
 
 	// breadcrumb
 	$breadcrumb_arr = [
-		//DIRCODE .'/' => $DIRNAME,
+		//'/' . DIRCODE . '/' => $DIRNAME,
 		'current'       => $PAGENAME
 	];
 

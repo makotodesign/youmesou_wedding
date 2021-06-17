@@ -448,7 +448,7 @@ ul[class^='ul_title'].title_color {
 	> li {
 		.title,
 		&:before {
-			color: color(theme, base);
+			color: color(list, base);
 		}
 	}
 }

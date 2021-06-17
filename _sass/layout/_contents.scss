@@ -444,6 +444,43 @@ ul.ul_line,
 	}
 }
 
+ul[class^='ul_title'].title_color {
+	> li {
+		.title,
+		&:before {
+			color: color(theme, base);
+		}
+	}
+}
+ul[class^='ul_title'].title_bold {
+	> li {
+		.title,
+		&:before {
+			font-weight: bold;
+		}
+	}
+}
+ul[class^='ul_title'].title_dot {
+	> li {
+		position: relative;
+		padding-left: 1.5em;
+		line-height: 1.6;
+		&:after {
+			content: icom(circle);
+			position: absolute;
+			top: 0;
+			left: 1px;
+			display: block;
+			text-align: center;
+			font-size: inherit;
+			font-family: font(icomoon);
+			line-height: 1.7;
+			color: color(list, base);
+			transform: scale(0.5);
+		}
+	}
+}
+
 ul.ul_title,
 .texts ul.ul_title {
 	> li:not(:last-child) {

@@ -245,7 +245,10 @@
 				],
 				'csv_setting'        => [
 					'key'            => 'xxx_id',		// [重要] csv内key列 || autoincrement
+					'update'         => false,
 					'type_int'       => [			// 数値型の列指定
+					],
+					'type_float'       => [			// float型の列指定
 					],
 					'convert_kana'   => [			// 半角カナ変換、全角数値変換の列指定
 						'xxx_text'
@@ -255,11 +258,8 @@
 					]
 				],
 				'db_table_field_name' => [
-					/*
-					csv のフィールド名をこちらが指定する場合
 					'aaa',
 					'bbb'
-					*/
 				]
 			]
 		];
@@ -352,7 +352,13 @@
 								$temp_log[] = 'cell[' . ( $i + $csv_title_row_num + 1 ) . '][ ' . $kk . ' ] : x "' . $vv . ' - no_ascii"';
 							}
 							$array_values[] = ( in_array( $kk, $setting[ $this_post_id ][ 'csv_setting' ][ 'convert_kana' ] ) ) ? mb_convert_kana( $vv, 'KVas' ) : $vv;
-							$temp_placeholder[] = ( in_array( $kk, $setting[ $this_post_id ][ 'csv_setting' ][ 'type_int' ] ) ) ? '%d' : '%s';
+							if( in_array( $kk, $setting[ $post_id ][ 'csv_setting' ][ 'type_int' ] ) ) {
+								$temp_placeholder[] = '%d';
+							} elseif( in_array( $kk, $setting[ $post_id ][ 'csv_setting' ][ 'type_float' ] ) ) {
+								$temp_placeholder[] = '%f';
+							} else {
+								$temp_placeholder[] = '%s';
+							}
 						}
 						$placeholders[] = '(' . join( ',', $temp_placeholder ) . ')';
 						if( $csv_key !== 'autoincrement' ) {
@@ -368,30 +374,50 @@
 			}
 
 			/* db : delate */
-			if( $db_update ) {
-				$sql = 'DELETE FROM ' . $setting[ $this_post_id ][ 'db_table_name' ];
+		if( $db_update ) {
+			if( ! $setting[ $post_id ][ 'csv_setting' ][ 'update' ] ) {
+				$sql = 'DELETE FROM ' . $setting[ $post_id ][ 'db_table_name' ];
 				if( $wpdb->query( $sql ) ) {
 					$log[] = 'delate : o';
+					$log[] = var_export( $setting[ $post_id ][ 'csv_setting' ][ 'update' ], true );
 				} else {
 					$log[] = 'delate : -';
 				}
+			} else {
+				$log[] = 'delate : -';
 			}
+		}
 
 			/* db : insert*/
-			if( $db_update ) {
-				$sql = 'INSERT INTO ' . $setting[ $this_post_id ][ 'db_table_name' ] . ' (' . join( ',', $arr_csv_keys ) . ') VALUES ' . join( ',', $placeholders );
-				// $sql = "INSERT INTO
-				// 		{$setting[ $this_post_id ][ 'db_table_name' ]} ( join( ',', $arr_csv_keys ) )
-				// 	VALUES
-				// 		join( ',', $placeholders )
-				// ";
-				if( $wpdb->query( $wpdb->prepare( $sql, $array_values ) ) ) {
-					$log[] = 'insert : o success!';
-				} else {
-					$log[] = 'insert : x';
-					$log[] = $sql;
+		if( $db_update ) {
+			// $sql = 'INSERT INTO ' . $setting[ $post_id ][ 'db_table_name' ] . ' (' . join( ',', $arr_csv_keys ) . ') VALUES ' . join( ',', $placeholders );
+			$sql_table        = $setting[ $post_id ][ 'db_table_name' ];
+			$sql_keys         = join( ',', $arr_csv_keys );
+			$sql_placeholders = join( ',', $placeholders );
+			$sql = "INSERT INTO
+					{$sql_table} ({$sql_keys})
+				VALUES
+					$sql_placeholders
+			";
+			// $setting[ $post_id ][ 'csv_setting' ][ 'update' ] により、ON DUPLICATE KEY 追記
+			if( $setting[ $post_id ][ 'csv_setting' ][ 'update' ] ) {
+				$sql .= ' ON DUPLICATE KEY UPDATE ';
+				$temp_arr =[];
+				foreach( $arr_csv_keys as $v ) {
+					// primary key は含めず他全てを更新
+					if( $v !== $setting[ $post_id ][ 'csv_setting' ][ 'update' ] ) {
+						$temp_arr[] = $v . ' = VALUES( ' . $v . ' )';
+					}
 				}
+				$sql .= join( ',', $temp_arr );
 			}
+			if( $wpdb->query( $wpdb->prepare( $sql, $array_values ) ) ) {
+				$log[] = 'insert : o success!';
+			} else {
+				$log[] = 'insert : x';
+				$log[] = $wpdb->prepare( $sql, $array_values );
+			}
+		}
 
 			/* log */
 			//if( $debug_log ) $log[] = '[debug : ' . join( '/', $debug_log ) . ']';

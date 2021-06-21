@@ -7,6 +7,28 @@
 		// edit-- 編集箇所
 ======================================**/
 
+//--------------------------------------
+//	array
+//--------------------------------------
+$mq_arr: (
+	'_sp': (
+		'',
+		'_sp',
+		'_sp_tb'
+	),
+	'tb': (
+		'',
+		'_sp_tb',
+		'_tb',
+		'_tb_pc'
+	),
+	'pc_': (
+		'',
+		'_tb_pc',
+		'_pc'
+	)
+);
+
 /*--------------------------------------
 	area > box > part
 ---------------------------------------*/
@@ -440,6 +462,43 @@ ul.ul_line,
 			width: 8px;
 			height: 1px;
 			background-color: #999;
+		}
+	}
+}
+
+ul[class^='ul_title'].title_color {
+	> li {
+		.title,
+		&:before {
+			color: color(list, base);
+		}
+	}
+}
+ul[class^='ul_title'].title_bold {
+	> li {
+		.title,
+		&:before {
+			font-weight: bold;
+		}
+	}
+}
+ul[class^='ul_title'].title_dot {
+	> li {
+		position: relative;
+		padding-left: 1.5em;
+		line-height: 1.6;
+		&:after {
+			content: icom(circle);
+			position: absolute;
+			top: 0;
+			left: 1px;
+			display: block;
+			text-align: center;
+			font-size: inherit;
+			font-family: font(icomoon);
+			line-height: 1.7;
+			color: color(list, base);
+			transform: scale(0.5);
 		}
 	}
 }
@@ -1036,147 +1095,190 @@ $snap_prop: (
 );
 // --edit
 
-@include mq(_sp) {
-	// image_texts left_right float
-	.image_texts,
-	.image_texts_sp_tb,
-	.image_texts_sp {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
-		> .image_item {
-			order: 1;
-			margin-bottom: 0;
-			width: image_texts(_sp, image);
-		}
-		> .texts_item {
-			order: 2;
-			margin-bottom: 0;
-			width: image_texts(_sp, texts);
-		}
-	}
-	.texts_image,
-	.texts_image_sp_tb,
-	.texts_image_sp {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
-		> .image_item {
-			order: 2;
-			margin-bottom: 0;
-			width: image_texts(_sp, image);
-		}
-		> .texts_item {
-			order: 1;
-			margin-bottom: 0;
-			width: image_texts(_sp, texts);
-		}
-	}
-	.left_right,
-	.left_right_sp_tb,
-	.left_right_sp {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
-		> .left_item {
-			order: 1;
-			margin-bottom: 0;
-			width: 47.5%;
-		}
-		> .right_item {
-			order: 2;
-			margin-bottom: 0;
-			width: 47.5%;
-		}
-	}
-	.float_left,
-	.float_left_sp_tb,
-	.float_left_sp {
-		> .image_item {
-			float: left;
-			margin: 0 10px 10px 0;
-			width: image_texts(_sp, float);
-		}
-	}
-	.float_right,
-	.float_right_sp_tb,
-	.float_right_sp {
-		> .image_item {
-			float: right;
-			margin: 0 0 10px 10px;
-			width: image_texts(_sp, float);
-		}
-	}
-	// clm*
-	.clm2,
-	.clm3,
-	.clm4,
-	.clm5,
-	.clm2_sp_tb,
-	.clm3_sp_tb,
-	.clm4_sp_tb,
-	.clm5_sp_tb,
-	.clm2_sp,
-	.clm3_sp,
-	.clm4_sp,
-	.clm5_sp {
-		display: flex;
-		flex-wrap: wrap;
-		> .clm_item {
-			margin-top: clm_margin(_sp);
-			margin-right: clm_margin(_sp);
-			margin-bottom: 0;
-			#{headings()},
-			.caption,
-			.texts,
-			.text {
-				padding-right: 5px;
-				padding-left: 5px;
+@each $k, $v in $mq_arr {
+	@include mq($k) {
+		//--------------------------------------
+		//	image_texts
+		//	texts_image
+		//	left_right
+		//--------------------------------------
+		%image_texts_#{$k},
+		%texts_image_#{$k},
+		%left_right_#{$k} {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			> [class^='heading']:first-child {
+				width: 100%;
 			}
 		}
-	}
-	$i: '';
-	@for $i from 2 through 5 {
-		.clm#{$i},
-		.clm#{$i}_sp_tb,
-		.clm#{$i}_sp {
+		%image_texts_#{$k},
+		%texts_image_#{$k} {
+			> .image_item,
+			> .texts_item {
+				margin-bottom: 0;
+			}
+			> .image_item {
+				width: image_texts($k, image);
+			}
+			> .texts_item {
+				width: image_texts($k, texts);
+			}
+		}
+		%image_texts_#{$k} {
+			> .image_item {
+				order: 1;
+			}
+			> .texts_item {
+				order: 2;
+			}
+		}
+		%texts_image_#{$k} {
+			> .image_item {
+				order: 2;
+			}
+			> .texts_item {
+				order: 1;
+			}
+		}
+		%left_right_#{$k} {
+			> .left_item,
+			> .right_item {
+				margin-bottom: 0;
+				width: 47.5%;
+			}
+			> .left_item {
+				order: 1;
+			}
+			> .right_item {
+				order: 2;
+			}
+		}
+		%image_texts_grid_#{$k},
+		%texts_image_grid_#{$k} {
+			display: grid;
+			grid-template-rows: min-content 1fr;
+			> [class^='heading'] {
+				grid-row: 1;
+			}
+			> .image_item,
+			> .texts_item {
+				margin-bottom: 0;
+			}
+			> .image_item {
+				grid-row: 1 / 3;
+			}
+			> .texts_item {
+				grid-row: 2;
+			}
+		}
+		%image_texts_grid_#{$k} {
+			grid-template-columns: image_texts($k, image) 1fr image_texts($k, texts);
+			> [class^='heading'] {
+				grid-column: 3;
+			}
+			> .image_item {
+				grid-column: 1;
+			}
+			> .texts_item {
+				grid-column: 3;
+			}
+		}
+		%texts_image_grid_#{$k} {
+			grid-template-columns: image_texts($k, texts) 1fr image_texts($k, image);
+			> [class^='heading'] {
+				grid-column: 1;
+			}
+			> .image_item {
+				grid-column: 3;
+			}
+			> .texts_item {
+				grid-column: 1;
+			}
+		}
+		%float_left_#{$k},
+		%float_right_#{$k} {
+			overflow: hidden;
+			> .image_item {
+				width: image_texts($k, image);
+			}
+		}
+		%float_left_#{$k} {
+			> .image_item {
+				float: left;
+				margin: 0 10px 10px 0;
+			}
+		}
+		%float_right_#{$k} {
+			> .image_item {
+				float: right;
+				margin: 0 0 10px 10px;
+			}
+		}
+		//--------------------------------------
+		//	clm
+		//--------------------------------------
+		%clm_#{$k} {
+			display: flex;
+			flex-wrap: wrap;
+			> [class^='heading']:first-child {
+				width: 100%;
+			}
 			> .clm_item {
-				width: calc(#{100% / $i} - #{clm_margin(_sp) * ($i - 1) / $i});
+				margin-top: clm_margin($k);
+				margin-right: clm_margin($k);
+				margin-bottom: 0;
+				> [class^='heading'],
+				.caption,
+				.texts,
+				.text {
+					padding-right: 5px;
+					padding-left: 5px;
+				}
 			}
-			> .clm_item:nth-of-type(#{$i}n) {
-				margin-right: 0 !important;
+		}
+		@each $vv in $v {
+			.image_texts#{$vv} {
+				@extend %image_texts_#{$k};
 			}
-			> .clm_item:not(:nth-of-type(n + #{$i + 1})) {
-				margin-top: 0;
+			.image_texts_grid#{$vv} {
+				@extend %image_texts_grid_#{$k};
+			}
+			.texts_image#{$vv} {
+				@extend %texts_image_#{$k};
+			}
+			.texts_image_grid#{$vv} {
+				@extend %texts_image_grid_#{$k};
+			}
+			.left_right#{$vv} {
+				@extend %left_right_#{$k};
+			}
+			.float_left#{$vv} {
+				@extend %float_left_#{$k};
+			}
+			.float_right#{$vv} {
+				@extend %float_right_#{$k};
+			}
+			$i: '';
+			@for $i from 2 through 5 {
+				.clm#{$i}#{$vv} {
+					@extend %clm_#{$k};
+					> .clm_item {
+						width: calc(#{100% / $i} - #{clm_margin($k) * ($i - 1) / $i});
+					}
+					> .clm_item:nth-of-type(#{$i}n) {
+						margin-right: 0 !important;
+					}
+					> .clm_item:not(:nth-of-type(n + #{$i + 1})) {
+						margin-top: 0;
+					}
+				}
 			}
 		}
 	}
-	/* heading in flex */
-	.image_texts,
-	.texts_image,
-	.left_right,
-	.clm2,
-	.clm3,
-	.clm4,
-	.clm5,
-	.image_texts_sp_tb,
-	.texts_image_sp_tb,
-	.left_right_sp_tb,
-	.clm2_sp_tb,
-	.clm3_sp_tb,
-	.clm4_sp_tb,
-	.clm5_sp_tb,
-	.image_texts_sp,
-	.texts_image_sp,
-	.left_right_sp,
-	.clm2_sp,
-	.clm3_sp,
-	.clm4_sp,
-	.clm5_sp {
-		> #{headings()}:first-child {
-			width: 100%;
-		}
-	}
+}
+
+@include mq(_sp) {
 	.snap_sp {
 		display: flex;
 		margin-right: -5%;
@@ -1224,396 +1326,6 @@ $snap_prop: (
 			padding: 0 5px;
 		}
 		.slick-dots {
-		}
-	}
-}
-
-@include mq(tb) {
-	// image_texts left_right float
-	.image_texts,
-	.image_texts_sp_tb,
-	.image_texts_tb_pc,
-	.image_texts_tb {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
-		> .image_item {
-			order: 1;
-			margin-bottom: 0;
-			width: image_texts(tb, image);
-		}
-		> .texts_item {
-			order: 2;
-			margin-bottom: 0;
-			width: image_texts(tb, texts);
-		}
-	}
-	.texts_image,
-	.texts_image_sp_tb,
-	.texts_image_tb_pc,
-	.texts_image_tb {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
-		> .image_item {
-			order: 2;
-			margin-bottom: 0;
-			width: image_texts(tb, image);
-		}
-		> .texts_item {
-			order: 1;
-			margin-bottom: 0;
-			width: image_texts(tb, texts);
-		}
-	}
-	.image_texts_grid,
-	.image_texts_grid_sp_tb,
-	.image_texts_grid_tb_pc,
-	.image_texts_grid_tb {
-		display: grid;
-		grid-template-rows: min-content 1fr;
-		grid-template-columns: image_texts(tb, image) 1fr image_texts(tb, texts);
-		> #{headings()} {
-			grid-row: 1 / 2;
-			grid-column: 3 / 4;
-		}
-		> .image_item {
-			grid-row: 1 / 3;
-			grid-column: 1 / 2;
-			margin-bottom: 0;
-		}
-		> .texts_item {
-			grid-row: 2 / 3;
-			grid-column: 3 / 4;
-			margin-bottom: 0;
-		}
-	}
-	.texts_image_grid,
-	.texts_image_grid_sp_tb,
-	.texts_image_grid_tb_pc,
-	.texts_image_grid_tb {
-		display: grid;
-		grid-template-rows: min-content 1fr;
-		grid-template-columns: image_texts(tb, texts) 1fr image_texts(tb, image);
-		> #{headings()} {
-			grid-row: 1 / 2;
-			grid-column: 1 / 2;
-		}
-		> .image_item {
-			grid-row: 1 / 3;
-			grid-column: 3 / 4;
-			margin-bottom: 0;
-		}
-		> .texts_item {
-			grid-row: 2 / 3;
-			grid-column: 1 / 2;
-			margin-bottom: 0;
-		}
-	}
-	.left_right,
-	.left_right_sp_tb,
-	.left_right_tb_pc,
-	.left_right_tb {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
-		> .left_item {
-			order: 1;
-			margin-bottom: 0;
-			width: 47.5%;
-		}
-		> .right_item {
-			order: 2;
-			margin-bottom: 0;
-			width: 47.5%;
-		}
-	}
-	.float_left,
-	.float_left_sp_tb,
-	.float_left_tb_pc,
-	.float_left_tb {
-		> .image_item {
-			float: left;
-			margin: 0 15px 15px 0;
-			width: image_texts(tb, float);
-		}
-	}
-	.float_right,
-	.float_right_sp_tb,
-	.float_right_tb_pc,
-	.float_right_tb {
-		> .image_item {
-			float: right;
-			margin: 0 0 15px 15px;
-			width: image_texts(tb, float);
-		}
-	}
-	// clm*
-	.clm2,
-	.clm2_sp_tb,
-	.clm2_tb_pc,
-	.clm2_tb,
-	.clm3,
-	.clm3_sp_tb,
-	.clm3_tb_pc,
-	.clm3_tb,
-	.clm4,
-	.clm4_sp_tb,
-	.clm4_tb_pc,
-	.clm4_tb,
-	.clm5,
-	.clm5_sp_tb,
-	.clm5_tb_pc,
-	.clm5_tb {
-		display: flex;
-		flex-wrap: wrap;
-		> .clm_item {
-			margin-top: clm_margin(tb);
-			margin-right: clm_margin(tb);
-			margin-bottom: 0;
-			#{headings(3,4)},
-			.caption,
-			.texts,
-			.text {
-				padding-right: 5px;
-				padding-left: 5px;
-			}
-		}
-	}
-	$i: '';
-	@for $i from 2 through 5 {
-		.clm#{$i},
-		.clm#{$i}_sp_tb,
-		.clm#{$i}_tb_pc,
-		.clm#{$i}_tb {
-			> .clm_item {
-				width: calc(#{100% / $i} - #{clm_margin(tb) * ($i - 1) / $i});
-			}
-			> .clm_item:nth-of-type(#{$i}n) {
-				margin-right: 0 !important;
-			}
-			> .clm_item:not(:nth-of-type(n + #{$i + 1})) {
-				margin-top: 0;
-			}
-		}
-	}
-	// heading in flex
-	.image_texts,
-	.image_texts_sp_tb,
-	.image_texts_tb_pc,
-	.image_texts_tb,
-	.texts_image,
-	.texts_image_sp_tb,
-	.texts_image_tb_pc,
-	.texts_image_tb,
-	.left_right,
-	.left_right_sp_tb,
-	.left_right_tb_pc,
-	.left_right_tb,
-	.clm2,
-	.clm2_sp_tb,
-	.clm2_tb_pc,
-	.clm2_tb,
-	.clm3,
-	.clm3_sp_tb,
-	.clm3_tb_pc,
-	.clm3_tb,
-	.clm4,
-	.clm4_sp_tb,
-	.clm4_tb_pc,
-	.clm4_tb,
-	.clm5,
-	.clm5_sp_tb,
-	.clm5_tb_pc,
-	.clm5_tb {
-		> #{headings(3,4)}:first-child {
-			width: 100%;
-		}
-	}
-}
-
-@include mq(pc_) {
-	// image_texts left_right float
-	.image_texts,
-	.image_texts_tb_pc,
-	.image_texts_pc {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
-		> .image_item {
-			order: 1;
-			margin-bottom: 0;
-			width: image_texts(pc_, image);
-		}
-		> .texts_item {
-			order: 2;
-			margin-bottom: 0;
-			width: image_texts(pc_, texts);
-		}
-	}
-	.texts_image,
-	.texts_image_tb_pc,
-	.texts_image_pc {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
-		> .image_item {
-			order: 2;
-			margin-bottom: 0;
-			width: image_texts(pc_, image);
-		}
-		> .texts_item {
-			order: 1;
-			margin-bottom: 0;
-			width: image_texts(pc_, texts);
-		}
-	}
-	.image_texts_grid,
-	.image_texts_grid_tb_pc,
-	.image_texts_grid_pc {
-		display: grid;
-		grid-template-rows: min-content 1fr;
-		grid-template-columns: image_texts(pc_, image) 1fr image_texts(pc_, texts);
-		> #{headings()} {
-			grid-row: 1 / 2;
-			grid-column: 3 / 4;
-		}
-		> .image_item {
-			grid-row: 1 / 3;
-			grid-column: 1 / 2;
-			margin-bottom: 0;
-		}
-		> .texts_item {
-			grid-row: 2 / 3;
-			grid-column: 3 / 4;
-			margin-bottom: 0;
-		}
-	}
-	.texts_image_grid,
-	.texts_image_grid_tb_pc,
-	.texts_image_grid_pc {
-		display: grid;
-		grid-template-rows: min-content 1fr;
-		grid-template-columns: image_texts(pc_, texts) 1fr image_texts(pc_, image);
-		> #{headings()} {
-			grid-row: 1 / 2;
-			grid-column: 1 / 2;
-		}
-		> .image_item {
-			grid-row: 1 / 3;
-			grid-column: 3 / 4;
-			margin-bottom: 0;
-		}
-		> .texts_item {
-			grid-row: 2 / 3;
-			grid-column: 1 / 2;
-			margin-bottom: 0;
-		}
-	}
-	.left_right,
-	.left_right_tb_pc,
-	.left_right_pc {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
-		> .left_item {
-			order: 1;
-			margin-bottom: 0;
-			width: 47.5%;
-		}
-		> .right_item {
-			order: 2;
-			margin-bottom: 0;
-			width: 47.5%;
-		}
-	}
-	.float_left,
-	.float_left_tb_pc,
-	.float_left_pc {
-		> .image_item {
-			float: left;
-			margin: 0 20px 20px 0;
-			width: image_texts(pc_, float);
-		}
-	}
-	.float_right,
-	.float_right_tb_pc,
-	.float_right_pc {
-		> .image_item {
-			float: right;
-			margin: 0 0 20px 20px;
-			width: image_texts(pc_, float);
-		}
-	}
-	// clm*
-	.clm2,
-	.clm2_tb_pc,
-	.clm2_pc,
-	.clm3,
-	.clm3_tb_pc,
-	.clm3_pc,
-	.clm4,
-	.clm4_tb_pc,
-	.clm4_pc,
-	.clm5,
-	.clm5_tb_pc,
-	.clm5_pc {
-		display: flex;
-		flex-wrap: wrap;
-		> .clm_item {
-			margin-top: clm_margin(pc_);
-			margin-right: clm_margin(pc_);
-			margin-bottom: 0;
-			#{headings()},
-			.caption,
-			.texts,
-			.text {
-				padding-right: 5px;
-				padding-left: 5px;
-			}
-		}
-	}
-	$i: '';
-	@for $i from 2 through 5 {
-		.clm#{$i},
-		.clm#{$i}_tb_pc,
-		.clm#{$i}_pc {
-			> .clm_item {
-				width: calc(#{100% / $i} - #{clm_margin(pc_) * ($i - 1) / $i});
-			}
-			> .clm_item:nth-of-type(#{$i}n) {
-				margin-right: 0 !important;
-			}
-			> .clm_item:not(:nth-of-type(n + #{$i + 1})) {
-				margin-top: 0;
-			}
-		}
-	}
-
-	// heading in flex
-	.image_texts,
-	.image_texts_tb_pc,
-	.image_texts_pc,
-	.texts_image,
-	.texts_image_tb_pc,
-	.texts_image_pc,
-	.left_right,
-	.left_right_tb_pc,
-	.left_right_pc,
-	.clm2,
-	.clm2_tb_pc,
-	.clm2_pc,
-	.clm3,
-	.clm3_tb_pc,
-	.clm3_pc,
-	.clm4,
-	.clm4_tb_pc,
-	.clm4_pc,
-	.clm5,
-	.clm5_tb_pc,
-	.clm5_pc {
-		> #{headings(3,4)}:first-child {
-			width: 100%;
 		}
 	}
 }
@@ -1753,6 +1465,8 @@ table,
 
 /* center right */
 
+/* center right */
+
 table,
 .table_type {
 	caption.left,
@@ -1764,76 +1478,41 @@ table,
 	caption.left {
 		text-align: left;
 	}
-	caption.right,
-	th.right,
-	td.right {
+	caption.right {
 		text-align: right;
 	}
-	caption.center,
-	th.center,
-	td.center {
-		text-align: center;
-	}
-	th.middle,
-	td.middle {
-		vertical-align: middle;
-	}
-	th.nowrap,
-	td.nowrap {
-		white-space: nowrap;
-	}
-	@include mq(_sp) {
-		th.right_sp,
-		td.right_sp {
-			text-align: right;
-		}
-		th.center_sp,
-		td.center_sp {
-			text-align: center;
-		}
-		th.middle_sp,
-		td.middle_sp {
-			vertical-align: middle;
-		}
-		th.nowrap_sp,
-		td.nowrap_sp {
-			white-space: nowrap;
-		}
-	}
-	@include mq(tb) {
-		th.right_tb,
-		td.right_tb {
-			text-align: right;
-		}
-		th.center_tb,
-		td.center_tb {
-			text-align: center;
-		}
-		th.middle_tb,
-		td.middle_tb {
-			vertical-align: middle;
-		}
-		th.nowrap_tb,
-		td.nowrap_tb {
-			white-space: nowrap;
-		}
-	}
-	@include mq(pc_) {
-		th.right_pc,
-		td.right_pc {
-			text-align: right;
-		}
-		th.center_pc,
-		td.center_pc {
-			text-align: center;
-		}
-		th.middle_pc,
-		td.middle_pc {
-			vertical-align: middle;
-		}
-		th.nowrap_pc,
-		td.nowrap_pc {
-			white-space: nowrap;
+	@each $k, $v in $mq_arr {
+		@include mq($k) {
+			%td_right_#{$k} {
+				text-align: right;
+			}
+			%td_center_#{$k} {
+				text-align: center;
+			}
+			%td_middle_#{$k} {
+				vertical-align: middle;
+			}
+			%td_nowrap_#{$k} {
+				white-space: nowrap;
+			}
+			@each $vv in $v {
+				th.right#{$vv},
+				td.right#{$vv} {
+					@extend %td_right_#{$k};
+				}
+				th.center#{$vv},
+				td.center#{$vv} {
+					@extend %td_center_#{$k};
+				}
+				th.middle#{$vv},
+				td.middle#{$vv} {
+					@extend %td_middle_#{$k};
+				}
+				th.nowrap#{$vv},
+				td.nowrap#{$vv} {
+					@extend %td_nowrap_#{$k};
+				}
+			}
 		}
 	}
 }
@@ -2023,19 +1702,38 @@ form {
 	ul {
 		//@extend %ul;
 	}
+	// edit--
 	h2:not(:first-child) {
 		margin-top: 20px;
 		margin-bottom: 20px;
+		@include mq(tb_) {
+			margin-top: 40px;
+			margin-bottom: 40px;
+		}
+		@include mq(pc_) {
+			margin-top: 60px;
+			margin-bottom: 60px;
+		}
 	}
 	h3:not(:first-child) {
 		margin-top: 15px;
+		@include mq(tb_) {
+			margin-top: 25px;
+		}
 	}
 	h4:not(:first-child) {
 		margin-top: 10px;
+		@include mq(tb_) {
+			margin-top: 10px;
+		}
 	}
 	h5:not(:first-child) {
 		margin-top: 10px;
+		@include mq(tb_) {
+			margin-top: 10px;
+		}
 	}
+	// --edit
 	p {
 		@extend .text;
 	}
@@ -2051,34 +1749,6 @@ form {
 		word-break: break-all;
 		word-wrap: break-word;
 	}
-
-	// edit--
-	h2:not(:first-child) {
-		@include mq(tb_) {
-			margin-top: 40px;
-			margin-bottom: 40px;
-		}
-		@include mq(pc_) {
-			margin-top: 60px;
-			margin-bottom: 60px;
-		}
-	}
-	h3:not(:first-child) {
-		@include mq(tb_) {
-			margin-top: 25px;
-		}
-	}
-	h4:not(:first-child) {
-		@include mq(tb_) {
-			margin-top: 10px;
-		}
-	}
-	h5:not(:first-child) {
-		@include mq(tb_) {
-			margin-top: 10px;
-		}
-	}
-	// --edit
 }
 .main_area {
 	.title,

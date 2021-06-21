@@ -32,7 +32,7 @@
 
 	// breadcrumb
 	$breadcrumb_arr = [
-		DIRCODE .'/' => $DIRNAME,
+		'/' . DIRCODE . '/' => $DIRNAME,
 		'current'       => '必ず設定' //$wp_single_title
 	];
 

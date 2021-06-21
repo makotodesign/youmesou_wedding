@@ -31,6 +31,8 @@
 <?php			foreach( $breadcrumb_arr as  $k => $v ) : ?>
 <?php				if( $k === 'current' ) : ?>
 						<li class="current"><span><?= $v ?></span></li>
+<?php				elseif( $k === 'nolink' ) : ?>
+						<li><span><?= $v ?></span></li>
 <?php				elseif( $v ) : ?>
 						<li><a href="<?= $k ?>"><?= $v ?></a></li>
 <?php				endif;?>

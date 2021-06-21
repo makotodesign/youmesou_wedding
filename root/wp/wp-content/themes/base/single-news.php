@@ -32,7 +32,7 @@
 
 	// breadcrumb
 	$breadcrumb_arr = [
-		DIRCODE .'/' => $DIRNAME,
+		'/' . DIRCODE . '/' => $DIRNAME,
 		'current'       => $wp_single_title
 	];
 

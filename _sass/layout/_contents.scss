@@ -446,10 +446,9 @@ ul.ul_arrow,
 .texts ul.ul_arrow {
 	> li {
 		//@include icomoon('block', icom(angle-right-regular), 10px, 'left', 1px);
+		@extend .link_arrow;
 		&:before {
-			content: icom(angle-right);
-			width: 1em;
-			transform: scale(0.8);
+			transform: scale(1);
 		}
 	}
 }
@@ -752,8 +751,21 @@ strong,
 /* text link */
 
 .link_arrow {
+	position: relative;
 	padding-left: 1.5em;
-	@include icomoon('block', icom(angle-right-regular), 10px, 'left', 1px);
+	&:before {
+		content: icom(angle-right);
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 1px;
+		display: block;
+		margin: auto;
+		font-size: 1rem;
+		font-family: font(icomoon);
+		line-height: 1;
+		color: color(list, base);
+	}
 }
 .link_external {
 	&::after {

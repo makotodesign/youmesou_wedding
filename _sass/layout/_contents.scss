@@ -761,9 +761,9 @@ strong,
 		left: 1px;
 		display: block;
 		margin: auto;
-		font-size: 1rem;
+		font-size: inherit;
 		font-family: font(icomoon);
-		line-height: 1;
+		line-height: inherit;
 		color: color(list, base);
 	}
 }

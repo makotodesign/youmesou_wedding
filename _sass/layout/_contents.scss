@@ -107,17 +107,28 @@ $mq_arr: (
 			max-width: $max_pc_width;
 		}
 	}
-	.narrow_pc {
-		@include mq(pc_) {
+	> .box.full {
+		width: 100%;
+		max-width: none;
+		> * {
 			margin-right: auto;
 			margin-left: auto;
+			width: 90%;
+		}
+	}
+	.narrow_pc,
+	.compact_pc,
+	> .wide_pc {
+		margin-right: auto;
+		margin-left: auto;
+	}
+	.narrow_pc {
+		@include mq(pc_) {
 			max-width: $narrow_pc_width;
 		}
 	}
 	.compact_pc {
 		@include mq(pc_) {
-			margin-right: auto;
-			margin-left: auto;
 			max-width: $compact_pc_width;
 		}
 	}

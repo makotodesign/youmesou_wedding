@@ -83,17 +83,6 @@ $mq_arr: (
 	> .box {
 		@include cont_in_wrap;
 	}
-	> .box.full {
-		width: 100%;
-		max-width: none;
-		> * {
-			@include mq(_tb) {
-				margin-right: auto;
-				margin-left: auto;
-				width: 90%;
-			}
-		}
-	}
 }
 .area.side_area {
 	@include mq(_tb) {

@@ -1088,8 +1088,8 @@ $image_texts: (
 // snap
 $snap_prop: (
 	_sp: (
-		wrapper: 90vw,
-		width: 80vw,
+		wrapper: 100vw,
+		width: 90vw,
 		next_view_width: 3vw
 	)
 );
@@ -1281,9 +1281,9 @@ $snap_prop: (
 @include mq(_sp) {
 	.snap_sp {
 		display: flex;
-		margin-right: -5%;
-		margin-left: -5%;
-		width: 90vw;
+		margin-right: (snap_prop(_sp, width) - snap_prop(_sp, wrapper)) / 2;
+		margin-left: (snap_prop(_sp, width) - snap_prop(_sp, wrapper)) / 2;
+		width: snap_prop(_sp, wrapper);
 		overflow-x: scroll;
 		scroll-snap-type: x;
 		> .clm_item {

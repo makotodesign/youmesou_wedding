@@ -20,6 +20,7 @@
 			fn.switchTab               : タブコンテンツ
 		* utility
 			fn.switchImg               : レスポンシブ画像変換
+			fn.snapDots                : snap_sp ドット位置
 			fn.bigTarget               : ビッグターゲット [ bt ]
 			fn.tooltip                 : ツールチップ [ tooltip ]
 			fn.sScroll                 : スムーススクロール [ scroll ]
@@ -616,6 +617,47 @@ jQuery(function ($) {
 				srcTo = $(this).attr('src').replace(fnameFrom[0], fnamePc);
 			}
 			$(this).attr('src', srcTo);
+		});
+		return this;
+	};
+
+	/*------------------------------------
+		[ snapDots ]
+		snap_sp ドット位置
+		@ver		18.1.1
+		@history	2021-06-29		: 新規作成 [ 18.1.1 ]
+
+		> 設定詳細
+
+		> 設定方法
+		$( '.snap_sp' ).snapDots();
+	------------------------------------*/
+
+	jQuery.fn.snapDots = function (config) {
+		let opt = jQuery.extend(
+			{
+				snapChildren: '.clm_item',
+				dotsWrap: '.snap_dots'
+			},
+			config
+		);
+		let snapLength, x, i, index, totalWidth;
+		$(this).each(function () {
+			snapLength = $(this).children(opt.snapChildren).length;
+			$(this).next(opt.dotsWrap).append('<span></span>'.repeat(snapLength));
+			$(this).scroll(function () {
+				totalWidth = 0;
+				index = 0;
+				for (i = 0; i < snapLength; i++) {
+					x = $(this).scrollLeft();
+					totalWidth += $(this).children('.clm_item').eq(i).width();
+					if (x < totalWidth) {
+						index = i;
+						break;
+					}
+				}
+				$(this).next(opt.dotsWrap).children('span').removeClass('current').eq(index).addClass('current');
+			});
 		});
 		return this;
 	};

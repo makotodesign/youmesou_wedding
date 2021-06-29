@@ -626,7 +626,7 @@
 						</div>
 					</div>
 					<div class="box">
-						<h3 class="heading03">PCカラム4・TBカラム3・SPスリック</h3>
+						<h3 class="heading03">PCカラム4・TBカラム3・SPスナップwithドット</h3>
 						<div class="part clm3_pc clm2_tb slick_sp">
 							<div class="cont clm_item">
 								<p class="object_fit"><img src="/images/lib/parts/dummy.jpg" alt="必ず記述"></p>
@@ -644,43 +644,8 @@
 								<p class="object_fit"><img src="/images/lib/parts/dummy.jpg" alt="必ず記述"></p>
 							</div>
 						</div>
+						<div class="part snap_dots"></div>
 					</div>
-<!--	swiper テスト段階-->
-<?php
-/** swiper_on start **/
-// 2020-04-23 N
-// 現在導入中につき使用不可
-if( isset( $_GET[ 'swiper' ] ) && $_GET[ 'swiper' ] == 'on' ) {
-?>
-					<div class="box swiper-container">
-						<h3 class="heading03">SWIPER</h3>
-						<div class="part swiper_pc swiper_tb swiper_sp swiper-wrapper">
-							<a href="#" class="swiper-slide">
-								<h4 class="heading04">スライド01</h4>
-								<p class="object_fit"><img src="/images/lib/parts/dummy.jpg" alt="必ず記述"></p>
-								<p class="caption">キャプション</p>
-							</a>
-							<a href="#" class="swiper-slide">
-								<h4 class="heading04">スライド02</h4>
-								<p class="object_fit"><img src="/images/lib/parts/dummy.jpg" alt="必ず記述"></p>
-								<p class="caption">キャプション</p>
-							</a>
-							<a href="#" class="swiper-slide">
-								<h4 class="heading04">スライド03</h4>
-								<p class="object_fit"><img src="/images/lib/parts/dummy.jpg" alt="必ず記述"></p>
-								<p class="caption">キャプション</p>
-							</a>
-						</div>
-						<div class="swiper-controler">
-							<div class="swiper-button-prev"></div>
-							<div class="swiper-pagination"></div>
-							<div class="swiper-button-next"></div>
-						</div>
-					</div>
-<?php
-}
-/** swiper_on end **/
-?>
 				</section>
 <!--テーブル-->
 				<section id="sscroll_target" class="area sample_area<?= $areaflag === 'main_side' ? ' main_area' : '' ?>">

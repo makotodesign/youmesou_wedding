@@ -60,6 +60,7 @@ jQuery(function ($) {
 		$('.tab_handle_set a').switchTab();
 		$('.openclose_handle').openclose();
 		$('.modal_handle').modal();
+		$('.snap_sp').snapDots();
 		$('.tooltip').tooltip();
 		$('.sidenav_openclose_handle').openclose({
 			target: '.sidenav_openclose_target',

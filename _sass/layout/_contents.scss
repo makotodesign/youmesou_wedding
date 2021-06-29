@@ -1316,6 +1316,24 @@ $snap_prop: (
 			}
 		}
 	}
+	.snap_dots {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		> span {
+			display: block;
+			margin: 0 3px;
+			border-radius: 3px;
+			width: 6px;
+			height: 6px;
+			background-color: #ccc;
+			transition: background-color 0.5s;
+		}
+		> span.current {
+			background-color: black;
+		}
+	}
 	// slick ( sp )
 	// slickで出力されるcssのoverwrite
 	.slick_sp.slick-initialized {
@@ -1326,61 +1344,6 @@ $snap_prop: (
 			padding: 0 5px;
 		}
 		.slick-dots {
-		}
-	}
-}
-
-/* swiper */
-// 現在導入中につき使用不可
-
-.swiper-container {
-	padding-bottom: 40px;
-	.swiper-wrapper {
-		.swiper-slide {
-		}
-	}
-	.swiper-controler {
-		position: absolute;
-		bottom: 0;
-		display: flex;
-		flex-wrap: wrap;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		height: 40px;
-		.swiper-button-prev,
-		.swiper-button-next {
-			top: 0;
-			display: block;
-			margin-top: 0;
-			width: 40px;
-			height: 40px;
-			font-size: 20px;
-			color: color(button, base);
-			cursor: pointer;
-			&::after {
-				content: '';
-			}
-		}
-		.swiper-button-prev {
-			@include icomoon('self', icom(angle-left), 40px);
-			left: 0;
-		}
-		.swiper-button-next {
-			@include icomoon('self', icom(angle-right), 40px);
-			right: 0;
-		}
-		.swiper-pagination {
-			position: relative;
-			display: flex;
-			align-items: center;
-			justify-content: space-around;
-			margin-top: 0;
-			height: 30px;
-			> span {
-				margin: 0 5px;
-				background-color: color(button, base);
-			}
 		}
 	}
 }

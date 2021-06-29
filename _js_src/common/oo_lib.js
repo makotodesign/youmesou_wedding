@@ -642,21 +642,26 @@ jQuery(function ($) {
 			config
 		);
 		let snapLength, x, i, index, totalWidth;
+		function dotChange($eachSnap) {
+			x = $eachSnap.scrollLeft();
+			totalWidth = 0;
+			index = 0;
+			for (i = 0; i < snapLength; i++) {
+				x = $eachSnap.scrollLeft();
+				totalWidth += $eachSnap.children(opt.snapChildren).eq(i).width();
+				if (x < totalWidth) {
+					index = i;
+					break;
+				}
+			}
+			$eachSnap.next(opt.dotsWrap).children('span').removeClass('current').eq(index).addClass('current');
+		}
 		$(this).each(function () {
 			snapLength = $(this).children(opt.snapChildren).length;
 			$(this).next(opt.dotsWrap).append('<span></span>'.repeat(snapLength));
+			dotChange($(this));
 			$(this).scroll(function () {
-				totalWidth = 0;
-				index = 0;
-				for (i = 0; i < snapLength; i++) {
-					x = $(this).scrollLeft();
-					totalWidth += $(this).children('.clm_item').eq(i).width();
-					if (x < totalWidth) {
-						index = i;
-						break;
-					}
-				}
-				$(this).next(opt.dotsWrap).children('span').removeClass('current').eq(index).addClass('current');
+				dotChange($(this));
 			});
 		});
 		return this;

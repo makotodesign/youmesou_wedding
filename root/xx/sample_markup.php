@@ -627,7 +627,7 @@
 					</div>
 					<div class="box">
 						<h3 class="heading03">PCカラム4・TBカラム3・SPスナップwithドット</h3>
-						<div class="part clm3_pc clm2_tb slick_sp">
+						<div class="part clm3_pc clm2_tb snap_sp">
 							<div class="cont clm_item">
 								<p class="object_fit"><img src="/images/lib/parts/dummy.jpg" alt="必ず記述"></p>
 							</div>

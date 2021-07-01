@@ -18,6 +18,7 @@
 			fn.modal                   : モーダルコンテンツ
 			fn.openclose               : 開閉式コンテンツ
 			fn.switchTab               : タブコンテンツ
+			fn.imgGallery              : 画像ギャラリー
 		* utility
 			fn.switchImg               : レスポンシブ画像変換
 			fn.snapDots                : snap_sp ドット位置
@@ -569,6 +570,39 @@ jQuery(function ($) {
 			$(this).addClass('current').siblings().removeClass('current');
 			return false;
 		});
+		return this;
+	};
+
+	/*------------------------------------
+		[ imgGallery ]
+		画像ギャラリー
+		@ver		18.1.1
+		@history	2021-07-01		: 新規作成 [ 18.1.1 ]
+
+		> 設定詳細
+
+		> 設定方法
+		$('.gallery_handle_set').imgGallery();
+	------------------------------------*/
+
+	jQuery.fn.imgGallery = function (config) {
+		let opt = jQuery.extend(
+			{
+				target: '.gallery_target img',
+				wrap: '.gallery_wrap'
+			},
+			config
+		);
+
+		let imgPath, $handle;
+		$(this)
+			.children()
+			.on('click', function () {
+				$handle = $(this);
+				imgPath = $handle.find('img').attr('src');
+				$handle.addClass('current').siblings().removeClass('current');
+				$handle.closest(opt.wrap).find(opt.target).hide().attr('src', imgPath).fadeIn();
+			});
 		return this;
 	};
 

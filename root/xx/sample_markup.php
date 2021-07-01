@@ -42,7 +42,6 @@
 	/* js */
 	$HEAD->js = '';
 	$HEAD->js .= "\t" . '<script src="' . $HEAD->fpath_add_date_query( '/js/' . DIRCODE . '/script.js' ) . '"></script>' . "\n";
-	//$HEAD->js .= "\t" . '<script src="' . $HEAD->fpath_add_date_query( '/js/utility/swiper.js' ) . '"></script>' . "\n";
 
 	/* page_option */
 	$HEAD->title                 = 'auto';
@@ -606,7 +605,7 @@
 						</div>
 					</div>
 					<div class="box">
-						<h3 class="heading03">PCカラム3・TBカラム2・SPスナップ</h3>
+						<h3 class="heading03">PCカラム3・TBカラム2・SPスナップwithドット</h3>
 						<div class="part clm3_pc clm2_tb snap_sp">
 							<a href="#" class="cont clm_item">
 								<h4 class="heading04">スライド01</h4>
@@ -624,27 +623,38 @@
 								<p class="caption">キャプション</p>
 							</a>
 						</div>
+						<div class="part snap_dots"></div>
 					</div>
 					<div class="box">
 						<h3 class="heading03">PCカラム4・TBカラム3・SPスナップwithドット</h3>
-						<div class="part clm3_pc clm2_tb snap_sp">
-							<div class="cont clm_item">
-								<p class="object_fit"><img src="/images/lib/parts/dummy.jpg" alt="必ず記述"></p>
+						<div class="part image_texts_pc">
+							<div class="cont image_item gallery_wrap">
+								<div class="pic_main gallery_target">
+									<p class="object_fit"><img src="/images/lib/parts/color01.jpg" alt="必ず記述"></p>
+								</div>
+								<div class="cont clm5_tb_pc snap_sp gallery_handle_set" data-target="gallery_target01">
+									<a class="clm_item current">
+										<p class="object_fit"><img src="/images/lib/parts/color01.jpg" alt="必ず記述"></p>
+									</a>
+									<a class="clm_item">
+										<p class="object_fit"><img src="/images/lib/parts/color02.jpg" alt="必ず記述"></p>
+									</a>
+									<a class="clm_item">
+										<p class="object_fit"><img src="/images/lib/parts/color03.jpg" alt="必ず記述"></p>
+									</a>
+									<a class="clm_item">
+										<p class="object_fit"><img src="/images/lib/parts/color04.jpg" alt="必ず記述"></p>
+									</a>
+									<a class="clm_item">
+										<p class="object_fit"><img src="/images/lib/parts/color05.jpg" alt="必ず記述"></p>
+									</a>
+								</div>
+								<div class="part snap_dots"></div>
 							</div>
-							<div class="cont clm_item">
-								<p class="object_fit"><img src="/images/lib/parts/dummy.jpg" alt="必ず記述"></p>
-							</div>
-							<div class="cont clm_item">
-								<p class="object_fit"><img src="/images/lib/parts/dummy.jpg" alt="必ず記述"></p>
-							</div>
-							<div class="cont clm_item">
-								<p class="object_fit"><img src="/images/lib/parts/dummy.jpg" alt="必ず記述"></p>
-							</div>
-							<div class="cont clm_item">
-								<p class="object_fit"><img src="/images/lib/parts/dummy.jpg" alt="必ず記述"></p>
+							<div class="cont texts_item texts">
+								<p>TEXTTEXTTEXT</p>
 							</div>
 						</div>
-						<div class="part snap_dots"></div>
 					</div>
 				</section>
 <!--テーブル-->

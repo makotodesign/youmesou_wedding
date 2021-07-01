@@ -1047,6 +1047,23 @@ form.search_wrap {
 	}
 }
 
+/* gallery */
+
+.gallery_wrap {
+	.gallery_target {
+		@include mq(_sp) {
+			display: none;
+		}
+	}
+	.gallery_handle_set {
+		> * {
+			@include mq(pc_) {
+				cursor: pointer;
+			}
+		}
+	}
+}
+
 /* bottom_line */
 
 .bottom_line {
@@ -1067,6 +1084,7 @@ $clm_margin: (
 	tb: 30px,
 	pc_: 20px
 );
+$max_clm_num: 5;
 // flext_box - image_texts*
 $image_texts: (
 	_sp: (
@@ -1260,7 +1278,7 @@ $snap_prop: (
 				@extend %float_right_#{$k};
 			}
 			$i: '';
-			@for $i from 2 through 5 {
+			@for $i from 2 through $max_clm_num {
 				.clm#{$i}#{$vv} {
 					@extend %clm_#{$k};
 					> .clm_item {

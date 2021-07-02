@@ -1352,18 +1352,6 @@ $snap_prop: (
 			background-color: black;
 		}
 	}
-	// slick ( sp )
-	// slickで出力されるcssのoverwrite
-	.slick_sp.slick-initialized {
-		margin-right: -5%;
-		margin-bottom: 22px + 30px !important; // slick-dots の高さを加算
-		margin-left: -5%;
-		.clm_item {
-			padding: 0 5px;
-		}
-		.slick-dots {
-		}
-	}
 }
 
 /*--------------------------------------

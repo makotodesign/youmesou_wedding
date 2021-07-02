@@ -34,20 +34,8 @@ jQuery(function ($) {
 	function changed(mode) {
 		if (mode === 'sp') {
 		} else if (mode === 'sp_tb') {
-			/* slick_sp */
-			$('.slick_sp').slick({
-				arrows: false,
-				dots: true,
-				slidesToShow: 1,
-				centerMode: true,
-				centerPadding: '10%',
-				focusOnSelect: true,
-				adaptiveHeight: true // innerの高さにより調整
-			});
 		} else if (mode === 'tb') {
 		} else if (mode === 'tb_pc') {
-			// slick_sp
-			$('.slick_sp.slick-initialized').slick('unslick');
 		} else if (mode === 'pc') {
 		} else if (mode === 'every') {
 			// switchimg

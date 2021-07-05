@@ -41,7 +41,6 @@ const paths = {
 	// js > minify
 	// prettier-ignore
 	jsSrcPaths: [
-		//'./_js_src/common/slick.js',
 		'./_js_src/common/oo_lib.js',
 		'./_js_src/common/baseec.js',
 		'./_js_src/common/base.js'

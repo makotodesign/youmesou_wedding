@@ -6,10 +6,9 @@
 
 ---------------------------------------------------------------*/
 
-jQuery(function($) {
+jQuery(function ($) {
 	var breakpoint = [600, 960];
-	var /* promo */
-		$promoWrap = $('#promo_wrap');
+	var /* promo */ $promoWrap = $('#promo_wrap');
 	/***** func : main *****/
 
 	function eventify() {}
@@ -41,35 +40,25 @@ jQuery(function($) {
 
 	/***** func : promo cycle2 *****/
 
-	$promoWrap.on('cycle-before cycle-initialized', function(e, opts) {
-		$('.promo_cont:visible')
-			.find('.promo_catch')
-			.animate({ top: '50px', opacity: 0 }, 600);
-		$('.promo_progress')
-			.stop(true)
-			.css('width', 0);
-		setTimeout(function() {
-			$('.promo_cont:visible')
-				.find('.promo_text')
-				.animate({ top: '50px', opacity: 0 }, 600);
+	$promoWrap.on('cycle-before cycle-initialized', function (e, opts) {
+		$('.promo_cont:visible').find('.promo_catch').animate({ top: '50px', opacity: 0 }, 600);
+		$('.promo_progress').stop(true).css('width', 0);
+		setTimeout(function () {
+			$('.promo_cont:visible').find('.promo_text').animate({ top: '50px', opacity: 0 }, 600);
 		}, 300);
 	});
 
-	$promoWrap.on('cycle-after cycle-initialized', function(e, opts) {
-		$('.promo_cont:visible')
-			.find('.promo_catch')
-			.animate({ top: '0', opacity: 1 }, 600);
+	$promoWrap.on('cycle-after cycle-initialized', function (e, opts) {
+		$('.promo_cont:visible').find('.promo_catch').animate({ top: '0', opacity: 1 }, 600);
 		$('.promo_progress').animate({ width: '100%' }, opts.timeout, 'linear');
-		setTimeout(function() {
-			$('.promo_cont:visible')
-				.find('.promo_text')
-				.animate({ top: '0', opacity: 1 }, 600);
+		setTimeout(function () {
+			$('.promo_cont:visible').find('.promo_text').animate({ top: '0', opacity: 1 }, 600);
 		}, 300);
 	});
 
 	/***** run *****/
 
-	$(function() {
+	$(function () {
 		eventify();
 		$.oo.changed_run(changed, breakpoint);
 		setup();

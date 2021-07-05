@@ -4,7 +4,7 @@
  * wp_functions_setup
  *
  * @version
- * 		18.1.2
+ * 		18.1.3
  *
  * @history
  * 		2020-03-26	WordPressの個別設定関数 [ 16.1.1 ]
@@ -14,6 +14,9 @@
  * 					functions にあわせて順序並び替え
  * 					注釈の記述を変更
  * 		2021-06-04	サイトマップXML機能をcronに移行 [ 18.1.2 ]
+ * 		2021-06-30	エディタアイコンの設定が反映されないバグ修正  [ 18.1.3 ]
+ * 					post_type newsのリンクタイプが
+ * 					管理画面投稿一覧メニューに反映されないバグ修正
  *
  --------------------------------------------------------------*/
 
@@ -425,19 +428,19 @@
 
 	//ビジュアルリッチテキストエディタ ボタン1行目
 	function oes_button( $buttons ) {
+		global $post, $post_type;
 		$this_post = get_queried_object();
-		$this_post_type = get_query_var( 'post_type' );
 		// page
-		if( $this_post_type === 'page' ) {
+		if( $post_type === 'page' ) {
 			$arr = ( defined( 'PAGES_SETTING_CHILD' ) ) ? PAGES_SETTING_CHILD : PAGES_SETTING; // multisite_adjust
-			if( in_array( $this_post->ID, array_keys( $arr ) ) && isset( $arr[ $this_post->ID ][ 'editor' ] ) ) {
-				$buttons = $arr[ $this_post->ID ][ 'editor' ];
+			if( in_array( $post->ID, array_keys( $arr ) ) && isset( $arr[ $post->ID ][ 'editor' ] ) ) {
+				$buttons = $arr[ $post->ID ][ 'editor' ];
 			}
 		// post_type
 		} else {
 			$arr = ( defined( 'CUSTOM_POSTTYPE_CHILD' ) ) ? CUSTOM_POSTTYPE_CHILD : CUSTOM_POSTTYPE; // multisite_adjust
 			foreach( $arr as $k => $v ) {
-				if( $this_post_type === $k ) {
+				if( $post_type === $k ) {
 					$buttons = $v[ 'editor' ];
 					break;
 				}
@@ -608,13 +611,14 @@
 				break;
 			case 'linktype':
 				// custom
-				if( get_field( $arg,       $this_post_id ) === 'type_nolink' ) {
+				$temp_arr =  get_field( $arg, $this_post_id ) ;
+				if( $temp_arr[ 'type' ][ 'value' ] === 'type_nolink' ) {
 					echo 'リンクなし';
-				} elseif( get_field( $arg, $this_post_id ) === 'type_url' ) {
+				} elseif( $temp_arr[ 'type' ][ 'value' ] === 'type_url' ) {
 					echo 'リンク-URL';
-				} elseif( get_field( $arg, $this_post_id ) === 'type_detail' ) {
+				} elseif( $temp_arr[ 'type' ][ 'value' ] === 'type_detail' ) {
 					echo 'リンク-詳細ページ';
-				} elseif( get_field( $arg, $this_post_id ) === 'type_pdf' ) {
+				} elseif( $temp_arr[ 'type' ][ 'value' ] === 'type_pdf' ) {
 					echo 'リンク-PDFファイル';
 				} else {
 					echo 'リンク設定なし';

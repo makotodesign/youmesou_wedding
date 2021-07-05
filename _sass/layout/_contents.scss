@@ -1059,6 +1059,23 @@ form.search_wrap {
 	}
 }
 
+/* gallery */
+
+.gallery_wrap {
+	.gallery_target {
+		@include mq(_sp) {
+			display: none;
+		}
+	}
+	.gallery_handle_set {
+		> * {
+			@include mq(pc_) {
+				cursor: pointer;
+			}
+		}
+	}
+}
+
 /* bottom_line */
 
 .bottom_line {
@@ -1079,6 +1096,7 @@ $clm_margin: (
 	tb: 30px,
 	pc_: 20px
 );
+$max_clm_num: 5;
 // flext_box - image_texts*
 $image_texts: (
 	_sp: (
@@ -1100,8 +1118,8 @@ $image_texts: (
 // snap
 $snap_prop: (
 	_sp: (
-		wrapper: 90vw,
-		width: 80vw,
+		wrapper: 100vw,
+		width: 90vw,
 		next_view_width: 3vw
 	)
 );
@@ -1272,7 +1290,7 @@ $snap_prop: (
 				@extend %float_right_#{$k};
 			}
 			$i: '';
-			@for $i from 2 through 5 {
+			@for $i from 2 through $max_clm_num {
 				.clm#{$i}#{$vv} {
 					@extend %clm_#{$k};
 					> .clm_item {
@@ -1293,9 +1311,9 @@ $snap_prop: (
 @include mq(_sp) {
 	.snap_sp {
 		display: flex;
-		margin-right: -5%;
-		margin-left: -5%;
-		width: 90vw;
+		margin-right: (snap_prop(_sp, width) - snap_prop(_sp, wrapper)) / 2;
+		margin-left: (snap_prop(_sp, width) - snap_prop(_sp, wrapper)) / 2;
+		width: snap_prop(_sp, wrapper);
 		overflow-x: scroll;
 		scroll-snap-type: x;
 		> .clm_item {
@@ -1328,71 +1346,22 @@ $snap_prop: (
 			}
 		}
 	}
-	// slick ( sp )
-	// slickで出力されるcssのoverwrite
-	.slick_sp.slick-initialized {
-		margin-right: -5%;
-		margin-bottom: 22px + 30px !important; // slick-dots の高さを加算
-		margin-left: -5%;
-		.clm_item {
-			padding: 0 5px;
-		}
-		.slick-dots {
-		}
-	}
-}
-
-/* swiper */
-// 現在導入中につき使用不可
-
-.swiper-container {
-	padding-bottom: 40px;
-	.swiper-wrapper {
-		.swiper-slide {
-		}
-	}
-	.swiper-controler {
-		position: absolute;
-		bottom: 0;
+	.snap_dots {
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
 		justify-content: center;
-		width: 100%;
-		height: 40px;
-		.swiper-button-prev,
-		.swiper-button-next {
-			top: 0;
+		> span {
 			display: block;
-			margin-top: 0;
-			width: 40px;
-			height: 40px;
-			font-size: 20px;
-			color: color(button, base);
-			cursor: pointer;
-			&::after {
-				content: '';
-			}
+			margin: 0 3px;
+			border-radius: 3px;
+			width: 6px;
+			height: 6px;
+			background-color: #ccc;
+			transition: background-color 0.5s;
 		}
-		.swiper-button-prev {
-			@include icomoon('self', icom(angle-left), 40px);
-			left: 0;
-		}
-		.swiper-button-next {
-			@include icomoon('self', icom(angle-right), 40px);
-			right: 0;
-		}
-		.swiper-pagination {
-			position: relative;
-			display: flex;
-			align-items: center;
-			justify-content: space-around;
-			margin-top: 0;
-			height: 30px;
-			> span {
-				margin: 0 5px;
-				background-color: color(button, base);
-			}
+		> span.current {
+			background-color: black;
 		}
 	}
 }

@@ -429,7 +429,6 @@
 	//ビジュアルリッチテキストエディタ ボタン1行目
 	function oes_button( $buttons ) {
 		global $post, $post_type;
-		$this_post = get_queried_object();
 		// page
 		if( $post_type === 'page' ) {
 			$arr = ( defined( 'PAGES_SETTING_CHILD' ) ) ? PAGES_SETTING_CHILD : PAGES_SETTING; // multisite_adjust

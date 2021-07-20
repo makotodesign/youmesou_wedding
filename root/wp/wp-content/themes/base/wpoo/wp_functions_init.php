@@ -4,13 +4,14 @@
  * wp_functions_init
  *
  * @version
- * 		18.1.1
+ * 		18.2.1
  *
  * @history
  * 		2021-01-13	PUBLICDIRの自動付与をJSから移行 [ 18.1.1 ]
  * 		2020-03-26	WordPressの基本設定を抽出 [ 16.1.1 ]
  * 		2021-05-05	名称を wp_functions_base から wp_functions_init に変更 [ 18.1.1 ]
  * 					注釈の記述を変更
+ * 		2021-07-20	title meta のor検索機能追加 [ 18.2.1 ]
  *
  --------------------------------------------------------------*/
 
@@ -285,6 +286,28 @@
 		return $field;
 	}
 	add_filter( 'acf/load_field/name=auto_nendo', 'wp_init_oo_acf_load_field_choices__auto_nendo' );
+
+	/**------------------------------------------------------
+	 *
+	 * title と meta を or 検索
+	 *
+	------------------------------------------------------ */
+
+	add_action( 'pre_get_posts', function( $q ) {
+		if( $title = $q->get( '_meta_or_title' ) ) {
+			add_filter( 'get_meta_sql', function( $sql ) use ( $title ) {
+				global $wpdb;
+				static $nr = 0;
+				if( 0 != $nr++ ) return $sql;
+				$sql[ 'where' ] = sprintf(
+					" AND ( %s OR %s ) ",
+					$wpdb->prepare( "{$wpdb->posts}.post_title like '%%%s%%'", $title ),
+					mb_substr( $sql[ 'where' ], 5, mb_strlen( $sql[ 'where' ] ) )
+				);
+				return $sql;
+			} );
+		}
+	} );
 
 	/**------------------------------------------------------
 	 *

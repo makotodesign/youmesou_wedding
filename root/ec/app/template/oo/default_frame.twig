@@ -24,7 +24,9 @@
 {{ oo_google_fonts_preload()|raw }}
 	<link rel="stylesheet" type="text/css" href="{{ oo_fpath_add_date_query( '/css/styles.css' ) }}" media="all">
 {# css for eccube plugin #}
-{%	if plugin_assets is defined %}{{ include( '@admin/snippet.twig', { snippets: plugin_assets } ) }}{%	endif %}
+{%	if plugin_assets is defined %}{{ include( '@admin/snippet.twig', { snippets: plugin_assets } ) }}{% endif %}
+{%	if DIRCODE is not defined %}{% set DIRCODE = 'nodir' %}{% endif %}
+{%	if PAGECODE is not defined %}{% set PAGECODE = 'nopage' %}{% endif %}
 </head>
 <body id="page_{{ app.request.get( '_route' ) }}" class="{{ body_class|default( 'other_page' ) }} ec_body">
 	<div class="container {% if DIRCODE is not null and PAGECODE is not null %}ec_{{ DIRCODE }}_{{ PAGECODE }}_container {% endif %}base">
@@ -69,6 +71,8 @@
 	<script src="{{ oo_fpath_add_date_query( '/js/ec/eccube_functions.js' ) }}"></script>
 	<script src="{{ oo_fpath_add_date_query( '/js/ec/eccube_base.js' ) }}"></script>
 {%	block js %}
+{%	endblock %}
+{%	block javascript %}
 {%	endblock %}
 {#- プラグイン用Snippet -#}
 {%-	if plugin_snippets is defined -%}

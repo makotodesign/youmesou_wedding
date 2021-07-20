@@ -200,6 +200,23 @@
 			];
 		}
 	}
+	// search
+	if( $GET_searchword ) {
+		$args[ '_meta_or_title' ] = $GET_searchword; // title or meta の or 検索
+		$args[ 'meta_query' ] = [
+			'relation'       => 'OR',
+			[
+				'key'     => 'products_code',
+				'value'   => $GET_searchword,
+				'compare' => 'LIKE'
+			],
+			[
+				'key'     => 'products_class_name',
+				'value'   => $GET_searchword,
+				'compare' => 'LIKE'
+			]
+			];
+	}
 	if( is_user_logged_in() ) {
 		$current_user = wp_get_current_user();
 		if( $current_user->has_cap( 'edit_posts' ) ) {

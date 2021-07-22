@@ -15,7 +15,7 @@
 ##	base
 
 	/* site */
-	const PUBLICDIR           = '/ct18';
+	const PUBLICDIR           = '';
 
 ##	common
 

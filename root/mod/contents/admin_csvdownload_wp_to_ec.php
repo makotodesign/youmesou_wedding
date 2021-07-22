@@ -18,7 +18,7 @@
 ##	setting
 
 	/* setting */
-	if( ! defined( 'ROOTREALPATH' ) ) define( 'ROOTREALPATH', '/home/c9220330/public_html/oldoffice-dev.com/ct18' );
+	if( ! defined( 'ROOTREALPATH' ) ) define( 'ROOTREALPATH', '/home/users/1/lolipop.jp-895045b2ec40454/web/youmeso-wedding' );
 	$csv_filename_prefix = 'productsec_to_ec';
 
 ##	base

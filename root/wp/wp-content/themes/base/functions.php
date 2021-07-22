@@ -135,32 +135,6 @@
 					]
 				]
 			]
-		],
-		'productsec' => [
-			'name'           => '製品EC',
-			'posts_per_page' => 10,
-			// editor
-			'editor'         => [],
-			'gutenberg'      => false,
-			// routing
-			'slug'           => [
-				'auto_slug'  => true,
-				'rewrite'    => true
-			],
-			'add_page'       => [
-				[]
-			],
-			'sitemap'        => [
-				'archive'    => '0.5',
-				'single'     => '0.6',
-				'add_arg'    => []
-			],
-			// posts_archive_columns
-			'columns'        => [
-				'author'     => false,
-				'column'     => [
-				]
-			]
 		]
 		/*
 		'sampleosttype' => [
@@ -385,7 +359,7 @@
 	 *
 	------------------------------------------------------ */
 
-	const ECCUBE_INSTALLED = true;
+	const ECCUBE_INSTALLED = false;
 
 	const WPEC_POST_TYPE     = 'productsec';
 	const WPEC_ACF_KEY_PIC   = WPEC_POST_TYPE . '_pic_main';

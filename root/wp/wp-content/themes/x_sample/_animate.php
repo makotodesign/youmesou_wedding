@@ -16,7 +16,7 @@
 	define( 'PAGECODE', 'index' );
 
 	/* realpath & includes ( * ct12よりWordPressテーマで不要 ) */
-	if( ! defined( 'ROOTREALPATH' ) ) define( 'ROOTREALPATH', '/home/c9220330/public_html/oldoffice-dev.com/ct18' );
+	if( ! defined( 'ROOTREALPATH' ) ) define( 'ROOTREALPATH', '/home/users/1/lolipop.jp-895045b2ec40454/web/youmeso-wedding' );
 	include_once ROOTREALPATH . '/mod/setup/setup.php';
 
 	/* contents_module */

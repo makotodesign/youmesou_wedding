@@ -1,7 +1,7 @@
 # wp-base
 
 	RewriteEngine On
-	RewriteBase /ct18/
+	RewriteBase /
 
 # ssl sakura
 
@@ -10,7 +10,7 @@
 
 # ssl conoha
 
-	SetEnvIf X-Forwarded-Proto ^https$ HTTPS=on
+	#SetEnvIf X-Forwarded-Proto ^https$ HTTPS=on
 
 # wp-replace : /index.php > /
 

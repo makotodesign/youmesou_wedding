@@ -104,7 +104,7 @@
 		RewriteCond %{HTTPS} off
 		RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R,L]
 		RewriteCond %{HTTP_HOST} ^(domain\.com) [NC]
-		RewriteRule ^(.*)$ http://www.domain.com/$1 [R=301,L]
+		RewriteRule ^(.*)$ http://youmeso-wedding.ts-network.co.jp/$1 [R=301,L]
 
 ### errorページの指定
 
@@ -120,10 +120,10 @@
 		RewriteEngine On
 	# mod_rewrite for : + [www]
 		RewriteCond %{HTTP_HOST} ^(domain\.com) [NC]
-		RewriteRule ^(.*)$ http://www.domain.com/$1 [R=301,L]
+		RewriteRule ^(.*)$ http://youmeso-wedding.ts-network.co.jp/$1 [R=301,L]
 	# mod_rewrite for : remove [ index.* ]
 		RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.(php|html)\ HTTP/
-		RewriteRule ^index\.(php|html)$ http://www.domain.com/ [R=301,L]
+		RewriteRule ^index\.(php|html)$ http://youmeso-wedding.ts-network.co.jp/ [R=301,L]
 
 ### redirect 301（恒久的な変更）
 

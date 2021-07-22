@@ -16,9 +16,9 @@
  *
  * @memo
  * 		さくらの場合：cronコマンド
- * 			cd /home/c9220330/public_html/oldoffice-dev.com/ct18/mod/contents; /usr/local/bin/php wp_sitemaps_auto_create_cron.php
+ * 			cd /home/users/1/lolipop.jp-895045b2ec40454/web/youmeso-wedding/mod/contents; /usr/local/bin/php wp_sitemaps_auto_create_cron.php
  * 		Conohaの場合：cronコマンド
- * 			cd /home/c9220330/public_html/oldoffice-dev.com/ct18/mod/contents; /usr/bin/php wp_sitemaps_auto_create_cron.php
+ * 			cd /home/users/1/lolipop.jp-895045b2ec40454/web/youmeso-wedding/mod/contents; /usr/bin/php wp_sitemaps_auto_create_cron.php
  *
  * *************************************************************************/
 
@@ -41,7 +41,7 @@
 ##	base
 
 	/* includes */
-	define( 'ROOTREALPATH', '/home/c9220330/public_html/oldoffice-dev.com/ct18' );
+	define( 'ROOTREALPATH', '/home/users/1/lolipop.jp-895045b2ec40454/web/youmeso-wedding' );
 	include_once ROOTREALPATH . '/wp/wp-load.php';
 	include_once ROOTREALPATH . '/mod/setup/setup.php';
 	include_once ROOTREALPATH . '/mod/lib/xml_sitemap.class.php';

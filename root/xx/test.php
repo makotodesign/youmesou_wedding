@@ -21,7 +21,7 @@
 	define( 'PAGECODE', 'test' );
 
 	/* no_wp */
-	if( ! defined( 'ROOTREALPATH' ) ) define( 'ROOTREALPATH', '/home/c9220330/public_html/oldoffice-dev.com/ct18' );
+	if( ! defined( 'ROOTREALPATH' ) ) define( 'ROOTREALPATH', '/home/users/1/lolipop.jp-895045b2ec40454/web/youmeso-wedding' );
 	include_once ROOTREALPATH . '/wp/wp-load.php';
 
 	/* includes */

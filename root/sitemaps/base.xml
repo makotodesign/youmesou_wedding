@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
-		<loc>http://www.domain.com/</loc>
+		<loc>http://youmeso-wedding.ts-network.co.jp/</loc>
 		<changefreq>monthly</changefreq>
 		<priority>1.0</priority>
 	</url>
 	<url>
-		<loc>http://www.domain.com/contact/</loc>
+		<loc>http://youmeso-wedding.ts-network.co.jp/contact/</loc>
 		<changefreq>never</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
-		<loc>http://www.domain.com/contact/thanks/</loc>
+		<loc>http://youmeso-wedding.ts-network.co.jp/contact/thanks/</loc>
 		<changefreq>never</changefreq>
 		<priority>0.1</priority>
 	</url>
 	<url>
-		<loc>http://www.domain.com/contact/privacy/</loc>
+		<loc>http://youmeso-wedding.ts-network.co.jp/contact/privacy/</loc>
 		<changefreq>never</changefreq>
 		<priority>0.1</priority>
 	</url>

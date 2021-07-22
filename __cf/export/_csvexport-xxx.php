@@ -25,7 +25,7 @@
 
 ##	base
 
-	define( 'ROOTREALPATH', '/home/c9220330/public_html/oldoffice-dev.com/ct18' );
+	define( 'ROOTREALPATH', '/home/users/1/lolipop.jp-895045b2ec40454/web/youmeso-wedding' );
 	include_once ROOTREALPATH . '/wp/wp-blog-header.php';
 	//include_once ROOTREALPATH . '/php/contents/wp_functions_mod.php';
 

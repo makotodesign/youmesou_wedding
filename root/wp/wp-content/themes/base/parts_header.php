@@ -9,30 +9,7 @@
 
 ##	header_mod
 
-	/* ec */
-	$ec_login_class = 'ec_not_loggedin';
-	if( function_exists( 'ec_oo_is_loggedin' ) && ec_oo_is_loggedin() ) {
-		$ec_login_class = 'ec_loggedin';
-	}
-	$ec_cart_class = 'off';
-	$ec_cart_quantity = 0;
-	if( function_exists( 'ec_oo_get_carts_total_quantity' ) && ec_oo_get_carts_total_quantity() > 0 ) {
-		$ec_cart_class = 'on';
-		$ec_cart_quantity = ec_oo_get_carts_total_quantity();
-	}
-	$ec_oo_carts_items = [];
-	$add_attr_ec_oo_carts_items_setup = 'ready';
-	if( function_exists( 'ec_oo_carts_items' ) ) {
-		$ec_oo_carts_items = ec_oo_carts_items();
-		$add_attr_ec_oo_carts_items_setup = ' setup';
-	}
-	$add_class_message_no_cart_hide = '';
-	$add_cart_btn_in_ecnav_cart_set_hide = '';
-	if( ! function_exists( 'ec_oo_carts_items' ) || $ec_oo_carts_items ) {
-		$add_class_message_no_cart_hide = ' v_hide';
-	} elseif( ! function_exists( 'ec_oo_carts_items' ) || ! $ec_oo_carts_items ) {
-		$add_cart_btn_in_ecnav_cart_set_hide = ' v_hide';
-	}
+
 
 /*-------------------------------------------------------------------------*/
 
@@ -40,48 +17,12 @@
 		<header class="header_wrap">
 			<div class="header_topnav_wrap hide_sp_tb">
 				<div class="header_topnav">
-<?php
-	/* ec */
-?>
 					<ul class="ecnav_list">
 						<li><a href="/ec/mypage/login" id="topnav_ec_login" class="v_ec_login <?= $ec_login_class ?>"><span>ログイン</span></a></li>
 						<li><a href="/ec/entry" id="topnav_ec_register" class="v_ec_register <?= $ec_login_class ?>"><span>会員登録</span></a></li>
 						<li><a href="/ec/logout" id="topnav_ec_logout" class="v_ec_logout <?= $ec_login_class ?>"><span>ログアウト</span></a></li>
 						<li><a href="/ec/mypage/favorite" id="topnav_ec_favorite" class="v_ec_favorite <?= $ec_login_class ?>"><span>お気に入り</span></a></li>
 						<li><a href="/ec/mypage/" id="topnav_ec_mypage" class="v_ec_mypage <?= $ec_login_class ?>"><span>MYページ</span></a></li>
-						<li class="ecnav_cart_wrap">
-							<a href="/ec/" id="topnav_ec_cart" class="v_ec_cart <?= $ec_cart_class ?>"><span>カート（<em id="carts_total_quantity" class="carts_total_quantity"><?= $ec_cart_quantity ?></em>）</span></a>
-							<div id="ecnav_cart_set" class="ecnav_cart_set on" data-status="<?= $add_attr_ec_oo_carts_items_setup ?>">
-								<div class="cart_items">
-<?php		if( $ec_oo_carts_items ) :  ?>
-<?php			foreach( $ec_oo_carts_items as $v ) : ?>
-									<div class="image_texts cart_item">
-										<div class="image_item">
-											<p class="object_fit"><img src="<?= $v[ 'pic' ] ?>" alt="<?= $v[ 'name' ] ?>"></p>
-										</div>
-										<div class="texts_item">
-											<p><span class="cart_item_name"><?= $v[ 'name' ] ?></span></p>
-<?php				if( $v[ 'class01' ] && $v[ 'class02' ] ) :  ?>
-											<p><span class="cart_item_class"><?= $v[ 'class01' ] ?><br><?= $v[ 'class02' ] ?> × 16mm</span></p>
-<?php				elseif( $v[ 'class01' ] || $v[ 'class02' ] ) : ?>
-											<p><span class="cart_item_class"><?= $v[ 'class01' ] . $v[ 'class02' ] ?> × 16mm</span></p>
-<?php				endif; ?>
-											<p><span class="cart_item_price">￥<?= number_format( $v[ 'price' ] ) ?></span><span class="cart_item_taxword"> <?= TAXWORD ?></span></p>
-											<p><span class="cart_item_quantity">数量：</span><span class="cart_item_quantity_num"><?= $v[ 'quantity' ] ?></span></p>
-										</div>
-									</div>
-<?php			endforeach; ?>
-<?php		endif; ?>
-								</div>
-								<div class="message_no_cart<?= $add_class_message_no_cart_hide ?>">
-									<p>現在カートの中身はございません。</p>
-								</div>
-								<div class="btn_wrap vertical">
-									<a href="/ec/" class="button full v_cart bc_strong<?= $add_cart_btn_in_ecnav_cart_set_hide ?>"><span>カートへ進む</span></a>
-									<a data-role="close" class="button full v_close bc0"><span>キャンセル</span></a>
-								</div>
-							</div>
-						</li>
 					</ul>
 				</div>
 			</div>

@@ -2,7 +2,7 @@
 	"oo_color_theme": {
 		"prefix": "oo_color_theme",
 		"body": [
-			"color(theme, ${1|base,aaa,bbb|})"
+			"color(theme, ${1|primary,secondary|})"
 		],
 		"description": ""
 	},

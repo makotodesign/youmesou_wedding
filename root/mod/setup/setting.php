@@ -20,7 +20,7 @@
 ##	common
 
 	/* site */
-	const SITENAME               = 'sitename';
+	const SITENAME               = '結水荘Wedding';
 	const META_DESCRIPTION       = 'descriptionxxxxxxxxxxxxxx';
 	const META_KEYWORDS          = 'keywordxxxxxxxx';
 	const GOOGLE_ANALYTICS_ID    = 'UA-00000000-1';
@@ -37,6 +37,7 @@
 		// pc def:overwrite
 		'googlefonts_pc' => [
 			'noto_sans' => 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap'
+			// 'noto_serif' => 'https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap'
 			//'noto_sans' => 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;700&display=swap'
 		],
 		// sp def:overwrite
@@ -44,6 +45,6 @@
 		],
 		// 共通読み込み
 		'otherfonts' => [
-			//PUBLICDIR . '/utility/fonts/yakuhanjp'
+			PUBLICDIR . '/utility/fonts/yakuhanjp'
 		]
 	];

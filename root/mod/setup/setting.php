@@ -27,6 +27,8 @@
 	const RECAPTCHA_V3_SITEKEY   = ''; // reCAPTCHA v3 サイトキー
 	const RECAPTCHA_V3_SECRETKEY = ''; // reCAPTCHA v3 シークレットキー
 	const GOOGLE_API_KEY         = ''; // AIzaSyDvD13PIcDRAUGj1CCR4oyJSktL31UInyc
+	const FACEBOOK               = '';
+	const INSTAGRAM               = '';
 
 	/* tax ( 2021-04-01- ) */
 	define( 'TAXRATE', 1.1 );
@@ -45,6 +47,6 @@
 		],
 		// 共通読み込み
 		'otherfonts' => [
-			PUBLICDIR . '/utility/fonts/yakuhanjp'
+			// PUBLICDIR . '/utility/fonts/yakuhanjp'
 		]
 	];

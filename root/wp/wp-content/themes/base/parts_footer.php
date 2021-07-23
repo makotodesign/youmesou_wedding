@@ -16,7 +16,7 @@
 		<footer class="footer_wrap">
 			<div class="footer">
 				<address class="footer_profile">
-					<p class="footer_name"><img src="/images/common/ci.png" alt="結水荘（ゆうみそう）" width="40px">結水荘（ゆうみそう）</p>
+					<p class="footer_name"><img src="/images/common/ci.png" alt="結水荘（ゆうみそう）" width="40px">結水荘<span class="supple">（ゆうみそう）</span></p>
 					<p class="footer_address">〒655-0033<br>兵庫県神戸市垂水区旭が丘1丁目5-26 </p>
 					<div class="footer_tel_set">
 						<p class="footer_tel mark_title tel" title="TEL"><a href="tel:080-7037-4947">080-7037-4947</a></p>

@@ -18,9 +18,10 @@ $color: (
 		base: white
 	),
 	text: (
-		base: #332,
+		base: #1e1c1d,
 		heading: #111,
-		link: #358
+		link: #358,
+		white: #fff
 	),
 	list: (
 		base: #332
@@ -31,11 +32,16 @@ $color: (
 		text: #814c56,
 		text_hover: white,
 		bg_hover: #814c56
+	),
+	ec: (
+		bg_ec: #f3f3f3,
+		storong_color_ec: #b00
 	)
 );
 
 $radius: (
-	base: 4px
+	base: 4px,
+	round: 10px
 );
 
 $font: (

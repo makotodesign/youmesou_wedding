@@ -17,10 +17,10 @@
 		<header class="header_wrap">
 			<div class="header_topnav_wrap hide_sp_tb">
 				<div class="header_topnav">
-					<ul class="ecnav_list">
-						<li><a href=""  class=""><span>FB</span></a></li>
-						<li><a href=""  class=""><span>TW</span></a></li>
-						<li><a href=""  class=""><span>English</span></a></li>
+					<ul class="topnav_list">
+						<li><a href="<?= FACEBOOK ?>" class="facebook sns_link" target="_blank"></a></li>
+						<li><a href="<?= INSTAGRAM ?>" class="instagram sns_link" target="_blank"></a></li>
+						<li><a href="/english/"  class="buttoned_link"><span>English</span></a></li>
 					</ul>
 				</div>
 			</div>

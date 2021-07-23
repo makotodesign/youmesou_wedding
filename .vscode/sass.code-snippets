@@ -21,7 +21,7 @@
 	"oo_color_text": {
 		"prefix": "oo_color_text",
 		"body": [
-			"color(text, ${1|base,heading,link|})"
+			"color(text, ${1|base,heading,link,white|})"
 		]
 	},
 	"oo_color_list": {
@@ -39,7 +39,7 @@
 	"oo_radius": {
 		"prefix": "oo_radius",
 		"body": [
-			"radius(${1|base|})"
+			"radius(${1|base,round|})"
 		],
 		"description": "radius()"
 	},

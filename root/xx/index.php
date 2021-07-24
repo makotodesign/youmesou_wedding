@@ -61,7 +61,7 @@
 			<div class="<?= DIRCODE ?>_<?= PAGECODE ?>_contents contents">
 				<section class="area">
 					<div class="hgroup">
-						<h2 class="heading02">見出し2</h2>
+						<h2 class="heading02">海の街　神戸・垂水<br>JR垂水駅北側、まるで時が止まったような路地<br>築100年の古民家で<br>心のこもった結婚式はいかがですか？</h2>
 					</div>
 					<div class="box">
 						<h3 class="heading03">HEADING2</h3>

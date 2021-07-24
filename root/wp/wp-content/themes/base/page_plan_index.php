@@ -10,8 +10,8 @@
 ##	page_setting
 
 	/* base */
-	$PAGENAME            = 'プラン紹介';
-	$DIRNAME             = 'プラン紹介';
+	$PAGENAME            = 'ウェディングプラン紹介';
+	$DIRNAME             = '結水荘ウェディングプラン';
 	define( 'DIRCODE',  'plan' );
 	define( 'PAGECODE', 'index' );
 
@@ -46,19 +46,52 @@
 		<div class="title_wrap">
 			<div class="title">
 				<h1 class="title_text"><?= $PAGENAME ?></h1>
+				<p class="title_text_sub">サブタイトル文章</p>
 			</div>
 		</div>
 		<div class="contents_wrap">
 			<div class="<?= DIRCODE ?>_<?= PAGECODE ?>_contents contents">
 				<section class="area">
-					<div class="hgroup">
-						<h2 class="heading02"><?= $PAGENAME ?></h2>
-					</div>
 					<div class="box">
-						<h3 class="heading03">HEADING2</h3>
-						<div class="part">
-							<div class="cont texts">
-								<p>TEXTTEXTTEXT</p>
+						<h2 class="heading03 title">HEADING2</h2>
+						<div class="part image_texts_pc">
+							<div class="cont image_item gallery_wrap">
+								<div class="pic_main gallery_target">
+									<p class="object_fit"><img src="/images/lib/parts/color01.jpg" alt="必ず記述"></p>
+								</div>
+								<div class="cont clm5_tb_pc snap_sp gallery_handle_set" data-target="gallery_target01">
+									<a class="clm_item current">
+										<p class="object_fit"><img src="/images/lib/parts/color01.jpg" alt="必ず記述"></p>
+									</a>
+									<a class="clm_item">
+										<p class="object_fit"><img src="/images/lib/parts/color02.jpg" alt="必ず記述"></p>
+									</a>
+									<a class="clm_item">
+										<p class="object_fit"><img src="/images/lib/parts/color03.jpg" alt="必ず記述"></p>
+									</a>
+									<a class="clm_item">
+										<p class="object_fit"><img src="/images/lib/parts/color04.jpg" alt="必ず記述"></p>
+									</a>
+									<a class="clm_item">
+										<p class="object_fit"><img src="/images/lib/parts/color05.jpg" alt="必ず記述"></p>
+									</a>
+								</div>
+								<div class="part snap_dots"><span class="current"></span><span></span><span></span><span></span><span></span></div>
+							</div>
+							<div class="cont texts_item texts">
+								<p class="caption">プライベート空間でゆっくりと。和室やレトロな雰囲気の洋室、お庭でも<br>ソロウェディングにもおすすめのプランです（お衣装代減額あり）</p>
+								<p class="badge"><span>含まれるもの</span></p>
+								<ul>
+									<li>新郎新婦衣装</li>
+									<li>新郎新婦衣装</li>
+									<li>新郎新婦衣装</li>
+									<li>新郎新婦衣装</li>
+									<li>新郎新婦衣装</li>
+									<li>新郎新婦衣装</li>
+									<li>新郎新婦衣装</li>
+									<li>新郎新婦衣装</li>
+									<li>新郎新婦衣装</li>
+								</ul>
 							</div>
 						</div>
 					</div>

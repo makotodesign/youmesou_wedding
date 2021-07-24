@@ -495,9 +495,7 @@ $gnav_wrapper: '.header';
 					}
 					> a:not(.current):hover {
 						> span {
-							// edit--
 							background-color: #eee;
-							// --edit
 						}
 					}
 				}
@@ -568,9 +566,7 @@ $gnav_wrapper: '.header';
 									&::before,
 									&::after,
 									> span {
-										// edit--
-										background-color: #eee;
-										// --edit
+										background-color: color(theme, secondary);
 									}
 								}
 							}

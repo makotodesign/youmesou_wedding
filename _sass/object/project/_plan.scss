@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+//======================================
+$DIRNAME: 'plan';
+//======================================
+
+/*--------------------------------------
+	common
+---------------------------------------*/
+
+//--------------------------------------
+$PAGENAME: 'index';
+//--------------------------------------
+
+.#{$DIRNAME}_#{$PAGENAME}_contents {
+	.area {
+		.box {
+			.heading03 {
+				border-color: color(theme, primary);
+				@include mq(tb_) {
+					margin-bottom: 60px;
+				}
+			}
+			.part {
+				.cont {
+					.caption {
+						margin-bottom: 40px;
+						font-size: 2rem;
+						@include mq(tb_) {
+							margin-bottom: 80px;
+						}
+					}
+					.badge {
+						margin-bottom: 0;
+						span {
+							display: inline-block;
+							padding: 5px 20px;
+							border-top-right-radius: radius(round);
+							background-color: color(theme, primary);
+							color: color(text, white);
+						}
+					}
+					ul {
+						padding: 20px;
+						border: 2px solid color(theme, primary);
+					}
+				}
+			}
+		}
+	}
+}

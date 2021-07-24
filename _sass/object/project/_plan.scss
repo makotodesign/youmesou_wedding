@@ -15,19 +15,52 @@ $PAGENAME: 'index';
 .#{$DIRNAME}_#{$PAGENAME}_contents {
 	.area {
 		.box {
-			.heading03 {
-				border-color: color(theme, primary);
+			margin-bottom: 80px;
+			@include mq(tb_) {
+				margin-bottom: 120px;
+			}
+			.heading03.title {
+				position: relative;
+				padding: 1rem 2rem calc(1rem + 10px);
+				border: none;
+				background: color(theme, thin);
+				text-align: center;
+				font-weight: 700;
+				font-family: font(base);
+
 				@include mq(tb_) {
 					margin-bottom: 60px;
+				}
+				.price {
+					margin-left: 20px;
+					font-size: 0.9em;
+				}
+				.taxword {
+					font-size: 0.7em;
+				}
+				&::before {
+					content: '';
+					position: absolute;
+					top: -7px;
+					left: -7px;
+					border: 3px solid color(theme, primary);
+					width: 100%;
+					height: 100%;
 				}
 			}
 			.part {
 				.cont {
 					.caption {
 						margin-bottom: 40px;
-						font-size: 2rem;
+						text-align: center;
+						font-size: 1.5rem;
+						font-family: font(mincho);
+						line-height: 2em;
 						@include mq(tb_) {
-							margin-bottom: 80px;
+							margin-bottom: 60px;
+							padding-right: 10px;
+							text-align: left;
+							font-size: 2rem;
 						}
 					}
 					.badge {

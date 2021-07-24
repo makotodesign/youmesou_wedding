@@ -19,7 +19,7 @@
 	include_once ROOTREALPATH . '/mod/setup/setup.php';
 
 	/* contents_module */
-	//include_once ROOTREALPATH . '/mod/contents/' . DIRCODE . '_' . PAGECODE . '_wp_mod.php';
+	include_once ROOTREALPATH . '/mod/contents/' . DIRCODE . '_' . PAGECODE . '_wp_mod.php';
 
 	/* js */
 	$HEAD->js = '';
@@ -46,52 +46,101 @@
 		<div class="title_wrap">
 			<div class="title">
 				<h1 class="title_text"><?= $PAGENAME ?></h1>
-				<p class="title_text_sub">サブタイトル文章</p>
+<?php 	if( $wp_page_array[ 'title_sub' ] ) : ?>
+				<p class="title_text_sub"><?=  $wp_page_array[ 'title_sub' ] ?></p>
+<?php 	endif;?>
 			</div>
 		</div>
 		<div class="contents_wrap">
 			<div class="<?= DIRCODE ?>_<?= PAGECODE ?>_contents contents">
 				<section class="area">
+<?php 	foreach( $wp_page_array[ 'plans' ] as $v ) : ?>
 					<div class="box">
-						<h2 class="heading03 title">HEADING2</h2>
+						<h2 class="heading03 title"><?= $v[ 'title' ] ?><span class="price"><?=  tax_adjust( $v[ 'price'] ) ?>円</span><span class="taxword">（<?= TAXWORD ?>）</span></h2>
+						<p></p>
 						<div class="part image_texts_pc">
 							<div class="cont image_item gallery_wrap">
 								<div class="pic_main gallery_target">
-									<p class="object_fit"><img src="/images/lib/parts/color01.jpg" alt="必ず記述"></p>
+									<p class="object_fit"><img src="<?= $v[ 'plan_image' ][ 0 ] ?>" alt="<?= $v[ 'title' ] ?>"></p>
 								</div>
 								<div class="cont clm5_tb_pc snap_sp gallery_handle_set" data-target="gallery_target01">
+<?php  		for( $i = 0; $i < count( $v[ 'plan_image' ] ); $i++ ) : ?>
+<?php  			if( $i === 0 ) : ?>
 									<a class="clm_item current">
-										<p class="object_fit"><img src="/images/lib/parts/color01.jpg" alt="必ず記述"></p>
-									</a>
+<?php  			else : ?>
 									<a class="clm_item">
-										<p class="object_fit"><img src="/images/lib/parts/color02.jpg" alt="必ず記述"></p>
+<?php  			endif; ?>
+										<p class="object_fit"><img src="<?= $v[ 'plan_image' ][ $i ] ?>" alt="<?= $v[ 'title' ] ?>"></p>
 									</a>
-									<a class="clm_item">
-										<p class="object_fit"><img src="/images/lib/parts/color03.jpg" alt="必ず記述"></p>
-									</a>
-									<a class="clm_item">
-										<p class="object_fit"><img src="/images/lib/parts/color04.jpg" alt="必ず記述"></p>
-									</a>
-									<a class="clm_item">
-										<p class="object_fit"><img src="/images/lib/parts/color05.jpg" alt="必ず記述"></p>
-									</a>
+<?php   	endfor;?>
 								</div>
 								<div class="part snap_dots"><span class="current"></span><span></span><span></span><span></span><span></span></div>
 							</div>
 							<div class="cont texts_item texts">
-								<p class="caption">プライベート空間でゆっくりと。和室やレトロな雰囲気の洋室、お庭でも<br>ソロウェディングにもおすすめのプランです（お衣装代減額あり）</p>
+<?php  		if( $v[ 'caption' ] ) : ?>
+								<p class="caption"><?= $v[ 'caption' ] ?></p>
+<?php 		endif; ?>
+<?php  		if( $v[ 'include' ] ) : ?>
 								<p class="badge"><span>含まれるもの</span></p>
 								<ul>
-									<li>新郎新婦衣装</li>
-									<li>新郎新婦衣装</li>
-									<li>新郎新婦衣装</li>
-									<li>新郎新婦衣装</li>
-									<li>新郎新婦衣装</li>
-									<li>新郎新婦衣装</li>
-									<li>新郎新婦衣装</li>
-									<li>新郎新婦衣装</li>
-									<li>新郎新婦衣装</li>
+<?php  			foreach( $v[ 'include' ] as  $vv ) : ?>
+									<li><?= $vv[ 'content' ] ?></li>
+<?php  			endforeach; ?>
 								</ul>
+<?php  		if( $v[ 'coution' ] ) : ?>
+								<p><?= $v[ 'coution' ] ?></p>
+<?php 		endif; ?>
+							</div>
+<?php  		endif; ?>
+						</div>
+					</div>
+<?php 	endforeach ;?>
+<?php 	foreach( $wp_page_array[ 'plans_other' ] as $v ) : ?>
+					<div class="box">
+						<h2 class="heading03 title"><?= $v[ 'title' ] ?></h2>
+						<div class="part image_texts_pc">
+							<div class="cont image_item gallery_wrap">
+								<div class="pic_main gallery_target">
+									<p class="object_fit"><img src="<?= $v[ 'plan_image' ][ 0 ] ?>" alt="<?= $v[ 'title' ] ?>"></p>
+								</div>
+								<div class="cont clm5_tb_pc snap_sp gallery_handle_set" data-target="gallery_target01">
+<?php  		for( $i = 0; $i < count( $v[ 'plan_image' ] ); $i++ ) : ?>
+<?php  			if( $i === 0 ) : ?>
+									<a class="clm_item current">
+<?php  			else : ?>
+									<a class="clm_item">
+<?php  			endif; ?>
+										<p class="object_fit"><img src="<?= $v[ 'plan_image' ][ $i ] ?>" alt="<?= $v[ 'title' ] ?>"></p>
+									</a>
+<?php   	endfor;?>
+								</div>
+								<div class="part snap_dots"><span class="current"></span><span></span><span></span><span></span><span></span></div>
+							</div>
+							<div class="cont texts_item texts">
+<?php  		if( $v[ 'caption' ] ) : ?>
+								<p class="caption"><?= $v[ 'caption' ] ?></p>
+<?php 		endif; ?>
+<?php  		if( $v[ 'party_contents' ] ) : ?>
+								<p class="badge"><span>内容</span></p>
+								<ul>
+<?php  			foreach( $v[ 'party_contents' ] as  $vv ) : ?>
+									<li><?= $vv[ 'content' ] ?></li>
+<?php  			endforeach; ?>
+								</ul>
+<?php  			if( $v[ 'coution' ] ) : ?>
+								<p><?= $v[ 'coution' ] ?></p>
+<?php 			endif; ?>
+							</div>
+<?php  		endif; ?>
+						</div>
+					</div>
+<?php 	endforeach ;?>
+					<div class="box">
+						<div class="part">
+							<div class="cont texts">
+								<div class="btn_wrap center">
+									<a href="/contact/" class="button icon_arrow_right"><span>お問い合わせ・申し込み</span></a>
+								</div>
 							</div>
 						</div>
 					</div>

@@ -227,10 +227,11 @@ $mq_arr: (
 			}
 		}
 		.title_text_sub {
-			font-size: 1.2rem;
+			font-size: 1.1rem;
 			color: white;
 			@include mq(tb_) {
-				font-size: 1.6rem;
+				margin-top: 10px;
+				font-size: 1.4rem;
 			}
 		}
 	}

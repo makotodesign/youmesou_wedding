@@ -78,6 +78,11 @@
 			'path'        => 'post.php?post=77&action=edit',
 			'user'        => [ 1, 2 ]
 		],
+		'プラン設定' => [
+			'type'        => 'page',
+			'path'        => 'post.php?post=68&action=edit',
+			'user'        => [ 1, 2 ]
+		],
 		/*
 		'サンプル投稿タイプ名' => [
 			'type'        => 'posttype',

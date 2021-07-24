@@ -42,8 +42,8 @@
 ##	送信メール設定
 
 	/* 送信先 */
-//	$mail_to = 'info@hoge.com';
-	$mail_to = 'formtest@oldoffice.com';
+	$mail_to = 'makoto@makotodesign.net';
+	// $mail_to = 'formtest@oldoffice.com';
 	$mail_name = 'くらいあんとめい';
 
 	/* 送信メール タイトル */

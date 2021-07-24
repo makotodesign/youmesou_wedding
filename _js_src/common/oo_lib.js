@@ -138,6 +138,7 @@ jQuery(function ($) {
 				if ($links[i].home) {
 					if (checkFixed(currentHref, $links[i].link)) {
 						$links[i].dom.addClass('current');
+						console.log('current');
 						run = false;
 						break labelAll;
 					}

@@ -79,9 +79,7 @@ body {
 				@include cont_in_wrap;
 				display: flex;
 				flex-wrap: wrap;
-				// edit--
 				justify-content: flex-end;
-				// --edit
 			}
 			// edit--
 			ul.topnav_list {
@@ -205,7 +203,7 @@ body {
 				margin: auto;
 				width: 100%;
 				height: 2px;
-				background-color: color(button, base); // gnav_btn_color
+				background-color: color(theme, primary); // gnav_btn_color
 				font-size: 0;
 				transition: all 0.4s;
 			}
@@ -393,13 +391,13 @@ $gnav_wrapper: '.header';
 					}
 				}
 			}
-			// init-- : topnav_list(_tb)
 			.topnav_list {
 				display: flex;
 				flex-wrap: wrap;
 				justify-content: space-between;
 				margin: 30px 40px;
 				li {
+					margin-bottom: 10px;
 					border: 1px solid rgba(white, 0.3);
 					width: calc(50% - 10px);
 					a,
@@ -426,7 +424,6 @@ $gnav_wrapper: '.header';
 					}
 				}
 			}
-			// --init
 		}
 	}
 }
@@ -493,9 +490,7 @@ $gnav_wrapper: '.header';
 					}
 					> a.current {
 						> span {
-							// edit--
-							border-bottom: 2px solid black;
-							// --edit
+							border-bottom: 2px solid color(theme, primary);
 						}
 					}
 					> a:not(.current):hover {
@@ -619,16 +614,18 @@ $gnav_wrapper: '.header';
 	position: relative;
 	z-index: 3;
 	padding-top: 30px;
-	// copywrite_wrap 背景色色付きの場合pb0
-	padding-bottom: 0px;
+	padding-bottom: 30px;
 	width: 100%;
-	background: url(../images/common/footer_pic01.jpg);
-	background-repeat: no-repeat;
-	background-position: center -120px;
-	background-size: cover;
+	background-color: color(theme, primary);
+
 	@include mq(tb_) {
 		padding-top: 400px;
 		padding-bottom: 60px;
+		background-color: color(theme, primary);
+		background-image: url(../images/common/footer_pic01.jpg);
+		background-repeat: no-repeat;
+		background-position: center -120px;
+		background-size: cover;
 	}
 	.footer {
 		@include cont_in_wrap;
@@ -803,7 +800,7 @@ $gnav_wrapper: '.header';
 	.copyright_wrap {
 		margin-top: 20px;
 		@include mq(tb_) {
-			margin-top: 30px;
+			margin-top: 50px;
 		}
 		@include mq(pc_) {
 			margin-top: 40px;

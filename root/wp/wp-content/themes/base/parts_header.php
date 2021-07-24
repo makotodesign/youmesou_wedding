@@ -31,14 +31,16 @@
 				<p class="gnav_btn menu"><span></span><span></span><span></span></p>
 				<nav class="gnav">
 					<ul class="topnav_list hide_pc">
-						<li><a href="/xx/"><span>MENU</span></a></li>
-						<li><a href="/xx/"><span>MENU</span></a></li>
+						<li><a href="<?= FACEBOOK ?>" class="facebook sns_link" target="_blank"><span>Facebook</span></a></li>
+						<li><a href="<?= INSTAGRAM ?>" class="instagram sns_link" target="_blank"><span>Instagram</span></a></li>
+						<li><a href="/english/"  class="buttoned_link"><span>English</span></a></li>
 					</ul>
 					<ul class="gnav_list">
 						<li><a href="/" data-gnav="home"><span>HOME</span></a></li>
 						<li><a href="/plan/"><span>プラン紹介</span></a></li>
 						<li><a href="/weblog/"><span>結水荘日記</span></a></li>
 						<li><a href="/member/"><span>メンバー紹介</span></a></li>
+						<li><a href="/access/"><span>アクセス</span></a></li>
 						<li><a href="/contact/"><span>お問い合わせ</span></a></li>
 					</ul>
 				</nav>

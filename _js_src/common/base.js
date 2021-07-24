@@ -47,7 +47,6 @@ jQuery(function ($) {
 	}
 
 	function setup() {
-		/* structure ( oo_lib ) */
 		$gnav.navCurrent();
 		$('.sidenav').navCurrent({ gnav: false });
 		$('a', $pagetop).sScroll({ top: true });

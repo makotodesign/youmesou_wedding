@@ -643,7 +643,8 @@ $gnav_wrapper: '.header';
 				margin-bottom: 0;
 			}
 			.footer_name,
-			.footer_address {
+			.footer_address,
+			.footer_link {
 				text-align: center;
 				text-shadow: none;
 				font-size: 1.3rem;
@@ -667,13 +668,22 @@ $gnav_wrapper: '.header';
 					left: -5px;
 				}
 			}
-			.footer_address {
+			.footer_address,
+			.footer_link {
 				margin-bottom: 10px;
+			}
+			.footer_link {
+				a {
+					text-decoration: none;
+					span {
+						color: color(text, white);
+					}
+				}
 			}
 			.footer_tel_set {
 				display: flex;
 				flex-direction: column;
-				align-items: center;
+				// align-items: center;
 				@include mq(pc_) {
 					text-align: left;
 				}

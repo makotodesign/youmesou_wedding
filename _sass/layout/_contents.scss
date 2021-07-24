@@ -276,7 +276,8 @@ $mq_arr: (
 		text-align: center;
 		font-size: 2.4rem;
 		font-family: font(mincho);
-		line-height: 1.4;
+		line-height: 1.8;
+		// line-height: 1.4;
 		color: color(text, heading);
 		@include mq(tb_) {
 			font-size: 2.8rem;
@@ -287,12 +288,10 @@ $mq_arr: (
 	}
 	&03 {
 		margin-bottom: 15px;
-		// must--
 		padding-bottom: 5px;
 		border-bottom: 2px solid color(border, base);
 		font-size: 2rem;
-		font-weight: bold;
-		// --must
+		font-family: font(mincho);
 		line-height: 1.4;
 		color: color(text, heading);
 		@include mq(tb_) {

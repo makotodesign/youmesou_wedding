@@ -25,7 +25,10 @@
 	overflow: hidden;
 	text-align: center;
 	.promo {
+		margin-right: auto;
+		margin-left: auto;
 		width: 100%;
+		max-width: $max_pc_width;
 		text-align: center;
 		.promo_cont {
 			position: relative;
@@ -76,6 +79,11 @@
 					line-height: 2;
 					color: white;
 				}
+			}
+			.hidden {
+				position: absolute;
+				top: 0;
+				visibility: hidden;
 			}
 		}
 	}
@@ -144,6 +152,105 @@
 						}
 					}
 				}
+			}
+		}
+	}
+}
+
+.top_introduction_area {
+	.box {
+		.part {
+			.cont {
+				.pic {
+					padding-bottom: 20px;
+					border-bottom: 1px solid color(theme, secondary);
+					@include mq(tb_) {
+						padding-bottom: 20px;
+					}
+					@include mq(pc_) {
+						padding-bottom: 40px;
+					}
+				}
+				.pic_left {
+					padding-right: 20px;
+					border-right: 1px solid color(theme, secondary);
+				}
+				.pic_right {
+					padding-left: 20px;
+					border-left: 1px solid color(theme, secondary);
+				}
+				.heading03 {
+					position: relative;
+					border-bottom: none;
+					line-height: 1.7;
+					@include mq(tb_) {
+						padding-bottom: 80px;
+					}
+				}
+			}
+			.cont.texts_item {
+				@include mq(tb_) {
+					padding-top: 80px;
+				}
+			}
+			.cont.texts_right {
+				.heading03 {
+					&::after {
+						content: '';
+						position: absolute;
+						bottom: 0px;
+						height: 1px;
+						background-color: color(theme, secondary);
+						@include mq(tb_) {
+							left: -80px;
+							width: 115%;
+						}
+					}
+				}
+				.text {
+					@include mq(tb_) {
+						margin-left: auto;
+						padding-right: 20px;
+						width: 70%;
+					}
+				}
+			}
+			.cont.texts_left {
+				.heading03 {
+					@include mq(tb_) {
+						text-align: right;
+					}
+					&::after {
+						content: '';
+						position: absolute;
+						bottom: 0px;
+						height: 1px;
+						background-color: color(theme, secondary);
+						@include mq(tb_) {
+							right: -80px;
+							width: 115%;
+						}
+					}
+				}
+				.text {
+					@include mq(tb_) {
+						margin-right: auto;
+						padding-left: 20px;
+						width: 70%;
+					}
+				}
+			}
+		}
+	}
+}
+.top_movie_area {
+	.box {
+		.part {
+			margin-bottom: 60px;
+			@include mq(pc_) {
+				margin-bottom: 80px;
+			}
+			.cont {
 			}
 		}
 	}

@@ -47,19 +47,36 @@
 	const ADMIN_MENU_EDITOR_PRO = false;
 
 	const WPADMIN_NAV = [
-		'お知らせ' => [
-			'type'         => 'posttype',
-			'path'         => 'edit.php?post_type=news',
-			'user'         => [ 1, 2 ],
-			'add_submenu'  => [
-				/*
-					「一覧」と「新規追加」はposttypeの場合自動
-				*/
-				'トップページ表示設定' => [
-					'path'     => 'post.php?post=24&action=edit',
-					'user'     => [ 1, 2 ]
-				]
-			]
+		// 'お知らせ' => [
+		// 	'type'         => 'posttype',
+		// 	'path'         => 'edit.php?post_type=news',
+		// 	'user'         => [ 1, 2 ],
+		// 	'add_submenu'  => [
+		// 		/*
+		// 			「一覧」と「新規追加」はposttypeの場合自動
+		// 		*/
+		// 		'トップページ表示設定' => [
+		// 			'path'     => 'post.php?post=24&action=edit',
+		// 			'user'     => [ 1, 2 ]
+		// 		]
+		// 	]
+		// ],
+		'日常更新' => array(
+			'type'        => 'heading_dashboard' // ダッシュボード用区切り見出し
+		),
+
+		'結水荘日記' => [
+			'type'        => 'posttype',
+			'path'        => 'edit.php?post_type=weblog',
+			'user'        => [ 1, 2 ]
+		],
+		'ページコンテンツ設定' => array(
+			'type'        => 'heading_dashboard' // ダッシュボード用区切り見出し
+		),
+		'Top設定' => [
+			'type'        => 'page',
+			'path'        => 'post.php?post=77&action=edit',
+			'user'        => [ 1, 2 ]
 		],
 		/*
 		'サンプル投稿タイプ名' => [
@@ -102,37 +119,64 @@
 
 	const CUSTOM_POSTTYPE = [
 
-		'news' => [
-			'name'           => 'お知らせ',
-			'posts_per_page' => 20,
+		// 'news' => [
+		// 	'name'           => 'お知らせ',
+		// 	'posts_per_page' => 20,
+		// 	// editor
+		// 	'editor'         => [ 'link', 'unlink' ],
+		// 	'gutenberg'      => false,
+		// 	'eyecatch'       => false,
+		// 	// routing
+		// 	'slug'           => [
+		// 		'auto_slug'  => true,
+		// 		'rewrite'    => true
+		// 	],
+		// 	'add_page'       => [],
+		// 	// sitemap_xml
+		// 	'sitemap'        => [
+		// 		'archive'    => '0.1',
+		// 		'single'     => '0.1',
+		// 		'add_arg'    => [
+		// 			'meta_key'       => 'link_type',
+		// 			'meta_value'     => 'type_detail'
+		// 		]
+		// 	],
+		// 	// posts_archive_columns
+		// 	'columns'        => [
+		// 		'author'     => false,
+		// 		'column'     => [
+		// 			[
+		// 				'name'       => 'リンクタイプ',
+		// 				'type'       => 'linktype',
+		// 				'arg'        => 'news_link'
+		// 			]
+		// 		]
+		// 	]
+		// ],
+		'weblog' => [
+			'name'           => '結水荘日記',
+			'posts_per_page' => 10,
 			// editor
-			'editor'         => [ 'link', 'unlink' ],
+			'editor'         => [],
 			'gutenberg'      => false,
-			'eyecatch'       => false,
 			// routing
 			'slug'           => [
 				'auto_slug'  => true,
 				'rewrite'    => true
 			],
-			'add_page'       => [],
+			'add_page'       => [
+				[]
+			],
 			// sitemap_xml
 			'sitemap'        => [
-				'archive'    => '0.1',
-				'single'     => '0.1',
-				'add_arg'    => [
-					'meta_key'       => 'link_type',
-					'meta_value'     => 'type_detail'
-				]
+				'archive'    => '0.5', // アーカイブがない場合は「false」
+				'single'     => '0.6', // シングルがない場合は「false」
+				'add_arg'    => []
 			],
 			// posts_archive_columns
 			'columns'        => [
 				'author'     => false,
 				'column'     => [
-					[
-						'name'       => 'リンクタイプ',
-						'type'       => 'linktype',
-						'arg'        => 'news_link'
-					]
 				]
 			]
 		]

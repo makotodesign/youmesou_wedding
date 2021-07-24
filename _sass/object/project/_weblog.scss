@@ -9,13 +9,18 @@ $DIRNAME: 'weblog';
 ---------------------------------------*/
 
 //--------------------------------------
-$PAGENAME: 'index';
 //--------------------------------------
 
-.#{$DIRNAME}_#{$PAGENAME}_contents {
+.#{$DIRNAME}_archive_contents {
 	.area {
 		.box {
 			.part {
+				.cont {
+					.title {
+						font-size: 1.8rem;
+						font-weight: 700;
+					}
+				}
 			}
 		}
 	}

@@ -158,6 +158,11 @@
 }
 
 .top_introduction_area {
+	.hgroup {
+		@include mq(pc_) {
+			margin-bottom: 80px;
+		}
+	}
 	.box {
 		.part {
 			.cont {

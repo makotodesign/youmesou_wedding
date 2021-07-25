@@ -55,7 +55,8 @@ const paths = {
 
 const server = {
 	open: 'external',
-	proxy: 'http://youmeso-wedding.ts-network.co.jp/', //'https://xxx.sakura.ne.jp/official01/',
+	proxy: '', //'https://xxx.sakura.ne.jp/official01/',
+	// proxy: 'http://youmeso-wedding.ts-network.co.jp/', //'https://xxx.sakura.ne.jp/official01/',
 	watchOptions: {
 		debounceDelay: 1000 //1秒間、タスクの再実行を抑制
 	}

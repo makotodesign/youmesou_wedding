@@ -14,6 +14,12 @@
 	color: #000;
 }
 
+.top_container {
+	.footer_wrap {
+		margin-top: 0;
+	}
+}
+
 /*--------------------------------------
 	promo
 ---------------------------------------*/
@@ -267,9 +273,21 @@
 }
 .top_sns_area {
 	background-color: color(theme, primary);
+	@include mq(tb_) {
+		padding-top: 60px;
+	}
 	.box {
 		.part {
 			.cont {
+				text-align: center;
+				.sns_title {
+					display: inline-block;
+					margin-bottom: 10px;
+					text-align: center;
+					font-size: 2rem;
+					font-weight: 700;
+					color: color(text, white);
+				}
 				.timeline {
 					padding: 10px;
 					background-color: #fff;
@@ -277,6 +295,16 @@
 					@include mq(pc_) {
 						min-height: 600px;
 					}
+				}
+			}
+			.cont.facebook {
+				.sns_title {
+					@include icomoon('block', icom(facebook-f), 20px, 'left', 0);
+				}
+			}
+			.cont.instagram {
+				.sns_title {
+					@include icomoon('block', icom(instagram), 20px, 'left', 0);
 				}
 			}
 		}

@@ -172,7 +172,15 @@
 			'name'           => '結水荘日記',
 			'posts_per_page' => 10,
 			// editor
-			'editor'         => [],
+			'editor'         => [
+				'link',
+				'unlink',
+				'formatselect',
+				'bullist',
+				'numlist',
+				'forecolor',
+				'table'
+			],
 			'gutenberg'      => false,
 			// routing
 			'slug'           => [

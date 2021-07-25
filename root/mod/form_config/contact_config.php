@@ -42,8 +42,7 @@
 ##	送信メール設定
 
 	/* 送信先 */
-	$mail_to = 'makoto@makotodesign.net';
-	// $mail_to = 'formtest@oldoffice.com';
+	$mail_to = 'youme-so@ts-network.co.jp';
 	$mail_name = '結水荘Wedding';
 
 	/* 送信メール タイトル */

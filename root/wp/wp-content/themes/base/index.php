@@ -49,7 +49,7 @@
 			<div class="top_contents contents">
 				<section id="" class="top_introduction_area area">
 					<div class="hgroup">
-						<h2 class="heading02">海の街　神戸・垂水<br>JR垂水駅北側、まるで時が止まったような路地<br>築100年の古民家で<br>心のこもった結婚式はいかがですか？</h2>
+						<h2 class="heading02"><?= $wp_top_maincatch ?></h2>
 					</div>
 <?php foreach( $wp_top_introduction_array as $v ) : ?>
 					<div class="box">

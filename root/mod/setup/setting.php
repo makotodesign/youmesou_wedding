@@ -21,8 +21,8 @@
 
 	/* site */
 	const SITENAME               = '結水荘Wedding';
-	const META_DESCRIPTION       = 'descriptionxxxxxxxxxxxxxx';
-	const META_KEYWORDS          = 'keywordxxxxxxxx';
+	const META_DESCRIPTION       = '神戸垂水の古民家で一生の思い出に残るウェディングはいかがですか。撮影プラン10万円〜、挙式プラン１０万円〜、撮影+挙式プラン15万円';
+	const META_KEYWORDS          = '結婚式会場、レンタル、古民家、ウェディング会場';
 	const GOOGLE_ANALYTICS_ID    = 'UA-00000000-1';
 	const RECAPTCHA_V3_SITEKEY   = ''; // reCAPTCHA v3 サイトキー
 	const RECAPTCHA_V3_SECRETKEY = ''; // reCAPTCHA v3 シークレットキー

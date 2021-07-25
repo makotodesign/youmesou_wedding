@@ -14,7 +14,7 @@
 	if( isset( $_GET[ 'debug' ] ) && $_GET[ 'debug' ] === 'on' ) {
 		define( 'WP_DEBUG', true ); // 強制デバッグモード
 	} else {
-		define( 'WP_DEBUG', true ); // 通常（公開時 false）
+		define( 'WP_DEBUG', false ); // 通常（公開時 false）
 	}
 
 ## mmory

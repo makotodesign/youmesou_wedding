@@ -28,6 +28,7 @@
 		// dete
 		$arr[ 'modified_date' ]                            = get_the_modified_date( 'Y-m-d', $this_post_id );
 		// acf
+		$arr[ 'main_catch' ]                               = wp_oo_acf_textarea( get_field( 'main_catch', $this_post_id ) );
 		$arr[ 'introduction' ]                              = wp_oo_acf_loop( get_field( 'introduction', $this_post_id ) );
 		foreach( $arr[ 'introduction' ] as $k => $v ) { // loop over write
 			$arr[ 'introduction' ][ $k ][ 'title' ]           = wp_oo_acf_textarea( $v[ 'title' ] );
@@ -37,6 +38,7 @@
 
 	}
 	$temp_arr = $arr[ 'introduction' ];
+	$wp_top_maincatch = $arr[ 'main_catch' ];
 	$wp_top_introduction_array = [];
 	for( $i = 0 ; $i < count( $temp_arr ) ; $i++){
 		$wp_top_introduction_array[ $i ][ 'content'] = $temp_arr[ $i ];

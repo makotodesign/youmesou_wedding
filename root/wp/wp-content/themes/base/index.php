@@ -94,6 +94,33 @@
 						</div>
 					</div>
 				</section>
+				<section class="top_sns_area area">
+					<div class="box">
+						<div class="part clm3_pc clm2_tb">
+							<div class="cont clm_item facebook">
+								<h3 class="sns_title">Facebook</h3>
+								<div class="timeline">
+									<div id="fb-root"></div>
+									<script async defer crossorigin="anonymous" src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v11.0&appId=630391123640614&autoLogAppEvents=1" nonce="DAn1TcbA"></script>
+									<div class="fb-page" data-href="https://www.facebook.com/yumiso111" data-tabs="timeline" data-width="" data-height="600" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"><blockquote cite="https://www.facebook.com/yumiso111" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/yumiso111">結水荘（ゆうみそう）</a></blockquote></div>
+
+								</div>
+							</div>
+							<div class="cont clm_item instagram">
+								<h3 class="sns_title">instagram</h3>
+								<div class="timeline">
+
+								</div>
+							</div>
+							<div class="cont clm_item blog">
+								<h3 class="sns_title">結水荘日記</h3>
+								<div class="timeline">
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
 			</div>
 		</div>
 <?php	include_once TEMPLATEPATH . '/parts_footer.php'; ?>

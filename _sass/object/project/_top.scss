@@ -250,12 +250,34 @@
 }
 .top_movie_area {
 	.box {
+		@include mq(pc_) {
+			margin-right: auto;
+			margin-left: auto;
+			width: 70%;
+		}
 		.part {
 			margin-bottom: 60px;
 			@include mq(pc_) {
 				margin-bottom: 80px;
 			}
 			.cont {
+			}
+		}
+	}
+}
+.top_sns_area {
+	background-color: color(theme, primary);
+	.box {
+		.part {
+			.cont {
+				.timeline {
+					padding: 10px;
+					background-color: #fff;
+					text-align: center;
+					@include mq(pc_) {
+						min-height: 600px;
+					}
+				}
 			}
 		}
 	}

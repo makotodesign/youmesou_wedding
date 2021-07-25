@@ -38,4 +38,3 @@
 	$wp_page_array = $arr;
 	$wp_page_title = $arr[ 'page_title' ];
 	$wp_page_title_sub = $arr[ 'page_title_sub' ];
-print '<pre>'.'$wp_page_array' . '：';var_dump($wp_page_array);print '</pre>' . "\n";

@@ -27,8 +27,8 @@
 	const RECAPTCHA_V3_SITEKEY   = ''; // reCAPTCHA v3 サイトキー
 	const RECAPTCHA_V3_SECRETKEY = ''; // reCAPTCHA v3 シークレットキー
 	const GOOGLE_API_KEY         = ''; // AIzaSyDvD13PIcDRAUGj1CCR4oyJSktL31UInyc
-	const FACEBOOK               = '';
-	const INSTAGRAM               = '';
+	const FACEBOOK               = 'https://www.facebook.com/yumiso111';
+	const INSTAGRAM               = 'https://www.instagram.com/momi_youmeso/';
 
 	/* tax ( 2021-04-01- ) */
 	define( 'TAXRATE', 1.1 );

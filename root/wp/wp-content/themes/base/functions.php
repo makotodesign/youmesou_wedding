@@ -83,6 +83,11 @@
 			'path'        => 'post.php?post=68&action=edit',
 			'user'        => [ 1, 2 ]
 		],
+		'メンバー設定' => [
+			'type'        => 'page',
+			'path'        => 'post.php?post=70&action=edit',
+			'user'        => [ 1, 2 ]
+		],
 		/*
 		'サンプル投稿タイプ名' => [
 			'type'        => 'posttype',

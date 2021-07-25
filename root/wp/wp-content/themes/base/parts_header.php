@@ -37,7 +37,7 @@
 					</ul>
 					<ul class="gnav_list">
 						<li><a href="/" data-gnav="home"><span>HOME</span></a></li>
-						<li><a href="/plan/"><span>プラン紹介</span></a></li>
+						<li><a href="/plan/"><span>プラン</span></a></li>
 						<li><a href="/weblog/"><span>結水荘日記</span></a></li>
 						<li><a href="/member/"><span>メンバー紹介</span></a></li>
 						<li><a href="/access/"><span>アクセス</span></a></li>

@@ -15,7 +15,27 @@ $PAGENAME: 'index';
 .#{$DIRNAME}_#{$PAGENAME}_contents {
 	.area {
 		.box {
+			@include mq(tb_) {
+				margin-bottom: 60px;
+			}
+			@include mq(pc_) {
+				margin-bottom: 120px;
+			}
 			.part {
+				.cont {
+					.badge {
+						display: inline-block;
+						margin-bottom: 10px;
+						padding: 2px 10px;
+						border-radius: radius(base);
+						background-color: color(theme, secondary);
+						font-size: 1.3rem;
+						color: color(text, white);
+					}
+					.title {
+						font-weight: 700;
+					}
+				}
 			}
 		}
 	}

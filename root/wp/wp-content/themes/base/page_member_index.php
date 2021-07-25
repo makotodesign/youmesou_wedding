@@ -19,7 +19,7 @@
 	include_once ROOTREALPATH . '/mod/setup/setup.php';
 
 	/* contents_module */
-	//include_once ROOTREALPATH . '/mod/contents/' . DIRCODE . '_' . PAGECODE . '_wp_mod.php';
+	include_once ROOTREALPATH . '/mod/contents/' . DIRCODE . '_' . PAGECODE . '_wp_mod.php';
 
 	/* js */
 	$HEAD->js = '';
@@ -40,28 +40,39 @@
 	/* head & header */
 	$HEAD->disp_tag_head();
 	include_once ROOTREALPATH . '/wp/wp-content/themes/base/parts_header.php';
-
+	$arr = $wp_page_array[ 'members' ]; 
 /*---------------------------------------------------------------------------*/
 ?>
 		<div class="title_wrap">
 			<div class="title">
 				<h1 class="title_text"><?= $PAGENAME ?></h1>
+<?php 	if( $wp_page_array[ 'title_sub' ] ) : ?>
+				<p class="title_text_sub"><?=  $wp_page_array[ 'title_sub' ] ?></p>
+<?php 	endif;?>
 			</div>
 		</div>
 		<div class="contents_wrap">
 			<div class="<?= DIRCODE ?>_<?= PAGECODE ?>_contents contents">
 				<section class="area">
-					<div class="hgroup">
-						<h2 class="heading02"><?= $PAGENAME ?></h2>
-					</div>
+<?php foreach( $arr as  $v ) : ?>
 					<div class="box">
-						<h3 class="heading03">HEADING2</h3>
-						<div class="part">
-							<div class="cont texts">
-								<p>TEXTTEXTTEXT</p>
+						<div class="part texts_image_pc texts_image_tb float_right_sp">
+							<div class="cont image_item">
+								<p class="object_fit"><img src="<?= $v[ 'logo' ] ?>" alt="<?= $v[ 'name' ] ?>"></p>
+							</div>
+							<div class="cont texts_item">
+								<p class="badge"><?= $v[ 'genre' ] ?></p>
+								<h2 class="heading04 title"><?= $v[ 'name' ] ?></h4>
+								<div class="entry_wrap">
+									<?= $v[ 'comment' ] ?>
+								</div>
+<?php if(  $v[ 'url' ] ) : ?>
+								<p class="link_arrow link_external"><a href="<?= $v[ 'url' ] ?>/" target="_blank"><?= $v[ 'url' ] ?></a></p>
+<?php endif; ?>
 							</div>
 						</div>
 					</div>
+<?php endforeach; ?>
 				</section>
 			</div>
 		</div>

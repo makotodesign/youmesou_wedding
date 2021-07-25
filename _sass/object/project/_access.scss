@@ -16,6 +16,40 @@ $PAGENAME: 'index';
 	.area {
 		.box {
 			.part {
+				.cont {
+					.heading05 {
+						border-bottom: 1px solid color(text, base);
+					}
+				}
+				.cont.summary {
+					@include mq(pc_) {
+						margin: 10px auto;
+						width: 60%;
+					}
+					.address {
+						margin-bottom: 40px;
+						@include mq(pc_) {
+							text-align: center;
+						}
+						.tel {
+							display: inline-block;
+							@include icomoon('block', icom(phone-alt), 15px, 'left', 0);
+							margin-bottom: 20px;
+						}
+					}
+					.railway {
+						margin-bottom: 40px;
+						.heading05 {
+							@include icomoon('block', icom(subway), 16px, 'left', 0);
+						}
+					}
+					.car {
+						margin-bottom: 40px;
+						.heading05 {
+							@include icomoon('block', icom(car), 16px, 'left', 0);
+						}
+					}
+				}
 			}
 		}
 	}

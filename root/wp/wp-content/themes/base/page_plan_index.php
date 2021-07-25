@@ -10,7 +10,7 @@
 ##	page_setting
 
 	/* base */
-	$PAGENAME            = 'ウェディングプラン紹介';
+	$PAGENAME            = 'ウェディングプラン';
 	$DIRNAME             = '結水荘ウェディングプラン';
 	define( 'DIRCODE',  'plan' );
 	define( 'PAGECODE', 'index' );

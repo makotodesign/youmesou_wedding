@@ -679,7 +679,9 @@ $gnav_wrapper: '.header';
 			.footer_tel_set {
 				display: flex;
 				flex-direction: column;
-				// align-items: center;
+				@include mq(_tb) {
+					align-items: center;
+				}
 				@include mq(pc_) {
 					text-align: left;
 				}

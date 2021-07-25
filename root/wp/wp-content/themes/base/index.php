@@ -110,6 +110,7 @@
 							<div class="cont clm_item instagram">
 								<h3 class="sns_title">instagram</h3>
 								<div class="timeline">
+									<?= do_shortcode( '[instagram-feed]' ) ?>
 
 								</div>
 							</div>

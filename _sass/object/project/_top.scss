@@ -290,10 +290,15 @@
 				}
 				.timeline {
 					padding: 10px;
+					height: 500px;
+					overflow: scroll;
 					background-color: #fff;
 					text-align: center;
+					@include mq(tb_) {
+						height: 600px;
+					}
 					@include mq(pc_) {
-						min-height: 600px;
+						height: 700px;
 					}
 				}
 			}
@@ -305,6 +310,28 @@
 			.cont.instagram {
 				.sns_title {
 					@include icomoon('block', icom(instagram), 20px, 'left', 0);
+				}
+			}
+			.cont.blog {
+				.content {
+					margin-bottom: 40px;
+					padding: 10px;
+					.timeline_title_wrap {
+						display: flex;
+						flex-wrap: wrap;
+						justify-content: space-between;
+						.title {
+							margin-bottom: 10px;
+							font-size: 1.6rem;
+							font-weight: 700;
+						}
+					}
+					.text {
+						margin-top: 10px;
+						text-align: left;
+						font-size: 1.3rem;
+						line-height: 1.4em;
+					}
 				}
 			}
 		}

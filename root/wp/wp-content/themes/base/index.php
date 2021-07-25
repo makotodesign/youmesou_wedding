@@ -19,6 +19,7 @@
 	/* contents_module */
 	// include_once ROOTREALPATH . '/mod/contents/top_news_wp_mod.php';
 	include_once ROOTREALPATH . '/mod/contents/top_introduction_wp_mod.php';
+	include_once ROOTREALPATH . '/mod/contents/top_weblog_wp_mod.php';
 
 	/* js */
 	$HEAD->js = '';
@@ -102,7 +103,7 @@
 								<div class="timeline">
 									<div id="fb-root"></div>
 									<script async defer crossorigin="anonymous" src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v11.0&appId=630391123640614&autoLogAppEvents=1" nonce="DAn1TcbA"></script>
-									<div class="fb-page" data-href="https://www.facebook.com/yumiso111" data-tabs="timeline" data-width="" data-height="600" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"><blockquote cite="https://www.facebook.com/yumiso111" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/yumiso111">結水荘（ゆうみそう）</a></blockquote></div>
+									<div class="fb-page" data-href="https://www.facebook.com/yumiso111" data-tabs="timeline" data-width="" data-height="700" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"><blockquote cite="https://www.facebook.com/yumiso111" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/yumiso111">結水荘（ゆうみそう）</a></blockquote></div>
 
 								</div>
 							</div>
@@ -112,12 +113,24 @@
 
 								</div>
 							</div>
+<?php  	if( !empty( $wp_top_weblog_array) ) : ?>
 							<div class="cont clm_item blog">
 								<h3 class="sns_title">結水荘日記</h3>
 								<div class="timeline">
+<?php  		foreach( $wp_top_weblog_array as  $v ) : ?>
+									<a href="<?= $v[ 'permalink' ] ?>" class="content">
+										<div class="timeline_title_wrap">
+											<h5 class="title"><?= $v[ 'post_title' ] ?></h5>
+											<p><?= $v[ 'post_date' ] ?></p>
+										</div>
+										<p class="object_fit"><img src="<?= $v[ 'eyecatch' ] ?>" alt="<?= $v[ 'post_title' ] ?>"></p>
+										<p class="text"><?= $v[ 'post_excerpt' ] ?></p>
+									</a>
+<?php 		 endforeach; ?>
 
 								</div>
 							</div>
+<?php  	endif; ?>
 						</div>
 					</div>
 				</section>

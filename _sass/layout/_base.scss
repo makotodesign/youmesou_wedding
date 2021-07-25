@@ -778,7 +778,7 @@ $gnav_wrapper: '.header';
 							@include mq(tb_) {
 								position: relative;
 								padding: 20px 10px 20px 35px;
-								border-top: 1px dashed rgba(white, 0.3);
+								// border-top: 1px dashed rgba(white, 0.3);
 								border-bottom: 1px dashed rgba(white, 0.3);
 							}
 							&::before {
@@ -799,7 +799,7 @@ $gnav_wrapper: '.header';
 			.footer_sitenav_cont:first-child {
 				li:first-child {
 					a {
-						border-top: 1px dashed rgba(white, 0.3);
+						// border-top: 1px dashed rgba(white, 0.3);
 					}
 				}
 			}

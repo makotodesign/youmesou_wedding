@@ -615,6 +615,7 @@ $gnav_wrapper: '.header';
 	background-color: color(theme, primary);
 
 	@include mq(tb_) {
+		margin-top: 80px;
 		padding-top: 400px;
 		padding-bottom: 60px;
 		background-color: color(theme, primary);

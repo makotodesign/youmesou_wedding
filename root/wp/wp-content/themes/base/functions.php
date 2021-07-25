@@ -61,7 +61,7 @@
 		// 		]
 		// 	]
 		// ],
-		'日常更新' => array(
+		'投稿コンテンツ' => array(
 			'type'        => 'heading_dashboard' // ダッシュボード用区切り見出し
 		),
 
@@ -70,22 +70,27 @@
 			'path'        => 'edit.php?post_type=weblog',
 			'user'        => [ 1, 2 ]
 		],
-		'ページコンテンツ設定' => array(
+		'ページコンテンツ' => array(
 			'type'        => 'heading_dashboard' // ダッシュボード用区切り見出し
 		),
-		'Top設定' => [
+		'Top' => [
 			'type'        => 'page',
 			'path'        => 'post.php?post=77&action=edit',
 			'user'        => [ 1, 2 ]
 		],
-		'プラン設定' => [
+		'プラン' => [
 			'type'        => 'page',
 			'path'        => 'post.php?post=68&action=edit',
 			'user'        => [ 1, 2 ]
 		],
-		'メンバー設定' => [
+		'メンバー' => [
 			'type'        => 'page',
 			'path'        => 'post.php?post=70&action=edit',
+			'user'        => [ 1, 2 ]
+		],
+		'English' => [
+			'type'        => 'page',
+			'path'        => 'post.php?post=74&action=edit',
 			'user'        => [ 1, 2 ]
 		],
 		/*

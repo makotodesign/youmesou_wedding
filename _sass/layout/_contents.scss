@@ -1709,7 +1709,6 @@ form {
 			margin-top: 10px;
 		}
 	}
-	// --edit
 	p {
 		@extend .text;
 	}
@@ -1717,13 +1716,26 @@ form {
 		@extend .table;
 	}
 	img {
-		float: none !important;
+		float: none;
 		margin-bottom: 6px;
 		max-width: 100%;
 	}
 	a {
 		word-break: break-all;
 		word-wrap: break-word;
+	}
+	.alignright {
+		float: right;
+		margin-left: 6px;
+	}
+	.alignleft {
+		float: left;
+		margin-right: 6px;
+	}
+	.aligncenter {
+		display: block;
+		margin-right: auto;
+		margin-left: auto;
 	}
 }
 .main_area {

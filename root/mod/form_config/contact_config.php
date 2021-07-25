@@ -44,10 +44,10 @@
 	/* 送信先 */
 	$mail_to = 'makoto@makotodesign.net';
 	// $mail_to = 'formtest@oldoffice.com';
-	$mail_name = 'くらいあんとめい';
+	$mail_name = '結水荘Wedding';
 
 	/* 送信メール タイトル */
-	$title = 'ホームページからのxxxお問い合わせ（'. $mail_name .'）';
+	$title = 'ホームページからの' . $form_user . '（'. $mail_name .'）';
 
 	/* 送信メール 本文 */
 	// 送信メールにだけ記載される冒頭文
@@ -58,8 +58,7 @@
 	$text = '';
 	$text .= '------------------------------------------------' . "\n";
 	$text .= "\n";
-	$text .= $form_company . "\n";
-	$text .= $form_name . "\n";
+	$text .= $form_name . "様\n";
 	$text .= '' . "\n";
 	$text .= 'TEL : ' . $form_tel . "\n";
 	// $text .= $form_zip . "\n";
@@ -67,7 +66,7 @@
 	$text .= "\n";
 	$text .= '------------------------------------------------' . "\n";
 	$text .= "\n";
-	$text .= '[ お問い合わせ内容 ]' . "\n";
+	$text .= '[ ' . $form_user .'内容 ]' . "\n";
 	$text .= "\n";
 	$text .= $form_message . "\n";
 	$text .= "\n";
@@ -104,10 +103,10 @@
 	$text .= "\n";
 	$text .= '------------------------------------------------' . "\n";
 	$text .= "\n";
-	$text .= '株式会社'."\n";
-	$text .= '〒000-0000'."\n";
-	$text .= 'address'."\n";
-	$text .= 'TEL : 00-0000-0000（代）'."\n";
+	$text .= '結水荘'."\n";
+	$text .= '〒655-0033'."\n";
+	$text .= '兵庫県神戸市垂水区旭が丘1丁目5-26 '."\n";
+	$text .= 'TEL : 080-7037-4947'."\n";
 	$text .= "\n";
 	$text .= '------------------------------------------------' . "\n";
 
@@ -131,7 +130,7 @@
 
 	// 送信先アドレス
 	$BCC_mail_to = [
-		'formtest@oldoffice.com'
+		'jamzip@gmail.com'
 	];
 
 ##	メール送信元変更

@@ -10,7 +10,7 @@
 ##	page_setting
 
 	/* base */
-	$PAGENAME            = 'お問い合わせ';
+	$PAGENAME            = 'お問い合わせ・お申し込み';
 	$DIRNAME             = 'お問い合わせ';
 	define( 'DIRCODE',  'contact' );
 	define( 'PAGECODE', 'index' );
@@ -90,7 +90,7 @@
 						</div>
 						<div class="part">
 							<div class="cont texts">
-								<p>お問い合わせは下記フォームよりご連絡ください。<br>追ってご連絡いたしますのでよろしくお願いいたします。</p>
+								<p>お問い合わせ・お申し込みは下記フォームよりご連絡ください。<br>追ってご連絡いたしますのでよろしくお願いいたします。</p>
 								<p><a href="/contact/privacy/">個人情報保護方針</a></p>
 							</div>
 						</div>
@@ -124,40 +124,11 @@
 								<div class="form_input_set">
 									<div class="form_fieldset">
 										<div class="form_legend">
-											<p>ハンドル</p>
+											<p>内容</p>
 										</div>
 										<div class="form_input">
-											<p class="input_radio_wrap" ><?= $FS->res( 'radio', 'user', '法人,個人', [
+											<p class="input_radio_wrap" ><?= $FS->res( 'radio', 'user', 'お問い合わせ,お申し込み', [
 												'handle_name'       => 'handle_user'
-											] ) ?></p>
-										</div>
-									</div>
-									<div class="form_fieldset">
-										<div class="form_legend">
-											<p>CHECKBOX vertical</p>
-										</div>
-										<div class="form_input">
-											<p class="input_checkbox_wrap checkbox_vertical_pc"><?= $FS->res( 'checkbox', 'checkbox_vertical', 'あ,い,う', [
-											] ) ?></p>
-										</div>
-									</div>
-									<div class="form_fieldset">
-										<div class="form_legend">
-											<p>セレクト<?= $FS->must( 'selectid' ); ?></p>
-										</div>
-										<div class="form_input">
-											<p class="input_select_wrap"><?= $FS->res( 'select', 'selectid', '要素01,要素02',[
-													'element_first'     => '選択してください',
-													'must' => 'must'
-											] ) ?></p>
-										</div>
-									</div>
-									<div class="form_fieldset"<?= $FS->res_switch_code( 'handle_user', '1', 'show' ); ?>>
-										<div class="form_legend">
-											<p>会社名<?= $FS->must( 'company' ); ?></p>
-										</div>
-										<div class="form_input">
-											<p><?= $FS->res( 'text', 'company', 'must', [
 											] ) ?></p>
 										</div>
 									</div>

@@ -341,7 +341,7 @@ class OOHEAD {
 		$tag = '';
 		// google analitics
 		if( defined( 'GOOGLE_ANALYTICS_ID' ) ) $def_google_analytics_ID = GOOGLE_ANALYTICS_ID;
-		if( $this->google_analytics_ID ) $this->google_analytics_ID = $def_google_analytics_ID;
+		if( ! $this->google_analytics_ID ) $this->google_analytics_ID = $def_google_analytics_ID;
 		if( $this->google_analytics_ID ) {
 			$tag .= self::tb . "" . '<script async src="https://www.googletagmanager.com/gtag/js?id=' . $this->google_analytics_ID . '"></script>' . "\n";
 			$tag .= self::tb . "" . '<script>' . "\n";
